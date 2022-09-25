@@ -1,40 +1,99 @@
+# Geo Job
+
 ## Group number
 10-1
 
 ## Team members
 | Name              | GitLabID          |
-| ----------------- | ------------- |
+| ----------------- | ----------------- |
 | Cole Amlong       | @coleamlong       |
 | Faiza Rahman      | @faiza2002        |
 | Mikala Jaramillo  | @Mikalajj         |
 | Sarthak Sirotiya  | @sarthaksirotiya  |
 | Thomas Langford   | @thomas_langford  |
 
-## Name of the project
-Geo Job
-
-## URL of the GitLab repo
+### URL of the GitLab repo
 https://gitlab.com/sarthaksirotiya/cs373-idb
 
-## The proposed project
+### Website URL
+geo-jobs.xyz
 
+# The proposed project
+Allows users to search for jobs in a specific city. If they like the city, then they can find apartments that fit the budget of the jobs they searched for.
 
-URLs of at least three disparate data sources that you will programmatically scrape using a RESTful API (be very sure about this)
+## API URLs
+RoadGoat: https://www.roadgoat.com/business/cities-api
+Google Maps API: https://developers.google.com/maps/documentation/places/web-service/supported_types
+Apartments.com API: https://api.apartments.com/v1/
+ZipRecruiter API: https://www.ziprecruiter.com/zipsearch
 
-at least three models
+## At least three models
+Jobs, cities, houses
 
-an estimate of the number of instances of each model
+## An estimate of the number of instances of each model
+| Model      | Number of Instances |
+| ---------- | ------------- |
+| Jobs       | ~100,000 |
+| Cities     | ~20,000 |
+| Apartment  | ~200,000 |
 
-each model must have many attributes
+## Model Attributes
+### Jobs
+Sort By
+City
+Salary
+Posted date
+Distance from apartment
+Full time/Part time
 
-describe at least five of those attributes for each model that you could filter by or sort by on the model (grid) pages
+Search For
+Position name
+Company
+Benefits
+Rating
+Skills
 
-describe at least five additional attributes for each model that you could search for on the instance pages
+### Cities
+Sort By:
+Population
+Ability to get around
+Average Rating
+Safety Score
+Budget Score
 
-each model must connect to at least two other models
+Search For:
+Name
+Activities
+Family Friendly
+State
+Demographics
 
-each model must be rich with different media (e.g., feeds, images, maps, text, videos, etc.) (be very sure about this)
+### Apartment
+Sort By:
+Price
+Number of Bedrooms
+Number of jobs nearby
+Type
+Rating
 
-describe at least two types of media for each model that you could display on the instance pages
+Search For:
+City
+State
+Pet Friendly
+Keywords
+Move in date
 
-what three questions will you answer due to doing this data synthesis on your site?
+## Each model must connect to at least two other models
+Apartments are in cities and are near jobs
+Jobs are in cities and employees need apartment
+Cities contain both jobs and apartments
+
+## Each model must be rich with different media
+Cities have news feeds, pictures, videos, reviews, location maps
+Apartments have pictures, videos, reviews, location maps
+Jobs have company logos, reviews, location maps
+
+## What three questions will you answer due to doing this data synthesis on your site?
+Can I live in this city with this job?
+What city is right for me to live in?
+What job opportunities are available around me?
