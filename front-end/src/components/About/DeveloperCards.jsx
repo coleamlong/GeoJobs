@@ -1,15 +1,15 @@
-import React from 'react'
+import React from "react";
+
 
 import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
-import avatar from '../assets/placeholder/avatar.png';
+import avatar from '../../assets/placeholder/avatar.png';
 
-const GroupInfo = () => {
-  return (
+const DeveloperCards = () => {
+    return (
     <div>
-        <h1 className='d-flex justify-content-center'>Authors</h1>
         <Row md={6} className="p-4 g-4 justify-content-center">
             <Col>
                 <Card border='light'>
@@ -101,4 +101,4 @@ const GroupInfo = () => {
   )
 }
 
-export default GroupInfo
+export default DeveloperCards
