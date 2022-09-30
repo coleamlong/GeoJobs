@@ -1,8 +1,12 @@
 import React from 'react'
+import GlobalNavbar from '../components/GlobalNavbar/GlobalNavbar'
 
 const Jobs = () => {
   return (
-    <div>Jobs</div>
+    <div>
+      <GlobalNavbar />
+      Jobs
+    </div>
   )
 }
 
