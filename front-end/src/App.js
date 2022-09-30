@@ -1,6 +1,6 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootstrap/dist/css/bootstrap.min.css";
 
-import About from "./components/About/About";
+import About from "./views/About";
 
 const App = () => {
   return (
@@ -8,6 +8,6 @@ const App = () => {
       <About />
     </div>
   );
-}
+};
 
 export default App;
