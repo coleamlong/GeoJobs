@@ -6,7 +6,7 @@ import Container from 'react-bootstrap/Container'
 
 const GlobalNavbar = () => {
   return (
-    <Navbar bg='dark' variant='dark'>
+    <Navbar bg='primary' variant='dark' expand='lg'>
       <Container>
         <Navbar.Brand href='/'>GeoJobs</Navbar.Brand>
         <Nav className='me-auto'>

@@ -1,10 +1,8 @@
 import React from 'react'
-import GlobalNavbar from '../components/GlobalNavbar/GlobalNavbar'
 
 const About = () => {
   return (
     <div>
-      <GlobalNavbar />
       About
     </div>
   )
