@@ -1,11 +1,13 @@
 import React from 'react'
+import ApartmentCard from "../components/Cards/ApartmentCard";
+import Stack from "react-bootstrap/Stack";
 
 const Apartments = () => {
-  return (
-    <div>
-      Apartments
-    </div>
-  )
+  return(
+        <Stack>
+            <ApartmentCard />
+        </Stack>
+  );
 }
 
 export default Apartments

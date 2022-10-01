@@ -1,8 +1,64 @@
 import React from 'react'
+import Card from 'react-bootstrap/Card';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import { Link } from "react-router-dom";
 
 const CityCard = () => {
   return (
-    <div>CityCard</div>
+    <div>
+      <Row md={10} className="p-4 g-4 justify-content-center">
+            <Col>
+                <Card border='dark'>
+                    <Card.Body>
+                        <Card.Title>City Name: </Card.Title>
+                        <Card.Subtitle>Located in: </Card.Subtitle>
+                        <Card.Text>
+                          Family Friendly:
+                        </Card.Text>
+                    </Card.Body>
+                    <Card.Footer className='text-muted'>
+                    <li>
+                      <Link to='/city/:id'>More Info</Link>
+                    </li>
+                    </Card.Footer>
+                </Card>
+            </Col>
+            <Col>
+            <Card border='dark'>
+                    <Card.Body>
+                        <Card.Title>City Name: </Card.Title>
+                        <Card.Subtitle>Located in: </Card.Subtitle>
+                        <Card.Text>
+                          Family Friendly:
+                        </Card.Text>
+                    </Card.Body>
+                    <Card.Footer className='text-muted'>
+                    <li>
+                      <Link to='/city/:id'>More Info</Link>
+                    </li>
+                    </Card.Footer>
+                </Card>
+            </Col>
+            <Col>
+            <Card border='dark'>
+                    <Card.Body>
+                        <Card.Title>City Name: </Card.Title>
+                        <Card.Subtitle>Located in: </Card.Subtitle>
+                        <Card.Text>
+                          Family Friendly:
+                        </Card.Text>
+                    </Card.Body>
+                    <Card.Footer className='text-muted'>
+                    <li>
+                      <Link to='/city/:id'>More Info</Link>
+                    </li>
+                    </Card.Footer>
+                </Card>
+                </Col>
+        </Row>
+    </div>
+
   )
 }
 
