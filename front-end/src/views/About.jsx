@@ -1,77 +1,143 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import axios from "axios";
+
+import DeveloperCard from '../components/Cards/DeveloperCard'
+import { teamInfo } from '../static/TeamInfo';
+ 
+
+import Spinner from 'react-bootstrap/Spinner'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
+import Container from 'react-bootstrap/Container'
+import Stack from 'react-bootstrap/Stack'
+
+const client = axios.create({
+  baseURL: "https://gitlab.com/api/v4/",
+  headers: { Authorization: "Bearer glpat-MweTEhPuWf9NugsqWnQy" },
+});
+
+const fetchGitLabData = async () => {
+  let totalCommits   = 0,
+      totalIssues    = 0,
+      totalUnitTests = 0
+
+  teamInfo.forEach((member) => {
+    member.commits = 0
+    member.issues = 0
+    totalUnitTests += member.unit_tests
+  })
+
+  await client.get("projects/39707042/repository/contributors").then((response) => {
+    response.data.forEach((element) => {
+      const { name, email, commits } = element
+      
+      teamInfo.forEach((member) => {
+        if (member.name === name || member.gitlab_username === name || member.email === email) {
+          console.log(commits)  
+          member.commits = commits
+        }
+      })
+      totalCommits += commits
+    })
+  });
+
+  await client.get("projects/39707042/issues").then((response) => {
+    response.data.forEach((element) => {
+      const { assignees } = element
+      assignees.forEach((assignee) => {
+        const { name, email } = assignee;
+        teamInfo.forEach((member) => {
+          if (member.name === name || member.gitlab_username === name || member.email === email)
+            member.issues += 1
+        })
+      })
+      totalIssues += 1
+    })
+  });
+
+  console.log("Members")
+  teamInfo.forEach((member) => {
+    console.log(member.issues)
+  })
+
+  return {
+    totalCommits: totalCommits,
+    totalIssues: totalIssues,
+    totalTests: totalUnitTests,
+    teamInfo: teamInfo
+  }
+}
 
 const About = () => {
+  const [teamList, setTeamList] = useState([])
+  const [totalCommits, setTotalCommits] = useState(0)
+  const [totalIssues, setTotalIssues] = useState(0)
+  const [totalTests, setTotalTests] = useState(0)
+  const [loaded, setLoaded] = useState(false)
+
+  useEffect(() => {
+    const fetchData = async () => {
+			if (teamList === undefined || teamList.length === 0) {
+				const gitlabInfo = await fetchGitLabData()
+				setTotalCommits(gitlabInfo.totalCommits)
+				setTotalIssues(gitlabInfo.totalIssues)
+				setTotalTests(gitlabInfo.totalTests)
+				setTeamList(gitlabInfo.teamInfo)
+				setLoaded(true)
+			}
+		}
+		fetchData()
+  }, [teamList])
+
   return (
-    <div>
-      About
-    </div>
+    <Stack>
+      <Container className='p-4'>
+        <h1 className='d-flex justify-content-center'>What is GeoJobs?</h1>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ullamcorper purus interdum orci auctor, id venenatis sem congue. Morbi condimentum mi non risus bibendum, accumsan tincidunt lacus suscipit.
+        </p>
+      </Container>
+      <Container className='p-4'>
+        <h1 className='d-flex justify-content-center'>Putting The Pieces Together</h1>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ullamcorper purus interdum orci auctor, id venenatis sem congue. Morbi condimentum mi non risus bibendum, accumsan tincidunt lacus suscipit.
+        </p>
+      </Container>
+      <Container className='p-4'>
+        <h1 className='d-flex justify-content-center'>Meet the Team!</h1>
+        {
+          loaded ? (
+            <Row>
+              {
+                teamList.map((member) => {
+                  return (
+                    <Col>
+                      <DeveloperCard devInfo={member} />
+                    </Col>
+                  )
+                }
+              )
+            }
+            </Row>
+          ) : (
+            <Row>
+              <Col className='d-flex justify-content-center'>
+                <Spinner animation="grow" />
+              </Col>
+            </Row>
+          )
+        }
+      </Container>
+      <Container className='p-4'>
+        <h4 className='d-flex justify-content-center'>Total Repsitory Stats</h4>
+        <Row >
+          <Col className='d-flex justify-content-center'>Total Commits: {totalCommits}</Col>
+          <Col className='d-flex justify-content-center'>Total Issues: {totalIssues}</Col>
+          <Col className='d-flex justify-content-center'>Total Unit Tests: {totalTests}</Col>
+        </Row>
+      </Container>
+    </Stack>
   )
 }
 
 export default About
-// import React, { useState, useEffect } from "react";
-// import axios from "axios";
-
-// import Modal from "react-bootstrap/Modal";
-// import Stack from "react-bootstrap/Stack";
-
-// import DeveloperCards from "../components/About/DeveloperCards";
-
-// const client = axios.create({
-//   baseURL: "https://gitlab.com/api/v4/",
-//   headers: { Authorization: "Bearer glpat-MweTEhPuWf9NugsqWnQy" },
-// });
-
-// const About = () => {
-//   const [commits, setCommits] = useState([]);
-//   const [issues, setIssues] = useState([]);
-//   const [unitTests, setUnitTests] = useState([])
-
-
-//   useEffect(() => {
-//     client.get("projects/39707042/repository/commits").then((response) => {
-//       console.log(response.data);
-//       setCommits(response.data);
-//     });
-//     client.get("projects/39707042/issues").then((response) => {
-//       console.log(response.data);
-//       setIssues(response.data);
-//     });
-//     // client.get("projects/39707042/repository/commits").then((response) => {
-//     //   console.log(response.data);
-//     //   setCommits(response.data);
-//     // });
-//   }, []);
-
-//   return (
-//     <div>
-//       <Stack>
-//         <h1 className="d-flex justify-content-center">Purpose of Site</h1>
-//         <p className="d-flex justify-content-center">
-//           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet
-//           libero tristique, ullamcorper odio eu, dapibus velit. Suspendisse
-//           sollicitudin ante sit amet auctor ullamcorper.
-//         </p>
-//         <h1 className="d-flex justify-content-center">
-//           Explanation of the interesting result of integrating disparate data
-//         </h1>
-//         <p className="d-flex justify-content-center">
-//           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet
-//           libero tristique, ullamcorper odio eu, dapibus velit. Suspendisse
-//           sollicitudin ante sit amet auctor ullamcorper.
-//         </p>
-//         <DeveloperCards />
-//         <Modal.Dialog>
-//           <Modal.Title>Overall Stats</Modal.Title>
-//           <Modal.Body>
-//             <p>Total Commits: {}</p>
-//             <p>Total Issues: {}</p>
-//             <p>Total Unit Tests: 000</p>
-//           </Modal.Body>
-//         </Modal.Dialog>
-//       </Stack>
-//     </div>
-//   );
-// };
-
-// export default About;
