@@ -17,7 +17,7 @@ const teamInfo = [
   {
     name: "Faiza Rahman",
     gitlab_username: "faiza2002",
-    email: "---",
+    email: "faiza2002@gmail.com",
     image: Avatar,
     role: "---",
     bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ullamcorper purus interdum orci auctor, id venenatis sem congue. Morbi condimentum mi non risus bibendum, accumsan tincidunt lacus suscipit.",
@@ -39,7 +39,7 @@ const teamInfo = [
   {
     name: "Sarthak Sirotiya",
     gitlab_username: "sarthaksirotiya",
-    email: "---",
+    email: "sarthakssi2@gmail.com",
     image: Avatar,
     role: "---",
     bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ullamcorper purus interdum orci auctor, id venenatis sem congue. Morbi condimentum mi non risus bibendum, accumsan tincidunt lacus suscipit.",
@@ -59,3 +59,5 @@ const teamInfo = [
     unit_tests: 0,
   },
 ]
+
+export { teamInfo };
