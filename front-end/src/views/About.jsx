@@ -3,6 +3,7 @@ import axios from "axios";
 
 import DeveloperCard from '../components/Cards/DeveloperCard'
 import { teamInfo } from '../static/TeamInfo';
+import { toolInfo, apiInfo } from '../static/ProjectInfo';
  
 
 import Spinner from 'react-bootstrap/Spinner'
@@ -10,6 +11,8 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Container from 'react-bootstrap/Container'
 import Stack from 'react-bootstrap/Stack'
+import ToolCard from '../components/Cards/ToolCard';
+import APICard from '../components/Cards/APICard';
 
 const client = axios.create({
   baseURL: "https://gitlab.com/api/v4/",
@@ -90,21 +93,21 @@ const About = () => {
   }, [teamList])
 
   return (
-    <Stack>
+    <Stack className='bg-light'>
       <Container className='p-4'>
-        <h1 className='d-flex justify-content-center'>What is GeoJobs?</h1>
+        <h1 className='d-flex justify-content-center p-4 bg-primary text-light'>What is GeoJobs?</h1>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ullamcorper purus interdum orci auctor, id venenatis sem congue. Morbi condimentum mi non risus bibendum, accumsan tincidunt lacus suscipit.
         </p>
       </Container>
       <Container className='p-4'>
-        <h1 className='d-flex justify-content-center'>Putting The Pieces Together</h1>
+        <h1 className='d-flex justify-content-center p-4 bg-primary text-light'>Putting The Pieces Together</h1>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ullamcorper purus interdum orci auctor, id venenatis sem congue. Morbi condimentum mi non risus bibendum, accumsan tincidunt lacus suscipit.
         </p>
       </Container>
       <Container className='p-4'>
-        <h1 className='d-flex justify-content-center'>Meet the Team!</h1>
+        <h1 className='d-flex justify-content-center p-4 bg-primary text-light'>Meet the Team!</h1>
         {
           loaded ? (
             <Row>
@@ -129,11 +132,39 @@ const About = () => {
         }
       </Container>
       <Container className='p-4'>
-        <h4 className='d-flex justify-content-center'>Total Repsitory Stats</h4>
+        <h1 className='d-flex justify-content-center p-4'>Total Repsitory Stats</h1>
         <Row >
-          <Col className='d-flex justify-content-center'>Total Commits: {totalCommits}</Col>
-          <Col className='d-flex justify-content-center'>Total Issues: {totalIssues}</Col>
-          <Col className='d-flex justify-content-center'>Total Unit Tests: {totalTests}</Col>
+          <Col className='d-flex justify-content-center'><h2>Total Commits: {totalCommits}</h2></Col>
+          <Col className='d-flex justify-content-center'><h2>Total Issues: {totalIssues}</h2></Col>
+          <Col className='d-flex justify-content-center'><h2>Total Unit Tests: {totalTests}</h2></Col>
+        </Row>
+      </Container>
+      <Container className='p-4'>
+      <h1 className='d-flex justify-content-center p-4 bg-primary text-light'>Tools</h1>
+        <Row className='g-4' md={4}>
+          {
+            toolInfo.map((tool) => {
+              return (
+                <Col>
+                  <ToolCard toolInfo={tool} />
+                </Col>
+              )
+            })
+          }
+        </Row>
+      </Container>
+      <Container className='p-4'>
+        <h1 className='d-flex justify-content-center p-4 bg-primary text-light'>APIs</h1>
+        <Row>
+          {
+            apiInfo.map((api) => {
+              return (
+                <Col>
+                  <APICard apiInfo={api} />
+                </Col>
+              )
+            })
+          }
         </Row>
       </Container>
     </Stack>

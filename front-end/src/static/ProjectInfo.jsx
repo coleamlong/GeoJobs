@@ -1,3 +1,16 @@
+import ReactLogo from '../assets/logos/tools/react-logo.png'
+import PostmanLogo from '../assets/logos/tools/postman-logo.png'
+import AWSLogo from '../assets/logos/tools/aws-logo.png'
+import DockerLogo from '../assets/logos/tools/docker-logo.png'
+import GitLabLogo from '../assets/logos/tools/gitlab-logo.png'
+import DiscordLogo from '../assets/logos/tools/discord-logo.png'
+import NamecheapLogo from '../assets/logos/tools/namecheap-logo.png'
+
+import RoadGoatLogo from '../assets/logos/apis/roadgoat-logo.png'
+import GoogleMapsLogo from '../assets/logos/apis/googlemaps-logo.png'
+import YelpLogo from '../assets/logos/apis/yelp-logo.png'
+import AdzunaLogo from '../assets/logos/apis/adzuna-logo.png'
+
 const toolInfo = [
   {
 		title: "React",
@@ -58,15 +71,17 @@ const apiInfo = [
 		link: "https://developers.google.com/maps",
 	},
   {
-		title: "ZipRecruiter API",
-		image: ZipRecruiterLogo,
+		title: "Yelp API",
+		image: YelpLogo,
 		description: "Real Estate API",
 		link: "https://www.ziprecruiter.com/zipsearch",
 	},
   {
-		title: "Apartments.com API",
-		image: ApartmentsComLogo,
+		title: "Adzuna API",
+		image: AdzunaLogo,
 		description: "Get addresses and prices of apartments on the market in a city",
 		link: "https://api.apartments.com/v1",
 	},
 ]
+
+export { toolInfo, apiInfo }
