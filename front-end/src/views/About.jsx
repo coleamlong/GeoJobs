@@ -110,7 +110,7 @@ const About = () => {
         <h1 className='d-flex justify-content-center p-4 bg-primary text-light'>Meet the Team!</h1>
         {
           loaded ? (
-            <Row className='p-4'>
+            <Row className='p-4 g-4'>
               {
                 teamList.map((member) => {
                   return (
@@ -155,7 +155,7 @@ const About = () => {
       </Container>
       <Container className='p-4'>
         <h1 className='d-flex justify-content-center p-4 bg-primary text-light'>APIs</h1>
-        <Row className='p-4'>
+        <Row className='g-4 [-4 justify-content-center'>
           {
             apiInfo.map((api) => {
               return (
