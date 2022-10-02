@@ -110,7 +110,7 @@ const About = () => {
         <h1 className='d-flex justify-content-center p-4 bg-primary text-light'>Meet the Team!</h1>
         {
           loaded ? (
-            <Row>
+            <Row className='p-4'>
               {
                 teamList.map((member) => {
                   return (
@@ -132,8 +132,8 @@ const About = () => {
         }
       </Container>
       <Container className='p-4'>
-        <h1 className='d-flex justify-content-center p-4'>Total Repsitory Stats</h1>
-        <Row >
+        <h1 className='d-flex justify-content-center p-4 bg-primary text-light'>Total Repsitory Stats</h1>
+        <Row className='p-4'>
           <Col className='d-flex justify-content-center'><h2>Total Commits: {totalCommits}</h2></Col>
           <Col className='d-flex justify-content-center'><h2>Total Issues: {totalIssues}</h2></Col>
           <Col className='d-flex justify-content-center'><h2>Total Unit Tests: {totalTests}</h2></Col>
@@ -141,7 +141,7 @@ const About = () => {
       </Container>
       <Container className='p-4'>
       <h1 className='d-flex justify-content-center p-4 bg-primary text-light'>Tools</h1>
-        <Row className='g-4' md={4}>
+        <Row className='g-4 p-4 justify-content-center' md={4}>
           {
             toolInfo.map((tool) => {
               return (
@@ -155,7 +155,7 @@ const About = () => {
       </Container>
       <Container className='p-4'>
         <h1 className='d-flex justify-content-center p-4 bg-primary text-light'>APIs</h1>
-        <Row>
+        <Row className='p-4'>
           {
             apiInfo.map((api) => {
               return (
