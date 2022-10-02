@@ -11,15 +11,15 @@ const CityCard = () => {
             <Col>
                 <Card border='dark'>
                     <Card.Body>
-                        <Card.Title>City Name: </Card.Title>
-                        <Card.Subtitle>Located in: </Card.Subtitle>
+                        <Card.Title>City Name: Austin</Card.Title>
+                        <Card.Subtitle>Located in: TX</Card.Subtitle>
                         <Card.Text>
-                          Family Friendly:
+                          Family Friendly: yes
                         </Card.Text>
                     </Card.Body>
                     <Card.Footer className='text-muted'>
                     <li>
-                      <Link to='/city/:id'>More Info</Link>
+                      <Link to='/city/1'>More Info</Link>
                     </li>
                     </Card.Footer>
                 </Card>
@@ -27,15 +27,15 @@ const CityCard = () => {
             <Col>
             <Card border='dark'>
                     <Card.Body>
-                        <Card.Title>City Name: </Card.Title>
-                        <Card.Subtitle>Located in: </Card.Subtitle>
+                        <Card.Title>City Name: New York</Card.Title>
+                        <Card.Subtitle>Located in: NY</Card.Subtitle>
                         <Card.Text>
-                          Family Friendly:
+                          Family Friendly: yes
                         </Card.Text>
                     </Card.Body>
                     <Card.Footer className='text-muted'>
                     <li>
-                      <Link to='/city/:id'>More Info</Link>
+                      <Link to='/city/2'>More Info</Link>
                     </li>
                     </Card.Footer>
                 </Card>
@@ -43,15 +43,15 @@ const CityCard = () => {
             <Col>
             <Card border='dark'>
                     <Card.Body>
-                        <Card.Title>City Name: </Card.Title>
-                        <Card.Subtitle>Located in: </Card.Subtitle>
+                        <Card.Title>City Name: Los Angeles</Card.Title>
+                        <Card.Subtitle>Located in: CA</Card.Subtitle>
                         <Card.Text>
-                          Family Friendly:
+                          Family Friendly: yes
                         </Card.Text>
                     </Card.Body>
                     <Card.Footer className='text-muted'>
                     <li>
-                      <Link to='/city/:id'>More Info</Link>
+                      <Link to='/city/3'>More Info</Link>
                     </li>
                     </Card.Footer>
                 </Card>
