@@ -1,8 +1,19 @@
 import React from 'react'
 
-const ToolCard = () => {
+import Card from 'react-bootstrap/Card'
+
+const ToolCard = (props) => {
+  const {title, image, description, link } = props.toolInfo
   return (
-    <div>ToolCard</div>
+    <Card style={{ height: '30rem' }}>
+      <Card.Img className='p-4' variant='top' src={ image } />
+      <Card.Body>
+        <Card.Title>{ title }</Card.Title>
+
+        <Card.Text>{ description }</Card.Text>
+        <Card.Link href={ link }>{ link }</Card.Link>
+      </Card.Body>
+    </Card>
   )
 }
 
