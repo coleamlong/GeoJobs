@@ -15,44 +15,44 @@ const toolInfo = [
   {
 		title: "React",
 		image: ReactLogo,
-		description: "JavaScript library for front-end development",
+		description: "A JavaScript framework that allows users to build robust, dynamic front-ends",
 		link: "https://reactjs.org/",
 	},
 	{
 		title: "Postman",
 		image: PostmanLogo,
-		description: "Tool for designing and testing APIs",
+		description: "A tool for building and testing RESTful APIs",
 		link: "https://postman.com/",
 	},
 	{
 		title: "AWS",
 		image: AWSLogo,
-		description: "Cloud hosting platform",
+		description: "A cloud hosting service used for deployment",
 		link: "https://aws.amazon.com/",
 	},
 	{
 		title: "Docker",
 		image: DockerLogo,
 		description:
-			"Containerization tool for consistent runtime environments",
+			"A Containerization tool for consistent runtime environments",
 		link: "https://docker.com/",
 	},
 	{
 		title: "GitLab",
 		image: GitLabLogo,
-		description: "Git repository and CI/CD platform",
+		description: "A Git Repository host and CI/CD platform",
 		link: "https://gitlab.com/",
 	},
 	{
 		title: "Discord",
 		image: DiscordLogo,
-		description: "Team communication platform",
+		description: "A team communication platform",
 		link: "https://discord.com/",
 	},
 	{
 		title: "Namecheap",
 		image: NamecheapLogo,
-		description: "Domain name registrar",
+		description: "A domain name registrar",
 		link: "https://namecheap.com/",
 	},
 ]
@@ -61,26 +61,26 @@ const apiInfo = [
   {
 		title: "RoadGoat API",
 		image: RoadGoatLogo,
-		description: "Geological API with information on cities",
+		description: "RoadGoat is a geographic API that contains both quanitative and qualitative data on cities across the globe. GeoJobs pulls many of the APIs features to help users immerse themselves in cities they have never visited!",
 		link: "https://www.roadgoat.com/",
 	},
   {
 		title: "Google Maps API",
 		image: GoogleMapsLogo,
-		description: "Geological API with route times and address information",
+		description: "Google Maps API is a geographic interface with transportation route times and apartment address information. GeoJobs calcuates apartment-to-job commute times using Google Maps.",
 		link: "https://developers.google.com/maps",
 	},
   {
 		title: "Yelp API",
 		image: YelpLogo,
-		description: "Real Estate API",
-		link: "https://www.ziprecruiter.com/zipsearch",
+		description: "Yelp, although commonly know for it's food recommendations, also allows users to hunt for apartments. GeoJobs pulls reviews, real estate listings, and geographic data from Yelp's API.",
+		link: "https://www.yelp.com/developers",
 	},
   {
 		title: "Adzuna API",
 		image: AdzunaLogo,
-		description: "Get addresses and prices of apartments on the market in a city",
-		link: "https://api.apartments.com/v1",
+		description: "Adzuna is an online job board that allows its users to search open job listings which meet specific criterea. Adzuna is GeoJob's main source for job information.",
+		link: "https://developer.adzuna.com/",
 	},
 ]
 
