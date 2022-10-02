@@ -11,15 +11,12 @@ const JobCard = () => {
             <Col>
                 <Card border='dark'>
                     <Card.Body>
-                        <Card.Title>Job: </Card.Title>
-                        <Card.Subtitle>Location: </Card.Subtitle>
-                        <Card.Text>
-                            Company: 
-                        </Card.Text>
+                        <Card.Title>Job: Software Engineer</Card.Title>
+                        <Card.Subtitle>Location: Austin,TX</Card.Subtitle>
                     </Card.Body>
                     <Card.Footer className='text-muted'>
                     <li>
-                    <Link to={`/job/${1}`}>More info</Link>
+                    <Link to={`/job/1`}>More info</Link>
                     </li>
                     </Card.Footer>
                 </Card>
@@ -27,11 +24,8 @@ const JobCard = () => {
             <Col>
             <Card border='dark'>
                     <Card.Body>
-                        <Card.Title>Job: </Card.Title>
-                        <Card.Subtitle>Location: </Card.Subtitle>
-                        <Card.Text>
-                            Company: 
-                        </Card.Text>
+                        <Card.Title>Job: IT Engineer</Card.Title>
+                        <Card.Subtitle>Location: New York, NY</Card.Subtitle>
                     </Card.Body>
                     <Card.Footer className='text-muted'>
                     <li>
@@ -43,11 +37,8 @@ const JobCard = () => {
             <Col>
                 <Card border='dark'>
                     <Card.Body>
-                        <Card.Title>Job: </Card.Title>
-                        <Card.Subtitle>Location: </Card.Subtitle>
-                        <Card.Text>
-                            Company: 
-                        </Card.Text>
+                        <Card.Title>Job: Software Engineer</Card.Title>
+                        <Card.Subtitle>Location: Los Angelese, CA</Card.Subtitle>
                     </Card.Body>
                     <Card.Footer className='text-muted'>
                     <li>

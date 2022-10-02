@@ -1,0 +1,30 @@
+[
+    
+    {   
+    "name": "The Vaughan",
+    "ocation": "Austin, TX",
+    "price": "$1643 - 2664",
+    "number_of_bedrooms": "1-3 Bed",
+    "type": "Apartment",
+    "rating": "4 Stars" 
+    },
+
+    {   
+    "name": "EOS",
+    "location": "New York, NY",
+    "price": "$4555 - 7345",
+    "number_of_bedrooms": "Studio-2 Bed",
+    "type": "Apartment",
+    "rating": "4.9 Stars" 
+    },
+
+    {   
+    "name": "ZEN Hollywood",
+    "location": "Los Angeles, CA",
+    "price": "$4125 - 8500",
+    "number_of_bedrooms": "1-3 Bed",
+    "type": "Apartment",
+    "rating": "5 Stars" 
+    }
+
+]
