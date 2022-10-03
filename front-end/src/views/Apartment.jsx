@@ -17,7 +17,8 @@ const apartments = [
   rating: "4.5",
   phone: "(512) 494-4216",
   yelp: "https://www.yelp.com/biz/chelsea-on-lamar-apartments-austin?adjust_creative=rwhM1JhUkzSVVIH6ED_qaQ&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=rwhM1JhUkzSVVIH6ED_qaQ",
-  img: "https://s3-media2.fl.yelpcdn.com/bphoto/OmpI-xAGXmvIyGGUr32yhQ/o.jpg"
+  img: "https://s3-media2.fl.yelpcdn.com/bphoto/OmpI-xAGXmvIyGGUr32yhQ/o.jpg",
+  yes: "yes"
   },
   {  
     name: "City Wide Apartments",

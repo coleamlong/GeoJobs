@@ -12,6 +12,7 @@ const jobs = [
   title: "Director, Software Engineering, Advertising",
   salary: "$196000 - 284000",
   company: "Indeed",
+  yes: "yes",
   contract_time: "Full-time",
   url: "https://www.adzuna.com/land/ad/3545948945?se=oIEPNdFC7RGlmr6G-Q4-9g&utm_medium=api&utm_source=20ebdf36&v=D4A7BDF19776C4838F6A217865A320B0CC0E737B"
   },

@@ -18,7 +18,7 @@ const cities = [
   },
 
   {   
-  name: "Ney York",
+  name: "New York",
   activities: "Charming, Foodie, Nightlife, Architecture, History, Museums, Performing Arts, Posh, LGBT Scene, Diversity, Shopping",
   walk_score: "https://www.walkscore.com/NY/New_York",
   average_rating: "4.31",
