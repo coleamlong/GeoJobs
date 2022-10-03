@@ -16,7 +16,7 @@
 https://gitlab.com/sarthaksirotiya/cs373-idb
 
 ### Website URL
-geo-jobs.xyz
+geojobs.me
 
 # The proposed project
 Allows users to search for jobs in a specific city. If they like the city, then they can find apartments that fit the budget of the jobs they searched for.
