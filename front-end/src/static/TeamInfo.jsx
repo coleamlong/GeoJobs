@@ -1,7 +1,7 @@
 import ColeAvatar from "../assets/avatars/cole.png"
 import FaizaAvatar from "../assets/avatars/faiza.png"
 import MikalaAvatar from "../assets/avatars/mikala.png"
-import SarthakAvatar from "../assets/avatars/sarthak.jpeg"
+import SarthakAvatar from "../assets/avatars/sarthak.png"
 import ThomasAvatar from "../assets/avatars/thomas.png"
 
 // inspired by TexasVotes project. https://gitlab.com/forbesye/fitsbits/-/blob/master/front-end/src/views/About/AboutInfo.js
