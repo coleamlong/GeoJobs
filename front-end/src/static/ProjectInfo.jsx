@@ -102,6 +102,12 @@ const apiInfo = [
 		description: "Adzuna is an online job board that allows its users to search open job listings which meet specific criterea. Adzuna is GeoJob's main source for job information.",
 		link: "https://developer.adzuna.com/",
 	},
+	{
+		title: "GitLab API",
+		image: GitLabLogo,
+		description: "GitLab API was used for fetching repository statistics.",
+		link: "https://docs.gitlab.com/ee/api/",
+	}
 ]
 
 export { toolInfo, apiInfo }
