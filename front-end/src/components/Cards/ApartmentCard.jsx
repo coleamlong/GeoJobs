@@ -12,11 +12,8 @@ const ApartmentCard = () => {
             <Col>
                 <Card border='dark'>
                     <Card.Body>
-                        <Card.Title>Apartment Name: The Vaughan</Card.Title>
+                        <Card.Title>Chelsea On Lamar Apartments</Card.Title>
                         <Card.Subtitle>Location: Austin, TX</Card.Subtitle>
-                        <Card.Text>
-                          Pet Friendly: Yes
-                        </Card.Text>
                     </Card.Body>
                     <Card.Footer className='text-muted'>
                     <li>
@@ -28,11 +25,8 @@ const ApartmentCard = () => {
             <Col>
                 <Card border='dark'>
                     <Card.Body>
-                        <Card.Title>Apartment name: EOS</Card.Title>
+                        <Card.Title>City Wide Apartments</Card.Title>
                         <Card.Subtitle>Location: New York, NY</Card.Subtitle>
-                        <Card.Text>
-                          Pet Friendly: Yes
-                        </Card.Text>
                     </Card.Body>
                     <Card.Footer className='text-muted'>
                     <li>
@@ -44,11 +38,8 @@ const ApartmentCard = () => {
             <Col>
                 <Card border='dark'>
                     <Card.Body>
-                        <Card.Title>Apartment Name: ZEN Hollywood</Card.Title>
-                        <Card.Subtitle>Location: Los Angeles, CA</Card.Subtitle>
-                        <Card.Text>
-                          Pet Friendly: Yes
-                        </Card.Text>
+                        <Card.Title>Lakewood Apartments At Lake Merced</Card.Title>
+                        <Card.Subtitle>Location: San Francisco, CA</Card.Subtitle>
                     </Card.Body>
                     <Card.Footer className='text-muted'>
                     <li>
