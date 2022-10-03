@@ -1,7 +1,7 @@
 import ReactLogo from '../assets/logos/tools/react-logo.png'
 import PostmanLogo from '../assets/logos/tools/postman-logo.png'
-import AWSLogo from '../assets/logos/tools/aws-logo.png'
-import DockerLogo from '../assets/logos/tools/docker-logo.png'
+import AmplifyLogo from '../assets/logos/tools/amplify-logo.png'
+// import DockerLogo from '../assets/logos/tools/docker-logo.png'
 import GitLabLogo from '../assets/logos/tools/gitlab-logo.png'
 import DiscordLogo from '../assets/logos/tools/discord-logo.png'
 import NamecheapLogo from '../assets/logos/tools/namecheap-logo.png'
@@ -25,18 +25,18 @@ const toolInfo = [
 		link: "https://postman.com/",
 	},
 	{
-		title: "AWS",
-		image: AWSLogo,
-		description: "Cloud hosting platform",
-		link: "https://aws.amazon.com/",
+		title: "AWS Amplify",
+		image: AmplifyLogo,
+		description: "Web application building and hosting platform",
+		link: "https://aws.amazon.com/amplify/",
 	},
-	{
-		title: "Docker",
-		image: DockerLogo,
-		description:
-			"Containerization tool for consistent runtime environments",
-		link: "https://docker.com/",
-	},
+	// {
+	// 	title: "Docker",
+	// 	image: DockerLogo,
+	// 	description:
+	// 		"Containerization tool for consistent runtime environments",
+	// 	link: "https://docker.com/",
+	// },
 	{
 		title: "GitLab",
 		image: GitLabLogo,
