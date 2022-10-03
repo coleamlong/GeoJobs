@@ -1,0 +1,28 @@
+import React from 'react'
+
+import Card from 'react-bootstrap/Card'
+
+const DeveloperCard = (props) => {
+  const { name, image, gitlab_username, role, bio, commits, issues, unit_tests } = props.devInfo
+
+  return (
+    <Card>
+      <Card.Img variant='top' src={ image } />
+      <Card.Body>
+        <Card.Title>{ name }</Card.Title>
+
+        <Card.Subtitle>@{ gitlab_username }</Card.Subtitle>
+        <Card.Text>Role: { role }</Card.Text>
+        <Card.Text>{ bio }</Card.Text>
+
+        <Card.Footer className='text-muted'>
+          Commits:    { commits }     <br />
+          Issues:     { issues }      <br />
+          Unit Tests: { unit_tests }
+        </Card.Footer>
+      </Card.Body>
+    </Card>
+  )
+}
+
+export default DeveloperCard
