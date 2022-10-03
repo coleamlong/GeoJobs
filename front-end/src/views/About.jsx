@@ -5,7 +5,6 @@ import DeveloperCard from '../components/Cards/DeveloperCard'
 import { teamInfo } from '../static/TeamInfo';
 import { toolInfo, apiInfo } from '../static/ProjectInfo';
  
-
 import Spinner from 'react-bootstrap/Spinner'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
