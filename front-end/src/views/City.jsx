@@ -16,7 +16,7 @@ const cities = [
   },
 
   {   
-  name: "Ney York",
+  name: "New York",
   transit: "Excellent",
   walk_score: "80",
   average_rating: "Good",
