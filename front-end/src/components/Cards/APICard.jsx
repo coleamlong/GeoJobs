@@ -6,7 +6,7 @@ const APICard = (props) => {
   const {title, image, description, link } = props.apiInfo
 
   return (
-    <Card style={{ height: '30rem'}}>
+    <Card>
       <Card.Img className='p-4' variant='top' src={ image } />
       <Card.Body>
         <Card.Title>{ title }</Card.Title>

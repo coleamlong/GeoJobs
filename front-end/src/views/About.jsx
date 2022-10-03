@@ -96,21 +96,21 @@ const About = () => {
     <Stack className='bg-light'>
       <Container className='p-4'>
         <h1 className='d-flex justify-content-center p-4 bg-primary text-light'>What is GeoJobs?</h1>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ullamcorper purus interdum orci auctor, id venenatis sem congue. Morbi condimentum mi non risus bibendum, accumsan tincidunt lacus suscipit.
+        <p className='mx-auto' style={{ width:'40rem'}}>
+          GeoJobs is a one-stop shop for all of you career needs! Browse open job listings, hunt for a nearby apartment, and explore interesting cities all over the country. <br /><br /> To get started, simply navigate to one of the three categories and start browsing!
         </p>
       </Container>
       <Container className='p-4'>
         <h1 className='d-flex justify-content-center p-4 bg-primary text-light'>Putting The Pieces Together</h1>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ullamcorper purus interdum orci auctor, id venenatis sem congue. Morbi condimentum mi non risus bibendum, accumsan tincidunt lacus suscipit.
+        <p className='mx-auto' style={{ width:'40rem'}}>
+          GeoJobs integrates data from many sources, including job boards, human geography data, and apartment listings, to present you with useful connections which help you plan a big move in your career or a have a quick look around the city you are already in.
         </p>
       </Container>
       <Container className='p-4'>
         <h1 className='d-flex justify-content-center p-4 bg-primary text-light'>Meet the Team!</h1>
         {
           loaded ? (
-            <Row className='p-4'>
+            <Row xs={1} sm={2} md={3} xl={5} className='g-4 p-4 justify-content-center'>
               {
                 teamList.map((member) => {
                   return (
@@ -118,9 +118,8 @@ const About = () => {
                       <DeveloperCard devInfo={member} />
                     </Col>
                   )
-                }
-              )
-            }
+                })
+              }
             </Row>
           ) : (
             <Row>
@@ -134,14 +133,14 @@ const About = () => {
       <Container className='p-4'>
         <h1 className='d-flex justify-content-center p-4 bg-primary text-light'>Total Repsitory Stats</h1>
         <Row className='p-4'>
-          <Col className='d-flex justify-content-center'><h2>Total Commits: {totalCommits}</h2></Col>
-          <Col className='d-flex justify-content-center'><h2>Total Issues: {totalIssues}</h2></Col>
-          <Col className='d-flex justify-content-center'><h2>Total Unit Tests: {totalTests}</h2></Col>
+          <Col className='d-flex justify-content-center'><h2>Total Commits: { totalCommits }</h2></Col>
+          <Col className='d-flex justify-content-center'><h2>Total Issues: { totalIssues }</h2></Col>
+          <Col className='d-flex justify-content-center'><h2>Total Unit Tests: { totalTests }</h2></Col>
         </Row>
       </Container>
       <Container className='p-4'>
-      <h1 className='d-flex justify-content-center p-4 bg-primary text-light'>Tools</h1>
-        <Row className='g-4 p-4 justify-content-center' md={4}>
+        <h1 className='d-flex justify-content-center p-4 bg-primary text-light'>Tools</h1>
+        <Row xs={2} md={4} className='g-4 justify-content-center'>
           {
             toolInfo.map((tool) => {
               return (
@@ -155,7 +154,7 @@ const About = () => {
       </Container>
       <Container className='p-4'>
         <h1 className='d-flex justify-content-center p-4 bg-primary text-light'>APIs</h1>
-        <Row className='p-4'>
+        <Row xs={1} sm={2} md={4} className='g-4 justify-content-center'>
           {
             apiInfo.map((api) => {
               return (
