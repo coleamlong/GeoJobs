@@ -96,13 +96,13 @@ const About = () => {
     <Stack className='bg-light'>
       <Container className='p-4'>
         <h1 className='d-flex justify-content-center p-4 bg-primary text-light'>What is GeoJobs?</h1>
-        <p className='mx-auto' style={{ width:'40rem'}}>
+        <p className='mx-auto'>
           GeoJobs is a one-stop shop for all of you career needs! Browse open job listings, hunt for a nearby apartment, and explore interesting cities all over the country. <br /><br /> To get started, simply navigate to one of the three categories and start browsing!
         </p>
       </Container>
       <Container className='p-4'>
         <h1 className='d-flex justify-content-center p-4 bg-primary text-light'>Putting The Pieces Together</h1>
-        <p className='mx-auto' style={{ width:'40rem'}}>
+        <p className='mx-auto'>
           GeoJobs integrates data from many sources, including job boards, human geography data, and apartment listings, to present you with useful connections which help you plan a big move in your career or a have a quick look around the city you are already in.
         </p>
       </Container>
@@ -135,7 +135,7 @@ const About = () => {
         <Row className='p-4'>
           <Col className='d-flex justify-content-center'><h2>Total Commits: { totalCommits }</h2></Col>
           <Col className='d-flex justify-content-center'><h2>Total Issues: { totalIssues }</h2></Col>
-          <Col className='d-flex justify-content-center'><h2>Total Unit Tests: { totalTests }</h2></Col>
+          <Col className='d-flex justify-content-center'><h2>Total Tests: { totalTests }</h2></Col>
         </Row>
       </Container>
       <Container className='p-4'>

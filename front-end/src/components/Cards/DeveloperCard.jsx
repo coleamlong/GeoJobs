@@ -19,7 +19,6 @@ const DeveloperCard = (props) => {
         Issues:     { issues }      <br />
         Unit Tests: { unit_tests }
       </Card.Footer>
-      
     </Card>
   )
 }
