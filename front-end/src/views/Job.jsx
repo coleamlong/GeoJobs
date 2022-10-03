@@ -9,7 +9,7 @@ import { ExternalLink } from 'react-external-link';
 const jobs = [
   {   
   description: "As a Software Engineering Leader, you will craft a long-term technology vision, deliver high quality software, help your team members to grow, and help create a world class advertising system. You will actively partner with Product Managers (PM) and other stakeholders to create and prioritize the product roadmap and to help refine and enhance the business strategy. You should share our passions for helping people find jobs, growing a rich, vibrant business, and managing the career development and satisfaction of your team.",
-  title: "Director, Software Engineering, Advertising",
+  title: "Software Engineering",
   salary: "$196000 - 284000",
   company: "Indeed",
   yes: "yes",
@@ -18,7 +18,7 @@ const jobs = [
   },
 
   {   
-    description: "n this role, you will be responsible for the overall development and implementation of front and back-end software applications. Your responsibilities will extend from designing system architecture to high-level programming, performance testing, and systems integration.To ensure success as a full stack engineer, you should have advanced programming skills, experience with application development, and excellent troubleshooting skills. Top-rated full stack engineers create and implement advanced software systems that perfectly meet the needs of the company.",
+    description: "In this role, you will be responsible for the overall development and implementation of front and back-end software applications. Your responsibilities will extend from designing system architecture to high-level programming, performance testing, and systems integration.To ensure success as a full stack engineer, you should have advanced programming skills, experience with application development, and excellent troubleshooting skills. Top-rated full stack engineers create and implement advanced software systems that perfectly meet the needs of the company.",
     title: "Software Engineer",
     salary: "$120000 - 160000",
     company: "Obran Cooperatove",
@@ -56,19 +56,19 @@ const Job = () => {
           <Grid item xs container direction="column" spacing={2}>
             <Grid item xs>
               <Typography gutterBottom variant="subtitle1" component="div">
-                {jobs[id - 1].name}
+                {jobs[id - 1].title}
               </Typography>
               <Typography variant="body2" color="text.secondary">
                 Desciption: {jobs[id - 1].description}
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                Title: {jobs[id - 1].title}
               </Typography>
               <Typography variant="body2" color="text.secondary">
                 Company: {jobs[id - 1].company}
               </Typography>
               <Typography variant="body2" color="text.secondary">
                 Contract Time: {jobs[id - 1].contract_time}
+              </Typography>
+              <Typography variant="body2" color="text.secondary">
+                Salary: {jobs[id - 1].salary}
               </Typography>
               <Typography variant="body">
               <li>
@@ -92,11 +92,6 @@ const Job = () => {
               </li>
               </Typography>
             </Grid>
-          </Grid>
-          <Grid item>
-            <Typography variant="subtitle1" component="div">
-              Salary: {jobs[id - 1].salary}
-            </Typography>
           </Grid>
         </Grid>
       </Grid>
