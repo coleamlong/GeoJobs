@@ -43,7 +43,7 @@ const CityCard = () => {
             <Col>
             <Card border='dark'>
                     <Card.Body>
-                        <Card.Title>City Name: Los Angeles</Card.Title>
+                        <Card.Title>City Name: San Diego</Card.Title>
                         <Card.Subtitle>Located in: CA</Card.Subtitle>
                         <Card.Text>
                           Family Friendly: yes
