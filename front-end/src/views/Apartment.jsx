@@ -66,7 +66,7 @@ const Apartment = () => {
                 {apartments[id - 1].name}
               </Typography>
               <Typography variant="body">
-                <img style={{ width: 200, height: 200 }} src={apartments[id - 1].img}/>
+                <img alt='' style={{ width: 200, height: 200 }} src={apartments[id - 1].img}/>
               </Typography>
               <Typography variant="body2" color="text.secondary">
                 Address: {apartments[id - 1].location}

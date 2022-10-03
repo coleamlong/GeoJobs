@@ -99,7 +99,7 @@ const City = () => {
           </Grid>
           <Grid item>
               <Typography variant="body">
-                  <img style={{ width: 800, height: 600 }} src={cities[id - 1].img}/>
+                  <img alt='' style={{ width: 800, height: 600 }} src={cities[id - 1].img}/>
               </Typography>
           </Grid>
         </Grid>
