@@ -8,6 +8,7 @@ import VSCLogo from '../assets/logos/tools/vsc-logo.png'
 import DiscordLogo from '../assets/logos/tools/discord-logo.png'
 import ZoomLogo from '../assets/logos/tools/zoom-logo.png'
 import NamecheapLogo from '../assets/logos/tools/namecheap-logo.png'
+import TwitterLogo from '../assets/logos/tools/twitter-logo.png'
 
 import RoadGoatLogo from '../assets/logos/apis/roadgoat-logo.png'
 import GoogleMapsLogo from '../assets/logos/apis/googlemaps-logo.png'
@@ -74,6 +75,12 @@ const toolInfo = [
 		image: NamecheapLogo,
 		description: "Domain name registrar",
 		link: "https://namecheap.com/",
+	},
+	{
+		title: "React Twitter Embed",
+		image: TwitterLogo,
+		description: "Embedded Tweets for media",
+		link: "https://www.npmjs.com/package/react-twitter-embed",
 	},
 ]
 
