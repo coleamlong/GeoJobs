@@ -38,7 +38,7 @@ const JobCard = () => {
                 <Card border='dark'>
                     <Card.Body>
                         <Card.Title>Job: Software Engineer</Card.Title>
-                        <Card.Subtitle>Location: Los Angelese, CA</Card.Subtitle>
+                        <Card.Subtitle>Location: San Francisco, CA</Card.Subtitle>
                     </Card.Body>
                     <Card.Footer className='text-muted'>
                     <li>
