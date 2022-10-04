@@ -1,13 +1,13 @@
-import React from 'react'
-import CityCard from '../components/Cards/CityCard';
+import React from "react";
+import CityCard from "../components/Cards/CityCard";
 import Stack from "react-bootstrap/Stack";
 
 const Cities = () => {
-  return(
+  return (
     <Stack>
-        <CityCard />
+      <CityCard />
     </Stack>
-);
-}
+  );
+};
 
-export default Cities
+export default Cities;

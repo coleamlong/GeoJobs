@@ -1,6 +1,6 @@
-import React from 'react'
-import GlobalNavbar from './components/GlobalNavbar/GlobalNavbar'
-import RouteSwitch from './RouteSwitch'
+import React from "react";
+import GlobalNavbar from "./components/GlobalNavbar/GlobalNavbar";
+import RouteSwitch from "./RouteSwitch";
 
 const App = () => {
   return (
@@ -8,7 +8,7 @@ const App = () => {
       <GlobalNavbar />
       <RouteSwitch />
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;
