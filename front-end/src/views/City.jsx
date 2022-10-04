@@ -76,7 +76,7 @@ const City = () => {
                 Budget Score: {cities[id - 1].budget}
               </Typography>
               <Typography variant="body2" color="text.secondary">
-                Poplutation: {cities[id - 1].population}
+                Population: {cities[id - 1].population}
               </Typography>
             </Grid>
             <Grid item>
