@@ -25,4 +25,4 @@ https://gitlab.com/sarthaksirotiya/cs373-idb/-/pipelines
 https://www.geojobs.me/
 
 ### Comments
-Thomas Langford is UTSHPE. He was on the wrong account when he first committed to the repo.
+Thomas Langford is UTSHPE. He was on the wrong account when he first committed to the repo. For phase 1, he made 8 commits.
