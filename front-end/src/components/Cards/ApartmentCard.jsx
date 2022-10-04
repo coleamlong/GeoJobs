@@ -13,7 +13,11 @@ const ApartmentCard = () => {
                 <Card border='dark'>
                     <Card.Body>
                         <Card.Title>Chelsea On Lamar Apartments</Card.Title>
-                        <Card.Subtitle>Location: Austin, TX</Card.Subtitle>
+                        <Card.Text>City: Austin</Card.Text>
+                        <Card.Text>State: Texas</Card.Text>
+                        <Card.Text>Number of Reviews: 15</Card.Text>
+                        <Card.Text>Rating: 4.5</Card.Text>
+                        <Card.Text>$1,445 - $2,395 per month</Card.Text>
                     </Card.Body>
                     <Card.Footer className='text-muted'>
                     <li>
@@ -26,7 +30,11 @@ const ApartmentCard = () => {
                 <Card border='dark'>
                     <Card.Body>
                         <Card.Title>City Wide Apartments</Card.Title>
-                        <Card.Subtitle>Location: New York, NY</Card.Subtitle>
+                        <Card.Text>City: New York</Card.Text>
+                        <Card.Text>State: New York</Card.Text>
+                        <Card.Text>Number of Reviews: 102</Card.Text>
+                        <Card.Text>Rating: 4.5</Card.Text>
+                        <Card.Text>$2,650 - $16,950 per month</Card.Text>
                     </Card.Body>
                     <Card.Footer className='text-muted'>
                     <li>
@@ -39,7 +47,11 @@ const ApartmentCard = () => {
                 <Card border='dark'>
                     <Card.Body>
                         <Card.Title>Lakewood Apartments At Lake Merced</Card.Title>
-                        <Card.Subtitle>Location: San Francisco, CA</Card.Subtitle>
+                        <Card.Text>City: San Francisco</Card.Text>
+                        <Card.Text>State: California</Card.Text>
+                        <Card.Text>Number of Reviews: 62</Card.Text>
+                        <Card.Text>Rating: 3.0</Card.Text>
+                        <Card.Text>$2,199 - $3,869 per month</Card.Text>
                     </Card.Body>
                     <Card.Footer className='text-muted'>
                     <li>

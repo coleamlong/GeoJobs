@@ -11,7 +11,7 @@ const apartments = [
   {   
   name: "Chelsea On Lamar Apartments",
   location: "5106 N Lamar Blvd, Austin, TX 78751",
-  price: "$1643 - 2664",
+  price: "$1,445 - $2,395 per month",
   number_reviews: "15",
   type: "Apartment",
   rating: "4.5",
@@ -33,12 +33,13 @@ const apartments = [
   {  
     name: "City Wide Apartments",
     location: "555 Eighth Ave, Ste 2310, New York, NY 10018",
+    price: "$2,650 - $16,950 per month",
     number_reviews: "102",
     type: "Apartment",
     rating: "4.5",
     phone: "(212) 695-4360",
     yelp:"https://www.yelp.com/biz/city-wide-apartments-new-york-2?adjust_creative=rwhM1JhUkzSVVIH6ED_qaQ&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=rwhM1JhUkzSVVIH6ED_qaQ",
-    img: "https://s3-media2.fl.yelpcdn.com/bphoto/ieLA3JCzPTp8fDsSPDJqdA/o.jpg",
+    img: "https://s3-media0.fl.yelpcdn.com/bphoto/PhDoKjaH_E6ImMp3pJatdQ/o.jpg",
     map: <iframe
       src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.332451784567!2d-73.9942477842867!3d40.75471214293765!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259ad1c5bcb2b%3A0x298838dd23170b10!2s555%208th%20Ave%20%232310%2C%20New%20York%2C%20NY%2010018!5e0!3m2!1sen!2sus!4v1664842910317!5m2!1sen!2sus"
       width={600}
@@ -54,6 +55,7 @@ const apartments = [
   {   
     name: "Lakewood Apartments At Lake Merced",
     location: "511 John Muir Dr, San Francisco, CA 94132",
+    price: "$2,199 - $3,869 per month",
     number_reviews: "62",
     type: "Apartment",
     rating: "3.0",
@@ -103,6 +105,9 @@ const Apartment = () => {
               </Typography>
               <Typography variant="body2" color="text.secondary">
                 Type: {apartments[id - 1].type}
+              </Typography>
+              <Typography variant="body2" color="text.secondary">
+                Price: {apartments[id - 1].price}
               </Typography>
               <Typography variant="body2" color="text.secondary">
                 Number of Reviews: {apartments[id - 1].number_reviews}

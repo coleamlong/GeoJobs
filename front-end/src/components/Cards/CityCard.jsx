@@ -12,10 +12,11 @@ const CityCard = () => {
                 <Card border='dark'>
                     <Card.Body>
                         <Card.Title>City Name: Austin</Card.Title>
-                        <Card.Subtitle>Located in: TX</Card.Subtitle>
-                        <Card.Text>
-                          Family Friendly: yes
-                        </Card.Text>
+                        <Card.Subtitle>Located in: Texas</Card.Subtitle>
+                        <Card.Text>Population: 790390</Card.Text>
+                        <Card.Text>Family Friendly: yes</Card.Text>
+                        <Card.Text>Average Rating: 4.27</Card.Text>
+                        <Card.Text>Budget Score: 7/8</Card.Text>
                     </Card.Body>
                     <Card.Footer className='text-muted'>
                     <li>
@@ -28,10 +29,11 @@ const CityCard = () => {
             <Card border='dark'>
                     <Card.Body>
                         <Card.Title>City Name: New York</Card.Title>
-                        <Card.Subtitle>Located in: NY</Card.Subtitle>
-                        <Card.Text>
-                          Family Friendly: yes
-                        </Card.Text>
+                        <Card.Subtitle>Located in: New York</Card.Subtitle>
+                        <Card.Text>Population: 8175133</Card.Text>
+                        <Card.Text>Family Friendly: yes</Card.Text>
+                        <Card.Text>Average Rating: 4.31</Card.Text>
+                        <Card.Text>Budget Score: 8/8</Card.Text>
                     </Card.Body>
                     <Card.Footer className='text-muted'>
                     <li>
@@ -44,10 +46,11 @@ const CityCard = () => {
             <Card border='dark'>
                     <Card.Body>
                         <Card.Title>City Name: San Francisco</Card.Title>
-                        <Card.Subtitle>Located in: CA</Card.Subtitle>
-                        <Card.Text>
-                          Family Friendly: yes
-                        </Card.Text>
+                        <Card.Subtitle>Located in: California</Card.Subtitle>
+                        <Card.Text>Population: 805235</Card.Text>
+                        <Card.Text>Family Friendly: yes</Card.Text>
+                        <Card.Text>Average Rating: 4.47</Card.Text>
+                        <Card.Text>Budget Score: 8/8</Card.Text>
                     </Card.Body>
                     <Card.Footer className='text-muted'>
                     <li>
