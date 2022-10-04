@@ -14,6 +14,7 @@ const cities = [
   average_rating: "4.27",
   budget: "7 out of 8",
   safety_score: "5 out of 5",
+  population: "790390",
   img: "https://cdn.roadgoat.com/uploads/photo/image/382/large_travel-guide-of-austin-tx-usa-original.jpg"
   },
 
@@ -24,6 +25,7 @@ const cities = [
   average_rating: "4.31",
   budget: "8 out of 8",
   safety_score: "4 out of 5 ",
+  population: "8175133",
   img: "https://cdn.roadgoat.com/uploads/photo/image/608/large_travel-guide-of-new-york-ny-usa-original.jpg"
   },
 
@@ -34,6 +36,7 @@ const cities = [
     average_rating: "4.47",
     budget: "8 out of 8",
     safety_score: "4 out of 5 ",
+    population: "805235",
     img: "https://cdn.roadgoat.com/uploads/photo/image/692/large_travel-guide-of-san-francisco-ca-usa-original.jpg"
     },
 ]
@@ -71,6 +74,9 @@ const City = () => {
               </Typography>
               <Typography variant="body2" color="text.secondary">
                 Budget Score: {cities[id - 1].budget}
+              </Typography>
+              <Typography variant="body2" color="text.secondary">
+                Poplutation: {cities[id - 1].population}
               </Typography>
             </Grid>
             <Grid item>
