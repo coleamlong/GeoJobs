@@ -11,7 +11,7 @@ const apartments = [
   {   
   name: "Chelsea On Lamar Apartments",
   location: "5106 N Lamar Blvd, Austin, TX 78751",
-  price: "$1643 - 2664",
+  price: "$1,445 - $2,395 per month",
   number_reviews: "15",
   type: "Apartment",
   rating: "4.5",
@@ -33,6 +33,7 @@ const apartments = [
   {  
     name: "City Wide Apartments",
     location: "555 Eighth Ave, Ste 2310, New York, NY 10018",
+    price: "$2,650 - $16,950 per month",
     number_reviews: "102",
     type: "Apartment",
     rating: "4.5",
@@ -54,6 +55,7 @@ const apartments = [
   {   
     name: "Lakewood Apartments At Lake Merced",
     location: "511 John Muir Dr, San Francisco, CA 94132",
+    price: "$2,199 - $3,869 per month",
     number_reviews: "62",
     type: "Apartment",
     rating: "3.0",
@@ -103,6 +105,9 @@ const Apartment = () => {
               </Typography>
               <Typography variant="body2" color="text.secondary">
                 Type: {apartments[id - 1].type}
+              </Typography>
+              <Typography variant="body2" color="text.secondary">
+                Price: {apartments[id - 1].price}
               </Typography>
               <Typography variant="body2" color="text.secondary">
                 Number of Reviews: {apartments[id - 1].number_reviews}

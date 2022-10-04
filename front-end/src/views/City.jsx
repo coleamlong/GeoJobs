@@ -5,6 +5,7 @@ import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import { ExternalLink } from 'react-external-link';
+import {TwitterTimelineEmbed} from 'react-twitter-embed';
 
 const cities = [
   {   
@@ -15,7 +16,8 @@ const cities = [
   budget: "7 out of 8",
   safety_score: "5 out of 5",
   population: "790390",
-  img: "https://cdn.roadgoat.com/uploads/photo/image/382/large_travel-guide-of-austin-tx-usa-original.jpg"
+  img: "https://cdn.roadgoat.com/uploads/photo/image/382/large_travel-guide-of-austin-tx-usa-original.jpg",
+  timeline: "Austin_Police"
   },
 
   {   
@@ -26,7 +28,8 @@ const cities = [
   budget: "8 out of 8",
   safety_score: "4 out of 5 ",
   population: "8175133",
-  img: "https://cdn.roadgoat.com/uploads/photo/image/608/large_travel-guide-of-new-york-ny-usa-original.jpg"
+  img: "https://cdn.roadgoat.com/uploads/photo/image/608/large_travel-guide-of-new-york-ny-usa-original.jpg",
+  timeline: "NYPDnews"
   },
 
   {   
@@ -37,7 +40,8 @@ const cities = [
     budget: "8 out of 8",
     safety_score: "4 out of 5 ",
     population: "805235",
-    img: "https://cdn.roadgoat.com/uploads/photo/image/692/large_travel-guide-of-san-francisco-ca-usa-original.jpg"
+    img: "https://cdn.roadgoat.com/uploads/photo/image/692/large_travel-guide-of-san-francisco-ca-usa-original.jpg",
+    timeline: "SFPD"
     },
 ]
 
@@ -104,6 +108,13 @@ const City = () => {
             </Grid>
           </Grid>
           <Grid item>
+            <div>
+              <TwitterTimelineEmbed
+                sourceType="profile"
+                screenName={cities[id - 1].timeline}
+                options={{height: 400}}
+              />
+            </div>
               <Typography variant="body">
                   <img alt='' style={{ width: 800, height: 600 }} src={cities[id - 1].img}/>
               </Typography>
