@@ -5,6 +5,7 @@ import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import { ExternalLink } from 'react-external-link';
+import {TwitterTimelineEmbed} from 'react-twitter-embed';
 
 const jobs = [
   {   
@@ -14,7 +15,7 @@ const jobs = [
   company: "Indeed",
   contract_time: "Full-time",
   url: "https://www.adzuna.com/land/ad/3545948945?se=oIEPNdFC7RGlmr6G-Q4-9g&utm_medium=api&utm_source=20ebdf36&v=D4A7BDF19776C4838F6A217865A320B0CC0E737B",
-  tweet: "https://cdn.discordapp.com/attachments/1020108519023857704/1026639740138688613/unknown.png",
+  timeline: "Indeed",
   img: "https://cdn.discordapp.com/attachments/1020108519023857704/1026639828491714570/unknown.png"
   },
 
@@ -25,7 +26,7 @@ const jobs = [
     company: "Obran Cooperatove",
     contract_time: "Full-time",
     url: "https://www.adzuna.com/land/ad/3463111425?se=6N9KR9NC7RGGbu8bNysYfw&utm_medium=api&utm_source=20ebdf36&v=23FA8A2C41C5CF639CC8A8631C674B109AAB8B13",
-    tweet: "https://cdn.discordapp.com/attachments/1020108519023857704/1026640126543138836/unknown.png",
+    timeline: "ObranCoop",
     img: "https://cdn.discordapp.com/attachments/1020108519023857704/1026640192058163290/unknown.png"
   },
 
@@ -36,7 +37,7 @@ const jobs = [
     company: "CyberCoders",
     contract_time: "Full-time",
     url: "https://www.adzuna.com/land/ad/3533361279?se=LISfktJC7RGGbu8bNysYfw&utm_medium=api&utm_source=20ebdf36&v=725F796E860B8D4FDFE31F769FBB103AE95DDB3F",
-    tweet: "https://cdn.discordapp.com/attachments/1020108519023857704/1026640404499673108/unknown.png",
+    timeline: "CyberCoders",
     img: "https://cdn.discordapp.com/attachments/1020108519023857704/1026640472174776341/unknown.png"
   },
 ]
@@ -80,9 +81,13 @@ const Job = () => {
               </Typography>
             Latest Tweet:
             <Grid item>
-            <Typography variant="body">
-                  <img style={{ width: 400, height: 200 }} src={jobs[id - 1].tweet}/>
-            </Typography>
+              <div>
+                <TwitterTimelineEmbed
+                  sourceType="profile"
+                  screenName={jobs[id - 1].timeline}
+                  options={{height: 400}}
+                />
+              </div>
             </Grid>
             <Typography variant="body">
               <li>
