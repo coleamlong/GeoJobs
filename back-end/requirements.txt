@@ -1,0 +1,9 @@
+flask
+flask_sqlalchemy
+sqlalchemy
+flask_restful
+psycopg2
+pyuwsgi
+flask-cors
+jsonschema
+requests
