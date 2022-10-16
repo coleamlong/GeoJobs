@@ -8,17 +8,14 @@ RUN apt-get install -y python3
 RUN apt-get install -y python3-pip python3-dev build-essential vim
 RUN apt-get install -y default-libmysqlclient-dev libpq-dev postgresql
 
-RUN pip3 install black
-RUN pip3 install flask
-RUN pip3 install flask-restless
-RUN pip3 install flask_restful
-RUN pip3 install flask_sqlalchemy
-RUN pip3 install -U flask-cors
-RUN pip3 install sqlalchemy
-RUN pip3 install psycopg2
-RUN pip3 install uWSGI
+COPY . usr/src/backend
+COPY requirements.txt usr/src/backend/requirements.txt
+
+WORKDIR /usr/src/backend
+
+RUN pip3 install --upgrade pip
+RUN pip3 install -r requirements.txt
 
 EXPOSE 5000
 
-# Run bash
-CMD bash
+CMD ["python3", "app.py"]

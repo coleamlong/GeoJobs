@@ -21,6 +21,6 @@ RUN pip3 install -r requirements.txt
 
 EXPOSE 80
 
-#COPY nginx.conf /etc/nginx
+COPY nginx.conf /etc/nginx
 RUN chmod +x ./start.sh
 CMD ["./start.sh"]

@@ -13,10 +13,10 @@ frontend-docker:
 	docker run --rm -i -t -p 3001:3000 -v $(PWD):/usr/front-end-docker -w /usr/front-end-docker zaunitekoopa/selenium-chrome
 # Docker for running the backend as a developer on local machine
 backend-dev-docker:
-	docker run --rm -i -t -p 5000:5000 -v $(PWD):/usr/back-end-docker -w /usr/back-end-docker zaunitekoopa/f
+	docker run --rm -it -v 'pwd':/usr/src/backend -w /usr/src/backend -p 5000:5000 geojobs-backend-dev
 #build backend
 build-backend :
-	docker build -t backend back-end/
+	docker build -t geojobs-backend-dev -f dev.Dockerfile .
 #build frontend
 build-frontend :
 	docker build -t frontend front-end/
