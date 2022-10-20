@@ -5,48 +5,63 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)
 app.debug=True
-# TODO replace placeholder URI
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql+psycopg2://<PLACEHOLDER URI>'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://admin:GeojobsTeam!@db.geojobs.me/geojobs'
 db = SQLAlchemy(app)
 
-# Define Job model
-# TODO Ensure field names are exactly as they appear in the database
-# TODO Ensure all fields in database are present here
-class Job(db.Model):
-    job_id          = db.Column(db.Integer, primary_key=True)
-    job_city        = db.Column(db.Integer)
-    job_company     = db.Column(db.String())
-    job_title       = db.Column(db.String())
-    job_category    = db.Column(db.String())
-    job_url         = db.Column(db.String())
-    job_salary_min  = db.Column(db.Integer)
-    job_salary_max  = db.Column(db.Integer)
-    job_latitude    = db.Column(db.Float)
-    job_longitude   = db.Column(db.Float)
-    job_description = db.Column(db.String())    # TODO Verify if this should or should not be of type Text
-    job_created     = db.Column(db.DateTime)
+city_tag_link = db.Table(
+    'city_tag_link', 
+    db.Column('city_id', db.Integer, db.ForeignKey('city.id'), primary_key = True),
+    db.Column('tag_id', db.Integer, db.ForeignKey('tag.id'), primary_key = True)
+)
 
-# Define Apartment model
-class Apartment(db.Model):
-    apartment_id            = db.Column(db.Integer, primary_key=True)
-    apartment_city_id       = db.Column(db.Integer)
-    apartment_bath_count    = db.Column(db.Integer)
-    apartment_bed_count     = db.Column(db.Integer)
-    apartment_price         = db.Column(db.Integer)
-    apartment_address       = db.Column(db.String())
-    apartment_property_type = db.Column(db.String())
-    apartment_sqft          = db.Column(db.Integer)
-    apartment_build_year    = db.Column(db.Integer)
-    #apartment_photos = ???
+class City(db.Model) :
+    id = db.Column(db.Integer, primary_key = True)
+    name = db.Column(db.String(20))
+    population = db.Column(db.Integer)
+    avg_rating = db.Column(db.Float)
+    budget = db.Column(db.Integer)
+    safety = db.Column(db.Integer)
+    walkscore_url = db.Column(db.String(60))
+    police_twitter = db.Column(db.String(20)) # stores the twitter handle
+    img_url = db.Column(db.String(200)) # subject to change
+    tags = db.relationship('Tag', secondary = city_tag_link, backref = 'cities')
+    apartments = db.relationship('Apartment', backref = 'city')
+    jobs = db.relationship('Job', backref = 'city')
 
-class City(db.Model):
-    city_id             = db.Column(db.Integer, primary_key=True)
-    city_name           = db.Column(db.String)
-    city_pop            = db.Column(db.Integer)
-    city_avg_rating     = db.Column(db.Float)
-    city_budget_score   = db.Column(db.Integer)
-    city_safety_score   = db.Column(db.Integer)
-    city_pd_twitter     = db.Column(db.String())
-    city_image_url      = db.Column(db.String())
-    #city_known_for = ???
+class Tag(db.Model) :
+    id = db.Column(db.Integer, primary_key = True)
+    name = db.Column(db.String(50))
+
+class Apartment(db.Model) :
+    id = db.Column(db.Integer, primary_key = True)
+    owner_id = db.Column(db.Integer, db.ForeignKey('city.id'))
+    bathrooms = db.Column(db.Integer)
+    bedrooms = db.Column(db.Integer)
+    price = db.Column(db.Integer)
+    address = db.Column(db.String(70))
+    property_type = db.Column(db.String(20))
+    sqft = db.Column(db.Integer)
+    build_year = db.Column(db.Integer)
+    images = db.relationship('ApartmentImage', backref = 'apartment')
+
+class ApartmentImage(db.Model) :
+    id = db.Column(db.Integer, primary_key = True)
+    apt_id = db.Column(db.Integer, db.ForeignKey('apartment.id'))
+    img_url = db.Column(db.String(200)) # subject to change
+
+class Job(db.Model) : 
+    id = db.Column(db.Integer, primary_key = True)
+    city_id = db.Column(db.Integer, db.ForeignKey('city.id'))
+    company = db.Column(db.String(40))
+    title = db.Column(db.String(70))
+    category = db.Column(db.String(30))
+    url = db.Column(db.String(150))
+    salary_min = db.Column(db.Integer)
+    salary_max = db.Column(db.Integer)
+    latitude = db.Column(db.Float)
+    longitude = db.Column(db.Float)
+    description = db.Column(db.String(550))
+    created = db.Column(db.DateTime)
+    img_url = db.Column(db.String(200)) # subject to change
+    twitter_id = db.Column(db.String(20))
+    

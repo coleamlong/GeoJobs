@@ -27,6 +27,7 @@ const Home = () => {
             justifyContent: "center",
             alignItems: "center",
             backgroundPositionY: "1500",
+            marginTop: "300px",
           }}
         >
           An easy place to find your dream job, city, and home.
