@@ -1,9 +1,7 @@
-from flask import Flask, jsonify, request, Response
-from flask_cors import CORS
+from flask import jsonify, request, Response
+from models import app, db, Job, Apartment, City
 
-app = Flask(__name__)
-CORS(app)
-app.debug=True
+
 
 @app.route("/")
 def home():
