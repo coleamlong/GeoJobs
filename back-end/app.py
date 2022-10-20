@@ -1,11 +1,21 @@
 from flask import jsonify, request, Response
 from models import app, db, Job, Apartment, City
+from sqlalchemy.sql import text, column
 
+# Build database
+# db.create_all()
 
 
 @app.route("/")
 def home():
-    return "<h1>GeoJobs API<h1>"
+    try:
+        db.session.query(column('1')).from_statement(text('SELECT 1')).all()
+        return '<h1>GeoJobs API</h1>'
+    except Exception as e:
+        # e holds description of the error
+        error_text = "<p>The error:<br>" + str(e) + "</p>"
+        hed = '<h1>Something is broken.</h1>'
+        return hed + error_text
 
 @app.route("/cities")
 def get_cities():
@@ -13,6 +23,7 @@ def get_cities():
 
 @app.route("/jobs")
 def get_jobs():
+
     return "<h1>Jobs Request<h1>"
 
 @app.route("/apartments")

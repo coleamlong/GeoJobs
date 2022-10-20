@@ -5,7 +5,8 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)
 app.debug=True
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://admin:GeojobsTeam!@db.geojobs.me/geojobs'
+app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://admin:GeojobsTeam!@db.geojobs.me/geojobs'
 db = SQLAlchemy(app)
 
 city_tag_link = db.Table(
