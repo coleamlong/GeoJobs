@@ -1,9 +1,7 @@
 from flask import jsonify, request, Response
 from models import app, db, Job, Apartment, City
+from schema import job_schema, city_schema, apartment_schema
 from sqlalchemy.sql import text, column
-
-# Build database
-# db.create_all()
 
 
 @app.route("/")
@@ -23,8 +21,17 @@ def get_cities():
 
 @app.route("/jobs")
 def get_jobs():
-
-    return "<h1>Jobs Request<h1>"
+    query = db.session.query(Job)
+    count = query.count()
+    result = job_schema.dump(query, many=True)
+    return jsonify(
+        {
+            "data": result,
+            "meta": {
+                "count": count
+            }
+        }
+    )
 
 @app.route("/apartments")
 def get_apartments():
