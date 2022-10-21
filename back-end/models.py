@@ -18,6 +18,7 @@ city_tag_link = db.Table(
 class City(db.Model) :
     id = db.Column(db.Integer, primary_key = True)
     name = db.Column(db.String(20))
+    state = db.Column(db.String(30))
     population = db.Column(db.Integer)
     avg_rating = db.Column(db.Float)
     budget = db.Column(db.Integer)
@@ -34,8 +35,8 @@ class Tag(db.Model) :
     name = db.Column(db.String(50))
 
 class Apartment(db.Model) :
-    id = db.Column(db.Integer, primary_key = True)
-    owner_id = db.Column(db.Integer, db.ForeignKey('city.id'))
+    id = db.Column(db.String(65), primary_key = True)
+    city_id = db.Column(db.Integer, db.ForeignKey('city.id'))
     bathrooms = db.Column(db.Integer)
     bedrooms = db.Column(db.Integer)
     price = db.Column(db.Integer)
@@ -47,7 +48,7 @@ class Apartment(db.Model) :
 
 class ApartmentImage(db.Model) :
     id = db.Column(db.Integer, primary_key = True)
-    apt_id = db.Column(db.Integer, db.ForeignKey('apartment.id'))
+    apt_id = db.Column(db.String(65), db.ForeignKey('apartment.id'))
     img_url = db.Column(db.String(200)) # subject to change
 
 class Job(db.Model) : 
@@ -65,4 +66,3 @@ class Job(db.Model) :
     created = db.Column(db.DateTime)
     img_url = db.Column(db.String(200)) # subject to change
     twitter_id = db.Column(db.String(20))
-    
