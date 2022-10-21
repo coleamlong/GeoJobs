@@ -36,8 +36,12 @@ def get_cities():
 
 @app.route("/jobs")
 def get_jobs():
+    # get args
+    page = request.args.get("page", type=int)
+    perPage = request.args.get("perPage", type=int)
     query = db.session.query(Job)
     count = query.count()
+    query = paginate(query, page, perPage)
     result = job_schema.dump(query, many=True)
     return jsonify(
         {
@@ -50,8 +54,12 @@ def get_jobs():
 
 @app.route("/apartments")
 def get_apartments():
+    # get args
+    page = request.args.get("page", type=int)
+    perPage = request.args.get("perPage", type=int)
     query = db.session.query(Apartment)
     count = query.count()
+    query = paginate(query, page, perPage)
     result = apartment_schema.dump(query, many=True)
     return jsonify(
         {
