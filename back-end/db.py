@@ -10,6 +10,9 @@ def populate_db():
 
 
 def populate_cities():
+    twitter = open("data/policetwitter_data.json")
+    twitter_data = json.load(twitter)
+    twitter.close()
     with open("data/roadgoat_data.json") as jsn:
         roadgoat_data = json.load(jsn)
         for city in roadgoat_data:
@@ -31,6 +34,11 @@ def populate_cities():
                 item["id"]
                 for item in city["data"]["relationships"]["known_for"]["data"]
             ]
+            twitter_handle = [
+                twitter["twitter"]
+                for twitter in twitter_data
+                if twitter["id"] == int(city["data"]["id"])
+            ][0]
             db_row = {
                 "id": city["data"]["id"],
                 "name": city["data"]["attributes"]["short_name"],
@@ -44,7 +52,7 @@ def populate_cities():
                     "value"
                 ],
                 "walkscore_url": city["data"]["attributes"]["walk_score_url"],
-                "police_twitter": None,  # TODO waiting on scraped data
+                "police_twitter": twitter_handle,
                 "img_url": photo,
                 "tags": [],
             }
