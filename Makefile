@@ -24,7 +24,7 @@ build-frontend :
 #run unit tests
 python-tests:
 	echo "Running python unit tests..."
-	python3 backend/tests.py
+	python3 back-end/tests.py
 
 # get git status
 status:
