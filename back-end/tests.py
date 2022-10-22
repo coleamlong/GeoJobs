@@ -1,31 +1,31 @@
-from app import app
+import app
 import unittest
 
 
 class Tests(unittest.TestCase):
     def setUp(self):
-        app.config["TESTING"] = True
-        self.client = app.test_client()
+        app.app.config["TESTING"] = True
+        self.client = app.app.test_client()
 
     def testGetAllCities(self):
         with self.client:
             response = self.client.get("/cities")
             self.assertEqual(response.status_code, 200)
-            data = response.json()
+            data = response.json["data"]
             self.assertEqual(len(data), 50)
     
     def testGetAllApartments(self):
         with self.client:
             response = self.client.get("/apartments")
             self.assertEqual(response.status_code, 200)
-            data = response.json()
+            data = response.json["data"]
             self.assertEqual(len(data), 500)
         
     def testGetAllJobs(self):
         with self.client:
             response = self.client.get("/jobs")
             self.assertEqual(response.status_code, 200)
-            data = response.json()
+            data = response.json["data"]
             # TODO change this when the database is populated with jobs
             self.assertEqual(len(data), 0)
     
@@ -33,14 +33,14 @@ class Tests(unittest.TestCase):
         with self.client:
             response = self.client.get("/cities?page=1&perPage=25")
             self.assertEqual(response.status_code, 200)
-            data = response.json()
+            data = response.json["data"]
             self.assertEqual(len(data), 25)
         
     def testGetCityInstance(self):
         with self.client:
             response = self.client.get("/cities/10773037")
             self.assertEqual(response.status_code, 200)
-            resp = response.json()
+            resp = response.json
             data = resp["data"]
             tags = resp["tags"]
             self.assertEqual(data["name"], "Seattle")
