@@ -23,7 +23,8 @@ def get_cities():
     perPage = request.args.get("perPage", type=int)
     query = db.session.query(City)
     count = query.count()
-    query = paginate(query, page, perPage)
+    if (page is not None):
+        query = paginate(query, page, perPage)
     result = city_schema.dump(query, many=True)
     return jsonify(
         {
@@ -41,7 +42,8 @@ def get_jobs():
     perPage = request.args.get("perPage", type=int)
     query = db.session.query(Job)
     count = query.count()
-    query = paginate(query, page, perPage)
+    if (page is not None):
+        query = paginate(query, page, perPage)
     result = job_schema.dump(query, many=True)
     return jsonify(
         {
@@ -59,7 +61,8 @@ def get_apartments():
     perPage = request.args.get("perPage", type=int)
     query = db.session.query(Apartment)
     count = query.count()
-    query = paginate(query, page, perPage)
+    if (page is not None):
+        query = paginate(query, page, perPage)
     result = apartment_schema.dump(query, many=True)
     return jsonify(
         {
