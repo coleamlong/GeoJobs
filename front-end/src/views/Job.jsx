@@ -7,47 +7,41 @@ import Typography from "@mui/material/Typography";
 import { ExternalLink } from "react-external-link";
 import { TwitterTimelineEmbed } from "react-twitter-embed";
 
-const jobs = [
-  {
-    description:
-      "As a Software Engineering Leader, you will craft a long-term technology vision, deliver high quality software, help your team members to grow, and help create a world class advertising system. You will actively partner with Product Managers (PM) and other stakeholders to create and prioritize the product roadmap and to help refine and enhance the business strategy. You should share our passions for helping people find jobs, growing a rich, vibrant business, and managing the career development and satisfaction of your team.",
-    title: "Software Engineering",
-    salary: "$196000 - 284000",
-    company: "Indeed",
-    contract_time: "Full-time",
-    url: "https://www.adzuna.com/land/ad/3545948945?se=oIEPNdFC7RGlmr6G-Q4-9g&utm_medium=api&utm_source=20ebdf36&v=D4A7BDF19776C4838F6A217865A320B0CC0E737B",
-    timeline: "Indeed",
-    img: "https://cdn.discordapp.com/attachments/1020108519023857704/1026639828491714570/unknown.png",
-  },
-
-  {
-    description:
-      "In this role, you will be responsible for the overall development and implementation of front and back-end software applications. Your responsibilities will extend from designing system architecture to high-level programming, performance testing, and systems integration.To ensure success as a full stack engineer, you should have advanced programming skills, experience with application development, and excellent troubleshooting skills. Top-rated full stack engineers create and implement advanced software systems that perfectly meet the needs of the company.",
-    title: "Software Engineer",
-    salary: "$120000 - 160000",
-    company: "Obran Cooperatove",
-    contract_time: "Full-time",
-    url: "https://www.adzuna.com/land/ad/3463111425?se=6N9KR9NC7RGGbu8bNysYfw&utm_medium=api&utm_source=20ebdf36&v=23FA8A2C41C5CF639CC8A8631C674B109AAB8B13",
-    timeline: "ObranCoop",
-    img: "https://cdn.discordapp.com/attachments/1020108519023857704/1026640192058163290/unknown.png",
-  },
-
-  {
-    description:
-      "Working to create quality code on the Front End and Back End. Collaborate with the founder & CTO to make the most efficient possible technology. Help grow our company to the next level of technology",
-    title: "Software Engineer",
-    salary: "$120000 - 200000",
-    company: "CyberCoders",
-    contract_time: "Full-time",
-    url: "https://www.adzuna.com/land/ad/3533361279?se=LISfktJC7RGGbu8bNysYfw&utm_medium=api&utm_source=20ebdf36&v=725F796E860B8D4FDFE31F769FBB103AE95DDB3F",
-    timeline: "CyberCoders",
-    img: "https://cdn.discordapp.com/attachments/1020108519023857704/1026640472174776341/unknown.png",
-  },
-];
 
 const Job = () => {
   const { id } = useParams();
+  let [jobs, setJob] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      setJob(null);
+      await axios.get(
+        `https://api.geojobs.me/jobs/${id}` 
+      );
+      let data = response.data["data"];
+      setJob(data["jobs"]);
+    };
+    fetchData();
+  }, [jobs]);
+
   return (
+    <Container
+      className="page-container"
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        height: (jobs ?? []).length === 0 ? "100%" : "none",
+      }}
+    >
+      <Typography
+        gutterBottom
+        className="modelTitle"
+        variant="h2"
+        sx={{ textAlign: "center" }}
+      >
+      Jobs
+      </Typography>
+      {jobs !== null && (
     <Paper
       sx={{
         p: 13,
@@ -64,24 +58,30 @@ const Job = () => {
           <Grid item xs container direction="column" spacing={2}>
             <Grid item xs>
               <Typography gutterBottom variant="subtitle1" component="div">
-                {jobs[id - 1].title}
+                {jobs.title}
               </Typography>
               <Typography variant="body2" color="text.secondary">
-                Desciption: {jobs[id - 1].description}
+                Desciption: {jobs.description}
               </Typography>
               <Typography variant="body2" color="text.secondary">
-                Contract Time: {jobs[id - 1].contract_time}
+                Category: {jobs.category}
               </Typography>
               <Typography variant="body2" color="text.secondary">
-                Salary: {jobs[id - 1].salary}
+                Salary Minimum: {jobs.salary_min}
               </Typography>
               <Typography variant="body2" color="text.secondary">
-                Company:
+                Salary Maximum: {jobs.salary_max}
+              </Typography>
+              <Typography variant="body2" color="text.secondary">
+                Company:{jobs.company}
+              </Typography>
+              <Typography variant="body2" color="text.secondary">
+                Created:{jobs.created}
               </Typography>
               <Typography variant="body2" color="text.secondary">
                 <img
                   style={{ width: 400, height: 200 }}
-                  src={jobs[id - 1].img}
+                  src={jobs.img}
                 />
               </Typography>
               Latest Tweet:
@@ -89,14 +89,14 @@ const Job = () => {
                 <div>
                   <TwitterTimelineEmbed
                     sourceType="profile"
-                    screenName={jobs[id - 1].timeline}
+                    screenName={jobs.twitter}
                     options={{ height: 400 }}
                   />
                 </div>
               </Grid>
               <Typography variant="body">
                 <li>
-                  <ExternalLink href={jobs[id - 1].url}>
+                  <ExternalLink href={jobs.url}>
                     <span>Job URL</span>
                   </ExternalLink>
                 </li>
@@ -120,6 +120,8 @@ const Job = () => {
         </Grid>
       </Grid>
     </Paper>
+    )}
+    </Container>
   );
 };
 
