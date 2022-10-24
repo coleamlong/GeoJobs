@@ -1,58 +1,50 @@
-import React from "react";
-import ApartmentCard from "../components/Cards/ApartmentCard";
-import Stack from "react-bootstrap/Stack";
-import { apartmentInfo } from "../static/ApartmentInfo";
+import React, { useState, useEffect } from "react";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import Spinner from "react-bootstrap/Spinner";
 import Container from "react-bootstrap/Container";
+import axios from "axios";
+import ApartmentCard from "../components/Cards/ApartmentCard";
+
+const client = axios.create({
+  baseURL: "https://api.geojobs.me/",
+});
 
 const Apartments = () => {
-  let [apartments, setApartment] = useState([]);
+  const [apartments, setApartments] = useState([]);
+  const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
-    const fetchData = async () => {
-      setApartment(null);
-      await axios.get(
-        `https://api.geojobs.me/apartments/`
-      );
-      let data = response.data["data"];
-      setApartment(data["apartments"]);
+    const fetchApartments = async () => {
+      if (apartments === undefined || apartments.length === 0) {
+        await client
+          .get("apartments")
+          .then((response) => {
+            setApartments(response.data);
+          })
+          .catch((err) => console.log(err));
+        setLoaded(true);
+      }
     };
-    fetchData();
+    fetchApartments();
   }, [apartments]);
 
   return (
-    <Container
-      className="page-container"
-      sx={{
-        display: "flex",
-        flexDirection: "column",
-        height: (apartments ?? []).length === 0 ? "100%" : "none",
-      }}
-    >
-      <Typography
-        gutterBottom
-        className="modelTitle"
-        variant="h2"
-        sx={{ textAlign: "center" }}
-      >
-      Apartments
-      </Typography>
-      {apartments === null}
-      {apartments !== null && (
-        <Stack direction="row" flexWrap="wrap">
-          {apartments.map((a) => (
-            <ApartmentCard
-              key={a.id}
-              name={a.name}
-              location={a.city}
-              price={a.price}
-              type={a.type}
-              buildYear={a.buildYear}
-            />
-          ))}  
-        </Stack>
-      )}
+    <Container>
+      <h1>Apartments</h1>
+      <Row md={3} className="d-flex g-4 p-4 justify-content-center">
+        {loaded ? (
+          apartments.map((apartment) => {
+            return (
+              <Col>
+                <ApartmentCard apartment={apartment} />
+              </Col>
+            );
+          })
+        ) : (
+          <Spinner animation="grow" />
+        )}
+      </Row>
     </Container>
   );
 };

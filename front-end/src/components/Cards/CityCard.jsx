@@ -1,25 +1,22 @@
 import React from "react";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import { Link } from "react-router-dom";
-import { Stack } from "@mui/system";
 
 const CityCard = (props) => {
+  const { name, state, population, rating, Bodybudget, key } = props.city;
   return (
-    <Stack>
     <Card>
       <Card.Body>
-        <Card.Title>{props.name}</Card.Title>
-        <Card.Text>State: {props.state}</Card.Text>
-        <Card.Text>Population: {props.population}</Card.Text>
-        <Card.Text>Rating: {props.rating}</Card.Text>
-        <Card.Text>Budget: {props.Bodybudget}</Card.Text>
-        <Button Link={"/cities/id=" + props.key}>more info on {props.name}</Button>
+        <Card.Title>{name}</Card.Title>
+        <Card.Text>State: {state}</Card.Text>
+        <Card.Text>Population: {population}</Card.Text>
+        <Card.Text>Rating: {rating}</Card.Text>
+        <Card.Text>Budget: {Bodybudget}</Card.Text>
+        <Button variant="dark" href={`/city/${key}`}>
+          more info on {name}
+        </Button>
       </Card.Body>
     </Card>
-    </Stack>
   );
 };
 

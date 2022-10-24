@@ -1,21 +1,23 @@
 import React from "react";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import { Link } from "react-router-dom";
 
 const JobCard = (props) => {
+  const { title, city, state, salary, contractType, id } = props.job;
   return (
-    <Card>
+    <Card style={{ height: "25rem" }}>
       <Card.Body>
-        <Card.Title>Title: {props.title}</Card.Title>
-        <Card.Text>City: {props.city}</Card.Text>
-        <Card.Text>State: {props.state}</Card.Text>
-        <Card.Text>Salary: {props.salary}</Card.Text>
-        <Card.Text>ContractType: {props.contractType}</Card.Text>
-        <Button Link={"/jobs/id=" + props.key}>more info on {props.title}</Button>
+        <Card.Title>Title: {title}</Card.Title>
+        <Card.Text>City: {city}</Card.Text>
+        <Card.Text>State: {state}</Card.Text>
+        <Card.Text>Salary: {salary}</Card.Text>
+        <Card.Text>ContractType: {contractType}</Card.Text>
       </Card.Body>
+      <Card.Footer className="d-flex justify-content-center">
+        <Button variant="dark" href={`/job/${id}`}>
+          more info on {props.title}
+        </Button>
+      </Card.Footer>
     </Card>
   );
 };

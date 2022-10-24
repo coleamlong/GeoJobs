@@ -1,60 +1,50 @@
 import React, { useState, useEffect } from "react";
-import CityCard from "../components/Cards/CityCard";
-import Stack from "react-bootstrap/Stack";
-import { cityInfo } from "../static/CityInfo";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import Spinner from "react-bootstrap/Spinner";
 import Container from "react-bootstrap/Container";
-import Typography from "@mui/material/Typography";
 import axios from "axios";
+import CityCard from "../components/Cards/CityCard";
+
+const client = axios.create({
+  baseURL: "https://api.geojobs.me/",
+});
 
 const Cities = () => {
-  let [cities, setCity] = useState([]);
+  const [cities, setCities] = useState([]);
+  const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
-    const fetchData = async () => {
-      setCity(null);
-      await axios.get(
-        `https://api.geojobs.me/cities/`
-      );
-      let data = response.data["data"];
-      setCity(data["cities"]);
+    const fetchCities = async () => {
+      if (cities === undefined || cities.length === 0) {
+        await client
+          .get("cities")
+          .then((response) => {
+            setCities(response.data);
+          })
+          .catch((err) => console.log(err));
+        setLoaded(true);
+      }
     };
-    fetchData();
+    fetchCities();
   }, [cities]);
 
   return (
-    <Container
-      className="page-container"
-      sx={{
-        display: "flex",
-        flexDirection: "column",
-        height: (cities ?? []).length === 0 ? "100%" : "none",
-      }}
-    >
-      <Typography
-        gutterBottom
-        className="modelTitle"
-        variant="h2"
-        sx={{ textAlign: "center" }}
-      >
-      Cities
-      </Typography>
-      {cities === null}
-      {cities !== null && (
-        <Stack direction="row" flexWrap="wrap">
-          {cities.map((c) => (
-            <CityCard
-              key={c.id}
-              name={c.name}
-              state={c.state}
-              population={c.population}
-              rating={c.rating}
-              budget={c.budget}
-            />
-          ))}  
-        </Stack>
-      )}
+    <Container>
+      <h1>Cities</h1>
+      <Row md={3} className="d-flex g-4 p-4 justify-content-center">
+        {loaded ? (
+          cities.map((city) => {
+            return (
+              <Col>
+                <CityCard city={city} />
+              </Col>
+            );
+          })
+        ) : (
+          <Spinner animation="grow" />
+        )}
+      </Row>
     </Container>
   );
 };
