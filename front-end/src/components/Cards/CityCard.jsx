@@ -16,7 +16,7 @@ const CityCard = (props) => {
         <Card.Text>Population: {props.population}</Card.Text>
         <Card.Text>Rating: {props.rating}</Card.Text>
         <Card.Text>Budget: {props.Bodybudget}</Card.Text>
-        <Button Link={"/counties/id=" + props.key}>more info on {props.name}</Button>
+        <Button Link={"/cities/id=" + props.key}>more info on {props.name}</Button>
       </Card.Body>
     </Card>
     </Stack>
