@@ -7,50 +7,42 @@ import Typography from "@mui/material/Typography";
 import { ExternalLink } from "react-external-link";
 import { TwitterTimelineEmbed } from "react-twitter-embed";
 
-const cities = [
-  {
-    name: "Austin",
-    activities:
-      "Charming, Foodie, Nightlife, Performing Arts, Music, College-town, Outdoorsy, Wineries, Shopping",
-    walk_score: "https://www.walkscore.com/TX/Austin",
-    average_rating: "4.27",
-    budget: "7 out of 8",
-    safety_score: "5 out of 5",
-    population: "790390",
-    img: "https://cdn.roadgoat.com/uploads/photo/image/382/large_travel-guide-of-austin-tx-usa-original.jpg",
-    timeline: "Austin_Police",
-  },
-
-  {
-    name: "New York",
-    activities:
-      "Charming, Foodie, Nightlife, Architecture, History, Museums, Performing Arts, Posh, LGBT Scene, Diversity, Shopping",
-    walk_score: "https://www.walkscore.com/NY/New_York",
-    average_rating: "4.31",
-    budget: "8 out of 8",
-    safety_score: "4 out of 5 ",
-    population: "8175133",
-    img: "https://cdn.roadgoat.com/uploads/photo/image/608/large_travel-guide-of-new-york-ny-usa-original.jpg",
-    timeline: "NYPDnews",
-  },
-
-  {
-    name: "San Francisco",
-    activities:
-      "Charming, Foodie, Nightlife, Architecture, Hipster, Hippie, LGBT Scene, Diversity ,Shopping",
-    walk_score: "https://www.walkscore.com/CA/San_Francisco",
-    average_rating: "4.47",
-    budget: "8 out of 8",
-    safety_score: "4 out of 5 ",
-    population: "805235",
-    img: "https://cdn.roadgoat.com/uploads/photo/image/692/large_travel-guide-of-san-francisco-ca-usa-original.jpg",
-    timeline: "SFPD",
-  },
-];
 
 const City = () => {
   const { id } = useParams();
+  let [cities, setCity] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      setCity(null);
+      await axios.get(
+        `https://api.geojobs.me/cities/${id}`
+      );
+      let data = response.data["data"];
+      setCity(data["cities"]);
+    };
+    fetchData();
+  }, [cities]);
+
   return (
+    <Container
+      className="page-container"
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        height: (cities ?? []).length === 0 ? "100%" : "none",
+      }}
+    >
+      <Typography
+        gutterBottom
+        className="modelTitle"
+        variant="h2"
+        sx={{ textAlign: "center" }}
+      >
+      Cities
+      </Typography>
+      {cities === null}
+      {cities !== null && (
     <Paper
       sx={{
         p: 13,
@@ -67,28 +59,28 @@ const City = () => {
           <Grid item xs container direction="column" spacing={2}>
             <Grid item xs>
               <Typography gutterBottom variant="subtitle1" component="div">
-                {cities[id - 1].name}
+                {cities.name}
               </Typography>
               <Typography variant="body2" color="text.secondary">
-                Known For: {cities[id - 1].activities}
+                Known For: {cities.tags}
               </Typography>
               <Typography variant="body2" color="text.secondary">
-                Average Rating: {cities[id - 1].average_rating}
+                Average Rating: {cities.average_rating}
               </Typography>
               <Typography variant="body2" color="text.secondary">
-                Safety Score: {cities[id - 1].safety_score}
+                Safety Score: {cities.safety}
               </Typography>
               <Typography variant="body2" color="text.secondary">
-                Budget Score: {cities[id - 1].budget}
+                Budget Score: {cities.budget}
               </Typography>
               <Typography variant="body2" color="text.secondary">
-                Population: {cities[id - 1].population}
+                Population: {cities.population}
               </Typography>
             </Grid>
             <Grid item>
               <Typography variant="body2" color="text.secondary">
                 <li>
-                  <ExternalLink href={cities[id - 1].walk_score}>
+                  <ExternalLink href={cities.walkscore_url}>
                     <span>Walk Score</span>
                   </ExternalLink>
                 </li>
@@ -113,7 +105,7 @@ const City = () => {
             <div>
               <TwitterTimelineEmbed
                 sourceType="profile"
-                screenName={cities[id - 1].timeline}
+                screenName={cities.police_twitter}
                 options={{ height: 400 }}
               />
             </div>
@@ -121,13 +113,15 @@ const City = () => {
               <img
                 alt=""
                 style={{ width: 800, height: 600 }}
-                src={cities[id - 1].img}
+                src={cities.img_url}
               />
             </Typography>
           </Grid>
         </Grid>
       </Grid>
     </Paper>
+    )}
+    </Container>
   );
 };
 
