@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import ApartmentCard from "../components/Cards/ApartmentCard";
 import Stack from "react-bootstrap/Stack";
-import { apartmentInfo } from "../static/ApartmentInfo";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
+import Typography from "@mui/material/Typography";
+import axios from "axios";
 
 const Apartments = () => {
   let [apartments, setApartment] = useState([]);

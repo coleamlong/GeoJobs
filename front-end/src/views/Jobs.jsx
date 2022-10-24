@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
-import CityCard from "../components/Cards/CityCard";
+import JobCard from "../components/Cards/JobCard";
 import Stack from "react-bootstrap/Stack";
-import { cityInfo } from "../static/CityInfo";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
@@ -14,7 +13,6 @@ const Jobs = () => {
   useEffect(() => {
     const fetchData = async () => {
       setJob(null);
-      setTotal(0);
       await axios.get(
         `https://api.geojobs.me/jobs/` 
       );
@@ -30,7 +28,7 @@ const Jobs = () => {
       sx={{
         display: "flex",
         flexDirection: "column",
-        height: (cities ?? []).length === 0 ? "100%" : "none",
+        height: (jobs ?? []).length === 0 ? "100%" : "none",
       }}
     >
       <Typography
@@ -41,7 +39,6 @@ const Jobs = () => {
       >
       Jobs
       </Typography>
-      {jobs === null && <LoadingWidget height="none" grow={true} />}
       {jobs !== null && (
         <Stack direction="row" flexWrap="wrap">
           {jobs.map((j) => (

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import CityCard from "../components/Cards/CityCard";
 import Stack from "react-bootstrap/Stack";
-import { cityInfo } from "../static/CityInfo";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
