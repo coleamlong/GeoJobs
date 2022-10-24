@@ -2,6 +2,7 @@ image: node:latest
 
 stages:
   - build
+  - test
 
 cache:
   paths:
@@ -13,3 +14,11 @@ build_front_end:
     - cd front-end
     - npm install
     - npm run-script build
+
+backend_unit_tests:
+  stage: test
+  image: python:3.6-stretch
+  before_script:
+    - pip install -r back-end/requirements.txt
+  script:
+    - make python-tests

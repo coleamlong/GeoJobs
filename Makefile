@@ -21,6 +21,11 @@ build-backend :
 build-frontend :
 	docker build -t front-end front-end/
 
+#run unit tests
+python-tests:
+	echo "Running python unit tests..."
+	python3 back-end/tests.py
+
 # get git status
 status:
 	make clean
