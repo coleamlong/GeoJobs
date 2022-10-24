@@ -16,7 +16,7 @@ const PageCard = (props) => {
       <Card.Body>
         <Card.Title>{pageName}</Card.Title>
         <Card.Text>{pageDescription}</Card.Text>
-        <Button href={pageLink}>Link</Button>
+        <a href={pageLink} class="btn btn-primary stretched-link">Link</a>
       </Card.Body>
     </Card>
   );
