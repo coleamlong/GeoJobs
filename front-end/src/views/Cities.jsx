@@ -1,9 +1,4 @@
 import React, { useState, useEffect } from "react";
-<<<<<<< HEAD
-=======
-import CityCard from "../components/Cards/CityCard";
-import Stack from "react-bootstrap/Stack";
->>>>>>> 53d54ac2da2209aad8749931ca81c5c862fea5cb
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Spinner from "react-bootstrap/Spinner";

@@ -3,7 +3,7 @@ import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 
 const JobCard = (props) => {
-  const { title, city, state, salary, contractType, id } = props.job;
+  const { title, city, state, salary, contractType, key } = props.job;
   return (
     <Card style={{ height: "25rem" }}>
       <Card.Body>
@@ -14,7 +14,7 @@ const JobCard = (props) => {
         <Card.Text>ContractType: {contractType}</Card.Text>
       </Card.Body>
       <Card.Footer className="d-flex justify-content-center">
-        <Button variant="dark" href={`/job/${id}`}>
+        <Button variant="dark" href={`/job/${key}`}>
           more info on {props.title}
         </Button>
       </Card.Footer>
