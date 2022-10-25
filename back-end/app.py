@@ -93,8 +93,8 @@ def get_apartments():
             i.update({"image": image["img_url"]})
         except IndexError:
             i.update({"image": None})
-        # city = query[index].city_id
-        # i.update({"city": city})
+        city = get_city_from_address(i["address"])
+        i.update({"city": city})
         index += 1
         
     return jsonify(
@@ -139,6 +139,7 @@ def get_apartment(r_id):
     apartment = query.first()
     apartment_images = apt_img_schema.dump(apartment.images, many=True)
     result.update({"images": apartment_images})
+    result.update({"city": get_city_from_address(result["address"])})
     return jsonify({
         "data": result
     })
@@ -158,6 +159,19 @@ def paginate(query, page_num, num_per_page):
     if num_per_page is None:
         num_per_page = DEFAULT_PAGE_SIZE
     return query.paginate(page=page_num, per_page=num_per_page, error_out=False).items
+
+"""
+Returns the city associated with the given addres
+Note: this assumes that the address an apartment address, returned from the apartments call
+"""
+def get_city_from_address(address):
+    split_addr = address.split(", ")
+    city = split_addr[-2]
+    state = split_addr[-1].split(" ")[0]
+    if city == "Washington" and state == "DC":
+        return "Washington, DC"
+    return city
+    
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000, debug=True)
