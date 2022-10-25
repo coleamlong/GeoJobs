@@ -4,6 +4,24 @@ from schema import job_schema, city_schema, apartment_schema, tag_schema, apt_im
 from sqlalchemy.sql import text, column
 import json
 
+"""
+What still needs to be done:
+When apartment images are added to database:
+    Adjust apartment requests in this file to return images
+    Add a test to ensure images are correctly being returned in unit tests
+    Adjust postman docs, replace example requests with correct return values
+
+When jobs are added to the database:
+    Adjust jobs requests in this file if needed
+    Adjust unittests to be functionally correct when jobs are added
+    Fill out request description in postman docs
+    Add example returns in example requests in postman
+
+When backend is hosted:
+    Write postman unittests and make them run as a part of the CI/CD pipeline
+
+"""
+
 DEFAULT_PAGE_SIZE = 20
 
 @app.route("/")
@@ -61,9 +79,18 @@ def get_apartments():
     perPage = request.args.get("perPage", type=int)
     query = db.session.query(Apartment)
     count = query.count()
+    # paginate query if it's specified
     if (page is not None):
         query = paginate(query, page, perPage)
+    else :
+        query = query.all()
     result = apartment_schema.dump(query, many=True)
+    # fetch the first image from images and at it to return
+    index = 0
+    for i in result:
+        image = apt_img_schema.dump(query[index].images, many=True)[0]
+        i.update({"image": image["img_url"]})
+        
     return jsonify(
         {
             "data": result,

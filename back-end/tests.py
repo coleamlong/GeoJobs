@@ -54,7 +54,7 @@ class Tests(unittest.TestCase):
             resp = response.json
             data = resp["data"]
             self.assertEqual(data["address"], "1 E Delaware Pl, Apt 30B, Chicago, IL 60611")
-            self.assertEqual(data["bathroom"], 2)
+            self.assertEqual(data["bathrooms"], 2)
     
     #TODO Fix this when jobs are added to database
     def testGetJobInstance(self):
