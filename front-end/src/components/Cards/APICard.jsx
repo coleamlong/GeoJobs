@@ -12,7 +12,7 @@ const APICard = (props) => {
         <Card.Title>{title}</Card.Title>
 
         <Card.Text>{description}</Card.Text>
-        <Card.Link href={link}>{link}</Card.Link>
+        <a href={link} class="btn btn-primary stretched-link">Link</a>
       </Card.Body>
     </Card>
   );
