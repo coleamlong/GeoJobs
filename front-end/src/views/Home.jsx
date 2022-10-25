@@ -1,8 +1,7 @@
 import React from "react";
 import Image from "react-bootstrap/Image";
 import Background from "../assets/splash-background.png";
-import GeoJobsLogo from "../assets/logos/GeoJobs.png";
-import Container from "react-bootstrap/esm/Container";
+import Container from "react-bootstrap/Container";
 import { pageInfo } from "../static/PageInfo";
 import PageCard from "../components/Cards/PageCard";
 import Row from "react-bootstrap/Row";
@@ -36,11 +35,11 @@ const Home = () => {
       <Container className="p-4">
         <h1 className="d-flex justify-content-center p-4">Where to next?</h1>
         <Row>
-        {pageInfo.map((page) => {
+          {pageInfo.map((page) => {
             return (
-                <Col>
-                <PageCard pageInfo={page} />
-                </Col>
+              <Col key={page.pageName}>
+                <PageCard key={page.pageName} pageInfo={page} />
+              </Col>
             );
           })}
         </Row>
