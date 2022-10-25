@@ -42,7 +42,7 @@ class Tests(unittest.TestCase):
             self.assertEqual(response.status_code, 200)
             resp = response.json
             data = resp["data"]
-            tags = resp["tags"]
+            tags = data["tags"]
             self.assertEqual(data["name"], "Seattle")
             self.assertEqual(data["state"], "Washington")
             self.assertEqual(len(tags), 8)
