@@ -9,7 +9,6 @@ RUN apt-get update -y
 RUN apt-get install -y python3
 RUN apt-get install -y python3-pip python3-dev build-essential vim
 RUN apt-get -y install nginx
-RUN apt-get install -y default-libmysqlclient-dev libpq-dev postgresql
 
 COPY . usr/src/back-end
 COPY requirements.txt usr/src/back-end/requirements.txt
@@ -22,5 +21,6 @@ RUN pip3 install -r requirements.txt
 EXPOSE 80
 
 COPY nginx.conf /etc/nginx
+ENTRYPOINT ["bash","start.sh"]
 RUN chmod +x ./start.sh
 CMD ["./start.sh"]
