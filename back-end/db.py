@@ -5,7 +5,7 @@ from models import app, db, City, Tag, Apartment, ApartmentImage, Job
 def populate_db():
     populate_cities()
     populate_apartments()
-    # populate_apartment_images()
+    populate_apartment_images()
     # populate_jobs()
 
 
@@ -93,24 +93,39 @@ def populate_apartments():
                 "property_type": apt["propertyType"],
                 "sqft": apt["squareFootage"] if "squareFootage" in apt else None,
                 "build_year": apt["yearBuilt"] if "yearBuilt" in apt else None,
+                "images": [],
             }
             db.session.add(Apartment(**db_row))
         db.session.commit()
 
 
 def populate_apartment_images():
-    pass  # TODO we can pass in Base64 images but I'll wait for cole
+    with open("data/apartmentimage_data.json") as jsn:
+        apt_imgs = json.load(jsn)
+        for apt in apt_imgs:
+            current_apartment = Apartment.query.filter_by(id=apt["id"]).first()
+            for img in apt["images"]:
+                apartment_image = ApartmentImage(apt_id=apt["id"], img_url=img)
+                current_apartment.images.append(apartment_image)
+                db.session.add(apartment_image)
+        db.session.commit()
 
 
 def populate_jobs():
     with open("data/adzuna_data.json") as jsn:
         adzuna_data = json.load(jsn)
+        logos_file = open("data/companylogos_data.json")
+        logos = json.load(logos_file)
+        logos_file.close()
         # TODO waiting on order of cities from scraping script
         jobs = [job for city in adzuna_data for job in city["results"]]
         for job in jobs:
+            logo_url = [
+                company["logo"] for company in logos if company["id"] == job["id"]
+            ][0]
             db_row = {
                 "id": job["id"],
-                #'city_id': , # how to get/store?
+                "city_id": None,
                 "company": job["company"]["display_name"],
                 "title": job["title"],
                 "category": job["category"]["label"],
@@ -121,8 +136,7 @@ def populate_jobs():
                 "longitude": job["longitude"],
                 "description": job["description"],
                 "created": job["created"],
-                "img_url": None,  # TODO waiting on scraped data
-                "twitter_id": None,  # TODO waiting on scraped data
+                "img_url": logo_url,  # TODO waiting on scraped data
             }
             db.session.add(Job(**db_row))
         db.session.commit()
