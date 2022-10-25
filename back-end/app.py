@@ -1,6 +1,6 @@
 from flask import jsonify, request, Response
 from models import app, db, Job, Apartment, City
-from schema import job_schema, city_schema, apartment_schema, tag_schema
+from schema import job_schema, city_schema, apartment_schema, tag_schema, apt_img_schema
 from sqlalchemy.sql import text, column
 import json
 
@@ -103,7 +103,12 @@ def get_apartment(r_id):
         result = apartment_schema.dump(query, many=True)[0]
     except IndexError:
         return return_error(f"Invalid apartment ID: {r_id}")
-    return jsonify(result)
+    apartment = query.first()
+    apartment_images = apt_img_schema.dump(apartment.images, many=True)
+    return jsonify({
+        "data": result,
+        "images": apartment_images
+    })
 
 """
 Returns a 404 error with the given msg
