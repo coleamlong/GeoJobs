@@ -5,7 +5,6 @@ import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import { ExternalLink } from "react-external-link";
-import { TwitterTimelineEmbed } from "react-twitter-embed";
 
 
 const Job = () => {
@@ -84,16 +83,17 @@ const Job = () => {
                   src={jobs.img}
                 />
               </Typography>
-              Latest Tweet:
-              <Grid item>
-                <div>
-                  <TwitterTimelineEmbed
-                    sourceType="profile"
-                    screenName={jobs.twitter}
-                    options={{ height: 400 }}
-                  />
-                </div>
-              </Grid>
+              <Typography variant="body2" color="text.secondary">
+              <div><iframe
+                    width="600"
+                    height="450"
+                    style="border:0"
+                    loading="lazy"
+                    allowfullscreen
+                    referrerpolicy="no-referrer-when-downgrade"
+                    src={`https://www.google.com/maps/embed/v1/place?key=${process.env.REACT_APP_GOOGLE_API_KEY}&q=${jobs.longitude} ${jobs.latitude}`}>
+                  </iframe></div>
+              </Typography>
               <Typography variant="body">
                 <li>
                   <ExternalLink href={jobs.url}>
