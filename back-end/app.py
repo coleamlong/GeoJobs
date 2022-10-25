@@ -88,8 +88,14 @@ def get_apartments():
     # fetch the first image from images and at it to return
     index = 0
     for i in result:
-        image = apt_img_schema.dump(query[index].images, many=True)[0]
-        i.update({"image": image["img_url"]})
+        try:
+            image = apt_img_schema.dump(query[index].images, many=True)[0]
+            i.update({"image": image["img_url"]})
+        except IndexError:
+            i.update({"image": None})
+        # city = query[index].city_id
+        # i.update({"city": city})
+        index += 1
         
     return jsonify(
         {
@@ -109,9 +115,9 @@ def get_city(r_id):
         return return_error(f"Invalid city ID: {r_id}")
     city = query.first()
     city_tags = tag_schema.dump(city.tags, many=True)
+    result.update({"tags": city_tags})
     return jsonify({
-        "data": result,
-        "tags": city_tags
+        "data": result
     })
 
 @app.route("/jobs/<int:r_id>")
@@ -132,9 +138,9 @@ def get_apartment(r_id):
         return return_error(f"Invalid apartment ID: {r_id}")
     apartment = query.first()
     apartment_images = apt_img_schema.dump(apartment.images, many=True)
+    result.update({"images": apartment_images})
     return jsonify({
-        "data": result,
-        "images": apartment_images
+        "data": result
     })
 
 """
