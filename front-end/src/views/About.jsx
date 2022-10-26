@@ -165,6 +165,9 @@ const About = () => {
             <h2>Total Tests: {totalTests}</h2>
           </Col>
         </Row>
+        <h1 className="d-flex justify-content-center p-4">
+          <a href={"https://documenter.getpostman.com/view/23607622/2s83tFHBCK"}>API Documentation</a>
+        </h1>
       </Container>
       <Container className="p-4">
         <h1 className="d-flex justify-content-center p-4 ">Tools</h1>
