@@ -7,7 +7,7 @@ import axios from "axios";
 import ApartmentCard from "../components/Cards/ApartmentCard";
 
 const client = axios.create({
-  baseURL: "http://api.geojobs.me/",
+  baseURL: "https://api.geojobs.me/",
 });
 
 const Apartments = () => {
