@@ -34,7 +34,7 @@ const Apartments = () => {
       <h1>Apartments</h1>
       <Row md={3} className="d-flex g-4 p-4 justify-content-center">
         {loaded ? (
-          apartments.map((apartment) => {
+          apartments["data"].map((apartment) => {
             return (
               <Col>
                 <ApartmentCard apartment={apartment} />
