@@ -6,8 +6,6 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-from time import sleep
-
 URL = "https://dev.geojobs.me/"
 
 class Test(unittest.TestCase):
@@ -32,7 +30,6 @@ class Test(unittest.TestCase):
     self.driver.quit()
 
   def test_Brand(self):
-    # sleep(2)
     element = self.driver.find_element(By.CLASS_NAME, 'navbar-brand')
     element.click()
     self.assertEqual(self.driver.current_url, URL)
