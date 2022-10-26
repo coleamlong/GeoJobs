@@ -161,8 +161,9 @@ def paginate(query, page_num, num_per_page):
     return query.paginate(page=page_num, per_page=num_per_page, error_out=False).items
 
 """
-Returns the city associated with the given addres
-Note: this assumes that the address an apartment address, returned from the apartments call
+Returns the city associated with the given address
+Note: this assumes that the address is formatted like an apartment address 
+      returned from the apartments call
 """
 def get_city_from_address(address):
     split_addr = address.split(", ")
