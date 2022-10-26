@@ -19,7 +19,7 @@ frontend_gui_test:
   stage: test
   image: python:3.6-stretch
   script:
-  - cd frontend
+  - cd front-end
   - pip3 install selenium
   # ripped straight from https://gitlab.com/10AMGroup11/bookrus/-/blob/main/.gitlab-ci.yml
   # Add chrome to container
