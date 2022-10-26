@@ -36,7 +36,7 @@ const JobCard = (props) => {
       </Card.Body>
       <Card.Footer>
         <Button
-          className="d-flex justify-content-center"
+          className="btn btn-primary stretched-link"
           variant="dark"
           href={`/job/${id}`}
         >

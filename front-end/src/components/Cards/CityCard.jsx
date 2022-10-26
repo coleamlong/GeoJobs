@@ -31,7 +31,7 @@ const CityCard = (props) => {
         </Card.Text>
         <Card.Footer className="mt-auto">
           <Button
-            className="d-flex justify-content-center"
+            className="btn btn-primary stretched-link"
             variant="light"
             href={`/cities/${id}`}
           >
