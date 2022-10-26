@@ -6,7 +6,7 @@ def populate_db():
     populate_cities()
     populate_apartments()
     populate_apartment_images()
-    # populate_jobs()
+    populate_jobs()
 
 
 def populate_cities():
@@ -113,32 +113,37 @@ def populate_apartment_images():
 
 def populate_jobs():
     with open("data/adzuna_data.json") as jsn:
-        adzuna_data = json.load(jsn)
-        logos_file = open("data/companylogos_data.json")
+        jobs = json.load(jsn)
+        logos_file = open("data/companylogo_data.json")
         logos = json.load(logos_file)
         logos_file.close()
-        # TODO waiting on order of cities from scraping script
-        jobs = [job for city in adzuna_data for job in city["results"]]
-        for job in jobs:
-            logo_url = [
-                company["logo"] for company in logos if company["id"] == job["id"]
-            ][0]
-            db_row = {
-                "id": job["id"],
-                "city_id": None,
-                "company": job["company"]["display_name"],
-                "title": job["title"],
-                "category": job["category"]["label"],
-                "url": job["redirect_url"],
-                "salary_min": job["salary_min"],
-                "salary_max": job["salary_max"],
-                "latitude": job["latitude"],
-                "longitude": job["longitude"],
-                "description": job["description"],
-                "created": job["created"],
-                "img_url": logo_url,  # TODO waiting on scraped data
-            }
-            db.session.add(Job(**db_row))
+        cities_file = open("data/cities_list.json")
+        cities = json.load(cities_file)
+        cities_file.close()
+        for idx in range(0, len(cities)):
+            city_jobs = jobs[idx]
+            city, state = cities[idx].split(':')
+            city_obj = City.query.filter_by(name=city, state=state).first()
+            for job in city_jobs['results']:
+                logo_url = [
+                    company["logo"] for company in logos if company["id"] == job["id"]
+                ]
+                db_row = {
+                    "id": job["id"],
+                    "city_id": city_obj.id,
+                    "company": job["company"]["display_name"],
+                    "title": job["title"],
+                    "category": job["category"]["label"],
+                    "url": job["redirect_url"],
+                    "salary_min": job["salary_min"],
+                    "salary_max": job["salary_max"] if "salary_max" in job else None,
+                    "latitude": job["latitude"] if "latitude" in job else None,
+                    "longitude": job["longitude"] if "longitude" in job else None,
+                    "description": job["description"],
+                    "created": job["created"],
+                    "img_url": logo_url[0] if logo_url else None,
+                }
+                db.session.add(Job(**db_row))
         db.session.commit()
 
 
