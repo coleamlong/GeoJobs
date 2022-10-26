@@ -1,0 +1,461 @@
+{
+	"info": {
+		"_postman_id": "d256f309-e61f-4977-ab7f-87b8afea3b29",
+		"name": "GeoJobs API Documentation",
+		"description": "The GeoJobs API endpoints return information regarding cities, jobs, and apartments.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23607622"
+	},
+	"item": [
+		{
+			"name": "All Cities",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Data in return\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"data\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Proper amount returned\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.data.length).to.eql(20);\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/cities?page=1&perPage=20",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"cities"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1",
+							"description": "Specifies which set of instances to return."
+						},
+						{
+							"key": "perPage",
+							"value": "20",
+							"description": "Specifies how many instances will be returned. Default is 20 if a page number is specified."
+						}
+					]
+				},
+				"description": "Retrieves information on all cities, including:\n\n- Name\n- State\n- Average rating\n- An image\n- Population\n- Saftey score (out of 5, 1 is the most dangerous, 5 is the safest)\n- Budget score (out of 8, 8 is the most expensive, 1 is the least expensive) (based on the daily cost of living in that city)\n- Link to the walkscore site for that city\n- The city's police department twitter handle"
+			},
+			"response": [
+				{
+					"name": "Example All Cities Request",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.geojobs.me/cities",
+							"protocol": "https",
+							"host": [
+								"api",
+								"geojobs",
+								"me"
+							],
+							"path": [
+								"cities"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "{\r\n  \"data\": [\r\n    {\r\n      \"avg_rating\": 4.0,\r\n      \"budget\": 6,\r\n      \"id\": 6576310,\r\n      \"img_url\": \"https://cdn.roadgoat.com/uploads/photo/image/1864/15846977755_df87f385a3_o.jpg\",\r\n      \"name\": \"Washington, D.C.\",\r\n      \"police_twitter\": \"DCPoliceDept\",\r\n      \"population\": 552433,\r\n      \"safety\": 4,\r\n      \"state\": \"Washington, D.C.\",\r\n      \"walkscore_url\": null\r\n    },\r\n    {\r\n      \"avg_rating\": 4.30769,\r\n      \"budget\": 8,\r\n      \"id\": 6588544,\r\n      \"img_url\": \"https://cdn.roadgoat.com/uploads/photo/image/608/travel-guide-of-new-york-ny-usa-original.jpg\",\r\n      \"name\": \"New York\",\r\n      \"police_twitter\": \"NYPDnews\",\r\n      \"population\": 8175133,\r\n      \"safety\": 4,\r\n      \"state\": \"New York\",\r\n      \"walkscore_url\": \"https://www.walkscore.com/NY/New_York\"\r\n    },\r\n    {\r\n      \"avg_rating\": 3.66667,\r\n      \"budget\": 5,\r\n      \"id\": 10625858,\r\n      \"img_url\": \"https://cdn.roadgoat.com/uploads/photo/image/1905/jack.jpeg\",\r\n      \"name\": \"Jacksonville\",\r\n      \"police_twitter\": \"JSOPIO\",\r\n      \"population\": 821784,\r\n      \"safety\": 4,\r\n      \"state\": \"Florida\",\r\n      \"walkscore_url\": \"https://www.walkscore.com/FL/Jacksonville\"\r\n    },\r\n    {\r\n      \"avg_rating\": 3.6,\r\n      \"budget\": 7,\r\n      \"id\": 10626288,\r\n      \"img_url\": \"https://cdn.roadgoat.com/uploads/photo/image/372/travel-guide-of-miami-fl-usa-original.jpg\",\r\n      \"name\": \"Miami\",\r\n      \"police_twitter\": \"MiamiPD\",\r\n      \"population\": 399457,\r\n      \"safety\": 3,\r\n      \"state\": \"Florida\",\r\n      \"walkscore_url\": \"https://www.walkscore.com/FL/Miami\"\r\n    },\r\n    {\r\n      \"avg_rating\": 3.61111,\r\n      \"budget\": 6,\r\n      \"id\": 10627993,\r\n      \"img_url\": \"https://cdn.roadgoat.com/uploads/photo/image/370/travel-guide-of-atlanta-ga-usa-original.jpg\",\r\n      \"name\": \"Atlanta\",\r\n      \"police_twitter\": \"Atlanta_Police\",\r\n      \"population\": 420003,\r\n      \"safety\": 4,\r\n      \"state\": \"Georgia\",\r\n      \"walkscore_url\": \"https://www.walkscore.com/GA/Atlanta\"\r\n    },\r\n    {\r\n      \"avg_rating\": 3.0,\r\n      \"budget\": 6,\r\n      \"id\": 10637146,\r\n      \"img_url\": \"https://cdn.roadgoat.com/uploads/photo/image/1911/indiana.jpeg\",\r\n      \"name\": \"Indianapolis\",\r\n      \"police_twitter\": \"IMPDnews\",\r\n      \"population\": 829718,\r\n      \"safety\": 4,\r\n      \"state\": \"Indiana\",\r\n      \"walkscore_url\": \"https://www.walkscore.com/IN/Indianapolis\"\r\n    },\r\n    {\r\n      \"avg_rating\": 4.0,\r\n      \"budget\": 4,\r\n      \"id\": 10639684,\r\n      \"img_url\": null,\r\n      \"name\": \"Wichita\",\r\n      \"police_twitter\": \"WichitaPolice\",\r\n      \"population\": 382368,\r\n      \"safety\": 4,\r\n      \"state\": \"Kansas\",\r\n      \"walkscore_url\": \"https://www.walkscore.com/KS/Wichita\"\r\n    },\r\n    {\r\n      \"avg_rating\": 3.83333,\r\n      \"budget\": 6,\r\n      \"id\": 10642143,\r\n      \"img_url\": \"https://cdn.roadgoat.com/uploads/photo/image/1941/andrew-welch-cbi8e7GNwxc-unsplash.jpg\",\r\n      \"name\": \"Louisville\",\r\n      \"police_twitter\": \"LMPD\",\r\n      \"population\": 243639,\r\n      \"safety\": 4,\r\n      \"state\": \"Kentucky\",\r\n      \"walkscore_url\": \"https://www.walkscore.com/KY/Louisville-Jefferson\"\r\n    },\r\n    {\r\n      \"avg_rating\": 3.47368,\r\n      \"budget\": 7,\r\n      \"id\": 10647977,\r\n      \"img_url\": \"https://cdn.roadgoat.com/uploads/photo/image/360/travel-guide-of-baltimore-md-usa-original.jpg\",\r\n      \"name\": \"Baltimore\",\r\n      \"police_twitter\": \"BaltimorePolice\",\r\n      \"population\": 620961,\r\n      \"safety\": 3,\r\n      \"state\": \"Maryland\",\r\n      \"walkscore_url\": \"https://www.walkscore.com/MD/Baltimore\"\r\n    },\r\n    {\r\n      \"avg_rating\": 3.42857,\r\n      \"budget\": 5,\r\n      \"id\": 10657784,\r\n      \"img_url\": \"https://cdn.roadgoat.com/uploads/photo/image/1947/briana-tozour-QipZr29K7Mw-unsplash.jpg\",\r\n      \"name\": \"Kansas City\",\r\n      \"police_twitter\": \"kcpolice\",\r\n      \"population\": 459787,\r\n      \"safety\": 3,\r\n      \"state\": \"Missouri\",\r\n      \"walkscore_url\": \"https://www.walkscore.com/MO/Kansas_City\"\r\n    },\r\n    {\r\n      \"avg_rating\": 3.57143,\r\n      \"budget\": 6,\r\n      \"id\": 10663727,\r\n      \"img_url\": \"https://cdn.roadgoat.com/uploads/photo/image/1867/Charlotte.jpeg\",\r\n      \"name\": \"Charlotte\",\r\n      \"police_twitter\": \"CMPD\",\r\n      \"population\": 731424,\r\n      \"safety\": 4,\r\n      \"state\": \"North Carolina\",\r\n      \"walkscore_url\": \"https://www.walkscore.com/NC/Charlotte\"\r\n    },\r\n    {\r\n      \"avg_rating\": 4.14286,\r\n      \"budget\": 5,\r\n      \"id\": 10666721,\r\n      \"img_url\": \"https://cdn.roadgoat.com/uploads/photo/image/1902/raleigh.jpeg\",\r\n      \"name\": \"Raleigh\",\r\n      \"police_twitter\": \"raleighpolice\",\r\n      \"population\": 403892,\r\n      \"safety\": 4,\r\n      \"state\": \"North Carolina\",\r\n      \"walkscore_url\": \"https://www.walkscore.com/NC/Raleigh\"\r\n    },\r\n    {\r\n      \"avg_rating\": 4.0,\r\n      \"budget\": 6,\r\n      \"id\": 10669624,\r\n      \"img_url\": \"https://cdn.roadgoat.com/uploads/photo/image/1749/16783556945_4884a9bcb4_o.jpg\",\r\n      \"name\": \"Columbus\",\r\n      \"police_twitter\": \"ColumbusPolice\",\r\n      \"population\": 787033,\r\n      \"safety\": 3,\r\n      \"state\": \"Ohio\",\r\n      \"walkscore_url\": \"https://www.walkscore.com/OH/Columbus\"\r\n    },\r\n    {\r\n      \"avg_rating\": 3.5,\r\n      \"budget\": 5,\r\n      \"id\": 10672983,\r\n      \"img_url\": null,\r\n      \"name\": \"Oklahoma City\",\r\n      \"police_twitter\": \"OKCPD\",\r\n      \"population\": 579999,\r\n      \"safety\": 4,\r\n      \"state\": \"Oklahoma\",\r\n      \"walkscore_url\": \"https://www.walkscore.com/OK/Oklahoma_City\"\r\n    },\r\n    {\r\n      \"avg_rating\": 3.5,\r\n      \"budget\": 4,\r\n      \"id\": 10673436,\r\n      \"img_url\": \"https://cdn.roadgoat.com/uploads/photo/image/2057/tulsa.jpeg\",\r\n      \"name\": \"Tulsa\",\r\n      \"police_twitter\": \"TulsaPolice\",\r\n      \"population\": 391906,\r\n      \"safety\": 4,\r\n      \"state\": \"Oklahoma\",\r\n      \"walkscore_url\": \"https://www.walkscore.com/OK/Tulsa\"\r\n    },\r\n    {\r\n      \"avg_rating\": 3.77273,\r\n      \"budget\": 7,\r\n      \"id\": 10674542,\r\n      \"img_url\": \"https://cdn.roadgoat.com/uploads/photo/image/353/travel-guide-of-philadelphia-pa-usa-original.jpg\",\r\n      \"name\": \"Philadelphia\",\r\n      \"police_twitter\": \"PhillyPolice\",\r\n      \"population\": 1526006,\r\n      \"safety\": 4,\r\n      \"state\": \"Pennsylvania\",\r\n      \"walkscore_url\": \"https://www.walkscore.com/PA/Philadelphia\"\r\n    },\r\n    {\r\n      \"avg_rating\": 3.0,\r\n      \"budget\": 5,\r\n      \"id\": 10682934,\r\n      \"img_url\": \"https://cdn.roadgoat.com/uploads/photo/image/366/travel-guide-of-memphis-tn-usa-original.jpg\",\r\n      \"name\": \"Memphis\",\r\n      \"police_twitter\": \"MEM_PoliceDept\",\r\n      \"population\": 646889,\r\n      \"safety\": 4,\r\n      \"state\": \"Tennessee\",\r\n      \"walkscore_url\": \"https://www.walkscore.com/TN/Memphis\"\r\n    },\r\n    {\r\n      \"avg_rating\": 4.0,\r\n      \"budget\": 7,\r\n      \"id\": 10683255,\r\n      \"img_url\": \"https://cdn.roadgoat.com/uploads/photo/image/365/travel-guide-of-nashville-tn-usa-original.jpg\",\r\n      \"name\": \"Nashville\",\r\n      \"police_twitter\": \"MNPDNashville\",\r\n      \"population\": 530852,\r\n      \"safety\": 4,\r\n      \"state\": \"Tennessee\",\r\n      \"walkscore_url\": \"https://www.walkscore.com/TN/Nashville-Davidson\"\r\n    },\r\n    {\r\n      \"avg_rating\": 2.0,\r\n      \"budget\": 6,\r\n      \"id\": 10685937,\r\n      \"img_url\": \"https://cdn.roadgoat.com/uploads/photo/image/2114/rangers-1402096_1280.jpg\",\r\n      \"name\": \"Arlington\",\r\n      \"police_twitter\": \"ArlingtonPD\",\r\n      \"population\": 365438,\r\n      \"safety\": 4,\r\n      \"state\": \"Texas\",\r\n      \"walkscore_url\": \"https://www.walkscore.com/TX/Arlington\"\r\n    },\r\n    {\r\n      \"avg_rating\": 4.27273,\r\n      \"budget\": 7,\r\n      \"id\": 10685986,\r\n      \"img_url\": \"https://cdn.roadgoat.com/uploads/photo/image/382/travel-guide-of-austin-tx-usa-original.jpg\",\r\n      \"name\": \"Austin\",\r\n      \"police_twitter\": \"Austin_Police\",\r\n      \"population\": 790390,\r\n      \"safety\": 4,\r\n      \"state\": \"Texas\",\r\n      \"walkscore_url\": \"https://www.walkscore.com/TX/Austin\"\r\n    },\r\n    {\r\n      \"avg_rating\": 3.57143,\r\n      \"budget\": 6,\r\n      \"id\": 10687192,\r\n      \"img_url\": \"https://cdn.roadgoat.com/uploads/photo/image/385/travel-guide-of-dallas-tx-usa-original.jpg\",\r\n      \"name\": \"Dallas\",\r\n      \"police_twitter\": \"DallasPD\",\r\n      \"population\": 1197816,\r\n      \"safety\": 4,\r\n      \"state\": \"Texas\",\r\n      \"walkscore_url\": \"https://www.walkscore.com/TX/Dallas\"\r\n    },\r\n    {\r\n      \"avg_rating\": 3.9,\r\n      \"budget\": 6,\r\n      \"id\": 10687843,\r\n      \"img_url\": \"https://cdn.roadgoat.com/uploads/photo/image/1921/fort_worth.jpeg\",\r\n      \"name\": \"Fort Worth\",\r\n      \"police_twitter\": \"fortworthpd\",\r\n      \"population\": 741206,\r\n      \"safety\": 4,\r\n      \"state\": \"Texas\",\r\n      \"walkscore_url\": \"https://www.walkscore.com/TX/Fort_Worth\"\r\n    },\r\n    {\r\n      \"avg_rating\": 2.92857,\r\n      \"budget\": 6,\r\n      \"id\": 10688540,\r\n      \"img_url\": \"https://cdn.roadgoat.com/uploads/photo/image/384/travel-guide-of-houston-tx-usa-original.jpg\",\r\n      \"name\": \"Houston\",\r\n      \"police_twitter\": \"houstonpolice\",\r\n      \"population\": 2099451,\r\n      \"safety\": 3,\r\n      \"state\": \"Texas\",\r\n      \"walkscore_url\": \"https://www.walkscore.com/TX/Houston\"\r\n    },\r\n    {\r\n      \"avg_rating\": 4.0,\r\n      \"budget\": 5,\r\n      \"id\": 10691235,\r\n      \"img_url\": \"https://cdn.roadgoat.com/uploads/photo/image/383/travel-guide-of-san-antonio-tx-usa-original.jpg\",\r\n      \"name\": \"San Antonio\",\r\n      \"police_twitter\": \"SATXPolice\",\r\n      \"population\": 1327407,\r\n      \"safety\": 4,\r\n      \"state\": \"Texas\",\r\n      \"walkscore_url\": \"https://www.walkscore.com/TX/San_Antonio\"\r\n    },\r\n    {\r\n      \"avg_rating\": 3.5,\r\n      \"budget\": 7,\r\n      \"id\": 10699912,\r\n      \"img_url\": \"https://cdn.roadgoat.com/uploads/photo/image/1862/9226531175_37584c0311_o.jpg\",\r\n      \"name\": \"Virginia Beach\",\r\n      \"police_twitter\": \"VBPD\",\r\n      \"population\": 437994,\r\n      \"safety\": 4,\r\n      \"state\": \"Virginia\",\r\n      \"walkscore_url\": \"https://www.walkscore.com/VA/Virginia_Beach\"\r\n    },\r\n    {\r\n      \"avg_rating\": 4.36667,\r\n      \"budget\": 7,\r\n      \"id\": 10709199,\r\n      \"img_url\": \"https://cdn.roadgoat.com/uploads/photo/image/388/travel-guide-of-chicago-il-usa-original.jpg\",\r\n      \"name\": \"Chicago\",\r\n      \"police_twitter\": \"Chicago_Police\",\r\n      \"population\": 2695598,\r\n      \"safety\": 4,\r\n      \"state\": \"Illinois\",\r\n      \"walkscore_url\": \"https://www.walkscore.com/IL/Chicago\"\r\n    },\r\n    {\r\n      \"avg_rating\": 4.23529,\r\n      \"budget\": 8,\r\n      \"id\": 10712642,\r\n      \"img_url\": \"https://cdn.roadgoat.com/uploads/photo/image/575/travel-guide-of-boston-ma-usa-original.jpg\",\r\n      \"name\": \"Boston\",\r\n      \"police_twitter\": \"bostonpolice\",\r\n      \"population\": 617594,\r\n      \"safety\": 5,\r\n      \"state\": \"Massachusetts\",\r\n      \"walkscore_url\": \"https://www.walkscore.com/MA/Boston\"\r\n    },\r\n    {\r\n      \"avg_rating\": 2.625,\r\n      \"budget\": 7,\r\n      \"id\": 10717505,\r\n      \"img_url\": \"https://cdn.roadgoat.com/uploads/photo/image/387/travel-guide-of-detroit-mi-usa-original.jpg\",\r\n      \"name\": \"Detroit\",\r\n      \"police_twitter\": \"detroitpolice\",\r\n      \"population\": 713777,\r\n      \"safety\": 3,\r\n      \"state\": \"Michigan\",\r\n      \"walkscore_url\": \"https://www.walkscore.com/MI/Detroit\"\r\n    },\r\n    {\r\n      \"avg_rating\": 3.88889,\r\n      \"budget\": 7,\r\n      \"id\": 10721050,\r\n      \"img_url\": \"https://cdn.roadgoat.com/uploads/photo/image/390/travel-guide-of-minneapolis-mn-usa-original.jpg\",\r\n      \"name\": \"Minneapolis\",\r\n      \"police_twitter\": \"MinneapolisPD\",\r\n      \"population\": 382578,\r\n      \"safety\": 4,\r\n      \"state\": \"Minnesota\",\r\n      \"walkscore_url\": \"https://www.walkscore.com/MN/Minneapolis\"\r\n    },\r\n    {\r\n      \"avg_rating\": 3.66667,\r\n      \"budget\": 5,\r\n      \"id\": 10723458,\r\n      \"img_url\": \"https://cdn.roadgoat.com/uploads/photo/image/2008/omaha.jpeg\",\r\n      \"name\": \"Omaha\",\r\n      \"police_twitter\": \"OmahaPolice\",\r\n      \"population\": 408958,\r\n      \"safety\": 4,\r\n      \"state\": \"Nebraska\",\r\n      \"walkscore_url\": \"https://www.walkscore.com/NE/Omaha\"\r\n    },\r\n    {\r\n      \"avg_rating\": 3.25,\r\n      \"budget\": 6,\r\n      \"id\": 10747266,\r\n      \"img_url\": \"https://cdn.roadgoat.com/uploads/photo/image/1895/milwauk.jpeg\",\r\n      \"name\": \"Milwaukee\",\r\n      \"police_twitter\": \"MilwaukeePolice\",\r\n      \"population\": 594833,\r\n      \"safety\": 4,\r\n      \"state\": \"Wisconsin\",\r\n      \"walkscore_url\": \"https://www.walkscore.com/WI/Milwaukee\"\r\n    },\r\n    {\r\n      \"avg_rating\": 3.5,\r\n      \"budget\": 5,\r\n      \"id\": 10749652,\r\n      \"img_url\": null,\r\n      \"name\": \"Mesa\",\r\n      \"police_twitter\": \"MesaPD\",\r\n      \"population\": 439041,\r\n      \"safety\": 4,\r\n      \"state\": \"Arizona\",\r\n      \"walkscore_url\": \"https://www.walkscore.com/AZ/Mesa\"\r\n    },\r\n    {\r\n      \"avg_rating\": 4.08333,\r\n      \"budget\": 6,\r\n      \"id\": 10749878,\r\n      \"img_url\": \"https://cdn.roadgoat.com/uploads/photo/image/399/travel-guide-of-phoenix-az-usa-original.jpg\",\r\n      \"name\": \"Phoenix\",\r\n      \"police_twitter\": \"PhoenixPolice\",\r\n      \"population\": 1445632,\r\n      \"safety\": 4,\r\n      \"state\": \"Arizona\",\r\n      \"walkscore_url\": \"https://www.walkscore.com/AZ/Phoenix\"\r\n    },\r\n    {\r\n      \"avg_rating\": 3.8,\r\n      \"budget\": 5,\r\n      \"id\": 10750409,\r\n      \"img_url\": \"https://cdn.roadgoat.com/uploads/photo/image/1896/Tucson.jpeg\",\r\n      \"name\": \"Tucson\",\r\n      \"police_twitter\": \"Tucson_Police\",\r\n      \"population\": 520116,\r\n      \"safety\": 3,\r\n      \"state\": \"Arizona\",\r\n      \"walkscore_url\": \"https://www.walkscore.com/AZ/Tucson\"\r\n    },\r\n    {\r\n      \"avg_rating\": 3.0,\r\n      \"budget\": 5,\r\n      \"id\": 10750869,\r\n      \"img_url\": null,\r\n      \"name\": \"Bakersfield\",\r\n      \"police_twitter\": \"bakersfieldpd\",\r\n      \"population\": 347483,\r\n      \"safety\": 4,\r\n      \"state\": \"California\",\r\n      \"walkscore_url\": \"https://www.walkscore.com/CA/Bakersfield\"\r\n    },\r\n    {\r\n      \"avg_rating\": 0.0,\r\n      \"budget\": 5,\r\n      \"id\": 10752405,\r\n      \"img_url\": null,\r\n      \"name\": \"Fresno\",\r\n      \"police_twitter\": \"FresnoPolice\",\r\n      \"population\": 494665,\r\n      \"safety\": 4,\r\n      \"state\": \"California\",\r\n      \"walkscore_url\": \"https://www.walkscore.com/CA/Fresno\"\r\n    },\r\n    {\r\n      \"avg_rating\": 4.21429,\r\n      \"budget\": 7,\r\n      \"id\": 10753427,\r\n      \"img_url\": \"https://cdn.roadgoat.com/uploads/photo/image/1824/eric-muhr-1152474-unsplash.jpg\",\r\n      \"name\": \"Long Beach\",\r\n      \"police_twitter\": \"LBPD\",\r\n      \"population\": 462257,\r\n      \"safety\": 4,\r\n      \"state\": \"California\",\r\n      \"walkscore_url\": \"https://www.walkscore.com/CA/Long_Beach\"\r\n    },\r\n    {\r\n      \"avg_rating\": 3.90244,\r\n      \"budget\": 7,\r\n      \"id\": 10753446,\r\n      \"img_url\": \"https://cdn.roadgoat.com/uploads/photo/image/691/travel-guide-of-los-angeles-ca-usa-original.jpg\",\r\n      \"name\": \"Los Angeles\",\r\n      \"police_twitter\": \"LAPDHQ\",\r\n      \"population\": 3792621,\r\n      \"safety\": 4,\r\n      \"state\": \"California\",\r\n      \"walkscore_url\": \"https://www.walkscore.com/CA/Los_Angeles\"\r\n    },\r\n    {\r\n      \"avg_rating\": 3.88235,\r\n      \"budget\": 7,\r\n      \"id\": 10754148,\r\n      \"img_url\": \"https://cdn.roadgoat.com/uploads/photo/image/405/travel-guide-of-oakland-ca-usa-original.jpg\",\r\n      \"name\": \"Oakland\",\r\n      \"police_twitter\": \"oaklandpoliceca\",\r\n      \"population\": 390724,\r\n      \"safety\": 3,\r\n      \"state\": \"California\",\r\n      \"walkscore_url\": \"https://www.walkscore.com/CA/Oakland\"\r\n    },\r\n    {\r\n      \"avg_rating\": 3.375,\r\n      \"budget\": 6,\r\n      \"id\": 10754928,\r\n      \"img_url\": \"https://cdn.roadgoat.com/uploads/photo/image/1878/Sacramento.jpeg\",\r\n      \"name\": \"Sacramento\",\r\n      \"police_twitter\": \"SacPolice\",\r\n      \"population\": 466488,\r\n      \"safety\": 4,\r\n      \"state\": \"California\",\r\n      \"walkscore_url\": \"https://www.walkscore.com/CA/Sacramento\"\r\n    },\r\n    {\r\n      \"avg_rating\": 4.12,\r\n      \"budget\": 7,\r\n      \"id\": 10754966,\r\n      \"img_url\": \"https://cdn.roadgoat.com/uploads/photo/image/413/travel-guide-of-san-diego-ca-usa-original.jpg\",\r\n      \"name\": \"San Diego\",\r\n      \"police_twitter\": \"SanDiegoPD\",\r\n      \"population\": 1307402,\r\n      \"safety\": 4,\r\n      \"state\": \"California\",\r\n      \"walkscore_url\": \"https://www.walkscore.com/CA/San_Diego\"\r\n    },\r\n    {\r\n      \"avg_rating\": 4.47368,\r\n      \"budget\": 8,\r\n      \"id\": 10754973,\r\n      \"img_url\": \"https://cdn.roadgoat.com/uploads/photo/image/692/travel-guide-of-san-francisco-ca-usa-original.jpg\",\r\n      \"name\": \"San Francisco\",\r\n      \"police_twitter\": \"SFPD\",\r\n      \"population\": 805235,\r\n      \"safety\": 4,\r\n      \"state\": \"California\",\r\n      \"walkscore_url\": \"https://www.walkscore.com/CA/San_Francisco\"\r\n    },\r\n    {\r\n      \"avg_rating\": 3.4,\r\n      \"budget\": 7,\r\n      \"id\": 10754983,\r\n      \"img_url\": \"https://cdn.roadgoat.com/uploads/photo/image/1893/9551931765_5d28e6a037_o.jpg\",\r\n      \"name\": \"San Jose\",\r\n      \"police_twitter\": \"SJPD_PIO\",\r\n      \"population\": 945942,\r\n      \"safety\": 4,\r\n      \"state\": \"California\",\r\n      \"walkscore_url\": \"https://www.walkscore.com/CA/San_Jose\"\r\n    },\r\n    {\r\n      \"avg_rating\": 4.4,\r\n      \"budget\": 5,\r\n      \"id\": 10756426,\r\n      \"img_url\": \"https://cdn.roadgoat.com/uploads/photo/image/1945/ian-baldwin-UA1UN-r9E5Y-unsplash.jpg\",\r\n      \"name\": \"Colorado Springs\",\r\n      \"police_twitter\": \"CSPDPIO\",\r\n      \"population\": 416427,\r\n      \"safety\": 3,\r\n      \"state\": \"Colorado\",\r\n      \"walkscore_url\": \"https://www.walkscore.com/CO/Colorado_Springs\"\r\n    },\r\n    {\r\n      \"avg_rating\": 4.05882,\r\n      \"budget\": 7,\r\n      \"id\": 10756478,\r\n      \"img_url\": \"https://cdn.roadgoat.com/uploads/photo/image/395/travel-guide-of-denver-co-usa-original.jpg\",\r\n      \"name\": \"Denver\",\r\n      \"police_twitter\": \"DenverPolice\",\r\n      \"population\": 600158,\r\n      \"safety\": 4,\r\n      \"state\": \"Colorado\",\r\n      \"walkscore_url\": \"https://www.walkscore.com/CO/Denver\"\r\n    },\r\n    {\r\n      \"avg_rating\": 4.0,\r\n      \"budget\": 5,\r\n      \"id\": 10757571,\r\n      \"img_url\": \"https://cdn.roadgoat.com/uploads/photo/image/1884/albu.jpg\",\r\n      \"name\": \"Albuquerque\",\r\n      \"police_twitter\": \"ABQPOLICE\",\r\n      \"population\": 545852,\r\n      \"safety\": 4,\r\n      \"state\": \"New Mexico\",\r\n      \"walkscore_url\": \"https://www.walkscore.com/NM/Albuquerque\"\r\n    },\r\n    {\r\n      \"avg_rating\": 3.82353,\r\n      \"budget\": 6,\r\n      \"id\": 10759584,\r\n      \"img_url\": \"https://cdn.roadgoat.com/uploads/photo/image/397/travel-guide-of-las-vegas-nv-usa-original.jpg\",\r\n      \"name\": \"Las Vegas\",\r\n      \"police_twitter\": \"LVMPD\",\r\n      \"population\": 583756,\r\n      \"safety\": 4,\r\n      \"state\": \"Nevada\",\r\n      \"walkscore_url\": \"https://www.walkscore.com/NV/Las_Vegas\"\r\n    },\r\n    {\r\n      \"avg_rating\": 3.33333,\r\n      \"budget\": 4,\r\n      \"id\": 10760382,\r\n      \"img_url\": \"https://cdn.roadgoat.com/uploads/photo/image/2047/el-paso-123727_1920.jpg\",\r\n      \"name\": \"El Paso\",\r\n      \"police_twitter\": \"EPPOLICE\",\r\n      \"population\": 649121,\r\n      \"safety\": 4,\r\n      \"state\": \"Texas\",\r\n      \"walkscore_url\": \"https://www.walkscore.com/TX/El_Paso\"\r\n    },\r\n    {\r\n      \"avg_rating\": 4.46154,\r\n      \"budget\": 6,\r\n      \"id\": 10768729,\r\n      \"img_url\": \"https://cdn.roadgoat.com/uploads/photo/image/415/travel-guide-of-portland-or-usa-original.jpg\",\r\n      \"name\": \"Portland\",\r\n      \"police_twitter\": \"PortlandPolice\",\r\n      \"population\": 583776,\r\n      \"safety\": 4,\r\n      \"state\": \"Oregon\",\r\n      \"walkscore_url\": \"https://www.walkscore.com/OR/Portland\"\r\n    },\r\n    {\r\n      \"avg_rating\": 4.38462,\r\n      \"budget\": 7,\r\n      \"id\": 10773037,\r\n      \"img_url\": \"https://cdn.roadgoat.com/uploads/photo/image/416/travel-guide-of-seattle-wa-usa-original.jpg\",\r\n      \"name\": \"Seattle\",\r\n      \"police_twitter\": \"SeattlePD\",\r\n      \"population\": 608660,\r\n      \"safety\": 4,\r\n      \"state\": \"Washington\",\r\n      \"walkscore_url\": \"https://www.walkscore.com/WA/Seattle\"\r\n    }\r\n  ],\r\n  \"meta\": {\r\n    \"count\": 50\r\n  }\r\n}"
+				}
+			]
+		},
+		{
+			"name": "City by ID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Data in return\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"data\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Returned correct city\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.data.name).to.eql(\"New York\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/cities/6588544",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"cities",
+						"6588544"
+					]
+				},
+				"description": "Retrieves information about the city based on the given ID, including:\n\n- Name\n- State\n- Average rating\n- An image\n- Population\n- Saftey score (out of 5, 1 is the most dangerous, 5 is the safest)\n- Budget score (out of 8, 8 is the most expensive, 1 is the least expensive) (based on the daily cost of living in that city)\n- Link to the walkscore site for that city\n- The city's police department twitter handle\n- A list of tags that describe what the city is known for (such as 'nightlife' or 'museum')"
+			},
+			"response": [
+				{
+					"name": "Example City Request",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.geojobs.me/cities/6588544",
+							"protocol": "https",
+							"host": [
+								"api",
+								"geojobs",
+								"me"
+							],
+							"path": [
+								"cities",
+								"6588544"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "{\r\n  \"data\": {\r\n    \"avg_rating\": 4.30769,\r\n    \"budget\": 8,\r\n    \"id\": 6588544,\r\n    \"img_url\": \"https://cdn.roadgoat.com/uploads/photo/image/608/travel-guide-of-new-york-ny-usa-original.jpg\",\r\n    \"name\": \"New York\",\r\n    \"police_twitter\": \"NYPDnews\",\r\n    \"population\": 8175133,\r\n    \"safety\": 4,\r\n    \"state\": \"New York\",\r\n    \"walkscore_url\": \"https://www.walkscore.com/NY/New_York\"\r\n  },\r\n  \"tags\": [\r\n    {\r\n      \"id\": 2,\r\n      \"name\": \"History\"\r\n    },\r\n    {\r\n      \"id\": 3,\r\n      \"name\": \"Nightlife\"\r\n    },\r\n    {\r\n      \"id\": 4,\r\n      \"name\": \"Foodie\"\r\n    },\r\n    {\r\n      \"id\": 6,\r\n      \"name\": \"Shopping\"\r\n    },\r\n    {\r\n      \"id\": 7,\r\n      \"name\": \"Performing Arts\"\r\n    },\r\n    {\r\n      \"id\": 8,\r\n      \"name\": \"Museums\"\r\n    },\r\n    {\r\n      \"id\": 9,\r\n      \"name\": \"Posh\"\r\n    },\r\n    {\r\n      \"id\": 12,\r\n      \"name\": \"Charming\"\r\n    },\r\n    {\r\n      \"id\": 17,\r\n      \"name\": \"Architecture\"\r\n    },\r\n    {\r\n      \"id\": 18,\r\n      \"name\": \"LGBT Scene\"\r\n    },\r\n    {\r\n      \"id\": 20,\r\n      \"name\": \"Diversity\"\r\n    },\r\n    {\r\n      \"id\": 21,\r\n      \"name\": \"Music\"\r\n    }\r\n  ]\r\n}"
+				}
+			]
+		},
+		{
+			"name": "All Apartments",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Data in return\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"data\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Proper amount returned\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.data.length).to.eql(20);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/apartments?page=1&perPage=20",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"apartments"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1",
+							"description": "Specifies which set of instances to return."
+						},
+						{
+							"key": "perPage",
+							"value": "20",
+							"description": "Specifies how many instances will be returned. Default is 20 if a page number is specified."
+						}
+					]
+				},
+				"description": "Retrieves information about all apartments, including:\n\n- Address\n- Number of bedrooms\n- Number of bathrooms\n- Build year\n- City\n- Price per month\n- The property type (i.e. \"Apartment\", \"Single family home\")\n- Square footage\n- A single image url for that apartment"
+			},
+			"response": [
+				{
+					"name": "Example All Apartments Request",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.geojobs.me/apartments?page=1",
+							"protocol": "https",
+							"host": [
+								"api",
+								"geojobs",
+								"me"
+							],
+							"path": [
+								"apartments"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "{\r\n  \"data\": [\r\n    {\r\n      \"address\": \"1 E Delaware Pl, Apt 30B, Chicago, IL 60611\",\r\n      \"bathrooms\": 2,\r\n      \"bedrooms\": 2,\r\n      \"build_year\": null,\r\n      \"city\": \"Chicago\",\r\n      \"id\": \"1-E-Delaware-Pl,-Apt-30B,-Chicago,-IL-60611\",\r\n      \"image\": \"https://ssl.cdn-redfin.com/photo/rent/1ecaeed5-ff7d-43ba-b6ea-80484c48157d/bigphoto/0_1.jpg\",\r\n      \"price\": 3575,\r\n      \"property_type\": \"Apartment\",\r\n      \"sqft\": 1040\r\n    },\r\n    {\r\n      \"address\": \"10 E Madison St, Apt 2B, Baltimore, MD 21202\",\r\n      \"bathrooms\": 1,\r\n      \"bedrooms\": null,\r\n      \"build_year\": null,\r\n      \"city\": \"Baltimore\",\r\n      \"id\": \"10-E-Madison-St,-Apt-2B,-Baltimore,-MD-21202\",\r\n      \"image\": \"https://images1.apartments.com/i2/8LTWfEUoP5eVDevczk6-pt9UPOWDQ4Tia6_-oPAnN_s/111/10-e-madison-st-baltimore-md-primary-photo.jpg\",\r\n      \"price\": 975,\r\n      \"property_type\": \"Apartment\",\r\n      \"sqft\": null\r\n    },\r\n    {\r\n      \"address\": \"100 Pier 4 Blvd, Unit 706, Boston, MA 02210\",\r\n      \"bathrooms\": 2,\r\n      \"bedrooms\": 2,\r\n      \"build_year\": null,\r\n      \"city\": \"Boston\",\r\n      \"id\": \"100-Pier-4-Blvd,-Unit-706,-Boston,-MA-02210\",\r\n      \"image\": null,\r\n      \"price\": 5214,\r\n      \"property_type\": \"Apartment\",\r\n      \"sqft\": 1296\r\n    },\r\n    {\r\n      \"address\": \"100 S Dogwood Rd, Virginia Beach, VA 23451\",\r\n      \"bathrooms\": 2,\r\n      \"bedrooms\": 3,\r\n      \"build_year\": null,\r\n      \"city\": \"Virginia Beach\",\r\n      \"id\": \"100-S-Dogwood-Rd,-Virginia-Beach,-VA-23451\",\r\n      \"image\": null,\r\n      \"price\": 3200,\r\n      \"property_type\": \"Single Family\",\r\n      \"sqft\": 1614\r\n    },\r\n    {\r\n      \"address\": \"10034 Orchard Grass Ct, Charlotte, NC 28278\",\r\n      \"bathrooms\": 2,\r\n      \"bedrooms\": 3,\r\n      \"build_year\": 2001,\r\n      \"city\": \"Charlotte\",\r\n      \"id\": \"10034-Orchard-Grass-Ct,-Charlotte,-NC-28278\",\r\n      \"image\": \"https://m.cbhomes.com/p/125/3883943/97219c9beee04CF/original.jpeg\",\r\n      \"price\": 1895,\r\n      \"property_type\": \"Single Family\",\r\n      \"sqft\": 1186\r\n    },\r\n    {\r\n      \"address\": \"1005 Woodland Ave SE, Atlanta, GA 30316\",\r\n      \"bathrooms\": 2,\r\n      \"bedrooms\": 3,\r\n      \"build_year\": 1925,\r\n      \"city\": \"Atlanta\",\r\n      \"id\": \"1005-Woodland-Ave-SE,-Atlanta,-GA-30316\",\r\n      \"image\": \"https://i.vimeocdn.com/filter/overlay?src0=https%3A%2F%2Fi.vimeocdn.com%2Fvideo%2F971994025-9a9a274213ed04cf17b9a66e8fd5dc13507b88f43ba064f5d3701bb72b78290b-d_1280x720&src1=https%3A%2F%2Ff.vimeocdn.co\",\r\n      \"price\": 3195,\r\n      \"property_type\": \"Single Family\",\r\n      \"sqft\": 1344\r\n    },\r\n    {\r\n      \"address\": \"1007 New Hampshire Ave NW, Unit 1, Washington, DC 20037\",\r\n      \"bathrooms\": 2,\r\n      \"bedrooms\": 4,\r\n      \"build_year\": null,\r\n      \"city\": \"Washington, DC\",\r\n      \"id\": \"1007-New-Hampshire-Ave-NW,-Unit-1,-Washington,-DC-20037\",\r\n      \"image\": \"https://photos.zillowstatic.com/fp/ca6fd6d428cf7d9eb5788e99f49614cb-cc_ft_960.jpg\",\r\n      \"price\": 6500,\r\n      \"property_type\": \"Apartment\",\r\n      \"sqft\": 1810\r\n    },\r\n    {\r\n      \"address\": \"1008 Forrester St NW, Albuquerque, NM 87102\",\r\n      \"bathrooms\": 1,\r\n      \"bedrooms\": 2,\r\n      \"build_year\": 1930,\r\n      \"city\": \"Albuquerque\",\r\n      \"id\": \"1008-Forrester-St-NW,-Albuquerque,-NM-87102\",\r\n      \"image\": null,\r\n      \"price\": 2000,\r\n      \"property_type\": \"Single Family\",\r\n      \"sqft\": 1278\r\n    },\r\n    {\r\n      \"address\": \"1009 Shattuck Ave, Bakersfield, CA 93305\",\r\n      \"bathrooms\": 2,\r\n      \"bedrooms\": 4,\r\n      \"build_year\": null,\r\n      \"city\": \"Bakersfield\",\r\n      \"id\": \"1009-Shattuck-Ave,-Bakersfield,-CA-93305\",\r\n      \"image\": \"https://res.cloudinary.com/apartmentlist/image/upload/c_fill,dpr_auto,f_auto,g_center,h_415,q_auto,w_640/c535c92c48336bb5dd2c08ba33fd117a.jpg\",\r\n      \"price\": 2150,\r\n      \"property_type\": \"Single Family\",\r\n      \"sqft\": 1444\r\n    },\r\n    {\r\n      \"address\": \"101 Bridewell St, Los Angeles, CA 90042\",\r\n      \"bathrooms\": null,\r\n      \"bedrooms\": null,\r\n      \"build_year\": 1989,\r\n      \"city\": \"Los Angeles\",\r\n      \"id\": \"101-Bridewell-St,-Los-Angeles,-CA-90042\",\r\n      \"image\": \"https://photos.zillowstatic.com/fp/03aa9607af30dca9b0d7ba5081ff7aa5-cc_ft_1536.jpg\",\r\n      \"price\": 1999,\r\n      \"property_type\": \"Apartment\",\r\n      \"sqft\": 903\r\n    },\r\n    {\r\n      \"address\": \"1012 Patio Dr, Nashville, TN 37214\",\r\n      \"bathrooms\": 2,\r\n      \"bedrooms\": 2,\r\n      \"build_year\": null,\r\n      \"city\": \"Nashville\",\r\n      \"id\": \"1012-Patio-Dr,-Nashville,-TN-37214\",\r\n      \"image\": \"https://ssl.cdn-redfin.com/photo/145/bigphoto/364/2380364_0.jpg\",\r\n      \"price\": 1700,\r\n      \"property_type\": \"Single Family\",\r\n      \"sqft\": 1020\r\n    },\r\n    {\r\n      \"address\": \"1015 E Muhammad Ali Blvd, Louisville, KY 40204\",\r\n      \"bathrooms\": 2,\r\n      \"bedrooms\": 3,\r\n      \"build_year\": 2015,\r\n      \"city\": \"Louisville\",\r\n      \"id\": \"1015-E-Muhammad-Ali-Blvd,-Louisville,-KY-40204\",\r\n      \"image\": \"https://ap.rdcpix.com/820f940adc183b6eed320b3a1a53e74el-m2382910479od-w480_h360.jpg\",\r\n      \"price\": 1399,\r\n      \"property_type\": \"Single Family\",\r\n      \"sqft\": 1300\r\n    },\r\n    {\r\n      \"address\": \"1030 E Trinity Ln, Unit A, Nashville, TN 37216\",\r\n      \"bathrooms\": 1,\r\n      \"bedrooms\": 1,\r\n      \"build_year\": null,\r\n      \"city\": \"Nashville\",\r\n      \"id\": \"1030-E-Trinity-Ln,-Unit-A,-Nashville,-TN-37216\",\r\n      \"image\": \"https://photos.zillowstatic.com/fp/380dbc11d07dbbeb7a2317fd3146db42-cc_ft_960.jpg\",\r\n      \"price\": 1350,\r\n      \"property_type\": \"Condo\",\r\n      \"sqft\": 540\r\n    },\r\n    {\r\n      \"address\": \"10300 Katy Fwy, Apt 142, Houston, TX 77043\",\r\n      \"bathrooms\": 2,\r\n      \"bedrooms\": 2,\r\n      \"build_year\": null,\r\n      \"city\": \"Houston\",\r\n      \"id\": \"10300-Katy-Fwy,-Apt-142,-Houston,-TX-77043\",\r\n      \"image\": \"https://ar.rdcpix.com/3ad781734d270ab922b91aa9e7eacfbfc-f1840957434od-w480_h360_x2.jpg\",\r\n      \"price\": 1684,\r\n      \"property_type\": \"Apartment\",\r\n      \"sqft\": 1121\r\n    },\r\n    {\r\n      \"address\": \"10300 Katy Fwy, Apt 228, Houston, TX 77043\",\r\n      \"bathrooms\": 1,\r\n      \"bedrooms\": 1,\r\n      \"build_year\": null,\r\n      \"city\": \"Houston\",\r\n      \"id\": \"10300-Katy-Fwy,-Apt-228,-Houston,-TX-77043\",\r\n      \"image\": \"https://images1.apartments.com/i2/N1pSDEZhxEzwESmLKlSrL_LGEhf5zKcjonHGLoH64qk/111/10300-katy-fwy-unit-228-houston-tx-primary-photo.jpg\",\r\n      \"price\": 1453,\r\n      \"property_type\": \"Apartment\",\r\n      \"sqft\": 647\r\n    },\r\n    {\r\n      \"address\": \"10305 Buffalo Springs Ct, Fort Worth, TX 76140\",\r\n      \"bathrooms\": 2,\r\n      \"bedrooms\": 3,\r\n      \"build_year\": null,\r\n      \"city\": \"Fort Worth\",\r\n      \"id\": \"10305-Buffalo-Springs-Ct,-Fort-Worth,-TX-76140\",\r\n      \"image\": \"https://photos.zillowstatic.com/fp/a532336b5586c51fd663cb834d8c05de-cc_ft_960.jpg\",\r\n      \"price\": 1760,\r\n      \"property_type\": \"Single Family\",\r\n      \"sqft\": 1390\r\n    },\r\n    {\r\n      \"address\": \"10347 Wrangell Cir, Colorado Springs, CO 80924\",\r\n      \"bathrooms\": 3,\r\n      \"bedrooms\": 5,\r\n      \"build_year\": null,\r\n      \"city\": \"Colorado Springs\",\r\n      \"id\": \"10347-Wrangell-Cir,-Colorado-Springs,-CO-80924\",\r\n      \"image\": \"https://ssl.cdn-redfin.com/photo/124/bigphoto/708/2311708_0.jpg\",\r\n      \"price\": 3195,\r\n      \"property_type\": \"Single Family\",\r\n      \"sqft\": 3298\r\n    },\r\n    {\r\n      \"address\": \"10446 Mountain View Dr, Apt 1, San Antonio, TX 78251\",\r\n      \"bathrooms\": 1,\r\n      \"bedrooms\": 1,\r\n      \"build_year\": 1955,\r\n      \"city\": \"San Antonio\",\r\n      \"id\": \"10446-Mountain-View-Dr,-Apt-1,-San-Antonio,-TX-78251\",\r\n      \"image\": \"https://ar.rdcpix.com/3dd6c01d0480646a6d75a5d5f0690451c-f2985528909od-w480_h360.jpg\",\r\n      \"price\": 950,\r\n      \"property_type\": \"Single Family\",\r\n      \"sqft\": 730\r\n    },\r\n    {\r\n      \"address\": \"10446 Mountain View Dr, Apt 2, San Antonio, TX 78251\",\r\n      \"bathrooms\": 1,\r\n      \"bedrooms\": 1,\r\n      \"build_year\": 1955,\r\n      \"city\": \"San Antonio\",\r\n      \"id\": \"10446-Mountain-View-Dr,-Apt-2,-San-Antonio,-TX-78251\",\r\n      \"image\": \"https://ar.rdcpix.com/3dd6c01d0480646a6d75a5d5f0690451c-f2985528909od-w480_h360.jpg\",\r\n      \"price\": 950,\r\n      \"property_type\": \"Single Family\",\r\n      \"sqft\": 730\r\n    },\r\n    {\r\n      \"address\": \"10560 Sedgegrass Dr, Indianapolis, IN 46235\",\r\n      \"bathrooms\": 2,\r\n      \"bedrooms\": 3,\r\n      \"build_year\": null,\r\n      \"city\": \"Indianapolis\",\r\n      \"id\": \"10560-Sedgegrass-Dr,-Indianapolis,-IN-46235\",\r\n      \"image\": \"https://photos.zillowstatic.com/fp/e93511b7b0fcdf0045095674d8e46c1c-cc_ft_1536.jpg\",\r\n      \"price\": 1590,\r\n      \"property_type\": \"Single Family\",\r\n      \"sqft\": 1766\r\n    }\r\n  ],\r\n  \"meta\": {\r\n    \"count\": 500\r\n  }\r\n}"
+				}
+			]
+		},
+		{
+			"name": "Apartment by ID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Data in return\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"data\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Returned correct apartment\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.data.address).to.eql(\"1 E Delaware Pl, Apt 30B, Chicago, IL 60611\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/apartments/1-E-Delaware-Pl,-Apt-30B,-Chicago,-IL-60611",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"apartments",
+						"1-E-Delaware-Pl,-Apt-30B,-Chicago,-IL-60611"
+					]
+				},
+				"description": "Retrieves information about an apartment based on the given ID, including:\n\n- Address\n- Number of bedrooms\n- Number of bathrooms\n- Build year\n- City\n- Price per month\n- The property type (i.e. \"Apartment\", \"Single family home\")\n- Square footage\n- A list of images of that apartment"
+			},
+			"response": [
+				{
+					"name": "Example Apartment Request",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.geojobs.me/apartments/1-E-Delaware-Pl,-Apt-30B,-Chicago,-IL-60611",
+							"protocol": "https",
+							"host": [
+								"api",
+								"geojobs",
+								"me"
+							],
+							"path": [
+								"apartments",
+								"1-E-Delaware-Pl,-Apt-30B,-Chicago,-IL-60611"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "{\r\n  \"data\": {\r\n    \"address\": \"1 E Delaware Pl, Apt 30B, Chicago, IL 60611\",\r\n    \"bathrooms\": 2,\r\n    \"bedrooms\": 2,\r\n    \"build_year\": null,\r\n    \"city\": \"Chicago\",\r\n    \"id\": \"1-E-Delaware-Pl,-Apt-30B,-Chicago,-IL-60611\",\r\n    \"images\": [\r\n      {\r\n        \"id\": 123,\r\n        \"img_url\": \"https://ssl.cdn-redfin.com/photo/rent/1ecaeed5-ff7d-43ba-b6ea-80484c48157d/bigphoto/0_1.jpg\"\r\n      },\r\n      {\r\n        \"id\": 124,\r\n        \"img_url\": \"https://images1.loopnet.com/i2/70r6nYeK3NhrrabzIktbiKx3Z3GXvwnTq7LWJOatvgo/112/image.jpg\"\r\n      },\r\n      {\r\n        \"id\": 125,\r\n        \"img_url\": \"https://ar.rdcpix.com/e3a9c01669e96b5e7f00cede87d45c70c-f2863599992od-w480_h360_x2.jpg\"\r\n      },\r\n      {\r\n        \"id\": 126,\r\n        \"img_url\": \"https://images1.apartments.com/i2/kkimKmhv2OzenFz-iPr8cDRpTpnprz7-kMf_6MfDvAA/111/1-e-delaware-pl-unit-fl30-id64-chicago-il-primary-photo.jpg\"\r\n      }\r\n    ],\r\n    \"price\": 3575,\r\n    \"property_type\": \"Apartment\",\r\n    \"sqft\": 1040\r\n  }\r\n}"
+				}
+			]
+		},
+		{
+			"name": "All Jobs",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Data in return\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"data\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Proper amount returned\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.data.length).to.eql(20);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/jobs?page=1&perpage=20",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"jobs"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1",
+							"description": "Specifies which set of instances to return."
+						},
+						{
+							"key": "perpage",
+							"value": "20",
+							"description": "Specifies how many instances will be returned. Default is 20 if a page number is specified."
+						}
+					]
+				},
+				"description": "Retrieves information about all jobs, including:\n\n- Job Category (IT Jobs, Teaching Jobs, etc.)\n- Company\n- Job listing creation date\n- Job Description\n- Job logo\n- Latitude\n- Longitude\n- Salary range\n- Job title\n- Job listing url\n    \n\nNote: Latitude and longitude are not the exact job location, but are most likely the latitude and longitude of the county the job is in."
+			},
+			"response": [
+				{
+					"name": "All Jobs",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.geojobs.me/jobs?page=1&perPage=20",
+							"protocol": "https",
+							"host": [
+								"api",
+								"geojobs",
+								"me"
+							],
+							"path": [
+								"jobs"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "perPage",
+									"value": "20"
+								}
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "{\r\n  \"data\": [\r\n    {\r\n      \"category\": \"Teaching Jobs\",\r\n      \"company\": \"EF\",\r\n      \"created\": \"2019-01-22T08:32:59\",\r\n      \"description\": \"Control your days, work remotely, AND change lives. Start teaching with EF Today Teach English online to kids in China ages 6 to 10 with EF Education First, the world\\u2019s largest private education organization. With 25-minute class-blocks on early weekday mornings and late weekend nights, this rewarding role can be the perfect fit for your already busy life. You can connect from home  or anywhere in the U.S. \\u2013 and teach the same students week after week. Set your own schedule so that teaching fit\\u2026\",\r\n      \"id\": 1063512312,\r\n      \"img_url\": \"https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/EF_Education_First_logo.jpg/1200px-EF_Education_First_logo.jpg\",\r\n      \"latitude\": 41.8506,\r\n      \"longitude\": -87.7937,\r\n      \"salary_max\": 30720,\r\n      \"salary_min\": 24960,\r\n      \"title\": \"Work from Home Teaching English Online, no experience necessary, earn \",\r\n      \"url\": \"https://www.adzuna.com/land/ad/1063512312?se=toS_RHRO7RGyAiMfsjd06w&utm_medium=api&utm_source=20ebdf36&v=31B47AE488B64E7444937008CC89A5D815EA20B5\"\r\n    },\r\n    {\r\n      \"category\": \"Healthcare & Nursing Jobs\",\r\n      \"company\": \"Actriv Healthcare\",\r\n      \"created\": \"2019-11-02T10:56:29\",\r\n      \"description\": \"We staff healthcare providing organization and create opportunities for passionate Nurses (RN,CNA,LPN, Travel RNs) and allied professionals looking to enhance their lives. At Actriv Healthcare Staffing we believe in Heart Counts not Head counts. What we do: We\\u2019re an innovative workforce solutions company that staffs healthcare providing organizations with passionate healthcare providers (CNA, LPN, RN, Travel RNs and Allied Professionals) looking to enhance their lives. Caring More: We believe w\\u2026\",\r\n      \"id\": 1322679164,\r\n      \"img_url\": null,\r\n      \"latitude\": 47.7393,\r\n      \"longitude\": -122.344,\r\n      \"salary_max\": 48000,\r\n      \"salary_min\": 36480,\r\n      \"title\": \"Certified Nursing Assistant (CNA), Shoreline, WA\",\r\n      \"url\": \"https://www.adzuna.com/land/ad/1322679164?se=QAoIZXRO7RGyAiMfsjd06w&utm_medium=api&utm_source=20ebdf36&v=9EF51B385E2FEE0693060E1E418C1296641B82EA\"\r\n    },\r\n    {\r\n      \"category\": \"Travel Jobs\",\r\n      \"company\": \"Doordash\",\r\n      \"created\": \"2019-12-20T13:45:59\",\r\n      \"description\": \"Make Up to $18/hr as a Delivery Driver in Your Free time. DoorDash is about connecting people with possibilities: bigger savings accounts, wider nets, stronger communities, and happier days. We empower local businesses and local drivers with opportunities to earn, work, and live. As a Dasher, you can be your own boss and enjoy the flexibility of choosing when, where, and how much you earn. All you need is a mode of transportation and a smartphone to start making money. It\\u2019s that simple. Why wor\\u2026\",\r\n      \"id\": 1381866831,\r\n      \"img_url\": \"https://1000logos.net/wp-content/uploads/2021/06/DoorDash-logo.png\",\r\n      \"latitude\": 33.5349,\r\n      \"longitude\": -112.185,\r\n      \"salary_max\": 34560,\r\n      \"salary_min\": 34560,\r\n      \"title\": \"Make Up to $18/hr as a Delivery Driver in Your Free time.\",\r\n      \"url\": \"https://www.adzuna.com/land/ad/1381866831?se=uFrySHRO7RGyAiMfsjd06w&utm_medium=api&utm_source=20ebdf36&v=2A2C53979AEB870EF35C360076E19B659A018576\"\r\n    },\r\n    {\r\n      \"category\": \"Travel Jobs\",\r\n      \"company\": \"Doordash\",\r\n      \"created\": \"2019-12-20T13:46:06\",\r\n      \"description\": \"Make Up to $18/hr as a Delivery Driver in Your Free time. DoorDash is about connecting people with possibilities: bigger savings accounts, wider nets, stronger communities, and happier days. We empower local businesses and local drivers with opportunities to earn, work, and live. As a Dasher, you can be your own boss and enjoy the flexibility of choosing when, where, and how much you earn. All you need is a mode of transportation and a smartphone to start making money. It\\u2019s that simple. Why wor\\u2026\",\r\n      \"id\": 1381867178,\r\n      \"img_url\": \"https://1000logos.net/wp-content/uploads/2021/06/DoorDash-logo.png\",\r\n      \"latitude\": 31.7597,\r\n      \"longitude\": -106.479,\r\n      \"salary_max\": 34560,\r\n      \"salary_min\": 34560,\r\n      \"title\": \"Make Up to $18/hr as a Delivery Driver in Your Free time.\",\r\n      \"url\": \"https://www.adzuna.com/land/ad/1381867178?se=EAPab3RO7RGyAiMfsjd06w&utm_medium=api&utm_source=20ebdf36&v=CC8619E5D91ECE396CDC270BCEA11BE340733E93\"\r\n    },\r\n    {\r\n      \"category\": \"Travel Jobs\",\r\n      \"company\": \"Doordash\",\r\n      \"created\": \"2019-12-20T13:46:06\",\r\n      \"description\": \"Make Up to $18/hr as a Delivery Driver in Your Free time. DoorDash is about connecting people with possibilities: bigger savings accounts, wider nets, stronger communities, and happier days. We empower local businesses and local drivers with opportunities to earn, work, and live. As a Dasher, you can be your own boss and enjoy the flexibility of choosing when, where, and how much you earn. All you need is a mode of transportation and a smartphone to start making money. It\\u2019s that simple. Why wor\\u2026\",\r\n      \"id\": 1381867185,\r\n      \"img_url\": \"https://1000logos.net/wp-content/uploads/2021/06/DoorDash-logo.png\",\r\n      \"latitude\": 36.8644,\r\n      \"longitude\": -75.9986,\r\n      \"salary_max\": 34560,\r\n      \"salary_min\": 34560,\r\n      \"title\": \"Make Up to $18/hr as a Delivery Driver in Your Free time.\",\r\n      \"url\": \"https://www.adzuna.com/land/ad/1381867185?se=gF9qmnRO7RGyAiMfsjd06w&utm_medium=api&utm_source=20ebdf36&v=3B326663B1E07DB12F4F4318FAB28D7D18BF6E41\"\r\n    },\r\n    {\r\n      \"category\": \"Travel Jobs\",\r\n      \"company\": \"Doordash\",\r\n      \"created\": \"2019-12-20T13:46:06\",\r\n      \"description\": \"Make Up to $18/hr as a Delivery Driver in Your Free time. DoorDash is about connecting people with possibilities: bigger savings accounts, wider nets, stronger communities, and happier days. We empower local businesses and local drivers with opportunities to earn, work, and live. As a Dasher, you can be your own boss and enjoy the flexibility of choosing when, where, and how much you earn. All you need is a mode of transportation and a smartphone to start making money. It\\u2019s that simple. Why wor\\u2026\",\r\n      \"id\": 1381867188,\r\n      \"img_url\": \"https://1000logos.net/wp-content/uploads/2021/06/DoorDash-logo.png\",\r\n      \"latitude\": 41.2661,\r\n      \"longitude\": -95.933,\r\n      \"salary_max\": 34560,\r\n      \"salary_min\": 34560,\r\n      \"title\": \"Make Up to $18/hr as a Delivery Driver in Your Free time.\",\r\n      \"url\": \"https://www.adzuna.com/land/ad/1381867188?se=KCXskXRO7RGely6k_216jA&utm_medium=api&utm_source=20ebdf36&v=B0AE7F3E5DF9B3BF3327C65C374B3E5FD9A5FDA6\"\r\n    },\r\n    {\r\n      \"category\": \"Energy, Oil & Gas Jobs\",\r\n      \"company\": \"Teltech Communications, LLC\",\r\n      \"created\": \"2021-08-27T11:09:49\",\r\n      \"description\": \"_ The DC Power Technician Lead leads and performs work associated with the addition and/or removal of communications power equipment (rectifiers, batteries, cabinets). Run, lace and terminate power, ground cable, and alarm connections as well as construction of infrastructure related to DC power systems. This role assists with project coordination while interfacing with customers and field representatives to monitor all installation requirements. _ Essential Duties and Responsibilities: Lead an\\u2026\",\r\n      \"id\": 2412445847,\r\n      \"img_url\": \"https://teltech.com/wp-content/uploads/2020/07/logo.png\",\r\n      \"latitude\": 40.1038,\r\n      \"longitude\": -83.02,\r\n      \"salary_max\": 60000,\r\n      \"salary_min\": 50000,\r\n      \"title\": \"DC Power Technician Lean\",\r\n      \"url\": \"https://www.adzuna.com/land/ad/2412445847?se=qsgfXHRO7RGyAiMfsjd06w&utm_medium=api&utm_source=20ebdf36&v=A3CC9A6A00C76DE8597449343C5B46600D5D1777\"\r\n    },\r\n    {\r\n      \"category\": \"IT Jobs\",\r\n      \"company\": \"Teltech Communications, LLC\",\r\n      \"created\": \"2021-10-01T17:46:29\",\r\n      \"description\": \": Note: Deadline for submission is 10/07/2021 5371ITC858R Location: The primary work location(s) will be in Austin, Texas 78751 . No relocation is available for this position. Duration: Services are expected to start 10/28/2021 and are expected to complete by 08/31/2022 . This service may be amended, renewed, and/or extended. Texas Health and Human Services Commission requires the services of 1 Systems Analyst 3 , hereafter referred to as Candidate(s), who meets the general qualifications of Sy\\u2026\",\r\n      \"id\": 2508946464,\r\n      \"img_url\": \"https://teltech.com/wp-content/uploads/2020/07/logo.png\",\r\n      \"latitude\": 29.9184,\r\n      \"longitude\": -96.2589,\r\n      \"salary_max\": 157000,\r\n      \"salary_min\": 142000,\r\n      \"title\": \"Systems Analyst 3 (AWS DevOps Engineer)\",\r\n      \"url\": \"https://www.adzuna.com/land/ad/2508946464?se=_seMVXRO7RG33QbCOqIw_Q&utm_medium=api&utm_source=20ebdf36&v=D7F65E2FCBD80879C5EBAB2BD837805824EA9E94\"\r\n    },\r\n    {\r\n      \"category\": \"Accounting & Finance Jobs\",\r\n      \"company\": \"Precision Dermatology and Skin Surgery\",\r\n      \"created\": \"2021-10-06T16:22:50\",\r\n      \"description\": \"PRECISION DERMATOLOGY AND SKIN SURGERY, PA RIVERSIDE AND ORANGE PARK OFFICES POSITION: DERMATOLOGY BILLING/CODING CLERK DEPARTMENT: BILLING/GENERAL OFFICE REPORTS TO: OFFICE MANAGER/OWNER EDUCATION: HIGH SCHOOL DIPLOMA EXPERIENCE: At least 1-year experience in medical billing and coding required, 1-year experience in Dermatology billing/coding preferred but will train upon hire JOB SUMMARY: This position requires an experienced Medical Biller that has a strong background in medical billing and \\u2026\",\r\n      \"id\": 2522545535,\r\n      \"img_url\": \"https://precisiondermatology.ca/wp-content/themes/precisiondermatology/images/precision-logo.png\",\r\n      \"latitude\": 30.3241,\r\n      \"longitude\": -81.6809,\r\n      \"salary_max\": 32640,\r\n      \"salary_min\": 32640,\r\n      \"title\": \"Billing and A/R Claims Specialist\",\r\n      \"url\": \"https://www.adzuna.com/land/ad/2522545535?se=SJuzV3RO7RGyAiMfsjd06w&utm_medium=api&utm_source=20ebdf36&v=68C7AF66F83A9AA6C8EF9FC05090861B6CEEF818\"\r\n    },\r\n    {\r\n      \"category\": \"Logistics & Warehouse Jobs\",\r\n      \"company\": \"Ardmor Windows and Doors\",\r\n      \"created\": \"2021-10-13T06:10:31\",\r\n      \"description\": \"ARDMOR, Inc Warehouse Manager The dynamic, fast growing company, ARDMOR Windows and Doors, the leader in the windows/doors repair and replacement services. We are looking for a Warehouse Manager who can cope with clutter and keep a lot of tasks under control Our goal is to grow double in size In connection with this, our team needs replenishment. You will have the opportunity to grow with our company and build a stable future for yourself What will I do? - placing orders for jobs; - pick up and\\u2026\",\r\n      \"id\": 2540575929,\r\n      \"img_url\": \"https://ardmor.com/wp-content/uploads/2018/07/ardmor-logo.png\",\r\n      \"latitude\": 40.0918,\r\n      \"longitude\": -75.0426,\r\n      \"salary_max\": 53760,\r\n      \"salary_min\": 46080,\r\n      \"title\": \"Warehouse Manager\",\r\n      \"url\": \"https://www.adzuna.com/land/ad/2540575929?se=RHsCS3RO7RGyAiMfsjd06w&utm_medium=api&utm_source=20ebdf36&v=B2FB978EC9883705DCFC021CD565053032870B12\"\r\n    },\r\n    {\r\n      \"category\": \"IT Jobs\",\r\n      \"company\": \"Allnessinc\",\r\n      \"created\": \"2021-10-25T15:02:44\",\r\n      \"description\": \"We have partnered with a large manufacturing company in the San Jose, CA area to provide them with a Customer Support Specialist. Please review the below and let us know if you are interested. Responsibilities of the Customer Support Specialist: \\u00b7Coordinate/conduct project meetings, write detailed business and system requirements, lead User Acceptance Testing and provide system training to business users \\u00b7Drive system project execution and advocate change management with IT team as needed for e\\u2026\",\r\n      \"id\": 2576535896,\r\n      \"img_url\": \"https://i.ebayimg.com/images/g/yIwAAOSwx~1f8hn1/s-l300.jpg\",\r\n      \"latitude\": 37.3905,\r\n      \"longitude\": -121.885,\r\n      \"salary_max\": 65000,\r\n      \"salary_min\": 60000,\r\n      \"title\": \"Customer Support Specialist\",\r\n      \"url\": \"https://www.adzuna.com/land/ad/2576535896?se=pBJxU3RO7RGyAiMfsjd06w&utm_medium=api&utm_source=20ebdf36&v=C11DD2AC2FE2F86C313C008AD59A6A29342D6FF1\"\r\n    },\r\n    {\r\n      \"category\": \"Teaching Jobs\",\r\n      \"company\": \"EF\",\r\n      \"created\": \"2021-11-03T20:17:22\",\r\n      \"description\": \"Control your days, work remotely, AND change lives. Start teaching with EF Today Teach English online to kids in China ages 6 to 10 with EF Education First, the world\\u2019s largest private education organization. With 25-minute class-blocks on early weekday mornings and late weekend nights, this rewarding role can be the perfect fit for your already busy life. You can connect from home  or anywhere in the U.S. \\u2013 and teach the same students week after week. Set your own schedule so that teaching fit\\u2026\",\r\n      \"id\": 2609701998,\r\n      \"img_url\": \"https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/EF_Education_First_logo.jpg/1200px-EF_Education_First_logo.jpg\",\r\n      \"latitude\": 31.7281,\r\n      \"longitude\": -106.353,\r\n      \"salary_max\": 30720,\r\n      \"salary_min\": 24960,\r\n      \"title\": \"Work from Home Teaching English Online, no experience necessary, earn \",\r\n      \"url\": \"https://www.adzuna.com/land/ad/2609701998?se=EAPab3RO7RGyAiMfsjd06w&utm_medium=api&utm_source=20ebdf36&v=43C79D3AAE59E700FEBB4CD7E489CDE83B25B423\"\r\n    },\r\n    {\r\n      \"category\": \"Teaching Jobs\",\r\n      \"company\": \"EF\",\r\n      \"created\": \"2021-11-03T20:17:23\",\r\n      \"description\": \"Control your days, work remotely, AND change lives. Start teaching with EF Today Teach English online to kids in China ages 6 to 10 with EF Education First, the world\\u2019s largest private education organization. With 25-minute class-blocks on early weekday mornings and late weekend nights, this rewarding role can be the perfect fit for your already busy life. You can connect from home  or anywhere in the U.S. \\u2013 and teach the same students week after week. Set your own schedule so that teaching fit\\u2026\",\r\n      \"id\": 2609702003,\r\n      \"img_url\": \"https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/EF_Education_First_logo.jpg/1200px-EF_Education_First_logo.jpg\",\r\n      \"latitude\": 33.9653,\r\n      \"longitude\": -118.151,\r\n      \"salary_max\": 30720,\r\n      \"salary_min\": 24960,\r\n      \"title\": \"Work from Home Teaching English Online, no experience necessary, earn \",\r\n      \"url\": \"https://www.adzuna.com/land/ad/2609702003?se=pivfQnRO7RGyAiMfsjd06w&utm_medium=api&utm_source=20ebdf36&v=FFBF8FE8006CCDA1B4C08594CBAB50BC1ADB0465\"\r\n    },\r\n    {\r\n      \"category\": \"Teaching Jobs\",\r\n      \"company\": \"EF\",\r\n      \"created\": \"2021-11-03T20:17:25\",\r\n      \"description\": \"Control your days, work remotely, AND change lives. Start teaching with EF Today Teach English online to kids in China ages 6 to 10 with EF Education First, the world\\u2019s largest private education organization. With 25-minute class-blocks on early weekday mornings and late weekend nights, this rewarding role can be the perfect fit for your already busy life. You can connect from home  or anywhere in the U.S. \\u2013 and teach the same students week after week. Set your own schedule so that teaching fit\\u2026\",\r\n      \"id\": 2609702142,\r\n      \"img_url\": \"https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/EF_Education_First_logo.jpg/1200px-EF_Education_First_logo.jpg\",\r\n      \"latitude\": 39.9574,\r\n      \"longitude\": -75.2654,\r\n      \"salary_max\": 30720,\r\n      \"salary_min\": 24960,\r\n      \"title\": \"Work from Home Teaching English Online, no experience necessary, earn \",\r\n      \"url\": \"https://www.adzuna.com/land/ad/2609702142?se=RHsCS3RO7RGyAiMfsjd06w&utm_medium=api&utm_source=20ebdf36&v=FED28FAA679DDBA537CEE55049AF169A3BD6571C\"\r\n    },\r\n    {\r\n      \"category\": \"IT Jobs\",\r\n      \"company\": \"Teltech Communications, LLC\",\r\n      \"created\": \"2021-11-06T17:21:44\",\r\n      \"description\": \"_ Note: Deadline for submission is 11/10/2021 200810 Location: The primary work location(s) will be in Austin TX, 78701. No relocation is available for this position. Candidates must reside in the Austin, TX area. Duration: Services are expected to start 12/15/2021 and are expected to complete by 04/30/2022 . This service may be amended, renewed, and/or extended. Texas Facilities Commission requires the services of 1 Network Enginer 3 , hereafter referred to as Candidate(s), who meets the gener\\u2026\",\r\n      \"id\": 2618973650,\r\n      \"img_url\": \"https://teltech.com/wp-content/uploads/2020/07/logo.png\",\r\n      \"latitude\": 29.9184,\r\n      \"longitude\": -96.2589,\r\n      \"salary_max\": 150000,\r\n      \"salary_min\": 135000,\r\n      \"title\": \"Network Engineer 3 (Cisco)\",\r\n      \"url\": \"https://www.adzuna.com/land/ad/2618973650?se=_seMVXRO7RG33QbCOqIw_Q&utm_medium=api&utm_source=20ebdf36&v=ED27EA2DCCB902795E7569B427A4C345106CDE4A\"\r\n    },\r\n    {\r\n      \"category\": \"Customer Services Jobs\",\r\n      \"company\": \"OneMCI\",\r\n      \"created\": \"2022-01-07T14:08:58\",\r\n      \"description\": \"$15.00 / hour TELESALES REPRESENTATIVE (FULL-TIME) We are looking for telesales representatives to support outbound sales programs for commercial clients. In this role, you will make outbound calls to new prospects and current customers, sell new products, upsell existing ones, and provide customer information on client products and services. There are a wide variety of project openings available representing some of the most recognizable brands in the world. Schedules vary by site and program;\\u2026\",\r\n      \"id\": 2797336868,\r\n      \"img_url\": \"https://www.mci.world/wp-content/uploads/2019/10/An_MCI_Company.png\",\r\n      \"latitude\": 32.9288,\r\n      \"longitude\": -96.8777,\r\n      \"salary_max\": 33120,\r\n      \"salary_min\": 25152,\r\n      \"title\": \"Dallas Telesales Representative (Full-Time)\",\r\n      \"url\": \"https://www.adzuna.com/land/ad/2797336868?se=JrtcUXRO7RG33QbCOqIw_Q&utm_medium=api&utm_source=20ebdf36&v=263C4A6723F5E5377EB7037EC5A6024F9819F070\"\r\n    },\r\n    {\r\n      \"category\": \"Admin Jobs\",\r\n      \"company\": \"David E. Quan Insurance Agency\",\r\n      \"created\": \"2022-01-08T07:09:08\",\r\n      \"description\": \"Administrative Assistant Status: Non-Exempt Job Summary: The administrative assistant performs general clerical duties to include but not limited to: scanning, photocopying, faxing, mail distribution and filing. Coordinates and maintains records for staff, and tracks open tasks. Creates and modifies various documents using Microsoft Office. Primary Responsibilities: Answer and direct phone calls Organize and schedule appointments Write and distribute email, correspondence memos, letters, faxes \\u2026\",\r\n      \"id\": 2799262140,\r\n      \"img_url\": null,\r\n      \"latitude\": 37.807,\r\n      \"longitude\": -122.286,\r\n      \"salary_max\": 42240,\r\n      \"salary_min\": 34560,\r\n      \"title\": \"Administrative Assistant\",\r\n      \"url\": \"https://www.adzuna.com/land/ad/2799262140?se=mFTCnnRO7RGyAiMfsjd06w&utm_medium=api&utm_source=20ebdf36&v=EA96AF04B9B753A12BC4BDE8BFC3C11360925C49\"\r\n    },\r\n    {\r\n      \"category\": \"IT Jobs\",\r\n      \"company\": \"Barracuda\",\r\n      \"created\": \"2022-01-13T10:57:10\",\r\n      \"description\": \"Salary 100,000 - 130,000 USD per year Requirements: - 5 years progressive experience with 3 years proficiency in Linux/Unix command line and understanding of package management on Linux systems Demonstrated programming skills in one or more of Bash, Python, Perl, PHP, Ruby, C, C#, Go, Java Understanding of network OSI model Ability to prioritize tasks and work independently Track record of successful practical problem solving, excellent written and interpersonal communication, and documentation\\u2026\",\r\n      \"id\": 2811159817,\r\n      \"img_url\": \"https://1000logos.net/wp-content/uploads/2021/05/Barracuda-Networks-logo.png\",\r\n      \"latitude\": 37.28,\r\n      \"longitude\": -121.956,\r\n      \"salary_max\": 130000,\r\n      \"salary_min\": 100000,\r\n      \"title\": \"Senior DevOps Engineer (Remote, United States)\",\r\n      \"url\": \"https://www.adzuna.com/land/ad/2811159817?se=pBJxU3RO7RGyAiMfsjd06w&utm_medium=api&utm_source=20ebdf36&v=6591BB3D33BF309609B433478548FA531309DD15\"\r\n    },\r\n    {\r\n      \"category\": \"Sales Jobs\",\r\n      \"company\": \"3HTi\",\r\n      \"created\": \"2022-01-14T10:01:07\",\r\n      \"description\": \"Enterprise Product Lifecycle Management and Mechanical CAD Sales Executive If you weren\\u2019t held back at your workplace, how far could you go? Are you a \\u2018people-person\\u2019 with experience in selling enterprise software? And are you ready to feel empowered at an important role in a growing company? We are 3 HTi, a privately held systems integrator located in Mount Laurel, New Jersey, and we\\u2019re the Global Leader for Digital Transformation of the Manufacturing Enterprise. We provide technology platform\\u2026\",\r\n      \"id\": 2813786955,\r\n      \"img_url\": null,\r\n      \"latitude\": 40.0328,\r\n      \"longitude\": -75.1198,\r\n      \"salary_max\": 225000,\r\n      \"salary_min\": 100000,\r\n      \"title\": \"PLM Salesperson\",\r\n      \"url\": \"https://www.adzuna.com/land/ad/2813786955?se=RHsCS3RO7RGyAiMfsjd06w&utm_medium=api&utm_source=20ebdf36&v=89B33300448C647E4BEA8F0CE7B9550A07C64B1A\"\r\n    },\r\n    {\r\n      \"category\": \"IT Jobs\",\r\n      \"company\": \"ISYS Technologies, Inc.\",\r\n      \"created\": \"2022-01-24T14:10:20\",\r\n      \"description\": \"US Citizen ISYS Technologies delivers emerging technology solutions through our diverse and talented employees who are dedicated to our customers\\u2019 success. We empower our teams, contribute to our country and operate responsibly. We are a reputable award-winning WOSB providing Engineering and Enterprise Information Technology (EIT) services to the Federal government. Headquartered in Colorado, ISYS serves key national customers throughout the United States with a presence in more than 16 states.\\u2026\",\r\n      \"id\": 2840095658,\r\n      \"img_url\": null,\r\n      \"latitude\": 39.0201,\r\n      \"longitude\": -77.0113,\r\n      \"salary_max\": 89000,\r\n      \"salary_min\": 79000,\r\n      \"title\": \"Software Engineer II\",\r\n      \"url\": \"https://www.adzuna.com/land/ad/2840095658?se=gEk-aXRO7RG33QbCOqIw_Q&utm_medium=api&utm_source=20ebdf36&v=9E8AA462992136D46DFC06105C505ED8254DA9D6\"\r\n    }\r\n  ],\r\n  \"meta\": {\r\n    \"count\": 1000\r\n  }\r\n}"
+				}
+			]
+		},
+		{
+			"name": "Job by ID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Data in return\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"data\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Returned correct job\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.data.title).to.eql(\"Work from Home Teaching English Online, no experience necessary, earn \");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/jobs/1063512312",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"jobs",
+						"1063512312"
+					]
+				},
+				"description": "StartFragment\n\nRetrieves information about a jobs based on the given ID, including:\n\n- Job Category (IT Jobs, Teaching Jobs, etc.)\n- Company\n- Job listing creation date\n- Job Description\n- Job logo\n- Latitude\n- Longitude\n- Salary range\n- Job title\n- Job listing url\n    \n\nNote: Latitude and longitude are not the exact job location, but are most likely the latitude and longitude of the county the job is in.\n\nEndFragment"
+			},
+			"response": [
+				{
+					"name": "Example Job Request",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.geojobs.me/jobs/1063512312",
+							"protocol": "https",
+							"host": [
+								"api",
+								"geojobs",
+								"me"
+							],
+							"path": [
+								"jobs",
+								"1063512312"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "{\r\n    \"data\": {\r\n        \"category\": \"Teaching Jobs\",\r\n        \"company\": \"EF\",\r\n        \"created\": \"2019-01-22T08:32:59\",\r\n        \"description\": \"Control your days, work remotely, AND change lives. Start teaching with EF Today Teach English online to kids in China ages 6 to 10 with EF Education First, the world\\u2019s largest private education organization. With 25-minute class-blocks on early weekday mornings and late weekend nights, this rewarding role can be the perfect fit for your already busy life. You can connect from home  or anywhere in the U.S. \\u2013 and teach the same students week after week. Set your own schedule so that teaching fit\\u2026\",\r\n        \"id\": 1063512312,\r\n        \"img_url\": \"https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/EF_Education_First_logo.jpg/1200px-EF_Education_First_logo.jpg\",\r\n        \"latitude\": 41.8506,\r\n        \"longitude\": -87.7937,\r\n        \"salary_max\": 30720,\r\n        \"salary_min\": 24960,\r\n        \"title\": \"Work from Home Teaching English Online, no experience necessary, earn \",\r\n        \"url\": \"https://www.adzuna.com/land/ad/1063512312?se=toS_RHRO7RGyAiMfsjd06w&utm_medium=api&utm_source=20ebdf36&v=31B47AE488B64E7444937008CC89A5D815EA20B5\"\r\n    }\r\n}"
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "URL",
+			"value": "https://api.geojobs.me"
+		}
+	]
+}

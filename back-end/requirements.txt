@@ -3,9 +3,9 @@ flask_sqlalchemy
 sqlalchemy
 flask_restful
 pymysql
-pyuwsgi
 flask-marshmallow
 marshmallow-sqlalchemy
 flask-cors
 jsonschema
 requests
+waitress

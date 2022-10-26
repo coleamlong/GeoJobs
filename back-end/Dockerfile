@@ -20,7 +20,4 @@ RUN pip3 install -r requirements.txt
 
 EXPOSE 80
 
-COPY nginx.conf /etc/nginx
-ENTRYPOINT ["bash","start.sh"]
-RUN chmod +x ./start.sh
-CMD ["./start.sh"]
+CMD ["python3", "waitress_server.py"]

@@ -52,7 +52,7 @@ class ApartmentImage(db.Model) :
     img_url = db.Column(db.String(200)) # subject to change
 
 class Job(db.Model) : 
-    id = db.Column(db.Integer, primary_key = True)
+    id = db.Column(db.BigInteger, primary_key = True)
     city_id = db.Column(db.Integer, db.ForeignKey('city.id'))
     company = db.Column(db.String(40))
     title = db.Column(db.String(70))
@@ -65,4 +65,3 @@ class Job(db.Model) :
     description = db.Column(db.String(550))
     created = db.Column(db.DateTime)
     img_url = db.Column(db.String(200)) # subject to change
-    twitter_id = db.Column(db.String(20))
