@@ -18,7 +18,7 @@ const Jobs = () => {
     const fetchJobs = async () => {
       if (jobs === undefined || jobs.length === 0) {
         await client
-          .get("jobs")
+          .get("jobs?")
           .then((response) => {
             setJobs(response.data);
           })
