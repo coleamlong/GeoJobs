@@ -36,6 +36,15 @@ frontend_gui_test:
   # Run selenium tests
   - python3 guitests.py
 
+postman_tests:
+    stage: test
+    image: 
+        name: postman/newman:alpine
+        entrypoint: [""]
+    script:
+        - cd back-end
+        - newman --version
+        - newman run collection.json
 
 backend_unit_tests:
   stage: test
