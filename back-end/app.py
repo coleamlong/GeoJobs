@@ -127,7 +127,9 @@ def get_job(r_id):
         result = job_schema.dump(query, many=True)[0]
     except IndexError:
         return return_error(f"Invalid job ID: {r_id}")
-    return jsonify(result)
+    return jsonify({
+        "data": result
+    })
 
 @app.route("/apartments/<string:r_id>")
 def get_apartment(r_id):
