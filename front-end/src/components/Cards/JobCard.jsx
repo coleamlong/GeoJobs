@@ -1,21 +1,46 @@
 import React from "react";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
+import job_placeholder from "../../assets/placeholder/job.png";
 
 const JobCard = (props) => {
-  const { title, city, state, salary, contractType, key } = props.job;
+  const {
+    category,
+    company,
+    created,
+    description,
+    id,
+    salary_max,
+    salary_min,
+    title,
+    url,
+    img_url,
+  } = props.job;
   return (
-    <Card style={{ height: "25rem" }}>
+    <Card>
+      <Card.Img
+        className="p-2"
+        style={{
+          height: "18rem",
+          width: "18rem",
+          objectFit: "contain",
+        }}
+        src={img_url ? img_url : job_placeholder}
+      ></Card.Img>
       <Card.Body>
-        <Card.Title>Title: {title}</Card.Title>
-        <Card.Text>City: {city}</Card.Text>
-        <Card.Text>State: {state}</Card.Text>
-        <Card.Text>Salary: {salary}</Card.Text>
-        <Card.Text>ContractType: {contractType}</Card.Text>
+        <Card.Title>{company}</Card.Title>
+        <Card.Subtitle>{title}</Card.Subtitle>
+        <Card.Text>
+          Salary: ${salary_min} - ${salary_max}
+        </Card.Text>
       </Card.Body>
-      <Card.Footer className="d-flex justify-content-center">
-        <Button variant="dark" href={`/job/${key}`}>
-          more info on {props.title}
+      <Card.Footer>
+        <Button
+          className="d-flex justify-content-center"
+          variant="dark"
+          href={`/job/${id}`}
+        >
+          More Info
         </Button>
       </Card.Footer>
     </Card>

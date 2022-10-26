@@ -7,7 +7,7 @@ import axios from "axios";
 import ApartmentCard from "../components/Cards/ApartmentCard";
 
 const client = axios.create({
-  baseURL: "https://api.geojobs.me/",
+  baseURL: "http://api.geojobs.me/",
 });
 
 const Apartments = () => {
@@ -21,6 +21,7 @@ const Apartments = () => {
           .get("apartments")
           .then((response) => {
             setApartments(response.data);
+            console.log(response.data);
           })
           .catch((err) => console.log(err));
         setLoaded(true);
@@ -31,12 +32,12 @@ const Apartments = () => {
 
   return (
     <Container>
-      <h1>Apartments</h1>
-      <Row md={3} className="d-flex g-4 p-4 justify-content-center">
+      <h1 className="p-5 text-center">Apartments</h1>
+      <Row md={4} className="d-flex g-4 p-4 justify-content-center">
         {loaded ? (
-          apartments.map((apartment) => {
+          apartments["data"].map((apartment) => {
             return (
-              <Col>
+              <Col className="d-flex align-self-stretch">
                 <ApartmentCard apartment={apartment} />
               </Col>
             );

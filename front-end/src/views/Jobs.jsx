@@ -31,12 +31,12 @@ const Jobs = () => {
 
   return (
     <Container>
-      <h1>Jobs</h1>
-      <Row md={3} className="d-flex g-4 p-4 justify-content-center">
+      <h1 className="p-5 text-center">Jobs</h1>
+      <Row md={4} className="d-flex g-4 p-4 justify-content-center">
         {loaded ? (
-          jobs.map((job) => {
+          jobs["data"].map((job) => {
             return (
-              <Col>
+              <Col className="d-flex align-self-stretch">
                 <JobCard job={job} />
               </Col>
             );
