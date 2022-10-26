@@ -15,6 +15,13 @@ build_front_end:
     - npm install
     - npm run-script build
 
+frontend_jest_tests:
+  stage: test
+  script:
+    - cd front-end
+    - npm install
+    - CI=true npm test
+
 frontend_gui_test:
   stage: test
   image: python:3.6-stretch
