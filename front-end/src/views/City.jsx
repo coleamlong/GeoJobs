@@ -1,133 +1,134 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import Container from "react-bootstrap/Container";
+import axios from "axios";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import { ExternalLink } from "react-external-link";
+import Spinner from "react-bootstrap/Spinner";
 import { TwitterTimelineEmbed } from "react-twitter-embed";
 
-const cities = [
-  {
-    name: "Austin",
-    activities:
-      "Charming, Foodie, Nightlife, Performing Arts, Music, College-town, Outdoorsy, Wineries, Shopping",
-    walk_score: "https://www.walkscore.com/TX/Austin",
-    average_rating: "4.27",
-    budget: "7 out of 8",
-    safety_score: "5 out of 5",
-    population: "790390",
-    img: "https://cdn.roadgoat.com/uploads/photo/image/382/large_travel-guide-of-austin-tx-usa-original.jpg",
-    timeline: "Austin_Police",
-  },
-
-  {
-    name: "New York",
-    activities:
-      "Charming, Foodie, Nightlife, Architecture, History, Museums, Performing Arts, Posh, LGBT Scene, Diversity, Shopping",
-    walk_score: "https://www.walkscore.com/NY/New_York",
-    average_rating: "4.31",
-    budget: "8 out of 8",
-    safety_score: "4 out of 5 ",
-    population: "8175133",
-    img: "https://cdn.roadgoat.com/uploads/photo/image/608/large_travel-guide-of-new-york-ny-usa-original.jpg",
-    timeline: "NYPDnews",
-  },
-
-  {
-    name: "San Francisco",
-    activities:
-      "Charming, Foodie, Nightlife, Architecture, Hipster, Hippie, LGBT Scene, Diversity ,Shopping",
-    walk_score: "https://www.walkscore.com/CA/San_Francisco",
-    average_rating: "4.47",
-    budget: "8 out of 8",
-    safety_score: "4 out of 5 ",
-    population: "805235",
-    img: "https://cdn.roadgoat.com/uploads/photo/image/692/large_travel-guide-of-san-francisco-ca-usa-original.jpg",
-    timeline: "SFPD",
-  },
-];
+const client = axios.create({
+  baseURL: "https://api.geojobs.me/",
+});
 
 const City = () => {
   const { id } = useParams();
+  const [city, setCity] = useState();
+  const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    const fetchCity = async () => {
+      if (city === undefined) {
+        await client
+          .get(`cities/${id}`)
+          .then((response) => {
+            setCity(response.data["data"]);
+          })
+          .catch((err) => console.log(err));
+      }
+      setLoaded(true);
+    };
+    fetchCity();
+  }, [city]);
+
   return (
-    <Paper
-      sx={{
-        p: 13,
-        margin: "auto",
-        maxWidth: 1000,
-        flexGrow: 4,
-        backgroundColor: (theme) =>
-          theme.palette.mode === "dark" ? "#1A2027" : "#fff",
-      }}
-    >
-      <Grid container spacing={2}>
-        <Grid item></Grid>
-        <Grid item xs={12} sm container>
-          <Grid item xs container direction="column" spacing={2}>
-            <Grid item xs>
-              <Typography gutterBottom variant="subtitle1" component="div">
-                {cities[id - 1].name}
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                Known For: {cities[id - 1].activities}
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                Average Rating: {cities[id - 1].average_rating}
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                Safety Score: {cities[id - 1].safety_score}
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                Budget Score: {cities[id - 1].budget}
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                Population: {cities[id - 1].population}
-              </Typography>
-            </Grid>
-            <Grid item>
-              <Typography variant="body2" color="text.secondary">
-                <li>
-                  <ExternalLink href={cities[id - 1].walk_score}>
-                    <span>Walk Score</span>
-                  </ExternalLink>
-                </li>
-              </Typography>
-            </Grid>
-            <Grid item>
-              <Typography sx={{ cursor: "pointer" }} variant="body2">
-                <li>
-                  <Link to={`/apartment/${id}`}>Find Apartment</Link>
-                </li>
-              </Typography>
-            </Grid>
-            <Grid item>
-              <Typography sx={{ cursor: "pointer" }} variant="body2">
-                <li>
-                  <Link to={`/job/${id}`}>Find Job</Link>
-                </li>
-              </Typography>
+    <Container>
+      <Typography
+        gutterBottom
+        className="modelTitle"
+        variant="h2"
+        sx={{ textAlign: "center" }}
+      >
+        City Info
+      </Typography>
+      {loaded ? (
+        <Paper
+          sx={{
+            p: 13,
+            margin: "auto",
+            maxWidth: 1000,
+            flexGrow: 4,
+            backgroundColor: (theme) =>
+              theme.palette.mode === "dark" ? "#1A2027" : "#fff",
+          }}
+        >
+          <Grid container spacing={2}>
+            <Grid item></Grid>
+            <Grid item xs={12} sm container>
+              <Grid item xs container direction="column" spacing={2}>
+                <Grid item xs>
+                  <Typography gutterBottom variant="subtitle1" component="div">
+                    {city.name}
+                  </Typography>
+                  <Typography
+                    variant="body2"
+                    color="text.secondary"
+                  ></Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    Average Rating: {city.avg_rating}
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    Safety Score: {city.safety}
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    Budget Score: {city.budget}
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    Population: {city.population}
+                  </Typography>
+                </Grid>
+                <Grid item>
+                  <Typography variant="body2" color="text.secondary">
+                    <li>
+                      <ExternalLink href={city.walkscore_url}>
+                        <span>Walk Score</span>
+                      </ExternalLink>
+                    </li>
+                  </Typography>
+                </Grid>
+                <Grid item>
+                  <Typography sx={{ cursor: "pointer" }} variant="body2">
+                    <li>
+                      <Link to={`/apartment/${city.apartment}`}>
+                        Find Apartment
+                      </Link>
+                    </li>
+                  </Typography>
+                </Grid>
+                <Grid item>
+                  <Typography sx={{ cursor: "pointer" }} variant="body2">
+                    <li>
+                      <Link to={`/job/${city.job}`}>Find Job</Link>
+                    </li>
+                  </Typography>
+                </Grid>
+              </Grid>
+              <Grid item>
+                <div>
+                  <TwitterTimelineEmbed
+                    sourceType="profile"
+                    screenName={city.police_twitter}
+                    options={{ height: 400 }}
+                  />
+                </div>
+                <Typography variant="body">
+                  <img
+                    alt=""
+                    style={{ width: 800, height: 600 }}
+                    src={city.img_url}
+                  />
+                </Typography>
+              </Grid>
             </Grid>
           </Grid>
-          <Grid item>
-            <div>
-              <TwitterTimelineEmbed
-                sourceType="profile"
-                screenName={cities[id - 1].timeline}
-                options={{ height: 400 }}
-              />
-            </div>
-            <Typography variant="body">
-              <img
-                alt=""
-                style={{ width: 800, height: 600 }}
-                src={cities[id - 1].img}
-              />
-            </Typography>
-          </Grid>
-        </Grid>
-      </Grid>
-    </Paper>
+        </Paper>
+      ) : (
+        <Spinner animation="grow" />
+      )}
+    </Container>
   );
 };
 

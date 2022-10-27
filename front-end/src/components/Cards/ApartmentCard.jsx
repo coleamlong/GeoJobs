@@ -1,66 +1,59 @@
 import React from "react";
 import Card from "react-bootstrap/Card";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import { Link } from "react-router-dom";
+import Button from "react-bootstrap/Button";
+import apartment_placeholder from "../../assets/placeholder/apartment.png";
 
-const ApartmentCard = () => {
+const ApartmentCard = (props) => {
+  const {
+    address,
+    bedrooms,
+    bathrooms,
+    build_year,
+    id,
+    price,
+    property_type,
+    sqft,
+    image,
+  } = props.apartment;
   return (
-    <div>
-      <Row md={10} className="p-4 g-4 justify-content-center">
-        <Col>
-          <Card border="dark">
-            <Card.Body>
-              <Card.Title>Chelsea On Lamar Apartments</Card.Title>
-              <Card.Text>City: Austin</Card.Text>
-              <Card.Text>State: Texas</Card.Text>
-              <Card.Text>Number of Reviews: 15</Card.Text>
-              <Card.Text>Rating: 4.5</Card.Text>
-              <Card.Text>$1,445 - $2,395 per month</Card.Text>
-            </Card.Body>
-            <Card.Footer className="text-muted">
-              <li>
-                <Link to={`/apartment/1`}>More info</Link>
-              </li>
-            </Card.Footer>
-          </Card>
-        </Col>
-        <Col>
-          <Card border="dark">
-            <Card.Body>
-              <Card.Title>City Wide Apartments</Card.Title>
-              <Card.Text>City: New York</Card.Text>
-              <Card.Text>State: New York</Card.Text>
-              <Card.Text>Number of Reviews: 102</Card.Text>
-              <Card.Text>Rating: 4.5</Card.Text>
-              <Card.Text>$2,650 - $16,950 per month</Card.Text>
-            </Card.Body>
-            <Card.Footer className="text-muted">
-              <li>
-                <Link to="/apartment/2">More Info</Link>
-              </li>
-            </Card.Footer>
-          </Card>
-        </Col>
-        <Col>
-          <Card border="dark">
-            <Card.Body>
-              <Card.Title>Lakewood Apartments At Lake Merced</Card.Title>
-              <Card.Text>City: San Francisco</Card.Text>
-              <Card.Text>State: California</Card.Text>
-              <Card.Text>Number of Reviews: 62</Card.Text>
-              <Card.Text>Rating: 3.0</Card.Text>
-              <Card.Text>$2,199 - $3,869 per month</Card.Text>
-            </Card.Body>
-            <Card.Footer className="text-muted">
-              <li>
-                <Link to="/apartment/3">More Info</Link>
-              </li>
-            </Card.Footer>
-          </Card>
-        </Col>
-      </Row>
-    </div>
+    <Card>
+      <Card.Img
+        style={{
+          height: "50%",
+          width: "100%",
+          objectFit: "cover",
+        }}
+        src={image !== null ? image : apartment_placeholder}
+      ></Card.Img>
+      <Card.Text className="text-center">{property_type}</Card.Text>
+      <Card.Title className="text-center text-uppercase ">{address}</Card.Title>
+      <Card.Body>
+        <Card.Subtitle className="text-center">{`${
+          bedrooms !== null ? bedrooms : 1
+        } bedroom(s), 
+                     ${
+                       bathrooms !== null ? bathrooms : 1
+                     } bathroom(s)`}</Card.Subtitle>
+        <Card.Text className="text-center">
+          {sqft !== null ? `${sqft} sqft -- ` : ""}
+          {price !== null ? `$${price} / month` : ""}
+        </Card.Text>
+        {build_year !== null && (
+          <Card.Text className="text-center align-text-bottom">
+            Build Year: {build_year}
+          </Card.Text>
+        )}
+      </Card.Body>
+      <Card.Footer>
+        <Button
+          className="btn btn-primary stretched-link"
+          variant="dark"
+          href={`/apartment/${id}`}
+        >
+          More Info
+        </Button>
+      </Card.Footer>
+    </Card>
   );
 };
 

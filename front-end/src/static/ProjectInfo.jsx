@@ -12,7 +12,7 @@ import TwitterLogo from "../assets/logos/tools/twitter-logo.png";
 
 import RoadGoatLogo from "../assets/logos/apis/roadgoat-logo.png";
 import GoogleMapsLogo from "../assets/logos/apis/googlemaps-logo.png";
-import YelpLogo from "../assets/logos/apis/yelp-logo.png";
+import RealityMoleLogo from "../assets/logos/apis/realitymole-logo.png";
 import AdzunaLogo from "../assets/logos/apis/adzuna-logo.png";
 
 const toolInfo = [
@@ -100,11 +100,11 @@ const apiInfo = [
     link: "https://developers.google.com/maps",
   },
   {
-    title: "Yelp API",
-    image: YelpLogo,
+    title: "Reality Mole API",
+    image: RealityMoleLogo,
     description:
-      "Yelp, although commonly know for it's food recommendations, also allows users to hunt for apartments. GeoJobs pulls reviews, real estate listings, and geographic data from Yelp's API.",
-    link: "https://www.yelp.com/developers",
+      "Reality Mole API allows customers to access real estate data that is typically hidden behind large paywalls and real estate firms.",
+    link: "https://www.realtymole.com/api",
   },
   {
     title: "Adzuna API",

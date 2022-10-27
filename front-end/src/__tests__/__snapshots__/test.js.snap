@@ -1,0 +1,776 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`APICard initializes correctly 1`] = `
+<div
+  className="card"
+>
+  <img
+    className="card-img-top p-4"
+    src="avatar.png"
+  />
+  <div
+    className="card-body"
+  >
+    <div
+      className="card-title h5"
+    >
+      Title
+    </div>
+    <p
+      className="card-text"
+    />
+  </div>
+  <div
+    className="card-footer"
+  >
+    <a
+      class="btn btn-primary stretched-link"
+      className="btn btn-primary"
+      disabled={false}
+      href="https://www.google.com"
+      onClick={[Function]}
+      onKeyDown={[Function]}
+      role="button"
+      tabIndex={0}
+    >
+      More Info
+    </a>
+  </div>
+</div>
+`;
+
+exports[`ApartmentCard initializes correctly 1`] = `
+<div
+  className="card"
+>
+  <img
+    className="card-img"
+    style={
+      Object {
+        "height": "50%",
+        "objectFit": "cover",
+        "width": "100%",
+      }
+    }
+  />
+  <p
+    className="text-center card-text"
+  />
+  <div
+    className="text-center text-uppercase  card-title h5"
+  />
+  <div
+    className="card-body"
+  >
+    <div
+      className="text-center card-subtitle h6"
+    >
+      undefined bedroom(s), 
+                     undefined bathroom(s)
+    </div>
+    <p
+      className="text-center card-text"
+    >
+      undefined sqft -- 
+      $1000 / month
+    </p>
+    <p
+      className="text-center align-text-bottom card-text"
+    >
+      Build Year: 
+    </p>
+  </div>
+  <div
+    className="card-footer"
+  >
+    <a
+      className="btn btn-primary stretched-link btn btn-dark"
+      disabled={false}
+      href="/apartment/undefined"
+      onClick={[Function]}
+      onKeyDown={[Function]}
+      role="button"
+      tabIndex={0}
+    >
+      More Info
+    </a>
+  </div>
+</div>
+`;
+
+exports[`App initializes correctly 1`] = `
+<div>
+  <nav
+    className="navbar navbar-expand-lg navbar-dark bg-dark"
+  >
+    <div
+      className="container"
+    >
+      <a
+        className="navbar-brand"
+        href="/"
+      >
+        GeoJobs
+      </a>
+      <button
+        aria-controls="basic-navbar-nav"
+        aria-label="Toggle navigation"
+        className="navbar-toggler collapsed"
+        onClick={[Function]}
+        type="button"
+      >
+        <span
+          className="navbar-toggler-icon"
+        />
+      </button>
+      <div
+        aria-expanded={null}
+        className="navbar-collapse collapse"
+      >
+        <div
+          className="mr-auto navbar-nav"
+          onKeyDown={[Function]}
+        >
+          <a
+            className="nav-link"
+            data-rr-ui-event-key="/"
+            disabled={false}
+            href="/"
+            onClick={[Function]}
+          >
+            Home
+          </a>
+          <a
+            className="nav-link"
+            data-rr-ui-event-key="/about"
+            disabled={false}
+            href="/about"
+            onClick={[Function]}
+          >
+            About
+          </a>
+          <a
+            className="nav-link"
+            data-rr-ui-event-key="/jobs"
+            disabled={false}
+            href="/jobs"
+            onClick={[Function]}
+          >
+            Jobs
+          </a>
+          <a
+            className="nav-link"
+            data-rr-ui-event-key="/cities"
+            disabled={false}
+            href="/cities"
+            onClick={[Function]}
+          >
+            Cities
+          </a>
+          <a
+            className="nav-link"
+            data-rr-ui-event-key="/apartments"
+            disabled={false}
+            href="/apartments"
+            onClick={[Function]}
+          >
+            Apartments
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div
+    className="main-home"
+  >
+    <div
+      className="bg d-flex justify-content-center"
+      style={
+        Object {
+          "backgroundImage": "url(splash-background.png)",
+          "backgroundSize": "cover",
+          "height": "100vh",
+          "width": "100vw",
+        }
+      }
+    >
+      <h1
+        className="bg-text"
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundPositionY": "1500",
+            "color": "burlywood",
+            "justifyContent": "center",
+            "marginTop": "300px",
+          }
+        }
+      >
+        An easy place to find your dream job, city, and home.
+      </h1>
+    </div>
+    <div
+      className="p-4 container"
+    >
+      <h1
+        className="d-flex justify-content-center p-4"
+      >
+        Where to next?
+      </h1>
+      <div
+        className="row"
+      >
+        <div
+          className="col"
+        >
+          <div
+            className="card"
+          >
+            <img
+              className="card-img-top"
+              src="job.png"
+            />
+            <div
+              className="card-body"
+            >
+              <div
+                className="card-title h5"
+              >
+                Jobs
+              </div>
+              <p
+                className="card-text"
+              >
+                Find your dream job!
+              </p>
+              <a
+                class="btn btn-primary stretched-link"
+                href="/jobs"
+              >
+                Link
+              </a>
+            </div>
+          </div>
+        </div>
+        <div
+          className="col"
+        >
+          <div
+            className="card"
+          >
+            <img
+              className="card-img-top"
+              src="city.png"
+            />
+            <div
+              className="card-body"
+            >
+              <div
+                className="card-title h5"
+              >
+                Cities
+              </div>
+              <p
+                className="card-text"
+              >
+                Find your dream city!
+              </p>
+              <a
+                class="btn btn-primary stretched-link"
+                href="/cities"
+              >
+                Link
+              </a>
+            </div>
+          </div>
+        </div>
+        <div
+          className="col"
+        >
+          <div
+            className="card"
+          >
+            <img
+              className="card-img-top"
+              src="home.png"
+            />
+            <div
+              className="card-body"
+            >
+              <div
+                className="card-title h5"
+              >
+                Apartments
+              </div>
+              <p
+                className="card-text"
+              >
+                Find your dream apartment!
+              </p>
+              <a
+                class="btn btn-primary stretched-link"
+                href="/apartments"
+              >
+                Link
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`CityCard initializes correctly 1`] = `
+<div
+  className="card"
+>
+  <img
+    className="card-img"
+    src="city.png"
+    style={
+      Object {
+        "filter": "brightness(20%)",
+        "height": "100%",
+        "objectFit": "cover",
+        "width": "100%",
+      }
+    }
+  />
+  <div
+    className="text-light d-flex flex-column card-img-overlay"
+  >
+    <div
+      className="card-title h5"
+    >
+      Name
+      , 
+      State
+    </div>
+    <p
+      className="card-text"
+    >
+      Population: 
+      <br />
+      Rating: 
+      N/A
+      <br />
+      Budget: 
+      1000
+    </p>
+    <div
+      className="mt-auto card-footer"
+    >
+      <a
+        className="btn btn-primary stretched-link btn btn-light"
+        disabled={false}
+        href="/cities/undefined"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        role="button"
+        tabIndex={0}
+      >
+        More Info
+      </a>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DeveloperCard initializes correctly 1`] = `
+<div
+  className="card"
+>
+  <img
+    className="card-img-top"
+    src="avatar.png"
+  />
+  <div
+    className="card-body"
+  >
+    <div
+      className="card-title h5"
+    >
+      Name
+    </div>
+    <div
+      className="card-subtitle h6"
+    >
+      @
+      GitLab User
+    </div>
+    <p
+      className="card-text"
+    >
+      Role: 
+      Role
+    </p>
+    <p
+      className="card-text"
+    >
+      Bio
+    </p>
+  </div>
+  <div
+    className="text-muted card-footer"
+  >
+    Commits: 
+    0
+     
+    <br />
+    Issues: 
+    0
+     
+    <br />
+    Unit Tests: 
+    0
+  </div>
+</div>
+`;
+
+exports[`JobCard Initial correctly 1`] = `
+<div
+  className="card"
+>
+  <img
+    className="card-img p-2"
+    src="job.png"
+    style={
+      Object {
+        "height": "100%",
+        "objectFit": "contain",
+        "width": "100%",
+      }
+    }
+  />
+  <div
+    className="card-body"
+  >
+    <div
+      className="card-title h5"
+    />
+    <div
+      className="card-subtitle h6"
+    >
+      Title
+    </div>
+    <p
+      className="card-text"
+    >
+      Salary: $
+       - $
+    </p>
+  </div>
+  <div
+    className="card-footer"
+  >
+    <a
+      className="btn btn-primary stretched-link btn btn-dark"
+      disabled={false}
+      href="/job/undefined"
+      onClick={[Function]}
+      onKeyDown={[Function]}
+      role="button"
+      tabIndex={0}
+    >
+      More Info
+    </a>
+  </div>
+</div>
+`;
+
+exports[`Navbar initializes correctly 1`] = `
+<nav
+  className="navbar navbar-expand-lg navbar-dark bg-dark"
+>
+  <div
+    className="container"
+  >
+    <a
+      className="navbar-brand"
+      href="/"
+    >
+      GeoJobs
+    </a>
+    <button
+      aria-controls="basic-navbar-nav"
+      aria-label="Toggle navigation"
+      className="navbar-toggler collapsed"
+      onClick={[Function]}
+      type="button"
+    >
+      <span
+        className="navbar-toggler-icon"
+      />
+    </button>
+    <div
+      aria-expanded={null}
+      className="navbar-collapse collapse"
+    >
+      <div
+        className="mr-auto navbar-nav"
+        onKeyDown={[Function]}
+      >
+        <a
+          className="nav-link"
+          data-rr-ui-event-key="/"
+          disabled={false}
+          href="/"
+          onClick={[Function]}
+        >
+          Home
+        </a>
+        <a
+          className="nav-link"
+          data-rr-ui-event-key="/about"
+          disabled={false}
+          href="/about"
+          onClick={[Function]}
+        >
+          About
+        </a>
+        <a
+          className="nav-link"
+          data-rr-ui-event-key="/jobs"
+          disabled={false}
+          href="/jobs"
+          onClick={[Function]}
+        >
+          Jobs
+        </a>
+        <a
+          className="nav-link"
+          data-rr-ui-event-key="/cities"
+          disabled={false}
+          href="/cities"
+          onClick={[Function]}
+        >
+          Cities
+        </a>
+        <a
+          className="nav-link"
+          data-rr-ui-event-key="/apartments"
+          disabled={false}
+          href="/apartments"
+          onClick={[Function]}
+        >
+          Apartments
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>
+`;
+
+exports[`PageCard initializes correctly 1`] = `
+<div
+  className="card"
+>
+  <img
+    className="card-img-top"
+    src="avatar.png"
+  />
+  <div
+    className="card-body"
+  >
+    <div
+      className="card-title h5"
+    >
+      Name
+    </div>
+    <p
+      className="card-text"
+    >
+      Description
+    </p>
+    <a
+      class="btn btn-primary stretched-link"
+      href="https://www.google.com"
+    >
+      Link
+    </a>
+  </div>
+</div>
+`;
+
+exports[`RouteSwitch initializes correctly 1`] = `
+<div
+  className="main-home"
+>
+  <div
+    className="bg d-flex justify-content-center"
+    style={
+      Object {
+        "backgroundImage": "url(splash-background.png)",
+        "backgroundSize": "cover",
+        "height": "100vh",
+        "width": "100vw",
+      }
+    }
+  >
+    <h1
+      className="bg-text"
+      style={
+        Object {
+          "alignItems": "center",
+          "backgroundPositionY": "1500",
+          "color": "burlywood",
+          "justifyContent": "center",
+          "marginTop": "300px",
+        }
+      }
+    >
+      An easy place to find your dream job, city, and home.
+    </h1>
+  </div>
+  <div
+    className="p-4 container"
+  >
+    <h1
+      className="d-flex justify-content-center p-4"
+    >
+      Where to next?
+    </h1>
+    <div
+      className="row"
+    >
+      <div
+        className="col"
+      >
+        <div
+          className="card"
+        >
+          <img
+            className="card-img-top"
+            src="job.png"
+          />
+          <div
+            className="card-body"
+          >
+            <div
+              className="card-title h5"
+            >
+              Jobs
+            </div>
+            <p
+              className="card-text"
+            >
+              Find your dream job!
+            </p>
+            <a
+              class="btn btn-primary stretched-link"
+              href="/jobs"
+            >
+              Link
+            </a>
+          </div>
+        </div>
+      </div>
+      <div
+        className="col"
+      >
+        <div
+          className="card"
+        >
+          <img
+            className="card-img-top"
+            src="city.png"
+          />
+          <div
+            className="card-body"
+          >
+            <div
+              className="card-title h5"
+            >
+              Cities
+            </div>
+            <p
+              className="card-text"
+            >
+              Find your dream city!
+            </p>
+            <a
+              class="btn btn-primary stretched-link"
+              href="/cities"
+            >
+              Link
+            </a>
+          </div>
+        </div>
+      </div>
+      <div
+        className="col"
+      >
+        <div
+          className="card"
+        >
+          <img
+            className="card-img-top"
+            src="home.png"
+          />
+          <div
+            className="card-body"
+          >
+            <div
+              className="card-title h5"
+            >
+              Apartments
+            </div>
+            <p
+              className="card-text"
+            >
+              Find your dream apartment!
+            </p>
+            <a
+              class="btn btn-primary stretched-link"
+              href="/apartments"
+            >
+              Link
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`ToolCard initializes correctly 1`] = `
+<div
+  className="card"
+>
+  <img
+    className="card-img-top p-4"
+    src="avatar.png"
+  />
+  <div
+    className="card-body"
+  >
+    <div
+      className="card-title h5"
+    >
+      Title
+    </div>
+    <p
+      className="card-text"
+    />
+  </div>
+  <div
+    className="card-footer"
+  >
+    <a
+      class="btn btn-primary stretched-link"
+      className="btn btn-primary"
+      disabled={false}
+      href="https://www.google.com"
+      onClick={[Function]}
+      onKeyDown={[Function]}
+      role="button"
+      tabIndex={0}
+    >
+      More Info
+    </a>
+  </div>
+</div>
+`;
