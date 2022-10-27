@@ -82,7 +82,14 @@ const Apartments = () => {
           </Pagination.Item>
         )}
       </Pagination>
-      <Row md={4} className="d-flex g-4 p-4 justify-content-center">
+      <Row
+        xl={4}
+        lg={3}
+        md={2}
+        sm={1}
+        xs={1}
+        className="d-flex g-4 p-4 justify-content-center"
+      >
         {loaded ? (
           apartments["data"].map((apartment) => {
             return (

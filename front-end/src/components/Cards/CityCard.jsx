@@ -11,8 +11,8 @@ const CityCard = (props) => {
     <Card>
       <Card.Img
         style={{
-          height: "18rem",
-          width: "18rem",
+          height: "100%",
+          width: "100%",
           objectFit: "cover",
           filter: "brightness(20%)",
         }}

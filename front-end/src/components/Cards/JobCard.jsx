@@ -21,8 +21,8 @@ const JobCard = (props) => {
       <Card.Img
         className="p-2"
         style={{
-          height: "18rem",
-          width: "18rem",
+          height: "100%",
+          width: "100%",
           objectFit: "contain",
         }}
         src={img_url ? img_url : job_placeholder}

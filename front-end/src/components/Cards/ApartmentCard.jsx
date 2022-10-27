@@ -19,8 +19,8 @@ const ApartmentCard = (props) => {
     <Card>
       <Card.Img
         style={{
-          height: "18rem",
-          width: "18rem",
+          height: "50%",
+          width: "100%",
           objectFit: "cover",
         }}
         src={image !== null ? image : apartment_placeholder}

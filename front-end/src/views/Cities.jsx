@@ -32,7 +32,14 @@ const Cities = () => {
   return (
     <Container>
       <h1 className="p-5 text-center">Cities</h1>
-      <Row md={4} className="d-flex g-4 p-4 justify-content-center">
+      <Row
+        xl={4}
+        lg={3}
+        md={2}
+        sm={1}
+        xs={1}
+        className="d-flex g-4 p-4 justify-content-center"
+      >
         {loaded ? (
           cities["data"].map((city) => {
             return (
