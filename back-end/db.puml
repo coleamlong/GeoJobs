@@ -1,0 +1,65 @@
+@startuml db_diagram
+    entity City {
+        **id: Integer <<PK>>**
+        --
+        **name: String(20)**
+        **state: String(30)**
+        **population: Integer**
+        **avg_rating: Float**
+        **budget: Integer**
+        **safety: Integer**
+        **walkscore_url: String(60)**
+        **police_twitter: String(20)**
+        **img_url: String(200)**
+
+    }
+    entity Tag {
+        **id: Integer <<PK>>**
+        --
+        **name: String(50)**
+    }
+    entity Apartment {
+        **id: String(65) <<PK>>**
+        --
+        **city_id: Integer <<FK>>**
+        **bathrooms: Integer**
+        **bedrooms: Integer**
+        **price: Integer**
+        **address: String(70)**
+        **property_type: String(20)**
+        **sqft: Integer**
+        **build_year: Integer**
+    }
+    entity ApartmentImage {
+        **id: Integer <<PK>>**
+        --
+        **apt_id: String(65) <<FK>>**
+        **img_url: String(200)**
+    }
+    entity Job {
+        **id: BigInteger <<PK>>**
+        --
+        **city_id: Integer <<FK>>**
+        **company: String(40)**
+        **title: String(70)**
+        **category: String(30)**
+        **url: String(150)**
+        **salary_min: Integer**
+        **salary_max: Integer**
+        **latitude: Float**
+        **longitude: Float**
+        **description: String(550)**
+        **created: DateTime**
+        **img_url: String(200)**
+    }
+    entity city_tag_link {
+        **city_id: Integer <<FK>>**
+        **tag_id: Integer <<FK>>**
+    }
+    City }o--o{city_tag_link
+    Tag }o--o{ city_tag_link
+    City ||-|{ Apartment
+    City ||-|{ Job
+    Apartment ||--o{ ApartmentImage
+
+@enduml
