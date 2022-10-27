@@ -228,7 +228,7 @@ exports[`App initializes correctly 1`] = `
           >
             <img
               className="card-img-top"
-              src="job.jpeg"
+              src="job.png"
             />
             <div
               className="card-body"
@@ -260,7 +260,7 @@ exports[`App initializes correctly 1`] = `
           >
             <img
               className="card-img-top"
-              src="city.jpeg"
+              src="city.png"
             />
             <div
               className="card-body"
@@ -292,7 +292,7 @@ exports[`App initializes correctly 1`] = `
           >
             <img
               className="card-img-top"
-              src="home.jpeg"
+              src="home.png"
             />
             <div
               className="card-body"
@@ -643,7 +643,7 @@ exports[`RouteSwitch initializes correctly 1`] = `
         >
           <img
             className="card-img-top"
-            src="job.jpeg"
+            src="job.png"
           />
           <div
             className="card-body"
@@ -675,7 +675,7 @@ exports[`RouteSwitch initializes correctly 1`] = `
         >
           <img
             className="card-img-top"
-            src="city.jpeg"
+            src="city.png"
           />
           <div
             className="card-body"
@@ -707,7 +707,7 @@ exports[`RouteSwitch initializes correctly 1`] = `
         >
           <img
             className="card-img-top"
-            src="home.jpeg"
+            src="home.png"
           />
           <div
             className="card-body"
