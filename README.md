@@ -10,10 +10,16 @@
 | Thomas Langford   | @thomas_langford  | thl532            | 10                           | 12                         |
 
 ### Git SHA
-TBD
+| Phase | Git Sha  |
+| ----- | -------- |
+| 1     | 822cd9f6 |
+| 2     | TBD      |
 
 ### Project Leader
-Cole Amlong
+| Phase | Project Leader  |
+| ----- | --------------- |
+| 1     | Cole Amlong     |
+| 2     | Thomas Langford |
 
 #### Responsibilities
 Organize and direct group meetings, make sure everyone is on track
@@ -23,6 +29,25 @@ https://gitlab.com/sarthaksirotiya/cs373-idb/-/pipelines
 
 ### Website Link
 https://www.geojobs.me/
+
+### Completion Times
+# Phase 1
+| Name              | Est. Completion Time (hrs)   | Real Completion Time (hrs) |
+| ----------------- | ---------------------------- | -------------------------- |
+| Cole Amlong       | 10                           | 15                         |
+| Faiza Rahman      | 8                            | 10                         |
+| Mikala Jaramillo  | 7                            | 13                         |
+| Sarthak Sirotiya  | 15                           | 12                         |
+| Thomas Langford   | 10                           | 12                         |
+
+# Phase 2
+| Name              | Est. Completion Time (hrs)   | Real Completion Time (hrs) |
+| ----------------- | ---------------------------- | -------------------------- |
+| Cole Amlong       | 12                           | 20                         |
+| Faiza Rahman      | TBD                            | TBD                         |
+| Mikala Jaramillo  | 9                            | 10                         |
+| Sarthak Sirotiya  | 15                           | 24                         |
+| Thomas Langford   | 20                           | 22                         |
 
 ### Comments
 Thomas Langford is UTSHPE. He was on the wrong account when he first committed to the repo. For phase 1, he made 8 commits.
