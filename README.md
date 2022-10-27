@@ -1,13 +1,13 @@
 # Geo Job
 
 ## Team members
-| Name              | GitLabID          | EID               | Est. Completion Time (hrs)   | Real Completion Time (hrs) |
-| ----------------- | ----------------- | ----------------- | ---------------------------- | -------------------------- |
-| Cole Amlong       | @coleamlong       | ca34894           | 10                           | 15                         |
-| Faiza Rahman      | @faiza2002        | fzr68             | 8                            | 10                         |
-| Mikala Jaramillo  | @Mikalajj         | mhj496            | 7                            | 13                         |
-| Sarthak Sirotiya  | @sarthaksirotiya  | ss94468           | 15                           | 12                         |
-| Thomas Langford   | @thomas_langford  | thl532            | 10                           | 12                         |
+| Name              | GitLabID          | EID               |
+| ----------------- | ----------------- | ----------------- |
+| Cole Amlong       | @coleamlong       | ca34894           |
+| Faiza Rahman      | @faiza2002        | fzr68             |
+| Mikala Jaramillo  | @Mikalajj         | mhj496            |
+| Sarthak Sirotiya  | @sarthaksirotiya  | ss94468           |
+| Thomas Langford   | @thomas_langford  | thl532            |
 
 ### Git SHA
 | Phase | Git Sha  |
@@ -24,14 +24,14 @@
 #### Responsibilities
 Organize and direct group meetings, make sure everyone is on track
 
-### GitLab Pipelines
+# GitLab Pipelines
 https://gitlab.com/sarthaksirotiya/cs373-idb/-/pipelines
 
-### Website Link
+# Website Link
 https://www.geojobs.me/
 
-### Completion Times
-# Phase 1
+# Completion Times
+### Phase 1
 | Name              | Est. Completion Time (hrs)   | Real Completion Time (hrs) |
 | ----------------- | ---------------------------- | -------------------------- |
 | Cole Amlong       | 10                           | 15                         |
@@ -40,7 +40,7 @@ https://www.geojobs.me/
 | Sarthak Sirotiya  | 15                           | 12                         |
 | Thomas Langford   | 10                           | 12                         |
 
-# Phase 2
+### Phase 2
 | Name              | Est. Completion Time (hrs)   | Real Completion Time (hrs) |
 | ----------------- | ---------------------------- | -------------------------- |
 | Cole Amlong       | 12                           | 20                         |
