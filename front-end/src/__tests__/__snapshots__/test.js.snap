@@ -47,9 +47,9 @@ exports[`ApartmentCard initializes correctly 1`] = `
     className="card-img"
     style={
       Object {
-        "height": "18rem",
+        "height": "50%",
         "objectFit": "cover",
-        "width": "18rem",
+        "width": "100%",
       }
     }
   />
@@ -332,9 +332,9 @@ exports[`CityCard initializes correctly 1`] = `
     style={
       Object {
         "filter": "brightness(20%)",
-        "height": "18rem",
+        "height": "100%",
         "objectFit": "cover",
-        "width": "18rem",
+        "width": "100%",
       }
     }
   />
@@ -438,9 +438,9 @@ exports[`JobCard Initial correctly 1`] = `
     src="job.png"
     style={
       Object {
-        "height": "18rem",
+        "height": "100%",
         "objectFit": "contain",
-        "width": "18rem",
+        "width": "100%",
       }
     }
   />
