@@ -44,7 +44,7 @@ https://www.geojobs.me/
 | Name              | Est. Completion Time (hrs)   | Real Completion Time (hrs) |
 | ----------------- | ---------------------------- | -------------------------- |
 | Cole Amlong       | 12                           | 20                         |
-| Faiza Rahman      | TBD                            | TBD                         |
+| Faiza Rahman      | 10                            | 10                         |
 | Mikala Jaramillo  | 9                            | 10                         |
 | Sarthak Sirotiya  | 15                           | 24                         |
 | Thomas Langford   | 20                           | 22                         |
