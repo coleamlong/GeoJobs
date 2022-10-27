@@ -19,11 +19,21 @@ exports[`APICard initializes correctly 1`] = `
     <p
       className="card-text"
     />
+  </div>
+  <div
+    className="card-footer"
+  >
     <a
-      className="card-link"
+      class="btn btn-primary stretched-link"
+      className="btn btn-primary"
+      disabled={false}
       href="https://www.google.com"
+      onClick={[Function]}
+      onKeyDown={[Function]}
+      role="button"
+      tabIndex={0}
     >
-      https://www.google.com
+      More Info
     </a>
   </div>
 </div>
@@ -33,50 +43,56 @@ exports[`ApartmentCard initializes correctly 1`] = `
 <div
   className="card"
 >
+  <img
+    className="card-img"
+    style={
+      Object {
+        "height": "18rem",
+        "objectFit": "cover",
+        "width": "18rem",
+      }
+    }
+  />
+  <p
+    className="text-center card-text"
+  />
+  <div
+    className="text-center text-uppercase  card-title h5"
+  />
   <div
     className="card-body"
   >
     <div
-      className="card-title h5"
+      className="text-center card-subtitle h6"
     >
-      Apartment: 
-      Name
+      undefined bedroom(s), 
+                     undefined bathroom(s)
     </div>
     <p
-      className="card-text"
+      className="text-center card-text"
     >
-      Location: 
-      City
+      undefined sqft -- 
+      $1000 / month
     </p>
     <p
-      className="card-text"
+      className="text-center align-text-bottom card-text"
     >
-      Price: 
-      1000
+      Build Year: 
     </p>
-    <p
-      className="card-text"
-    >
-      Type: 
-      Apartment
-    </p>
-    <p
-      className="card-text"
-    >
-      BuldYear: 
-      1998
-    </p>
+  </div>
+  <div
+    className="card-footer"
+  >
     <a
-      className="btn btn-dark"
+      className="btn btn-primary stretched-link btn btn-dark"
       disabled={false}
-      href="/apartment/1"
+      href="/apartment/undefined"
       onClick={[Function]}
       onKeyDown={[Function]}
       role="button"
       tabIndex={0}
     >
-      more info on 
-      Name
+      More Info
     </a>
   </div>
 </div>
@@ -212,7 +228,7 @@ exports[`App initializes correctly 1`] = `
           >
             <img
               className="card-img-top"
-              src="job.jpeg"
+              src="job.png"
             />
             <div
               className="card-body"
@@ -244,7 +260,7 @@ exports[`App initializes correctly 1`] = `
           >
             <img
               className="card-img-top"
-              src="city.jpeg"
+              src="city.png"
             />
             <div
               className="card-body"
@@ -276,7 +292,7 @@ exports[`App initializes correctly 1`] = `
           >
             <img
               className="card-img-top"
-              src="home.jpeg"
+              src="home.png"
             />
             <div
               className="card-body"
@@ -310,48 +326,54 @@ exports[`CityCard initializes correctly 1`] = `
 <div
   className="card"
 >
+  <img
+    className="card-img"
+    src="city.png"
+    style={
+      Object {
+        "filter": "brightness(20%)",
+        "height": "18rem",
+        "objectFit": "cover",
+        "width": "18rem",
+      }
+    }
+  />
   <div
-    className="card-body"
+    className="text-light d-flex flex-column card-img-overlay"
   >
     <div
       className="card-title h5"
     >
       Name
+      , 
+      State
     </div>
     <p
       className="card-text"
     >
-      State: 
-      State
-    </p>
-    <p
-      className="card-text"
-    >
       Population: 
-    </p>
-    <p
-      className="card-text"
-    >
+      <br />
       Rating: 
-      100
-    </p>
-    <p
-      className="card-text"
-    >
+      N/A
+      <br />
       Budget: 
+      1000
     </p>
-    <a
-      className="btn btn-dark"
-      disabled={false}
-      href="/city/1"
-      onClick={[Function]}
-      onKeyDown={[Function]}
-      role="button"
-      tabIndex={0}
+    <div
+      className="mt-auto card-footer"
     >
-      more info on 
-      Name
-    </a>
+      <a
+        className="btn btn-primary stretched-link btn btn-light"
+        disabled={false}
+        href="/cities/undefined"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        role="button"
+        tabIndex={0}
+      >
+        More Info
+      </a>
+    </div>
   </div>
 </div>
 `;
@@ -410,58 +432,49 @@ exports[`DeveloperCard initializes correctly 1`] = `
 exports[`JobCard Initial correctly 1`] = `
 <div
   className="card"
-  style={
-    Object {
-      "height": "25rem",
-    }
-  }
 >
+  <img
+    className="card-img p-2"
+    src="job.png"
+    style={
+      Object {
+        "height": "18rem",
+        "objectFit": "contain",
+        "width": "18rem",
+      }
+    }
+  />
   <div
     className="card-body"
   >
     <div
       className="card-title h5"
+    />
+    <div
+      className="card-subtitle h6"
     >
-      Title: 
       Title
     </div>
     <p
       className="card-text"
     >
-      City: 
-      City
-    </p>
-    <p
-      className="card-text"
-    >
-      State: 
-      State
-    </p>
-    <p
-      className="card-text"
-    >
-      Salary: 
-      100
-    </p>
-    <p
-      className="card-text"
-    >
-      ContractType: 
+      Salary: $
+       - $
     </p>
   </div>
   <div
-    className="d-flex justify-content-center card-footer"
+    className="card-footer"
   >
     <a
-      className="btn btn-dark"
+      className="btn btn-primary stretched-link btn btn-dark"
       disabled={false}
-      href="/job/1"
+      href="/job/undefined"
       onClick={[Function]}
       onKeyDown={[Function]}
       role="button"
       tabIndex={0}
     >
-      more info on 
+      More Info
     </a>
   </div>
 </div>
@@ -630,7 +643,7 @@ exports[`RouteSwitch initializes correctly 1`] = `
         >
           <img
             className="card-img-top"
-            src="job.jpeg"
+            src="job.png"
           />
           <div
             className="card-body"
@@ -662,7 +675,7 @@ exports[`RouteSwitch initializes correctly 1`] = `
         >
           <img
             className="card-img-top"
-            src="city.jpeg"
+            src="city.png"
           />
           <div
             className="card-body"
@@ -694,7 +707,7 @@ exports[`RouteSwitch initializes correctly 1`] = `
         >
           <img
             className="card-img-top"
-            src="home.jpeg"
+            src="home.png"
           />
           <div
             className="card-body"
@@ -742,11 +755,21 @@ exports[`ToolCard initializes correctly 1`] = `
     <p
       className="card-text"
     />
+  </div>
+  <div
+    className="card-footer"
+  >
     <a
-      className="card-link"
+      class="btn btn-primary stretched-link"
+      className="btn btn-primary"
+      disabled={false}
       href="https://www.google.com"
+      onClick={[Function]}
+      onKeyDown={[Function]}
+      role="button"
+      tabIndex={0}
     >
-      https://www.google.com
+      More Info
     </a>
   </div>
 </div>

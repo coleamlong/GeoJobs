@@ -1,6 +1,6 @@
-import JobImage from "../assets/page-images/job.jpeg";
-import CityImage from "../assets/page-images/city.jpeg";
-import HomeImage from "../assets/page-images/home.jpeg";
+import JobImage from "../assets/page-images/job.png";
+import CityImage from "../assets/page-images/city.png";
+import HomeImage from "../assets/page-images/home.png";
 
 
 const pageInfo = [

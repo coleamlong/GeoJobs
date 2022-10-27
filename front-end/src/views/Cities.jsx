@@ -31,12 +31,12 @@ const Cities = () => {
 
   return (
     <Container>
-      <h1>Cities</h1>
-      <Row md={3} className="d-flex g-4 p-4 justify-content-center">
+      <h1 className="p-5 text-center">Cities</h1>
+      <Row md={4} className="d-flex g-4 p-4 justify-content-center">
         {loaded ? (
           cities["data"].map((city) => {
             return (
-              <Col>
+              <Col className="d-flex align-self-stretch">
                 <CityCard city={city} />
               </Col>
             );

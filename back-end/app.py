@@ -4,24 +4,6 @@ from schema import job_schema, city_schema, apartment_schema, tag_schema, apt_im
 from sqlalchemy.sql import text, column
 import json
 
-"""
-What still needs to be done:
-When apartment images are added to database:
-    Adjust apartment requests in this file to return images
-    Add a test to ensure images are correctly being returned in unit tests
-    Adjust postman docs, replace example requests with correct return values
-
-When jobs are added to the database:
-    Adjust jobs requests in this file if needed
-    Adjust unittests to be functionally correct when jobs are added
-    Fill out request description in postman docs
-    Add example returns in example requests in postman
-
-When backend is hosted:
-    Write postman unittests and make them run as a part of the CI/CD pipeline
-
-"""
-
 DEFAULT_PAGE_SIZE = 20
 
 @app.route("/")
@@ -116,6 +98,10 @@ def get_city(r_id):
     city = query.first()
     city_tags = tag_schema.dump(city.tags, many=True)
     result.update({"tags": city_tags})
+    apts = apartment_schema.dump(city.apartments, many=True)[0]["id"]
+    jb = job_schema.dump(city.jobs, many=True)[0]["id"]
+    result.update({"apartment": apts})
+    result.update({"job": jb})
     return jsonify({
         "data": result
     })
@@ -127,6 +113,11 @@ def get_job(r_id):
         result = job_schema.dump(query, many=True)[0]
     except IndexError:
         return return_error(f"Invalid job ID: {r_id}")
+    job = query.first()
+    city = job.city_id
+    apartment = apartment_schema.dump(db.session.query(City).filter_by(id=city).first().apartments, many=True)[0]["id"]
+    result.update({"city": city})
+    result.update({"apartment": apartment})
     return jsonify({
         "data": result
     })
@@ -142,6 +133,12 @@ def get_apartment(r_id):
     apartment_images = apt_img_schema.dump(apartment.images, many=True)
     result.update({"images": apartment_images})
     result.update({"city": get_city_from_address(result["address"])})
+
+    apt = query.first()
+    city = apt.city_id
+    job = job_schema.dump(db.session.query(City).filter_by(id=city).first().jobs, many=True)[0]["id"]
+    result.update({"city": city})
+    result.update({"job": job})
     return jsonify({
         "data": result
     })

@@ -136,7 +136,7 @@ const About = () => {
           >
             {teamList.map((member) => {
               return (
-                <Col>
+                <Col className="d-flex align-self-stretch">
                   <DeveloperCard devInfo={member} />
                 </Col>
               );
@@ -166,7 +166,11 @@ const About = () => {
           </Col>
         </Row>
         <h1 className="d-flex justify-content-center p-4">
-          <a href={"https://documenter.getpostman.com/view/23607622/2s83tFHBCK"}>API Documentation</a>
+          <a
+            href={"https://documenter.getpostman.com/view/23607622/2s83tFHBCK"}
+          >
+            API Documentation
+          </a>
         </h1>
       </Container>
       <Container className="p-4">
@@ -174,7 +178,7 @@ const About = () => {
         <Row xs={2} md={4} className="g-4 justify-content-center">
           {toolInfo.map((tool) => {
             return (
-              <Col>
+              <Col className="d-flex align-self-stretch">
                 <ToolCard toolInfo={tool} />
               </Col>
             );
@@ -186,7 +190,7 @@ const About = () => {
         <Row xs={1} sm={2} md={4} className="g-4 justify-content-center">
           {apiInfo.map((api) => {
             return (
-              <Col>
+              <Col className="d-flex align-self-stretch">
                 <APICard apiInfo={api} />
               </Col>
             );

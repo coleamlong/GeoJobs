@@ -16,7 +16,7 @@ const teamInfo = [
     bio: "I'm a third year student at the University of Texas at Austin pursuing a BS in computer sciecne and a minor in business. I love to cook declicous food and discover new music. Catch me on the weekends DJing events!",
     commits: 0,
     issues: 0,
-    unit_tests: 0,
+    unit_tests: 15,
   },
   {
     name: "Faiza Rahman",
@@ -60,7 +60,7 @@ const teamInfo = [
     bio: "I'm a third year computer science major at the University of Texas at Austin. I enjoy playing the double bass and mountain biking.",
     commits: 0,
     issues: 0,
-    unit_tests: 0,
+    unit_tests: 30,
   },
 ];
 

@@ -1,6 +1,7 @@
 import React from "react";
 
 import Card from "react-bootstrap/Card";
+import Button from "react-bootstrap/Button";
 
 const ToolCard = (props) => {
   const { title, image, description, link } = props.toolInfo;
@@ -11,8 +12,12 @@ const ToolCard = (props) => {
         <Card.Title>{title}</Card.Title>
 
         <Card.Text>{description}</Card.Text>
-        <a href={link} class="btn btn-primary stretched-link">Link</a>
       </Card.Body>
+      <Card.Footer>
+        <Button href={link} class="btn btn-primary stretched-link">
+          More Info
+        </Button>
+      </Card.Footer>
     </Card>
   );
 };
