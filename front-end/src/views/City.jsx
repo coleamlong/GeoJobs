@@ -92,14 +92,16 @@ const City = () => {
                 <Grid item>
                   <Typography sx={{ cursor: "pointer" }} variant="body2">
                     <li>
-                      <Link to={`/apartment/${id}`}>Find Apartment</Link>
+                      <Link to={`/apartment/${city.apartment}`}>
+                        Find Apartment
+                      </Link>
                     </li>
                   </Typography>
                 </Grid>
                 <Grid item>
                   <Typography sx={{ cursor: "pointer" }} variant="body2">
                     <li>
-                      <Link to={`/job/${id}`}>Find Job</Link>
+                      <Link to={`/job/${city.job}`}>Find Job</Link>
                     </li>
                   </Typography>
                 </Grid>

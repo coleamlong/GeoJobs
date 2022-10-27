@@ -18,6 +18,7 @@ const client = axios.create({
 const Job = () => {
   let { id } = useParams();
   const [job, setJob] = useState();
+  const [city, setCity] = useState();
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
@@ -30,10 +31,18 @@ const Job = () => {
           })
           .catch((err) => console.log(err));
       }
+      if (city === undefined) {
+        await client
+          .get(`cities/${job.city}`)
+          .then((response) => {
+            setCity(response.data["data"]);
+          })
+          .catch((err) => console.log(err));
+      }
       setLoaded(true);
     };
     fetchJob();
-  }, [job]);
+  }, [job, city]);
 
   return (
     <Container>
@@ -111,7 +120,7 @@ const Job = () => {
                 <Grid item>
                   <Typography sx={{ cursor: "pointer" }} variant="body2">
                     <li>
-                      <Link to={`/apartment/${id}`}>
+                      <Link to={`/apartment/${city.apartment}`}>
                         Find Apartment In City
                       </Link>
                     </li>
@@ -120,7 +129,9 @@ const Job = () => {
                 <Grid item>
                   <Typography sx={{ cursor: "pointer" }} variant="body2">
                     <li>
-                      <Link to={`/city/${id}`}>Find Out More About City</Link>
+                      <Link to={`/cities/${job.city}`}>
+                        Find Out More About City
+                      </Link>
                     </li>
                   </Typography>
                 </Grid>
