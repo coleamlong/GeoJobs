@@ -10,6 +10,7 @@ import { ExternalLink } from "react-external-link";
 import Spinner from "react-bootstrap/Spinner";
 import Carousel from "react-bootstrap/Carousel";
 import Image from "react-bootstrap/Image";
+import Button from "react-bootstrap/Button";
 
 const client = axios.create({
   baseURL: "https://api.geojobs.me/",
@@ -35,6 +36,17 @@ const Apartment = () => {
     fetchApartment();
   }, [apartment]);
 
+  function BoldText({ children }) {
+    return (
+      <span style={{ fontWeight: 'bold', fontSize: '17px', color: 'darkslateblue' }}>{children}</span>
+    );
+  }
+  function TextO({ children }) {
+    return (
+      <span style={{ fontWeight: 'bold', fontSize: '16px', color: 'midnightblue', font: 'Courier-Oblique' }}>{children}</span>
+    );
+  }
+
   return (
     <Container>
       <Typography
@@ -42,8 +54,9 @@ const Apartment = () => {
         className="modelTitle"
         variant="h2"
         sx={{ textAlign: "center" }}
+        color= 'midnightblue'
       >
-        Apartment Info
+      Apartment Info
       </Typography>
       {loaded ? (
         <Paper
@@ -108,17 +121,21 @@ const Apartment = () => {
                   </div>
                 </Grid>
                 <Grid item>
-                  <Typography sx={{ cursor: "pointer" }} variant="body2">
-                    <li>
-                      <Link to={`/cities/${apartment.city}`}>Explore City</Link>
-                    </li>
-                  </Typography>
-                </Grid>
-                <Grid item>
-                  <Typography sx={{ cursor: "pointer" }} variant="body2">
-                    <li>
-                      <Link to={`/job/${apartment.job}`}>Find Job</Link>
-                    </li>
+                  <Typography sx={{ cursor: "pointer" }} variant="body2"> 
+                    <Button
+                      style= {{marginRight:30, backgroundColor: 'midnightblue'}}
+                      href={`/cities/${apartment.city}`}
+                      >
+                     Explore City
+                     </Button >
+                     <Button
+                      className="btn btn-primary"
+                      variant="dark"
+                      style= {{marginRight:30, backgroundColor: 'midnightblue'}}
+                      href={`/job/${apartment.job}`}
+                      >
+                     Find Job
+                     </Button>
                   </Typography>
                 </Grid>
               </Grid>
