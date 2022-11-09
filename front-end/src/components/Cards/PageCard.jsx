@@ -12,14 +12,14 @@ const PageCard = (props) => {
   } = props.pageInfo;
   return (
     <Card
-      style= {{marginRight:30, backgroundColor: 'lightgrey'}} >
+      style= {{marginRight:30, backgroundColor: 'whitesmoke'}} >
       <Card.Img variant="top" src={pageImage} />
       <Card.Body>
         <Card.Title>{pageName}</Card.Title>
         <Card.Text>{pageDescription}</Card.Text>
         <Button
           className="btn btn-primary stretched-link"
-          style= {{marginRight:30, backgroundColor: 'burlywood'}}
+          style= {{marginRight:30, backgroundColor: 'lightsalmon'}}
           href={`${pageLink}`}
         >
           <span style={{fontSize: '16px', color: 'black', font: 'Courier-Oblique' }}>More Info</span>

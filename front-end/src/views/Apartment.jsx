@@ -38,7 +38,7 @@ const Apartment = () => {
 
   function BoldText({ children }) {
     return (
-      <span style={{ fontWeight: 'bold', fontSize: '17px', color: 'darkslateblue' }}>{children}</span>
+      <span style={{  fontSize: '18px', color: 'black', font: 'Courier-Oblique'  }}>{children}</span>
     );
   }
   function TextO({ children }) {
@@ -66,7 +66,7 @@ const Apartment = () => {
             maxWidth: 1000,
             flexGrow: 4,
             backgroundColor: (theme) =>
-              theme.palette.mode === "dark" ? "#1A2027" : "#fff",
+              theme.palette.mode === "dark" ? "#1A2027" : "#f5f5f5",
           }}
         >
           <Grid container spacing={2}>
@@ -89,25 +89,25 @@ const Apartment = () => {
               <Grid item xs container direction="column" spacing={2}>
                 <Grid item xs>
                   <Typography variant="body2" color="text.secondary">
-                    Address: {apartment.address}
+                    <BoldText>Address: {apartment.address}</BoldText>
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
-                    Type: {apartment.property_type}
+                    <BoldText>Type: {apartment.property_type}</BoldText>
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
-                    Price: {apartment.price}
+                    <BoldText>Price: ${apartment.price} / per month</BoldText>
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
-                    Square Footage: {apartment.sqft}
+                    <BoldText>Square Footage: {apartment.sqft} sq.ft</BoldText>
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
-                    Build Year: {apartment.build_year}
+                    <BoldText>Build Year: {apartment.build_year}</BoldText>
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
-                    Number of Bathrooms: {apartment.bathrooms}
+                    <BoldText>Number of Bathrooms: {apartment.bathrooms}</BoldText>
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
-                    Number of Bedrooms: {apartment.bedrooms}
+                    <BoldText>Number of Bedrooms: {apartment.bedrooms}</BoldText>
                   </Typography>
                   <div className="justify-content-center d-flex">
                     <iframe

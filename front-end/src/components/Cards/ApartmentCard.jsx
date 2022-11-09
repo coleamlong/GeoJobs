@@ -16,10 +16,11 @@ const ApartmentCard = (props) => {
     image,
   } = props.apartment;
   return (
-    <Card>
+    <Card
+    style= {{backgroundColor: 'lavender'}}>
       <Card.Img
         style={{
-          height: "50%",
+          height: "45%",
           width: "100%",
           objectFit: "cover",
         }}
@@ -44,11 +45,13 @@ const ApartmentCard = (props) => {
           </Card.Text>
         )}
       </Card.Body>
-      <Card.Footer>
+      <Card.Footer
+        style= {{backgroundColor: 'whitesmoke'}}>
         <Button
           className="btn btn-primary stretched-link"
           variant="dark"
           href={`/apartment/${id}`}
+          style= {{marginLeft:10, backgroundColor: 'midnightblue'}}
         >
           More Info
         </Button>
