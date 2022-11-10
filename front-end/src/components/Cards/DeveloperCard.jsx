@@ -8,6 +8,12 @@ function BoldText({ children }) {
   );
 }
 
+function OText({ children }) {
+  return (
+    <span style={{  fontSize: '17px', color: 'whitesmoke', font: 'Courier-Oblique'  }}>{children}</span>
+  );
+}
+
 const DeveloperCard = (props) => {
   const {
     name,
@@ -20,16 +26,17 @@ const DeveloperCard = (props) => {
     unit_tests,
   } = props.devInfo;
   return (
-    <Card>
+    <Card
+    style= {{backgroundColor: 'midnightblue'}}>
       <Card.Img variant="top" src={image} />
       <Card.Body>
-        <Card.Title>{name}</Card.Title>
+        <Card.Title><OText>{name}</OText></Card.Title>
 
-        <Card.Subtitle>@{gitlab_username}</Card.Subtitle>
-        <Card.Text>Role: {role}</Card.Text>
-        <Card.Text>{bio}</Card.Text>
+        <Card.Subtitle><OText>@{gitlab_username}</OText></Card.Subtitle>
+        <Card.Text><OText>Role: {role}</OText></Card.Text>
+        <Card.Text><OText>{bio}</OText></Card.Text>
       </Card.Body>
-      <Card.Footer className="text-muted" style= {{backgroundColor: 'whitesmoke'}}>
+      <Card.Footer className="text-muted" style= {{backgroundColor: 'lavender'}}>
         <BoldText>Commits: {commits} </BoldText><br />
         <BoldText>Issues: {issues} </BoldText><br />
         <BoldText>Unit Tests: {unit_tests}</BoldText>

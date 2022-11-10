@@ -80,6 +80,7 @@ const fetchGitLabData = async () => {
   };
 };
 
+
 function BoldText({ children }) {
   return (
     <span style={{  fontSize: '37px', color: 'lightsalmon', font: 'Courier-Oblique'  }}>{children}</span>
