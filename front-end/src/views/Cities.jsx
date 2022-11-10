@@ -33,6 +33,12 @@ const Cities = () => {
     fetchCities();
   }, [cities]);
 
+  function BoldText({ children }) {
+    return (
+      <span style={{  fontSize: '18px', color: 'whitesmoke', font: 'Courier-Oblique'  }}>{children}</span>
+    );
+  }
+
   return (
     <Container>
       <h1 className="p-5 text-center">Cities</h1>
@@ -44,7 +50,7 @@ const Cities = () => {
           className="me-2"
           aria-label="Search"
         />
-        <Button variant="outline-success">Search</Button>
+        <Button variant="outline-secondary">Search</Button>
       </Form>
       <Form className="filter-form d-flex gap-4 justify-content-center">
         <FilterDropdown

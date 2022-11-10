@@ -69,7 +69,7 @@ const Jobs = () => {
           className="me-2"
           aria-label="Search"
         />
-        <Button variant="outline-success">Search</Button>
+        <Button variant="outline-secondary">Search</Button>
       </Form>
       <Form className="filter-form d-flex gap-4 justify-content-center pb-5">
         <FilterDropdown

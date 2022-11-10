@@ -66,11 +66,11 @@ const Apartments = () => {
         <Form.Control
           style={{ width: "20vw" }}
           type="search"
-          placeholder="Search jobs"
+          placeholder="Search apartments"
           className="me-2"
           aria-label="Search"
         />
-        <Button variant="outline-success">Search</Button>
+        <Button variant="outline-secondary">Search</Button>
       </Form>
       <Form className="filter-form d-flex gap-4 justify-content-center pb-5">
         <FilterDropdown
