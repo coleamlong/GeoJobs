@@ -8,7 +8,7 @@ const CityCard = (props) => {
   const { img_url, name, state, population, avg_rating, budget, id } =
     props.city;
   return (
-    <Card>
+    <Card style={{ height: "18rem", width: "100%" }}>
       <Card.Img
         style={{
           height: "100%",

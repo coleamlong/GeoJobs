@@ -8,8 +8,6 @@ import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import { ExternalLink } from "react-external-link";
 import Spinner from "react-bootstrap/Spinner";
-import Carousel from "react-bootstrap/Carousel";
-import Image from "react-bootstrap/Image";
 
 const client = axios.create({
   baseURL: "https://api.geojobs.me/",

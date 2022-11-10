@@ -7,6 +7,11 @@ import axios from "axios";
 import ApartmentCard from "../components/Cards/ApartmentCard";
 import Pagination from "react-bootstrap/Pagination";
 
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
+import FilterDropdown from "../components/FilterDropdown";
+import RangeSlider from "../components/RangeSlider";
+
 const client = axios.create({
   baseURL: "https://api.geojobs.me/",
 });
@@ -57,6 +62,97 @@ const Apartments = () => {
   return (
     <Container>
       <h1 className="p-5 text-center">Apartments</h1>
+      <Form className="d-flex pb-5 justify-content-center">
+        <Form.Control
+          style={{ width: "20vw" }}
+          type="search"
+          placeholder="Search jobs"
+          className="me-2"
+          aria-label="Search"
+        />
+        <Button variant="outline-success">Search</Button>
+      </Form>
+      <Form className="filter-form d-flex gap-4 justify-content-center pb-5">
+        <FilterDropdown
+          title="Sort"
+          items={[
+            "# Bedrooms",
+            "# Bathrooms",
+            "Price (lowest -> highest)",
+            "Price (highest -> lowest)",
+            "Square Footage",
+            "Build Year",
+          ]}
+        />
+        <FilterDropdown
+          title="City"
+          items={[
+            "New York, NY",
+            "Los Angeles, CA",
+            "Chicago, IL",
+            "Houston, TX",
+            "Phoenix, AZ",
+            "Philadelphia, PA",
+            "San Antonio, TX",
+            "San Diego, CA",
+            "Dallas, TX",
+            "San Jose, CA",
+            "Austin, TX",
+            "Jacksonville, FL",
+            "Fort Worth, TX",
+            "Columbus, OH",
+            "Indianapolis, IN",
+            "Charlotte, NC",
+            "San Francisco, CA",
+            "Seattle, WA",
+            "Denver, CO",
+            "Washington D.C.",
+            "Nashville, TN",
+            "Oklahoma City, OK",
+            "El Paso, TX",
+            "Boston, MA",
+            "Portland, OR",
+            "Las Vegas, NV",
+            "Detroit, MI",
+            "Memphis, TN",
+            "Louisville, KY",
+            "Baltimore, MD",
+            "Milwaukee, WI",
+            "Albuquerque, NM",
+            "Tucson, AZ",
+            "Fresno, CA",
+            "Sacramento, CA",
+            "Kansas City, MO",
+            "Mesa, AZ",
+            "Atlanta, GA",
+            "Omaha, NE",
+            "Colorado Springs, CO",
+            "Raleigh, NC",
+            "Long Beach, CA",
+            "Virginia Beach, VA",
+            "Miami, FL",
+            "Oakland, CA",
+            "Minneapolis, MN",
+            "Tulsa, OK",
+            "Bakersfield, CA",
+            "Wichita, KS",
+            "Arlington, TX",
+          ]}
+          scroll
+        />
+        <FilterDropdown
+          title="Property Type"
+          items={["Apartment", "Single Family", "Condo", "Townhouse"]}
+        />
+        <Form.Label>Bedrooms</Form.Label>
+        <RangeSlider min={0} max={10} discrete />
+        <Form.Label>Bathrooms</Form.Label>
+        <RangeSlider min={0} max={10} discrete />
+        <Form.Label>Price</Form.Label>
+        <RangeSlider min={0} max={10000} />
+        <Form.Label>Square Footage</Form.Label>
+        <RangeSlider min={0} max={20000} />
+      </Form>
       <Pagination className="justify-content-center">
         {activePage > 3 && (
           <Pagination.Item

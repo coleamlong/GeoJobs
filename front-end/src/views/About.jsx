@@ -15,7 +15,7 @@ import APICard from "../components/Cards/APICard";
 
 const client = axios.create({
   baseURL: "https://gitlab.com/api/v4/",
-  headers: { Authorization: "Bearer glpat-MweTEhPuWf9NugsqWnQy" },
+  headers: { Authorization: "Bearer glpat-jthhZ5tw3MX79B_bzf_y" },
 });
 
 const fetchGitLabData = async () => {
