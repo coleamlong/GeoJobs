@@ -205,8 +205,35 @@ const Jobs = () => {
           <Spinner animation="grow" />
         )}
       </Row>
+      <Pagination className="justify-content-center">
+        {activePage > 3 && (
+          <Pagination.Item
+            first
+            key={1}
+            onClick={() => handleClick(1)}
+            active={1 === activePage}
+          >
+            1
+          </Pagination.Item>
+        )}
+        {activePage > 4 && <Pagination.Ellipsis />}
+        {items}
+        {activePage < numPages - 3 && <Pagination.Ellipsis />}
+        {activePage < numPages - 2 && (
+          <Pagination.Item
+            last
+            key={numPages}
+            onClick={() => handleClick(numPages)}
+            active={numPages === activePage}
+          >
+            {numPages}
+          </Pagination.Item>
+        )}
+      </Pagination>
     </Container>
+    
   );
+  
 };
 
 export default Jobs;

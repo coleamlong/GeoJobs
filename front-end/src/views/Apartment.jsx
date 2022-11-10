@@ -10,6 +10,7 @@ import { ExternalLink } from "react-external-link";
 import Spinner from "react-bootstrap/Spinner";
 import Carousel from "react-bootstrap/Carousel";
 import Image from "react-bootstrap/Image";
+import Button from "react-bootstrap/Button";
 
 const client = axios.create({
   baseURL: "https://api.geojobs.me/",
@@ -35,6 +36,17 @@ const Apartment = () => {
     fetchApartment();
   }, [apartment]);
 
+  function BoldText({ children }) {
+    return (
+      <span style={{  fontSize: '18px', color: 'black', font: 'Courier-Oblique'  }}>{children}</span>
+    );
+  }
+  function TextO({ children }) {
+    return (
+      <span style={{ fontWeight: 'bold', fontSize: '16px', color: 'midnightblue', font: 'Courier-Oblique' }}>{children}</span>
+    );
+  }
+
   return (
     <Container>
       <Typography
@@ -42,8 +54,9 @@ const Apartment = () => {
         className="modelTitle"
         variant="h2"
         sx={{ textAlign: "center" }}
+        color= 'midnightblue'
       >
-        Apartment Info
+      Apartment Info
       </Typography>
       {loaded ? (
         <Paper
@@ -53,7 +66,7 @@ const Apartment = () => {
             maxWidth: 1000,
             flexGrow: 4,
             backgroundColor: (theme) =>
-              theme.palette.mode === "dark" ? "#1A2027" : "#fff",
+              theme.palette.mode === "dark" ? "#1A2027" : "#f5f5f5",
           }}
         >
           <Grid container spacing={2}>
@@ -76,25 +89,25 @@ const Apartment = () => {
               <Grid item xs container direction="column" spacing={2}>
                 <Grid item xs>
                   <Typography variant="body2" color="text.secondary">
-                    Address: {apartment.address}
+                    <BoldText>Address: {apartment.address}</BoldText>
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
-                    Type: {apartment.property_type}
+                    <BoldText>Type: {apartment.property_type}</BoldText>
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
-                    Price: {apartment.price}
+                    <BoldText>Price: ${apartment.price} / per month</BoldText>
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
-                    Square Footage: {apartment.sqft}
+                    <BoldText>Square Footage: {apartment.sqft} sq.ft</BoldText>
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
-                    Build Year: {apartment.build_year}
+                    <BoldText>Build Year: {apartment.build_year}</BoldText>
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
-                    Number of Bathrooms: {apartment.bathrooms}
+                    <BoldText>Number of Bathrooms: {apartment.bathrooms}</BoldText>
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
-                    Number of Bedrooms: {apartment.bedrooms}
+                    <BoldText>Number of Bedrooms: {apartment.bedrooms}</BoldText>
                   </Typography>
                   <div className="justify-content-center d-flex">
                     <iframe
@@ -108,17 +121,21 @@ const Apartment = () => {
                   </div>
                 </Grid>
                 <Grid item>
-                  <Typography sx={{ cursor: "pointer" }} variant="body2">
-                    <li>
-                      <Link to={`/cities/${apartment.city}`}>Explore City</Link>
-                    </li>
-                  </Typography>
-                </Grid>
-                <Grid item>
-                  <Typography sx={{ cursor: "pointer" }} variant="body2">
-                    <li>
-                      <Link to={`/job/${apartment.job}`}>Find Job</Link>
-                    </li>
+                  <Typography sx={{ cursor: "pointer" }} variant="body2"> 
+                    <Button
+                      style= {{marginRight:30, backgroundColor: 'midnightblue'}}
+                      href={`/cities/${apartment.city}`}
+                      >
+                     Explore City
+                     </Button >
+                     <Button
+                      className="btn btn-primary"
+                      variant="dark"
+                      style= {{marginRight:30, backgroundColor: 'midnightblue'}}
+                      href={`/job/${apartment.job}`}
+                      >
+                     Find Job
+                     </Button>
                   </Typography>
                 </Grid>
               </Grid>
