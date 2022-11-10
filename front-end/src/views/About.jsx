@@ -120,7 +120,7 @@ const About = () => {
         </p>
       </Container>
       <Container className="p-4"
-      style= {{backgroundColor: 'whitesmoke'}}>
+      style= {{backgroundColor: 'lightsalmon'}}>
         <h1 className="d-flex justify-content-center p-4 ">
           Putting The Pieces Together
         </h1>
