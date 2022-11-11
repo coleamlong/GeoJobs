@@ -21,17 +21,45 @@ const Jobs = () => {
   const [loaded, setLoaded] = useState(false);
   const [activePage, setActivePage] = useState(1);
 
+  const [salary, setSalary] = useState([0, 1000000]);
+  const [age, setAge] = useState([0, 365]);
+
+  const handleSalaryFilter = (value) => {
+    setSalary(value);
+    console.log(salary);
+  };
+  const handleAgeFilter = (value) => {
+    setAge(value);
+    console.log(age);
+  };
+
   function handleClick(number) {
-    console.log("Clicked page ", number);
     setActivePage(number);
     setLoaded(false);
+  }
+
+  function arrayEquals(a, b) {
+    return (
+      Array.isArray(a) &&
+      Array.isArray(b) &&
+      a.length === b.length &&
+      a.every((val, index) => val === b[index])
+    );
   }
 
   useEffect(() => {
     const fetchJobs = async () => {
       if (!loaded) {
+        var query = `jobs?page=${activePage}&perPage=20`;
+        if (!arrayEquals(salary, [0, 1000000])) {
+          query += `&salary=${salary[0]}-${salary[1]}`;
+        }
+        if (!arrayEquals(age, [0, 365])) {
+          query += `&age=${age[0]}-${age[1]}`;
+        }
+        console.log(query);
         await client
-          .get(`jobs?page=${activePage}&perPage=20`)
+          .get(query)
           .then((response) => {
             setJobs(response.data);
           })
@@ -155,9 +183,15 @@ const Jobs = () => {
           ]}
         />
         <Form.Label>Salary</Form.Label>
-        <RangeSlider min={0} max={1000000} />
-        <Form.Label>Post Age (days)</Form.Label>
-        <RangeSlider min={0} max={365} />
+        <RangeSlider
+          min={0}
+          max={1000000}
+          onChange={handleSalaryFilter}
+          value={salary}
+        />
+        <Form.Label>Post Age</Form.Label>
+        <RangeSlider min={0} max={365} onChange={handleAgeFilter} value={age} />
+        <Button onClick={() => setLoaded(false)}>Filter</Button>
       </Form>
 
       <Pagination className="justify-content-center">
@@ -231,9 +265,7 @@ const Jobs = () => {
         )}
       </Pagination>
     </Container>
-    
   );
-  
 };
 
 export default Jobs;

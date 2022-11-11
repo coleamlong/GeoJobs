@@ -18,11 +18,65 @@ const Cities = () => {
   const [cities, setCities] = useState([]);
   const [loaded, setLoaded] = useState(false);
 
+  const [population, setPopulation] = useState([0, 1000000]);
+  const [rating, setRating] = useState([0, 5]);
+  const [budget, setBudget] = useState([0, 10]);
+  const [safety, setSafety] = useState([0, 10]);
+
+  const handlePopulationFilter = (value) => {
+    setPopulation(value);
+    console.log(population);
+  };
+  const handleRatingFilter = (value) => {
+    setRating(value);
+    console.log(rating);
+  };
+  const handleBudgetFilter = (value) => {
+    setBudget(value);
+    console.log(budget);
+  };
+  const handleSafetyFilter = (value) => {
+    setSafety(value);
+    console.log(safety);
+  };
+
+  function arrayEquals(a, b) {
+    return (
+      Array.isArray(a) &&
+      Array.isArray(b) &&
+      a.length === b.length &&
+      a.every((val, index) => val === b[index])
+    );
+  }
+
   useEffect(() => {
     const fetchCities = async () => {
-      if (cities === undefined || cities.length === 0) {
+      if (!loaded) {
+        var query = "cities";
+        var filterCount = 0;
+        if (!arrayEquals(population, [0, 1000000])) {
+          filterCount++;
+          query += "?";
+          query += `population=${population[0]}-${population[1]}`;
+        }
+        if (!arrayEquals(rating, [0, 5])) {
+          filterCount++;
+          query += filterCount === 1 ? "?" : "&";
+          query += `rating=${rating[0]}-${rating[1]}`;
+        }
+        if (!arrayEquals(budget, [0, 10])) {
+          filterCount++;
+          query += filterCount === 1 ? "?" : "&";
+          query += `budget=${budget[0]}-${budget[1]}`;
+        }
+        if (!arrayEquals(safety, [0, 10])) {
+          filterCount++;
+          query += filterCount === 1 ? "?" : "&";
+          query += `safety=${safety[0]}-${safety[1]}`;
+        }
+        console.log(query);
         await client
-          .get("cities")
+          .get(query)
           .then((response) => {
             setCities(response.data);
           })
@@ -31,7 +85,7 @@ const Cities = () => {
       }
     };
     fetchCities();
-  }, [cities]);
+  }, [cities, loaded]);
 
   return (
     <Container>
@@ -142,13 +196,37 @@ const Cities = () => {
           scroll
         />
         <Form.Label>Population:</Form.Label>
-        <RangeSlider min={0} max={10000000} />
+        <RangeSlider
+          min={0}
+          max={1000000}
+          onChange={handlePopulationFilter}
+          value={population}
+        />
         <Form.Label>Rating:</Form.Label>
-        <RangeSlider min={0} max={5} discrete />
+        <RangeSlider
+          min={0}
+          max={5}
+          discrete
+          onChange={handleRatingFilter}
+          value={rating}
+        />
         <Form.Label>Budget:</Form.Label>
-        <RangeSlider min={0} max={10} discrete />
+        <RangeSlider
+          min={0}
+          max={10}
+          discrete
+          onChange={handleBudgetFilter}
+          value={budget}
+        />
         <Form.Label>Safety:</Form.Label>
-        <RangeSlider min={0} max={10} discrete />
+        <RangeSlider
+          min={0}
+          max={10}
+          discrete
+          onChange={handleSafetyFilter}
+          value={safety}
+        />
+        <Button onClick={() => setLoaded(false)}>Filter</Button>
       </Form>
       <Row
         xl={4}
