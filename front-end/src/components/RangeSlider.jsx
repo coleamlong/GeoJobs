@@ -2,18 +2,19 @@ import React, { useState } from "react";
 import Slider from "@mui/material/Slider";
 
 export default function RangeSlider(props) {
-  const { min, max, discrete } = props;
+  const { min, max, discrete, onChange } = props;
   const [value, setValue] = useState([min, max]);
 
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
+  const handleChange = (event, value) => {
+    setValue(value);
+    onChange(value);
   };
 
   return (
     <Slider
       value={value}
       onChange={handleChange}
-      valueLabelDisplay="auto"
+      valueLabelDisplay="on"
       marks={discrete}
       min={min}
       max={max}

@@ -21,20 +21,63 @@ const Apartments = () => {
   const [loaded, setLoaded] = useState(false);
   const [activePage, setActivePage] = useState(1);
 
+  const [bedrooms, setBedrooms] = useState([0, 10]);
+  const [bathrooms, setBathrooms] = useState([0, 10]);
+  const [price, setPrice] = useState([0, 10000]);
+  const [sqft, setSqft] = useState([0, 20000]);
+
+  const handleBedroomsFilter = (value) => {
+    setBedrooms(value);
+    console.log(bedrooms);
+  };
+  const handleBathroomsFilter = (value) => {
+    setBathrooms(value);
+    console.log(bathrooms);
+  };
+  const handlePriceFilter = (value) => {
+    setPrice(value);
+    console.log(price);
+  };
+  const handleSqftFilter = (value) => {
+    setSqft(value);
+    console.log(sqft);
+  };
+
   function handleClick(number) {
-    console.log("Clicked page ", number);
     setActivePage(number);
     setLoaded(false);
+  }
+
+  function arrayEquals(a, b) {
+    return (
+      Array.isArray(a) &&
+      Array.isArray(b) &&
+      a.length === b.length &&
+      a.every((val, index) => val === b[index])
+    );
   }
 
   useEffect(() => {
     const fetchApartments = async () => {
       if (!loaded) {
+        var query = `apartments?page=${activePage}&perPage=20`;
+        if (!arrayEquals(bedrooms, [0, 10])) {
+          query += `&salary=${bedrooms[0]}-${bedrooms[1]}`;
+        }
+        if (!arrayEquals(bathrooms, [0, 10])) {
+          query += `&age=${bathrooms[0]}-${bathrooms[1]}`;
+        }
+        if (!arrayEquals(price, [0, 10000])) {
+          query += `&age=${price[0]}-${price[1]}`;
+        }
+        if (!arrayEquals(sqft, [0, 20000])) {
+          query += `&age=${sqft[0]}-${sqft[1]}`;
+        }
+        console.log(query);
         await client
-          .get(`apartments?page=${activePage}&perPage=20`)
+          .get(query)
           .then((response) => {
             setApartments(response.data);
-            console.log(response.data);
           })
           .catch((err) => console.log(err));
         setLoaded(true);
@@ -145,13 +188,36 @@ const Apartments = () => {
           items={["Apartment", "Single Family", "Condo", "Townhouse"]}
         />
         <Form.Label>Bedrooms</Form.Label>
-        <RangeSlider min={0} max={10} discrete />
+        <RangeSlider
+          min={0}
+          max={10}
+          onChange={handleBedroomsFilter}
+          value={bedrooms}
+          discrete
+        />
         <Form.Label>Bathrooms</Form.Label>
-        <RangeSlider min={0} max={10} discrete />
+        <RangeSlider
+          min={0}
+          max={10}
+          onChange={handleBathroomsFilter}
+          value={bathrooms}
+          discrete
+        />
         <Form.Label>Price</Form.Label>
-        <RangeSlider min={0} max={10000} />
+        <RangeSlider
+          min={0}
+          max={10000}
+          onChange={handlePriceFilter}
+          value={price}
+        />
         <Form.Label>Square Footage</Form.Label>
-        <RangeSlider min={0} max={20000} />
+        <RangeSlider
+          min={0}
+          max={20000}
+          onChange={handleSqftFilter}
+          value={sqft}
+        />
+        <Button onClick={() => setLoaded(false)}>Filter</Button>
       </Form>
       <Pagination className="justify-content-center">
         {activePage > 3 && (
