@@ -1,3 +1,4 @@
+from operator import and_
 from flask import jsonify, request, Response
 from models import app, db, Job, Apartment, City
 from schema import job_schema, city_schema, apartment_schema, tag_schema, apt_img_schema
@@ -34,7 +35,7 @@ def get_cities():
             }
         }
     )
-
+# filter by City Company Job Category Minimum Salary Maximum Salary
 @app.route("/jobs")
 def get_jobs():
     # get args
@@ -42,6 +43,25 @@ def get_jobs():
     perPage = request.args.get("perPage", type=int)
     query = db.session.query(Job)
     count = query.count()
+    City = request.args.get("city_id") 
+    Company = request.args.get("company") 
+    Category = request.args.get("category") 
+    Minimum_Salary = request.args.get("salary_min") 
+    Maximum_Salary = request.args.get("salary_max") 
+
+    # FILTERING
+    if City is not None:
+        query = query.filter(Job.city_id == (City))
+    if Company is not None:
+        query = query.filter(Job.company == (Company))
+    if Category is not None:
+        query = query.filter(Job.category == (Category))
+    if Maximum_Salary is not None and Minimum_Salary is not None:
+        range = (Minimum_Salary, Maximum_Salary)
+        query = query.filter(Job.salary_max <= (Maximum_Salary), Job.salary_min >= (Minimum_Salary))
+
+
+
     if (page is not None):
         query = paginate(query, page, perPage)
     result = job_schema.dump(query, many=True)
