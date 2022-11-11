@@ -1,10 +1,32 @@
 from flask import jsonify, request, Response
-from models import app, db, Job, Apartment, City
+from models import app, db, Job, Apartment, City, city_tag_link
 from schema import job_schema, city_schema, apartment_schema, tag_schema, apt_img_schema
 from sqlalchemy.sql import text, column
 import json
 
 DEFAULT_PAGE_SIZE = 20
+TAGNAME_TO_ID = {
+    "Beach Town": 1,
+    "History": 2,
+    "Nightlife": 3,
+    "Foodie": 4,
+    "Outdoorsy": 5,
+    "Shopping": 6,
+    "Performing Arts": 7,
+    "Museums": 8,
+    "Posh": 9,
+    "Hipster": 10,
+    "Hippie": 11,
+    "Charming": 12,
+    "College Town": 13,
+    "Family Friendly": 14,
+    "Ski Town": 15,
+    "Architecture": 17,
+    "LGBT Scene": 18,
+    "Wineries": 19,
+    "Diversity": 20,
+    "Music": 21
+}
 
 @app.route("/")
 def home():
@@ -21,7 +43,52 @@ def get_cities():
     # get args
     page = request.args.get("page", type=int)
     perPage = request.args.get("perPage", type=int)
+    tags = request.args.get("tags")
+    state = request.args.get("state")
+    population = request.args.get("population")
+    rating = request.args.get("rating")
+    budget = request.args.get("budget")
+    safety = request.args.get("safety")
+
+    # Query
     query = db.session.query(City)
+
+    # Filter
+    if tags is not None:
+        test = db.session.query(city_tag_link.c.city_id).filter(city_tag_link.c.tag_id == TAGNAME_TO_ID[tags])
+        query = query.filter(City.id.in_(test))
+
+    if state is not None:
+        query = query.filter(City.state == state)
+
+    if population is not None:
+        pop_range = population.split("-")
+        try:
+            query = query.filter(City.population >= pop_range[0], City.population <= pop_range[1])
+        except Exception:
+            pass
+    
+    if rating is not None:
+        rating_range = rating.split("-")
+        try:
+            query = query.filter(City.avg_rating >= rating_range[0], City.avg_rating <= rating_range[1])
+        except Exception:
+            pass
+    
+    if budget is not None:
+        budget_range = budget.split("-")
+        try:
+            query = query.filter(City.budget >= budget_range[0], City.budget <= budget_range[1])
+        except Exception:
+            pass
+    
+    if safety is not None:
+        safety_range = safety.split("-")
+        try:
+            query = query.filter(City.safety >= safety_range[0], City.safety <= safety_range[1])
+        except Exception:
+            pass
+
     count = query.count()
     if (page is not None):
         query = paginate(query, page, perPage)
