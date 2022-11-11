@@ -135,7 +135,7 @@ const Job = () => {
                     </Button>
                     <Button
                       style= {{marginRight:30, backgroundColor: 'midnightblue'}}
-                      href={`/cities/${job.apartment}`}
+                      href={`/apartment/${job.apartment}`}
                       >
                       Find Apartment In City
                     </Button >
