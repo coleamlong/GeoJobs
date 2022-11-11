@@ -31,6 +31,7 @@ const CityCard = (props) => {
         </Card.Text>
         <Card.Footer className="mt-auto">
           <Button
+            style= {{backgroundColor: 'lightsalmon'}}
             className="btn btn-primary stretched-link"
             variant="light"
             href={`/cities/${id}`}

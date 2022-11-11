@@ -9,6 +9,7 @@ import Typography from "@mui/material/Typography";
 import { ExternalLink } from "react-external-link";
 import Spinner from "react-bootstrap/Spinner";
 import { TwitterTimelineEmbed } from "react-twitter-embed";
+import Button from "react-bootstrap/Button";
 
 const client = axios.create({
   baseURL: "https://api.geojobs.me/",
@@ -34,16 +35,27 @@ const City = () => {
     fetchCity();
   }, [city]);
 
+  function BoldText({ children }) {
+    return (
+      <span style={{  fontSize: '18px', color: 'black', font: 'Courier-Oblique'  }}>{children}</span>
+    );
+  }
+
   return (
     <Container>
+      {loaded ? (
       <Typography
         gutterBottom
         className="modelTitle"
         variant="h2"
+        color= 'midnightblue'
         sx={{ textAlign: "center" }}
       >
-        City Info
+      {city.name}
       </Typography>
+      ) : (
+        <Spinner animation="none" />
+      )}
       {loaded ? (
         <Paper
           sx={{
@@ -52,7 +64,7 @@ const City = () => {
             maxWidth: 1000,
             flexGrow: 4,
             backgroundColor: (theme) =>
-              theme.palette.mode === "dark" ? "#1A2027" : "#fff",
+              theme.palette.mode === "dark" ? "#1A2027" : "#f5f5f5",
           }}
         >
           <Grid container spacing={2}>
@@ -61,52 +73,48 @@ const City = () => {
               <Grid item xs container direction="column" spacing={2}>
                 <Grid item xs>
                   <Typography gutterBottom variant="subtitle1" component="div">
-                    {city.name}
                   </Typography>
                   <Typography
                     variant="body2"
                     color="text.secondary"
                   ></Typography>
                   <Typography variant="body2" color="text.secondary">
-                    Average Rating: {city.avg_rating}
+                    <BoldText>Average Rating: {city.avg_rating}</BoldText>
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
-                    Safety Score: {city.safety}
+                    <BoldText>Safety Score: {city.safety}</BoldText>
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
-                    Budget Score: {city.budget}
+                    <BoldText>Budget Score: {city.budget}</BoldText>
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
-                    Population: {city.population}
-                  </Typography>
-                </Grid>
-                <Grid item>
-                  <Typography variant="body2" color="text.secondary">
-                    <li>
-                      <ExternalLink href={city.walkscore_url}>
-                        <span>Walk Score</span>
-                      </ExternalLink>
-                    </li>
-                  </Typography>
-                </Grid>
-                <Grid item>
-                  <Typography sx={{ cursor: "pointer" }} variant="body2">
-                    <li>
-                      <Link to={`/apartment/${city.apartment}`}>
-                        Find Apartment
-                      </Link>
-                    </li>
-                  </Typography>
-                </Grid>
-                <Grid item>
-                  <Typography sx={{ cursor: "pointer" }} variant="body2">
-                    <li>
-                      <Link to={`/job/${city.job}`}>Find Job</Link>
-                    </li>
+                    <BoldText>Population: {city.population}</BoldText>
                   </Typography>
                 </Grid>
               </Grid>
               <Grid item>
+                  <Typography variant="body2" color="text.secondary">
+                    <Button
+                      style= {{marginBottom: 30, marginLeft:350, backgroundColor: 'midnightblue'}}
+                      href={city.walkscore_url}
+                      >
+                      Walk Score
+                    </Button >
+                    <Button
+                      style= {{marginBottom: 30, marginLeft:30, backgroundColor: 'midnightblue'}}
+                      href={`/apartment/${city.apartment}`}
+                      >
+                      Find Apartment
+                    </Button >
+                    <Button
+                      style= {{marginBottom: 30, marginLeft:30, backgroundColor: 'midnightblue'}}
+                      href={`/job/${city.job}`}
+                      >
+                      Find Job
+                    </Button >
+                  </Typography>
+                </Grid>
+              <Grid item>  
                 <div>
                   <TwitterTimelineEmbed
                     sourceType="profile"
@@ -122,6 +130,7 @@ const City = () => {
                   />
                 </Typography>
               </Grid>
+              
             </Grid>
           </Grid>
         </Paper>

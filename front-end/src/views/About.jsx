@@ -80,6 +80,7 @@ const fetchGitLabData = async () => {
   };
 };
 
+
 function BoldText({ children }) {
   return (
     <span style={{  fontSize: '37px', color: 'lightsalmon', font: 'Courier-Oblique'  }}>{children}</span>
@@ -120,7 +121,7 @@ const About = () => {
         </p>
       </Container>
       <Container className="p-4"
-      style= {{backgroundColor: 'whitesmoke'}}>
+      style= {{backgroundColor: 'lightsalmon'}}>
         <h1 className="d-flex justify-content-center p-4 ">
           Putting The Pieces Together
         </h1>
