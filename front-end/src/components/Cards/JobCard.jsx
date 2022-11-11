@@ -3,6 +3,12 @@ import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import job_placeholder from "../../assets/placeholder/job.png";
 
+function OText({ children }) {
+  return (
+    <span style={{  fontSize: '17px', color: 'white', font: 'Courier-Oblique'  }}>{children}</span>
+  );
+}
+
 const JobCard = (props) => {
   const {
     category,
@@ -17,7 +23,8 @@ const JobCard = (props) => {
     img_url,
   } = props.job;
   return (
-    <Card>
+    <Card
+    style= {{backgroundColor: 'lavender'}}>
       <Card.Img
         className="p-2"
         style={{
@@ -34,13 +41,15 @@ const JobCard = (props) => {
           Salary: ${salary_min} - ${salary_max}
         </Card.Text>
       </Card.Body>
-      <Card.Footer>
+      <Card.Footer
+      style= {{backgroundColor: 'midnightblue'}}>
         <Button
+          style= {{backgroundColor: 'lightsalmon'}}
           className="btn btn-primary stretched-link"
           variant="dark"
           href={`/job/${id}`}
         >
-          More Info
+          <OText>More Info</OText>
         </Button>
       </Card.Footer>
     </Card>

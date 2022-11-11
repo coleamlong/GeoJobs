@@ -8,6 +8,7 @@ import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import { ExternalLink } from "react-external-link";
 import Spinner from "react-bootstrap/Spinner";
+import Button from "react-bootstrap/Button";
 
 const client = axios.create({
   baseURL: "https://api.geojobs.me/",
@@ -42,16 +43,33 @@ const Job = () => {
     fetchJob();
   }, [job, city]);
 
+  function BoldText({ children }) {
+    return (
+      <span style={{  fontSize: '18px', color: 'black', font: 'Courier-Oblique'  }}>{children}</span>
+    );
+  }
+  function TextO({ children }) {
+    return (
+      <span style={{ fontWeight: 'bold', fontSize: '16px', color: 'midnightblue', font: 'Courier-Oblique' }}>{children}</span>
+    );
+  }
+
   return (
     <Container>
+      {loaded ? (
       <Typography
         gutterBottom
         className="modelTitle"
         variant="h2"
+        color= 'midnightblue'
+        fontSize= '45px'
         sx={{ textAlign: "center" }}
       >
-        Job Info
+      {job.title}
       </Typography>
+      ) : (
+        <Spinner animation="none" />
+      )}
       {loaded ? (
         <Paper
           sx={{
@@ -60,7 +78,7 @@ const Job = () => {
             maxWidth: 1000,
             flexGrow: 4,
             backgroundColor: (theme) =>
-              theme.palette.mode === "dark" ? "#1A2027" : "#fff",
+              theme.palette.mode === "dark" ? "#1A2027" : "#f5f5f5",
           }}
         >
           <Grid container spacing={2}>
@@ -69,25 +87,24 @@ const Job = () => {
               <Grid item xs container direction="column" spacing={2}>
                 <Grid item xs>
                   <Typography gutterBottom variant="subtitle1" component="div">
-                    {job.title}
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
-                    Desciption: {job.description}
+                    <BoldText>Description: {job.description}</BoldText>
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
-                    Category: {job.category}
+                    <BoldText>Category: {job.category}</BoldText>
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
-                    Salary Minimum: {job.salary_min}
+                    <BoldText>Salary Minimum: ${job.salary_min}</BoldText>
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
-                    Salary Maximum: {job.salary_max}
+                    <BoldText>Salary Maximum: ${job.salary_max}</BoldText>
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
-                    Company:{job.company}
+                    <BoldText>Company:{job.company}</BoldText>
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
-                    Created:{job.created}
+                    <BoldText>Created:{job.created}</BoldText>
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
                     <img
@@ -108,29 +125,28 @@ const Job = () => {
                     </div>
                   </Typography>
                   <Typography variant="body">
-                    <li>
-                      <ExternalLink href={job.url}>
-                        <span>Job URL</span>
-                      </ExternalLink>
-                    </li>
-                  </Typography>
-                </Grid>
-                <Grid item>
-                  <Typography sx={{ cursor: "pointer" }} variant="body2">
-                    <li>
-                      <Link to={`/apartment/${city.apartment}`}>
-                        Find Apartment In City
-                      </Link>
-                    </li>
-                  </Typography>
-                </Grid>
-                <Grid item>
-                  <Typography sx={{ cursor: "pointer" }} variant="body2">
-                    <li>
-                      <Link to={`/cities/${job.city}`}>
-                        Find Out More About City
-                      </Link>
-                    </li>
+                    <Button
+                      className="btn btn-primary"
+                      variant="dark"
+                      style= {{marginRight:30, backgroundColor: 'midnightblue'}}
+                      href={job.url}
+                      >
+                    Job URL
+                    </Button>
+                    <Button
+                      style= {{marginRight:30, backgroundColor: 'midnightblue'}}
+                      href={`/cities/${job.apartment}`}
+                      >
+                      Find Apartment In City
+                    </Button >
+                    <Button
+                      className="btn btn-primary"
+                      variant="dark"
+                      style= {{marginRight:30, backgroundColor: 'midnightblue'}}
+                      href={`/cities/${job.city}`}
+                      >
+                    Find Out More About City
+                    </Button>
                   </Typography>
                 </Grid>
               </Grid>
