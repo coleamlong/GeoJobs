@@ -126,7 +126,52 @@ def get_apartments():
     # get args
     page = request.args.get("page", type=int)
     perPage = request.args.get("perPage", type=int)
+    city = request.args.get("city")
+    propertyType = request.args.get("proptype")
+    bedrooms = request.args.get("bedrooms")
+    bathrooms = request.args.get("bathrooms")
+    price = request.args.get("price")
+    sqft = request.args.get("sqft")
+
+    # query
     query = db.session.query(Apartment)
+
+    # filter
+    if city is not None:
+        test = db.session.query(City.id).filter(City.name == city)
+        query = query.filter(Apartment.city_id.in_(test))
+    
+    if propertyType is not None:
+        query.filter(Apartment.property_type == propertyType)
+
+    if bedrooms is not None:
+        bed_range = bedrooms.split("-")
+        try:
+            query = query.filter(Apartment.bedrooms >= bed_range[0], Apartment.bedrooms <= bed_range[1])
+        except Exception:
+            pass
+    
+    if bathrooms is not None:
+        bath_range = bathrooms.split("-")
+        try:
+            query = query.filter(Apartment.bathrooms >= bath_range[0], Apartment.bathrooms <= bath_range[1])
+        except Exception:
+            pass
+    
+    if sqft is not None:
+        sqft_range = sqft.split("-")
+        try:
+            query = query.filter(Apartment.sqft >= sqft_range[0], Apartment.sqft <= sqft_range[1])
+        except Exception:
+            pass
+    
+    if price is not None:
+        price_range = price.split("-")
+        try:
+            query = query.filter(Apartment.price >= price_range[0], Apartment.price <= price_range[1])
+        except Exception:
+            pass
+
     count = query.count()
     # paginate query if it's specified
     if (page is not None):
