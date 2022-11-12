@@ -51,6 +51,7 @@ def get_cities():
     budget = request.args.get("budget")
     safety = request.args.get("safety")
     sort = request.args.get("sort")
+    asc = request.args.get("asc")
 
     # Query
     query = db.session.query(City)
@@ -93,7 +94,10 @@ def get_cities():
     
     # Sort
     if sort is not None and getattr(City, sort) is not None:
-        query = query.order_by(desc(getattr(City, sort)))
+        if asc is not None:
+            query = query.order_by(getattr(City, sort))
+        else:
+            query = query.order_by(desc(getattr(City, sort)))
 
     count = query.count()
     if (page is not None):
@@ -121,6 +125,7 @@ def get_jobs():
     Minimum_Salary = request.args.get("salary_min") 
     Maximum_Salary = request.args.get("salary_max") 
     sort = request.args.get("sort")
+    asc = request.args.get("asc")
 
     # FILTERING
     if City is not None:
@@ -135,7 +140,10 @@ def get_jobs():
 
     # Sort
     if sort is not None and getattr(Job, sort) is not None:
-        query = query.order_by(desc(getattr(Job, sort)))
+        if asc is not None:
+            query = query.order_by(getattr(Job, sort))
+        else:
+            query = query.order_by(desc(getattr(Job, sort)))
 
     if (page is not None):
         query = paginate(query, page, perPage)
@@ -161,6 +169,7 @@ def get_apartments():
     price = request.args.get("price")
     sqft = request.args.get("sqft")
     sort = request.args.get("sort")
+    asc = request.args.get("asc")
 
     # query
     query = db.session.query(Apartment)
@@ -203,7 +212,10 @@ def get_apartments():
 
     # Sort
     if sort is not None and getattr(Apartment, sort) is not None:
-        query = query.order_by(desc(getattr(Apartment, sort)))
+        if asc is not None:
+            query = query.order_by(getattr(Apartment, sort))
+        else:
+            query = query.order_by(desc(getattr(Apartment, sort)))
 
     count = query.count()
     # paginate query if it's specified
@@ -212,6 +224,7 @@ def get_apartments():
     else :
         query = query.all()
     result = apartment_schema.dump(query, many=True)
+    
     # fetch the first image from images and at it to return
     index = 0
     for i in result:
