@@ -2,7 +2,7 @@ from operator import and_
 from flask import jsonify, request, Response
 from models import app, db, Job, Apartment, City, city_tag_link
 from schema import job_schema, city_schema, apartment_schema, tag_schema, apt_img_schema
-from sqlalchemy.sql import text, column
+from sqlalchemy.sql import text, column, desc
 import json
 
 DEFAULT_PAGE_SIZE = 20
@@ -50,6 +50,7 @@ def get_cities():
     rating = request.args.get("rating")
     budget = request.args.get("budget")
     safety = request.args.get("safety")
+    sort = request.args.get("sort")
 
     # Query
     query = db.session.query(City)
@@ -89,6 +90,10 @@ def get_cities():
             query = query.filter(City.safety >= safety_range[0], City.safety <= safety_range[1])
         except Exception:
             pass
+    
+    # Sort
+    if sort is not None and getattr(City, sort) is not None:
+        query = query.order_by(desc(getattr(City, sort)))
 
     count = query.count()
     if (page is not None):
@@ -115,6 +120,7 @@ def get_jobs():
     Category = request.args.get("category") 
     Minimum_Salary = request.args.get("salary_min") 
     Maximum_Salary = request.args.get("salary_max") 
+    sort = request.args.get("sort")
 
     # FILTERING
     if City is not None:
@@ -127,7 +133,9 @@ def get_jobs():
         range = (Minimum_Salary, Maximum_Salary)
         query = query.filter(Job.salary_max <= (Maximum_Salary), Job.salary_min >= (Minimum_Salary))
 
-
+    # Sort
+    if sort is not None and getattr(Job, sort) is not None:
+        query = query.order_by(desc(getattr(Job, sort)))
 
     if (page is not None):
         query = paginate(query, page, perPage)
@@ -152,6 +160,7 @@ def get_apartments():
     bathrooms = request.args.get("bathrooms")
     price = request.args.get("price")
     sqft = request.args.get("sqft")
+    sort = request.args.get("sort")
 
     # query
     query = db.session.query(Apartment)
@@ -191,6 +200,10 @@ def get_apartments():
             query = query.filter(Apartment.price >= price_range[0], Apartment.price <= price_range[1])
         except Exception:
             pass
+
+    # Sort
+    if sort is not None and getattr(Apartment, sort) is not None:
+        query = query.order_by(desc(getattr(Apartment, sort)))
 
     count = query.count()
     # paginate query if it's specified
