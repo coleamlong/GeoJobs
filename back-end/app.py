@@ -1,7 +1,8 @@
 from operator import and_
 from flask import jsonify, request, Response
-from models import app, db, Job, Apartment, City, city_tag_link
+from models import app, db, Job, Apartment, City, Tag, city_tag_link
 from schema import job_schema, city_schema, apartment_schema, tag_schema, apt_img_schema
+from sqlalchemy import or_
 from sqlalchemy.sql import text, column, desc
 import json
 
@@ -38,6 +39,150 @@ def home():
         error_text = "<p>The error:<br>" + str(e) + "</p>"
         hed = '<h1>Something is broken.</h1>'
         return hed + error_text
+
+@app.route("/search/<string:query>")
+def search_all(query) :
+    terms = query.split()
+    occurrences = {
+        **search_cities(terms),
+        **search_apartments(terms),
+        **search_jobs(terms)
+    }
+    objs = sorted(occurrences.keys(), 
+        key = lambda x: occurrences[x],
+        reverse = True)
+    cities = [city for city in objs if type(city) == City]
+    apts = [apt for apt in objs if type(apt) == Apartment]
+    jobs = [job for job in objs if type(job) == Job]
+    city_results = city_schema.dump(cities, many=True)
+    apt_results = apartment_schema.dump(apts, many=True)
+    job_results = job_schema.dump(jobs, many=True)
+    return jsonify({
+        "cities": city_results,
+        "apartments": apt_results, 
+        "jobs": job_results
+    })
+
+@app.route("/search/<string:model>/<string:query>")
+def search_models(model, query): 
+    model = model.strip().lower()
+    terms = query.split()
+    result = None
+    if model == "city":
+        occurrences = search_cities(terms)
+        cities = sorted(occurrences.keys(), 
+            key = lambda x: occurrences[x],
+            reverse = True)
+        result = city_schema.dump(cities, many=True)
+    elif model == "apartment":
+        occurrences = search_apartments(terms)
+        apartments = sorted(occurrences.keys(),
+            key = lambda x: occurrences[x],
+            reverse = True)
+        result = apartment_schema.dump(apartments, many=True)
+    elif model == "job":
+        occurrences = search_jobs(terms)
+        jobs = sorted(occurrences.keys(),
+            key = lambda x: occurrences[x],
+            reverse = True)
+        result = job_schema.dump(jobs, many=True)
+    else: 
+        return_error(f"Invalid model: {model}")
+    return jsonify({"data": result})
+
+"""
+Returns the cities corresponding to the given terms
+"""
+def search_cities(terms):
+    occurrences = {}
+    for term in terms: 
+        queries = []
+        queries.append(City.name.contains(term))
+        queries.append(City.state.contains(term))
+        queries.append(City.population.contains(term))
+        queries.append(City.avg_rating.contains(term))
+        queries.append(City.budget.contains(term))
+        queries.append(City.safety.contains(term))
+        queries.append(City.walkscore_url.contains(term))
+
+        # search tags for strings that match
+        tags = Tag.query\
+            .with_entities(Tag.id)\
+            .filter(Tag.name.contains(term))
+        tag_ids = [id[0] for id in tags]
+        if tag_ids:
+            # get cities associated with those tags
+            tag_string = f"{tag_ids}".replace("[", "(").replace("]", ")")
+            city_ids = db.session.execute(f"select city_id from \
+                city_tag_link where tag_id in {tag_string}").all()
+            city_ids = [id[0] for id in city_ids]
+            queries.append(City.id.in_(city_ids))
+        cities =  City.query.filter(or_(*queries))
+        for city in cities:
+            if not city in occurrences:
+                occurrences[city] = 1
+            else:
+                occurrences[city] += 1
+    return occurrences
+
+"""
+Returns the apartments corresponding to the given terms
+"""
+def search_apartments(terms):
+    occurrences = {}
+    for term in terms:
+        queries = []
+        city_ids = City.query\
+            .with_entities(City.id)\
+            .filter(City.name.contains(term))\
+            .all()
+        city_ids = [id[0] for id in city_ids]
+        queries.append(Apartment.city_id.in_(city_ids))
+        queries.append(Apartment.bathrooms.contains(term))
+        queries.append(Apartment.bedrooms.contains(term))
+        queries.append(Apartment.price.contains(term))
+        queries.append(Apartment.address.contains(term))
+        queries.append(Apartment.property_type.contains(term))
+        queries.append(Apartment.sqft.contains(term))
+        queries.append(Apartment.build_year.contains(term))
+        apts = Apartment.query.filter(or_(*queries))
+        for apt in apts: 
+            if not apt in occurrences:
+                occurrences[apt] = 1
+            else:
+                occurrences[apt] += 1
+    return occurrences
+
+"""
+Returns the jobs corresponding to the given terms
+"""
+def search_jobs(terms):
+    occurrences = {}
+    for term in terms:
+        queries = []
+        city_ids = City.query\
+            .with_entities(City.id)\
+            .filter(City.name.contains(term))\
+            .all()
+        city_ids = [id[0] for id in city_ids]
+        queries.append(Job.city_id.in_(city_ids))
+        queries.append(Job.company.contains(term))
+        queries.append(Job.title.contains(term))
+        queries.append(Job.category.contains(term))
+        queries.append(Job.url.contains(term))
+        queries.append(Job.salary_min.contains(term))
+        queries.append(Job.salary_max.contains(term))
+        queries.append(Job.latitude.contains(term))
+        queries.append(Job.longitude.contains(term))
+        queries.append(Job.description.contains(term))
+        queries.append(Job.created.contains(term))
+        jobs = Job.query.filter(or_(*queries))
+        for job in jobs:
+            if not job in occurrences:
+                occurrences[job] = 1
+            else:
+                occurrences[job] += 1
+    return occurrences
 
 @app.route("/cities")
 def get_cities():
