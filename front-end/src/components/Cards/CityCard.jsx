@@ -5,7 +5,7 @@ import Button from "react-bootstrap/Button";
 import city_placeholder from "../../assets/placeholder/city.png";
 
 const CityCard = (props) => {
-  const { img_url, name, state, population, avg_rating, budget, id } =
+  const { img_url, name, state, population, avg_rating, budget, safety, id } =
     props.city;
   return (
     <Card style={{ height: "18rem", width: "100%" }}>
@@ -28,10 +28,12 @@ const CityCard = (props) => {
           Rating: {avg_rating !== undefined ? avg_rating : "N/A"}
           <br />
           Budget: {budget !== undefined ? budget : "N/A"}
+          <br />
+          Safety: {safety !== undefined ? safety : "N/A"}
         </Card.Text>
         <Card.Footer className="mt-auto">
           <Button
-            style= {{backgroundColor: 'lightsalmon'}}
+            style={{ backgroundColor: "lightsalmon" }}
             className="btn btn-primary stretched-link"
             variant="light"
             href={`/cities/${id}`}

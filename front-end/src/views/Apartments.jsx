@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Spinner from "react-bootstrap/Spinner";
@@ -21,6 +21,8 @@ const Apartments = () => {
   const [loaded, setLoaded] = useState(false);
   const [activePage, setActivePage] = useState(1);
 
+  const searchQuery = useRef("");
+
   const [sort, setSort] = useState("sort");
   const [ascending, setAscending] = useState(false);
   const [city, setCity] = useState("City");
@@ -31,7 +33,7 @@ const Apartments = () => {
   const [sqft, setSqft] = useState([0, 20000]);
 
   const handleSortFilter = (value) => {
-    setSort(value.toLowerCase());
+    setSort(value.toLowerCase().replace(" ", "_"));
   };
 
   const handleOrderFilter = (value) => {
@@ -79,29 +81,33 @@ const Apartments = () => {
     const fetchApartments = async () => {
       if (!loaded) {
         var query = `apartments?page=${activePage}&perPage=20`;
-        if (sort != "sort") {
-          query += `&sort=${sort}`;
-        }
-        if (ascending && sort != "sort") {
-          query += "&asc";
-        }
-        if (city != "City") {
-          query += `&city=${city}`;
-        }
-        if (pType != "Property Type") {
-          query += `&property_type=${pType}`;
-        }
-        if (!arrayEquals(bedrooms, [0, 10])) {
-          query += `&salary=${bedrooms[0]}-${bedrooms[1]}`;
-        }
-        if (!arrayEquals(bathrooms, [0, 10])) {
-          query += `&age=${bathrooms[0]}-${bathrooms[1]}`;
-        }
-        if (!arrayEquals(price, [0, 10000])) {
-          query += `&age=${price[0]}-${price[1]}`;
-        }
-        if (!arrayEquals(sqft, [0, 20000])) {
-          query += `&age=${sqft[0]}-${sqft[1]}`;
+        if (searchQuery.current.value != "") {
+          query = `search/apartment/${searchQuery.current.value}`;
+        } else {
+          if (sort != "sort") {
+            query += `&sort=${sort}`;
+          }
+          if (ascending && sort != "sort") {
+            query += "&asc";
+          }
+          if (city != "City") {
+            query += `&city=${city}`;
+          }
+          if (pType != "Property Type") {
+            query += `&proptype=${pType}`;
+          }
+          if (!arrayEquals(bedrooms, [0, 10])) {
+            query += `&bedrooms=${bedrooms[0]}-${bedrooms[1]}`;
+          }
+          if (!arrayEquals(bathrooms, [0, 10])) {
+            query += `&bathrooms=${bathrooms[0]}-${bathrooms[1]}`;
+          }
+          if (!arrayEquals(price, [0, 10000])) {
+            query += `&price=${price[0]}-${price[1]}`;
+          }
+          if (!arrayEquals(sqft, [0, 20000])) {
+            query += `&sqft=${sqft[0]}-${sqft[1]}`;
+          }
         }
         console.log(query);
         await client
@@ -135,15 +141,24 @@ const Apartments = () => {
   return (
     <Container>
       <h1 className="p-5 text-center">Apartments</h1>
-      <Form className="d-flex pb-5 justify-content-center">
+      <Form
+        onSubmit={(event) => {
+          event.preventDefault();
+          setLoaded(false);
+        }}
+        className="d-flex pb-5 justify-content-center"
+      >
         <Form.Control
+          ref={searchQuery}
           style={{ width: "20vw" }}
           type="search"
           placeholder="Search apartments"
           className="me-2"
           aria-label="Search"
         />
-        <Button variant="outline-secondary">Search</Button>
+        <Button variant="outline-secondary" onClick={() => setLoaded(false)}>
+          Search
+        </Button>
       </Form>
       <Form className="filter-form d-flex gap-4 justify-content-center pb-5">
         <FilterDropdown
@@ -153,7 +168,7 @@ const Apartments = () => {
             "Bedrooms",
             "Bathrooms",
             "Price",
-            "Square Footage",
+            "Sqft",
             "Build Year",
           ]}
           onChange={handleSortFilter}
@@ -250,7 +265,9 @@ const Apartments = () => {
         <RangeSlider min={0} max={10000} onChange={handlePriceFilter} />
         <Form.Label>Square Footage</Form.Label>
         <RangeSlider min={0} max={20000} onChange={handleSqftFilter} />
-        <Button onClick={() => setLoaded(false)}>Filter</Button>
+        <Button variant="outline-secondary" onClick={() => setLoaded(false)}>
+          Submit
+        </Button>
       </Form>
       <Pagination className="justify-content-center">
         {activePage > 3 && (
@@ -288,7 +305,7 @@ const Apartments = () => {
         {loaded ? (
           apartments["data"].map((apartment) => {
             return (
-              <Col className="d-flex align-self-stretch">
+              <Col key={apartment.id} className="d-flex align-self-stretch">
                 <ApartmentCard apartment={apartment} />
               </Col>
             );

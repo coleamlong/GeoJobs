@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Spinner from "react-bootstrap/Spinner";
@@ -21,6 +21,8 @@ const Jobs = () => {
   const [loaded, setLoaded] = useState(false);
   const [activePage, setActivePage] = useState(1);
 
+  const searchQuery = useRef("");
+
   const [sort, setSort] = useState("sort");
   const [ascending, setAscending] = useState(false);
   const [city, setCity] = useState("City");
@@ -28,7 +30,7 @@ const Jobs = () => {
   const [salary, setSalary] = useState([0, 1000000]);
 
   const handleSortFilter = (value) => {
-    setSort(value.toLowerCase());
+    setSort(value.toLowerCase().replace(" ", "_"));
   };
 
   const handleOrderFilter = (value) => {
@@ -62,21 +64,26 @@ const Jobs = () => {
     const fetchJobs = async () => {
       if (!loaded) {
         var query = `jobs?page=${activePage}&perPage=20`;
-        if (sort != "sort") {
-          query += `&sort=${sort}`;
+        if (searchQuery.current.value != "") {
+          query = `search/job/${searchQuery.current.value}`;
+        } else {
+          if (sort != "sort") {
+            query += `&sort=${sort}`;
+          }
+          if (ascending && sort != "sort") {
+            query += "&asc";
+          }
+          if (city != "City") {
+            query += `&city=${city}`;
+          }
+          if (category != "Job Category") {
+            query += `&category=${category}`;
+          }
+          if (!arrayEquals(salary, [0, 1000000])) {
+            query += `&salary_min=${salary[0]}-${salary[1]}`;
+          }
         }
-        if (ascending && sort != "sort") {
-          query += "&asc";
-        }
-        if (city != "City") {
-          query += `&city=${city}`;
-        }
-        if (category != "Job Category") {
-          query += `&category=${category}`;
-        }
-        if (!arrayEquals(salary, [0, 1000000])) {
-          query += `&salary=${salary[0]}-${salary[1]}`;
-        }
+
         console.log(query);
         await client
           .get(query)
@@ -109,26 +116,35 @@ const Jobs = () => {
   return (
     <Container>
       <h1 className="p-5 text-center">Jobs</h1>
-      <Form className="d-flex pb-5 justify-content-center">
+      <Form
+        onSubmit={(event) => {
+          event.preventDefault();
+          setLoaded(false);
+        }}
+        className="d-flex pb-5 justify-content-center"
+      >
         <Form.Control
+          ref={searchQuery}
           style={{ width: "20vw" }}
           type="search"
           placeholder="Search jobs"
           className="me-2"
           aria-label="Search"
         />
-        <Button variant="outline-secondary">Search</Button>
+        <Button variant="outline-secondary" onClick={() => setLoaded(false)}>
+          Search
+        </Button>
       </Form>
       <Form className="filter-form d-flex gap-4 justify-content-center pb-5">
         <FilterDropdown
           title="Sort"
           items={[
             "Sort",
-            "Salary",
+            "Salary Min",
             "Company",
-            "Position",
+            "Title",
             "Category",
-            "Date Created",
+            "Created",
           ]}
           onChange={handleSortFilter}
         />
@@ -214,7 +230,9 @@ const Jobs = () => {
         />
         <Form.Label>Salary</Form.Label>
         <RangeSlider min={0} max={1000000} onChange={handleSalaryFilter} />
-        <Button onClick={() => setLoaded(false)}>Filter</Button>
+        <Button variant="outline-secondary" onClick={() => setLoaded(false)}>
+          Submit
+        </Button>
       </Form>
 
       <Pagination className="justify-content-center">
