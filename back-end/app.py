@@ -265,11 +265,8 @@ def get_jobs():
     query = db.session.query(Job)
     count = query.count()
     city = request.args.get("city_id") 
-    Company = request.args.get("company") 
-    Category = request.args.get("category") 
-    Minimum_Salary = request.args.get("salary_min") 
-    Maximum_Salary = request.args.get("salary_max") 
-    Created = request.args.get("created") 
+    category = request.args.get("category")
+    salary = request.args.get("salary")
     sort = request.args.get("sort")
     asc = request.args.get("asc")
 
@@ -277,16 +274,15 @@ def get_jobs():
     if city is not None:
         test = db.session.query(City.id).filter(City.name == city)
         query = query.filter(Job.city_id.in_(test))
-    if Company is not None:
-        query = query.filter(Job.company == (Company))
-    if Created is not None:
-        query = query.filter(Job.created == (Created))
-    if Category is not None:
-        Category.replace("and", "&")
-        query = query.filter(Job.category == (Category))
-    if Maximum_Salary is not None and Minimum_Salary is not None:
-        range = (Minimum_Salary, Maximum_Salary)
-        query = query.filter(Job.salary_max <= (Maximum_Salary), Job.salary_min >= (Minimum_Salary))
+    if category is not None:
+        category.replace("and", "&")
+        query = query.filter(Job.category == (category))
+    if salary is not None:
+        salary_range = salary.split("-")
+        try:
+            query = query.filter(Job.salary_min >= salary_range[0], Job.salary_max <= salary_range[1])
+        except Exception:
+            pass
 
     # Sort
     if sort is not None and getattr(Job, sort) is not None:
