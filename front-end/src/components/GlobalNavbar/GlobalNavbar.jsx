@@ -13,6 +13,14 @@ function BoldText({ children }) {
 }
 
 const GlobalNavbar = () => {
+
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    const form = event.currentTarget
+    console.log(`search query: ${form.query.value}`)
+    window.location.assign(`/search/${form.query.value}`)
+  }
+
   return (
     <Navbar variant="dark" expand="lg"
     style= {{backgroundColor: 'lightsalmon'}}>
@@ -28,15 +36,16 @@ const GlobalNavbar = () => {
             <Nav.Link href="/apartments"><BoldText>Apartments</BoldText></Nav.Link>
           </Nav>
           <Container className="d-flex justify-content-end">
-            <Form className="d-flex">
+            <Form onSubmit={handleSubmit} className="d-flex">
               <Form.Control
                 style={{ width: "20vw" }}
                 type="search"
+                name="query"
                 placeholder="Search jobs, cities, and apartments"
                 className="me-2"
                 aria-label="Search"
               />
-              <Button variant="outline-secondary">Search</Button>
+              <Button type="submit" variant="outline-secondary">Search</Button>
             </Form>
           </Container>
         </Navbar.Collapse>
