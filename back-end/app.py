@@ -326,7 +326,7 @@ def get_apartments():
         query = query.filter(Apartment.city_id.in_(test))
     
     if propertyType is not None:
-        query.filter(Apartment.property_type == propertyType)
+        query = query.filter(Apartment.property_type == propertyType)
 
     if bedrooms is not None:
         bed_range = bedrooms.split("-")
