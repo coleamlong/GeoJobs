@@ -21,11 +21,29 @@ const Apartments = () => {
   const [loaded, setLoaded] = useState(false);
   const [activePage, setActivePage] = useState(1);
 
+  const [sort, setSort] = useState("sort");
+  const [ascending, setAscending] = useState(false);
+  const [city, setCity] = useState("City");
+  const [pType, setPType] = useState("Property Type");
   const [bedrooms, setBedrooms] = useState([0, 10]);
   const [bathrooms, setBathrooms] = useState([0, 10]);
   const [price, setPrice] = useState([0, 10000]);
   const [sqft, setSqft] = useState([0, 20000]);
 
+  const handleSortFilter = (value) => {
+    setSort(value.toLowerCase());
+  };
+
+  const handleOrderFilter = (value) => {
+    setAscending(value == "Ascending");
+  };
+  const handleCityFilter = (value) => {
+    setCity(value.substring(0, value.indexOf(",")));
+  };
+
+  const handlePTypeFilter = (value) => {
+    setPType(value);
+  };
   const handleBedroomsFilter = (value) => {
     setBedrooms(value);
     console.log(bedrooms);
@@ -61,6 +79,18 @@ const Apartments = () => {
     const fetchApartments = async () => {
       if (!loaded) {
         var query = `apartments?page=${activePage}&perPage=20`;
+        if (sort != "sort") {
+          query += `&sort=${sort}`;
+        }
+        if (ascending && sort != "sort") {
+          query += "&asc";
+        }
+        if (city != "City") {
+          query += `&city=${city}`;
+        }
+        if (pType != "Property Type") {
+          query += `&property_type=${pType}`;
+        }
         if (!arrayEquals(bedrooms, [0, 10])) {
           query += `&salary=${bedrooms[0]}-${bedrooms[1]}`;
         }
@@ -119,17 +149,24 @@ const Apartments = () => {
         <FilterDropdown
           title="Sort"
           items={[
-            "# Bedrooms",
-            "# Bathrooms",
-            "Price (lowest -> highest)",
-            "Price (highest -> lowest)",
+            "Sort",
+            "Bedrooms",
+            "Bathrooms",
+            "Price",
             "Square Footage",
             "Build Year",
           ]}
+          onChange={handleSortFilter}
+        />
+        <FilterDropdown
+          title="Order"
+          items={["Ascending", "Descending"]}
+          onChange={handleOrderFilter}
         />
         <FilterDropdown
           title="City"
           items={[
+            "City",
             "New York, NY",
             "Los Angeles, CA",
             "Chicago, IL",
@@ -149,7 +186,7 @@ const Apartments = () => {
             "San Francisco, CA",
             "Seattle, WA",
             "Denver, CO",
-            "Washington D.C.",
+            "Washington, D.C.",
             "Nashville, TN",
             "Oklahoma City, OK",
             "El Paso, TX",
@@ -182,17 +219,24 @@ const Apartments = () => {
             "Arlington, TX",
           ]}
           scroll
+          onChange={handleCityFilter}
         />
         <FilterDropdown
           title="Property Type"
-          items={["Apartment", "Single Family", "Condo", "Townhouse"]}
+          items={[
+            "Property Type",
+            "Apartment",
+            "Single Family",
+            "Condo",
+            "Townhouse",
+          ]}
+          onChange={handlePTypeFilter}
         />
         <Form.Label>Bedrooms</Form.Label>
         <RangeSlider
           min={0}
           max={10}
           onChange={handleBedroomsFilter}
-          value={bedrooms}
           discrete
         />
         <Form.Label>Bathrooms</Form.Label>
@@ -200,23 +244,12 @@ const Apartments = () => {
           min={0}
           max={10}
           onChange={handleBathroomsFilter}
-          value={bathrooms}
           discrete
         />
         <Form.Label>Price</Form.Label>
-        <RangeSlider
-          min={0}
-          max={10000}
-          onChange={handlePriceFilter}
-          value={price}
-        />
+        <RangeSlider min={0} max={10000} onChange={handlePriceFilter} />
         <Form.Label>Square Footage</Form.Label>
-        <RangeSlider
-          min={0}
-          max={20000}
-          onChange={handleSqftFilter}
-          value={sqft}
-        />
+        <RangeSlider min={0} max={20000} onChange={handleSqftFilter} />
         <Button onClick={() => setLoaded(false)}>Filter</Button>
       </Form>
       <Pagination className="justify-content-center">

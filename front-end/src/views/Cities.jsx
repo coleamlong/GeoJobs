@@ -18,11 +18,27 @@ const Cities = () => {
   const [cities, setCities] = useState([]);
   const [loaded, setLoaded] = useState(false);
 
+  const [sort, setSort] = useState("sort");
+  const [ascending, setAscending] = useState(false);
+  const [state, setState] = useState("State");
+  const [tag, setTag] = useState("Tag");
   const [population, setPopulation] = useState([0, 1000000]);
   const [rating, setRating] = useState([0, 5]);
   const [budget, setBudget] = useState([0, 10]);
   const [safety, setSafety] = useState([0, 10]);
 
+  const handleSortFilter = (value) => {
+    setSort(value.toLowerCase());
+  };
+  const handleOrderFilter = (value) => {
+    setAscending(value == "Ascending");
+  };
+  const handleStateFilter = (value) => {
+    setState(value);
+  };
+  const handleTagFilter = (value) => {
+    setTag(value);
+  };
   const handlePopulationFilter = (value) => {
     setPopulation(value);
     console.log(population);
@@ -74,6 +90,26 @@ const Cities = () => {
           query += filterCount === 1 ? "?" : "&";
           query += `safety=${safety[0]}-${safety[1]}`;
         }
+        if (sort != "sort") {
+          filterCount++;
+          query += filterCount === 1 ? "?" : "&";
+          query += `sort=${sort}`;
+        }
+        if (ascending && sort != "sort") {
+          filterCount++;
+          query += filterCount === 1 ? "?" : "&";
+          query += "asc";
+        }
+        if (state != "State") {
+          filterCount++;
+          query += filterCount === 1 ? "?" : "&";
+          query += `state=${state}`;
+        }
+        if (tag != "Tag") {
+          filterCount++;
+          query += filterCount === 1 ? "?" : "&";
+          query += `tag=${tag}`;
+        }
         console.log(query);
         await client
           .get(query)
@@ -86,12 +122,6 @@ const Cities = () => {
     };
     fetchCities();
   }, [cities, loaded]);
-
-  function BoldText({ children }) {
-    return (
-      <span style={{  fontSize: '18px', color: 'whitesmoke', font: 'Courier-Oblique'  }}>{children}</span>
-    );
-  }
 
   return (
     <Container>
@@ -108,20 +138,19 @@ const Cities = () => {
       </Form>
       <Form className="filter-form d-flex gap-4 justify-content-center">
         <FilterDropdown
-          title="Sort By"
-          items={[
-            "Population",
-            "Average Rating (Lowest First)",
-            "Average Rating (Highest First)",
-            "Budget Score (Lowest First)",
-            "Budget Score (Highest First)",
-            "Safety Score (Lowest First)",
-            "Safety Score (Highest First)",
-          ]}
+          title="Sort"
+          items={["Sort", "Population", "Rating", "Budget", "Safety"]}
+          onChange={handleSortFilter}
         />
         <FilterDropdown
-          title="Tags"
+          title="Order"
+          items={["Ascending", "Descending"]}
+          onChange={handleOrderFilter}
+        />
+        <FilterDropdown
+          title="Tag"
           items={[
+            "Tag",
             "Charming",
             "Foodie",
             "Nightlife",
@@ -144,10 +173,12 @@ const Cities = () => {
             "Shopping",
           ]}
           scroll
+          onChange={handleTagFilter}
         />
         <FilterDropdown
           title="State"
           items={[
+            "State",
             "Alabama",
             "Alaska",
             "Arizona",
@@ -200,38 +231,16 @@ const Cities = () => {
             "Wyoming",
           ]}
           scroll
+          onChange={handleStateFilter}
         />
         <Form.Label>Population:</Form.Label>
-        <RangeSlider
-          min={0}
-          max={1000000}
-          onChange={handlePopulationFilter}
-          value={population}
-        />
+        <RangeSlider min={0} max={1000000} onChange={handlePopulationFilter} />
         <Form.Label>Rating:</Form.Label>
-        <RangeSlider
-          min={0}
-          max={5}
-          discrete
-          onChange={handleRatingFilter}
-          value={rating}
-        />
+        <RangeSlider min={0} max={5} discrete onChange={handleRatingFilter} />
         <Form.Label>Budget:</Form.Label>
-        <RangeSlider
-          min={0}
-          max={10}
-          discrete
-          onChange={handleBudgetFilter}
-          value={budget}
-        />
+        <RangeSlider min={0} max={10} discrete onChange={handleBudgetFilter} />
         <Form.Label>Safety:</Form.Label>
-        <RangeSlider
-          min={0}
-          max={10}
-          discrete
-          onChange={handleSafetyFilter}
-          value={safety}
-        />
+        <RangeSlider min={0} max={10} discrete onChange={handleSafetyFilter} />
         <Button onClick={() => setLoaded(false)}>Filter</Button>
       </Form>
       <Row

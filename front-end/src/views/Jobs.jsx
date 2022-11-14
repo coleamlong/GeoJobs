@@ -21,16 +21,27 @@ const Jobs = () => {
   const [loaded, setLoaded] = useState(false);
   const [activePage, setActivePage] = useState(1);
 
+  const [sort, setSort] = useState("sort");
+  const [ascending, setAscending] = useState(false);
+  const [city, setCity] = useState("City");
+  const [category, setCategory] = useState("Job Category");
   const [salary, setSalary] = useState([0, 1000000]);
-  const [age, setAge] = useState([0, 365]);
 
+  const handleSortFilter = (value) => {
+    setSort(value.toLowerCase());
+  };
+
+  const handleOrderFilter = (value) => {
+    setAscending(value == "Ascending");
+  };
+  const handleCityFilter = (value) => {
+    setCity(value.substring(0, value.indexOf(",")));
+  };
+  const HandleCategoryFilter = (value) => {
+    setCategory(value);
+  };
   const handleSalaryFilter = (value) => {
     setSalary(value);
-    console.log(salary);
-  };
-  const handleAgeFilter = (value) => {
-    setAge(value);
-    console.log(age);
   };
 
   function handleClick(number) {
@@ -51,11 +62,20 @@ const Jobs = () => {
     const fetchJobs = async () => {
       if (!loaded) {
         var query = `jobs?page=${activePage}&perPage=20`;
+        if (sort != "sort") {
+          query += `&sort=${sort}`;
+        }
+        if (ascending && sort != "sort") {
+          query += "&asc";
+        }
+        if (city != "City") {
+          query += `&city=${city}`;
+        }
+        if (category != "Job Category") {
+          query += `&category=${category}`;
+        }
         if (!arrayEquals(salary, [0, 1000000])) {
           query += `&salary=${salary[0]}-${salary[1]}`;
-        }
-        if (!arrayEquals(age, [0, 365])) {
-          query += `&age=${age[0]}-${age[1]}`;
         }
         console.log(query);
         await client
@@ -103,17 +123,24 @@ const Jobs = () => {
         <FilterDropdown
           title="Sort"
           items={[
-            "Salary (lowest -> highest)",
-            "Salary (highest -> lowest)",
-            "Company Name",
-            "Position Name",
-            "Category Name",
+            "Sort",
+            "Salary",
+            "Company",
+            "Position",
+            "Category",
             "Date Created",
           ]}
+          onChange={handleSortFilter}
+        />
+        <FilterDropdown
+          title="Order"
+          items={["Ascending", "Descending"]}
+          onChange={handleOrderFilter}
         />
         <FilterDropdown
           title="City"
           items={[
+            "City",
             "New York, NY",
             "Los Angeles, CA",
             "Chicago, IL",
@@ -166,31 +193,27 @@ const Jobs = () => {
             "Arlington, TX",
           ]}
           scroll
+          onChange={handleCityFilter}
         />
         <FilterDropdown
-          title="Category"
+          title="Job Category"
           items={[
+            "Job Category",
             "Travel Jobs",
             "Teaching Jobs",
-            "Healthcare & Nursing Jobs",
-            "Energy, Oil & Gas Jobs",
-            "Accounting & Finance Jobs",
-            "Logistics & Warehouse Jobs",
+            "Healthcare and Nursing Jobs",
+            "Energy, Oil and Gas Jobs",
+            "Accounting and Finance Jobs",
+            "Logistics and Warehouse Jobs",
             "IT Jobs",
             "Customer Services Jobs",
             "Admin Jobs",
             "Sales Jobs",
           ]}
+          onChange={HandleCategoryFilter}
         />
         <Form.Label>Salary</Form.Label>
-        <RangeSlider
-          min={0}
-          max={1000000}
-          onChange={handleSalaryFilter}
-          value={salary}
-        />
-        <Form.Label>Post Age</Form.Label>
-        <RangeSlider min={0} max={365} onChange={handleAgeFilter} value={age} />
+        <RangeSlider min={0} max={1000000} onChange={handleSalaryFilter} />
         <Button onClick={() => setLoaded(false)}>Filter</Button>
       </Form>
 
@@ -230,7 +253,7 @@ const Jobs = () => {
         {loaded ? (
           jobs["data"].map((job) => {
             return (
-              <Col className="d-flex align-self-stretch">
+              <Col key={job.id} className="d-flex align-self-stretch">
                 <JobCard job={job} />
               </Col>
             );
@@ -242,10 +265,10 @@ const Jobs = () => {
       <Pagination className="justify-content-center">
         {activePage > 3 && (
           <Pagination.Item
-            first
             key={1}
             onClick={() => handleClick(1)}
             active={1 === activePage}
+            first={true}
           >
             1
           </Pagination.Item>
@@ -255,10 +278,10 @@ const Jobs = () => {
         {activePage < numPages - 3 && <Pagination.Ellipsis />}
         {activePage < numPages - 2 && (
           <Pagination.Item
-            last
             key={numPages}
             onClick={() => handleClick(numPages)}
             active={numPages === activePage}
+            last={true}
           >
             {numPages}
           </Pagination.Item>
