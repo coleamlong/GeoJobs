@@ -245,14 +245,16 @@ const Cities = () => {
           onChange={handleStateFilter}
         />
         <Form.Label>Population:</Form.Label>
-        <RangeSlider min={0} max={1000000} onChange={handlePopulationFilter} />
+        <RangeSlider min={0} max={10000000} onChange={handlePopulationFilter} />
         <Form.Label>Rating:</Form.Label>
         <RangeSlider min={0} max={5} discrete onChange={handleRatingFilter} />
         <Form.Label>Budget:</Form.Label>
         <RangeSlider min={0} max={10} discrete onChange={handleBudgetFilter} />
         <Form.Label>Safety:</Form.Label>
         <RangeSlider min={0} max={5} discrete onChange={handleSafetyFilter} />
-        <Button onClick={() => setLoaded(false)}>Filter</Button>
+        <Button variant="outline-secondary" onClick={() => setLoaded(false)}>
+          Submit
+        </Button>
       </Form>
       <Row
         xl={4}
