@@ -269,6 +269,7 @@ def get_jobs():
     Category = request.args.get("category") 
     Minimum_Salary = request.args.get("salary_min") 
     Maximum_Salary = request.args.get("salary_max") 
+    Created = request.args.get("created") 
     sort = request.args.get("sort")
     asc = request.args.get("asc")
 
@@ -278,6 +279,8 @@ def get_jobs():
         query = query.filter(Job.city_id.in_(test))
     if Company is not None:
         query = query.filter(Job.company == (Company))
+    if Created is not None:
+        query = query.filter(Job.created == (Created))
     if Category is not None:
         Category.replace("and", "&")
         query = query.filter(Job.category == (Category))
