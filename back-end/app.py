@@ -256,7 +256,7 @@ def get_cities():
             }
         }
     )
-# filter by City Company Job Category Minimum Salary Maximum Salary
+
 @app.route("/jobs")
 def get_jobs():
     # get args
@@ -264,7 +264,7 @@ def get_jobs():
     perPage = request.args.get("perPage", type=int)
     query = db.session.query(Job)
     count = query.count()
-    city = request.args.get("city_id") 
+    city = request.args.get("city") 
     category = request.args.get("category")
     salary = request.args.get("salary")
     sort = request.args.get("sort")
