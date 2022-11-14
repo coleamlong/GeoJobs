@@ -80,7 +80,7 @@ const Jobs = () => {
             query += `&category=${category}`;
           }
           if (!arrayEquals(salary, [0, 1000000])) {
-            query += `&salary_min=${salary[0]}-${salary[1]}`;
+            query += `&salary=${salary[0]}-${salary[1]}`;
           }
         }
 
