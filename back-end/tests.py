@@ -62,6 +62,27 @@ class Tests(unittest.TestCase):
             resp = response.json
             data = resp["data"]
             self.assertEqual(data["company"], "EF")
+    
+    def testAllSearch(self):
+        with self.client:
+            response = self.client.get("/search/austin")
+            self.assertEqual(response.status_code, 200)
+            resp = response.json
+            apartments = resp["apartments"]
+            cities = resp["cities"]
+            jobs = resp["jobs"]
+            self.assertEqual(len(apartments), 11)
+            self.assertEqual(len(cities), 1)
+            self.assertEqual(len(jobs), 22)
+    
+    def testModelSearch(self):
+        with self.client:
+            response = self.client.get("/search/city/austin")
+            self.assertEqual(response.status_code, 200)
+            resp = response.json
+            data = resp["data"]
+            self.assertEqual(len(data), 1)
+            self.assertEqual(data[0]["name"], "Austin")
 
 if __name__ == "__main__":
     unittest.main()

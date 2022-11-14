@@ -42,7 +42,7 @@ def home():
 
 @app.route("/search/<string:query>")
 def search_all(query) :
-    terms = query.split()
+    terms = query.split('_')
     occurrences = {
         **search_cities(terms),
         **search_apartments(terms),
@@ -66,7 +66,7 @@ def search_all(query) :
 @app.route("/search/<string:model>/<string:query>")
 def search_models(model, query): 
     model = model.strip().lower()
-    terms = query.split()
+    terms = query.split('_')
     result = None
     if model == "city":
         occurrences = search_cities(terms)
@@ -264,24 +264,25 @@ def get_jobs():
     perPage = request.args.get("perPage", type=int)
     query = db.session.query(Job)
     count = query.count()
-    City = request.args.get("city_id") 
-    Company = request.args.get("company") 
-    Category = request.args.get("category") 
-    Minimum_Salary = request.args.get("salary_min") 
-    Maximum_Salary = request.args.get("salary_max") 
+    city = request.args.get("city_id") 
+    category = request.args.get("category")
+    salary = request.args.get("salary")
     sort = request.args.get("sort")
     asc = request.args.get("asc")
 
     # FILTERING
-    if City is not None:
-        query = query.filter(Job.city_id == (City))
-    if Company is not None:
-        query = query.filter(Job.company == (Company))
-    if Category is not None:
-        query = query.filter(Job.category == (Category))
-    if Maximum_Salary is not None and Minimum_Salary is not None:
-        range = (Minimum_Salary, Maximum_Salary)
-        query = query.filter(Job.salary_max <= (Maximum_Salary), Job.salary_min >= (Minimum_Salary))
+    if city is not None:
+        test = db.session.query(City.id).filter(City.name == city)
+        query = query.filter(Job.city_id.in_(test))
+    if category is not None:
+        category.replace("and", "&")
+        query = query.filter(Job.category == (category))
+    if salary is not None:
+        salary_range = salary.split("-")
+        try:
+            query = query.filter(Job.salary_min >= salary_range[0], Job.salary_max <= salary_range[1])
+        except Exception:
+            pass
 
     # Sort
     if sort is not None and getattr(Job, sort) is not None:

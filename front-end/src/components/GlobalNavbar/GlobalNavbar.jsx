@@ -18,7 +18,7 @@ const GlobalNavbar = () => {
     event.preventDefault()
     const form = event.currentTarget
     console.log(`search query: ${form.query.value}`)
-    window.location.assign(`/search/${form.query.value}`)
+    window.location.assign(`/search/${form.query.value.replace(" ", "_")}`)
   }
 
   return (
