@@ -42,7 +42,7 @@ def home():
 
 @app.route("/search/<string:query>")
 def search_all(query) :
-    terms = query.split()
+    terms = query.split('_')
     occurrences = {
         **search_cities(terms),
         **search_apartments(terms),
@@ -66,7 +66,7 @@ def search_all(query) :
 @app.route("/search/<string:model>/<string:query>")
 def search_models(model, query): 
     model = model.strip().lower()
-    terms = query.split()
+    terms = query.split('_')
     result = None
     if model == "city":
         occurrences = search_cities(terms)
