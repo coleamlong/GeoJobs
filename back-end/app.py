@@ -264,7 +264,7 @@ def get_jobs():
     perPage = request.args.get("perPage", type=int)
     query = db.session.query(Job)
     count = query.count()
-    City = request.args.get("city_id") 
+    city = request.args.get("city_id") 
     Company = request.args.get("company") 
     Category = request.args.get("category") 
     Minimum_Salary = request.args.get("salary_min") 
@@ -273,11 +273,13 @@ def get_jobs():
     asc = request.args.get("asc")
 
     # FILTERING
-    if City is not None:
-        query = query.filter(Job.city_id == (City))
+    if city is not None:
+        test = db.session.query(City.id).filter(City.name == city)
+        query = query.filter(Job.city_id.in_(test))
     if Company is not None:
         query = query.filter(Job.company == (Company))
     if Category is not None:
+        Category.replace("and", "&")
         query = query.filter(Job.category == (Category))
     if Maximum_Salary is not None and Minimum_Salary is not None:
         range = (Minimum_Salary, Maximum_Salary)
