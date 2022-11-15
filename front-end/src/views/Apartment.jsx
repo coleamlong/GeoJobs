@@ -1,16 +1,14 @@
-import React, { useState, useEffect } from "react";
-import Container from "react-bootstrap/Container";
-import axios from "axios";
-import { useParams } from "react-router-dom";
-import { Link } from "react-router-dom";
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
-import { ExternalLink } from "react-external-link";
-import Spinner from "react-bootstrap/Spinner";
-import Carousel from "react-bootstrap/Carousel";
-import Image from "react-bootstrap/Image";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
+import Carousel from "react-bootstrap/Carousel";
+import Container from "react-bootstrap/Container";
+import Image from "react-bootstrap/Image";
+import Spinner from "react-bootstrap/Spinner";
+import { useParams } from "react-router-dom";
 
 const client = axios.create({
   baseURL: "https://api.geojobs.me/",
@@ -18,6 +16,7 @@ const client = axios.create({
 
 const Apartment = () => {
   let { id } = useParams();
+  const [city, setCity] = useState();
   const [apartment, setApartment] = useState();
   const [loaded, setLoaded] = useState(false);
 
@@ -36,14 +35,41 @@ const Apartment = () => {
     fetchApartment();
   }, [apartment]);
 
+  useEffect(() => {
+    const getCityName = async () => {
+      if (city === undefined) {
+        await client
+          .get(`cities/${apartment.city}`)
+          .then((response) => {
+            setCity(response.data["data"]["name"]);
+          })
+          .catch((err) => console.log(err));
+      }
+    };
+    getCityName();
+  }, [apartment]);
+
   function BoldText({ children }) {
     return (
-      <span style={{  fontSize: '18px', color: 'black', font: 'Courier-Oblique'  }}>{children}</span>
+      <span
+        style={{ fontSize: "18px", color: "black", font: "Courier-Oblique" }}
+      >
+        {children}
+      </span>
     );
   }
   function TextO({ children }) {
     return (
-      <span style={{ fontWeight: 'bold', fontSize: '16px', color: 'midnightblue', font: 'Courier-Oblique' }}>{children}</span>
+      <span
+        style={{
+          fontWeight: "bold",
+          fontSize: "16px",
+          color: "midnightblue",
+          font: "Courier-Oblique",
+        }}
+      >
+        {children}
+      </span>
     );
   }
 
@@ -54,9 +80,9 @@ const Apartment = () => {
         className="modelTitle"
         variant="h2"
         sx={{ textAlign: "center" }}
-        color= 'midnightblue'
+        color="midnightblue"
       >
-      Apartment Info
+        Apartment Info
       </Typography>
       {loaded ? (
         <Paper
@@ -104,10 +130,14 @@ const Apartment = () => {
                     <BoldText>Build Year: {apartment.build_year}</BoldText>
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
-                    <BoldText>Number of Bathrooms: {apartment.bathrooms}</BoldText>
+                    <BoldText>
+                      Number of Bathrooms: {apartment.bathrooms}
+                    </BoldText>
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
-                    <BoldText>Number of Bedrooms: {apartment.bedrooms}</BoldText>
+                    <BoldText>
+                      Number of Bedrooms: {apartment.bedrooms}
+                    </BoldText>
                   </Typography>
                   <div className="justify-content-center d-flex">
                     <iframe
@@ -121,21 +151,27 @@ const Apartment = () => {
                   </div>
                 </Grid>
                 <Grid item>
-                  <Typography sx={{ cursor: "pointer" }} variant="body2"> 
+                  <Typography sx={{ cursor: "pointer" }} variant="body2">
                     <Button
-                      style= {{marginRight:30, backgroundColor: 'midnightblue'}}
+                      style={{
+                        marginRight: 30,
+                        backgroundColor: "midnightblue",
+                      }}
                       href={`/cities/${apartment.city}`}
-                      >
-                     Explore City
-                     </Button >
-                     <Button
+                    >
+                      Explore {city}
+                    </Button>
+                    <Button
                       className="btn btn-primary"
                       variant="dark"
-                      style= {{marginRight:30, backgroundColor: 'midnightblue'}}
+                      style={{
+                        marginRight: 30,
+                        backgroundColor: "midnightblue",
+                      }}
                       href={`/job/${apartment.job}`}
-                      >
-                     Find Job
-                     </Button>
+                    >
+                      Find Job in {city}
+                    </Button>
                   </Typography>
                 </Grid>
               </Grid>
