@@ -14,6 +14,8 @@ const client = axios.create({
   baseURL: "https://api.geojobs.me/",
 });
 
+var queryRE = null;
+
 const Cities = () => {
   const [cities, setCities] = useState([]);
   const [loaded, setLoaded] = useState(false);
@@ -69,7 +71,9 @@ const Cities = () => {
         var query = "cities";
         if (searchQuery.current.value != "") {
           query = `search/city/${searchQuery.current.value}`;
+          queryRE = new RegExp(`(?:${searchQuery.current.value.replaceAll(" ", "|")})`, "i");
         } else {
+          queryRE = null;
           var filterCount = 0;
           if (!arrayEquals(population, [0, 1000000])) {
             filterCount++;
@@ -267,8 +271,8 @@ const Cities = () => {
         {loaded ? (
           cities["data"].map((city) => {
             return (
-              <Col className="d-flex align-self-stretch">
-                <CityCard city={city} />
+              <Col key={city.id} className="d-flex align-self-stretch">
+                <CityCard city={city} regex={queryRE} />
               </Col>
             );
           })

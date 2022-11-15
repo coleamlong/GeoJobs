@@ -16,6 +16,8 @@ const client = axios.create({
   baseURL: "https://api.geojobs.me/",
 });
 
+var queryRE = null;
+
 const Apartments = () => {
   const [apartments, setApartments] = useState([]);
   const [loaded, setLoaded] = useState(false);
@@ -83,7 +85,9 @@ const Apartments = () => {
         var query = `apartments?page=${activePage}&perPage=20`;
         if (searchQuery.current.value != "") {
           query = `search/apartment/${searchQuery.current.value}`;
+          queryRE = new RegExp(`(?:${searchQuery.current.value.replaceAll(" ", "|")})`, "i");
         } else {
+          queryRE = null;
           if (sort != "sort") {
             query += `&sort=${sort}`;
           }
@@ -306,7 +310,7 @@ const Apartments = () => {
           apartments["data"].map((apartment) => {
             return (
               <Col key={apartment.id} className="d-flex align-self-stretch">
-                <ApartmentCard apartment={apartment} />
+                <ApartmentCard apartment={apartment} regex={queryRE} />
               </Col>
             );
           })
