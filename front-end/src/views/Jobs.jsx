@@ -16,6 +16,8 @@ const client = axios.create({
   baseURL: "https://api.geojobs.me/",
 });
 
+var queryRE = null;
+
 const Jobs = () => {
   const [jobs, setJobs] = useState([]);
   const [loaded, setLoaded] = useState(false);
@@ -66,7 +68,9 @@ const Jobs = () => {
         var query = `jobs?page=${activePage}&perPage=20`;
         if (searchQuery.current.value != "") {
           query = `search/job/${searchQuery.current.value}`;
+          queryRE = new RegExp(`(?:${searchQuery.current.value.replaceAll(" ", "|")})`, "i");
         } else {
+          queryRE = null;
           if (sort != "sort") {
             query += `&sort=${sort}`;
           }
@@ -272,7 +276,7 @@ const Jobs = () => {
           jobs["data"].map((job) => {
             return (
               <Col key={job.id} className="d-flex align-self-stretch">
-                <JobCard job={job} />
+                <JobCard job={job} regex={queryRE} />
               </Col>
             );
           })

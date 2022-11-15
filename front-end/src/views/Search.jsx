@@ -12,6 +12,7 @@ const Search = () => {
 
   const location = useLocation();
   const userQuery = location.pathname.split("/search/").at(-1);
+  const queryRE = new RegExp(`(?:${userQuery.replaceAll("%20", "|")})`, "i");
   const client = axios.create({
     baseURL: "https://api.geojobs.me/search/",
   });
@@ -43,7 +44,7 @@ const Search = () => {
             {loaded ? (
               data["jobs"].map((job) => (
                 <Col key={job.id}>
-                  <JobCard job={job} />
+                  <JobCard job={job} regex={queryRE} />
                 </Col>
               ))
             ) : (
@@ -56,7 +57,7 @@ const Search = () => {
             {loaded ? (
               data["cities"].map((city) => (
                 <Col key={city.id}>
-                  <CityCard city={city} />
+                  <CityCard city={city} regex={queryRE} />
                 </Col>
               ))
             ) : (
@@ -69,7 +70,7 @@ const Search = () => {
             {loaded ? (
               data["apartments"].map((apartment) => (
                 <Col key={apartment.id}>
-                  <ApartmentCard apartment={apartment} />
+                  <ApartmentCard apartment={apartment} regex={queryRE} />
                 </Col>
               ))
             ) : (
