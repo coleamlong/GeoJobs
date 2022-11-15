@@ -2,13 +2,13 @@ import React, { useState, useEffect } from "react";
 import Container from "react-bootstrap/Container";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-import { Link } from "react-router-dom";
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
-import { ExternalLink } from "react-external-link";
 import Spinner from "react-bootstrap/Spinner";
 import Button from "react-bootstrap/Button";
+import { Item } from 'semantic-ui-react'
+import { Divider} from 'semantic-ui-react'
 
 const client = axios.create({
   baseURL: "https://api.geojobs.me/",
@@ -55,6 +55,7 @@ const Job = () => {
   }
 
   return (
+    
     <Container>
       {loaded ? (
       <Typography
@@ -70,6 +71,7 @@ const Job = () => {
       ) : (
         <Spinner animation="none" />
       )}
+      
       {loaded ? (
         <Paper
           sx={{
@@ -81,31 +83,46 @@ const Job = () => {
               theme.palette.mode === "dark" ? "#1A2027" : "#f5f5f5",
           }}
         >
+          
           <Grid container spacing={2}>
-            <Grid item></Grid>
+            <Grid item>
+              
+            </Grid>
             <Grid item xs={12} sm container>
               <Grid item xs container direction="column" spacing={2}>
                 <Grid item xs>
-                  <Typography gutterBottom variant="subtitle1" component="div">
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    <BoldText>Description: {job.description}</BoldText>
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    <BoldText>Category: {job.category}</BoldText>
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    <BoldText>Salary Minimum: ${job.salary_min}</BoldText>
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    <BoldText>Salary Maximum: ${job.salary_max}</BoldText>
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    <BoldText>Company:{job.company}</BoldText>
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    <BoldText>Created:{job.created}</BoldText>
-                  </Typography>
+                  <Item.Group divided>
+                  <Divider horizontal
+                    style={{ background: "peachpuff" }}>
+                    <Item> <BoldText>Company:</BoldText> </Item>
+                    </Divider>
+                    {job.company}
+                    <Divider horizontal
+                    style={{ background: "peachpuff" }}>
+                    <Item> <BoldText>Description:</BoldText> </Item>
+                    </Divider>
+                    {job.description}
+                    <Divider horizontal
+                    style={{ background: "peachpuff" }}>
+                    <Item> <BoldText>Category:</BoldText> </Item>
+                    </Divider>
+                    {job.category}
+                    <Divider horizontal
+                    style={{ background: "peachpuff" }}>
+                    <Item> <BoldText>Salary Minimum:</BoldText> </Item>
+                    </Divider>
+                    ${job.salary_min}
+                    <Divider horizontal
+                    style={{ background: "peachpuff" }}>
+                    <Item> <BoldText>Salary Maximum:</BoldText> </Item>
+                    </Divider>
+                    ${job.salary_max}
+                    <Divider horizontal
+                    style={{ background: "peachpuff" }}>
+                    <Item> <BoldText>Date Created:</BoldText> </Item>
+                    </Divider>
+                    {job.created}
+                  </Item.Group>
                   <Typography variant="body2" color="text.secondary">
                     <img
                       style={{ width: 400, height: 200 }}
@@ -161,3 +178,29 @@ const Job = () => {
 };
 
 export default Job;
+/*<Table definition>
+      <Table.Body>
+        <Table.Row
+          height={40}>
+          <Table.Cell width={6}>Category:</Table.Cell>
+          <Table.Cell>{job.category}</Table.Cell>
+        </Table.Row>
+        <Table.Row height={40}>
+          <Table.Cell>Salary Minimum:</Table.Cell>
+          <Table.Cell>${job.salary_min}</Table.Cell>
+        </Table.Row>
+        <Table.Row height={40}>
+          <Table.Cell>Salary Maximum:</Table.Cell>
+          <Table.Cell>${job.salary_max}</Table.Cell>
+        </Table.Row>
+        <Table.Row height={40}>
+          <Table.Cell>Company:</Table.Cell>
+          <Table.Cell>{job.company}</Table.Cell>
+        </Table.Row>
+        <Table.Row height={40}>
+          <Table.Cell>Date Created:</Table.Cell>
+          <Table.Cell>{job.created}</Table.Cell>
+        </Table.Row>
+      </Table.Body>
+    </Table>
+    */
