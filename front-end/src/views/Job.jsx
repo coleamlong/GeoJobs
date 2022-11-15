@@ -48,11 +48,6 @@ const Job = () => {
       <span style={{  fontSize: '18px', color: 'black', font: 'Courier-Oblique'  }}>{children}</span>
     );
   }
-  function TextO({ children }) {
-    return (
-      <span style={{ fontWeight: 'bold', fontSize: '16px', color: 'midnightblue', font: 'Courier-Oblique' }}>{children}</span>
-    );
-  }
 
   return (
     
@@ -92,34 +87,34 @@ const Job = () => {
               <Grid item xs container direction="column" spacing={2}>
                 <Grid item xs>
                   <Item.Group divided>
-                  <Divider horizontal
-                    style={{ background: "peachpuff" }}>
-                    <Item> <BoldText>Company:</BoldText> </Item>
+                    <Divider horizontal
+                      style={{ background: "peachpuff" }}>
+                      <Item> <BoldText>Company:</BoldText> </Item>
                     </Divider>
                     {job.company}
                     <Divider horizontal
-                    style={{ background: "peachpuff" }}>
-                    <Item> <BoldText>Description:</BoldText> </Item>
+                      style={{ background: "peachpuff" }}>
+                      <Item> <BoldText>Description:</BoldText> </Item>
                     </Divider>
                     {job.description}
                     <Divider horizontal
-                    style={{ background: "peachpuff" }}>
-                    <Item> <BoldText>Category:</BoldText> </Item>
+                      style={{ background: "peachpuff" }}>
+                      <Item> <BoldText>Category:</BoldText> </Item>
                     </Divider>
                     {job.category}
                     <Divider horizontal
-                    style={{ background: "peachpuff" }}>
-                    <Item> <BoldText>Salary Minimum:</BoldText> </Item>
+                      style={{ background: "peachpuff" }}>
+                      <Item> <BoldText>Salary Minimum:</BoldText> </Item>
                     </Divider>
                     ${job.salary_min}
                     <Divider horizontal
-                    style={{ background: "peachpuff" }}>
-                    <Item> <BoldText>Salary Maximum:</BoldText> </Item>
+                      style={{ background: "peachpuff" }}>
+                      <Item> <BoldText>Salary Maximum:</BoldText> </Item>
                     </Divider>
                     ${job.salary_max}
                     <Divider horizontal
-                    style={{ background: "peachpuff" }}>
-                    <Item> <BoldText>Date Created:</BoldText> </Item>
+                      style={{ background: "peachpuff" }}>
+                      <Item> <BoldText>Date Created:</BoldText> </Item>
                     </Divider>
                     {job.created}
                   </Item.Group>
@@ -178,29 +173,3 @@ const Job = () => {
 };
 
 export default Job;
-/*<Table definition>
-      <Table.Body>
-        <Table.Row
-          height={40}>
-          <Table.Cell width={6}>Category:</Table.Cell>
-          <Table.Cell>{job.category}</Table.Cell>
-        </Table.Row>
-        <Table.Row height={40}>
-          <Table.Cell>Salary Minimum:</Table.Cell>
-          <Table.Cell>${job.salary_min}</Table.Cell>
-        </Table.Row>
-        <Table.Row height={40}>
-          <Table.Cell>Salary Maximum:</Table.Cell>
-          <Table.Cell>${job.salary_max}</Table.Cell>
-        </Table.Row>
-        <Table.Row height={40}>
-          <Table.Cell>Company:</Table.Cell>
-          <Table.Cell>{job.company}</Table.Cell>
-        </Table.Row>
-        <Table.Row height={40}>
-          <Table.Cell>Date Created:</Table.Cell>
-          <Table.Cell>{job.created}</Table.Cell>
-        </Table.Row>
-      </Table.Body>
-    </Table>
-    */
