@@ -37,7 +37,20 @@ const Search = () => {
   return (
     <Container>
       <h1>Search Results</h1>
-      <Tabs defaultActiveKey="Cities">
+      <Tabs defaultActiveKey="Jobs">
+        <Tab eventKey="Jobs" title="Jobs">
+          <Row xl={4} lg={3} md={2} sm={1} xs={1}>
+            {loaded ? (
+              data["jobs"].map((job) => (
+                <Col key={job.id}>
+                  <JobCard job={job} />
+                </Col>
+              ))
+            ) : (
+              <Spinner animation="grow" />
+            )}
+          </Row>
+        </Tab>
         <Tab eventKey="Cities" title="Cities">
           <Row xl={4} lg={3} md={2} sm={1} xs={1}>
             {loaded ? (
@@ -57,19 +70,6 @@ const Search = () => {
               data["apartments"].map((apartment) => (
                 <Col key={apartment.id}>
                   <ApartmentCard apartment={apartment} />
-                </Col>
-              ))
-            ) : (
-              <Spinner animation="grow" />
-            )}
-          </Row>
-        </Tab>
-        <Tab eventKey="Jobs" title="Jobs">
-          <Row xl={4} lg={3} md={2} sm={1} xs={1}>
-            {loaded ? (
-              data["jobs"].map((job) => (
-                <Col key={job.id}>
-                  <JobCard job={job} />
                 </Col>
               ))
             ) : (
