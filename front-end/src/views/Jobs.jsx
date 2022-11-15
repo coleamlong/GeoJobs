@@ -233,7 +233,7 @@ const Jobs = () => {
           onChange={HandleCategoryFilter}
         />
         <Form.Label>Salary</Form.Label>
-        <RangeSlider min={0} max={1000000} onChange={handleSalaryFilter} />
+        <RangeSlider min={0} max={300000} onChange={handleSalaryFilter} />
         <Button variant="outline-secondary" onClick={() => setLoaded(false)}>
           Submit
         </Button>
