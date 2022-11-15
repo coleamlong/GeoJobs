@@ -3,6 +3,11 @@
 exports[`APICard initializes correctly 1`] = `
 <div
   className="card"
+  style={
+    Object {
+      "backgroundColor": "lavender",
+    }
+  }
 >
   <img
     className="card-img-top p-4"
@@ -22,6 +27,11 @@ exports[`APICard initializes correctly 1`] = `
   </div>
   <div
     className="card-footer"
+    style={
+      Object {
+        "backgroundColor": "whitesmoke",
+      }
+    }
   >
     <a
       class="btn btn-primary stretched-link"
@@ -31,6 +41,11 @@ exports[`APICard initializes correctly 1`] = `
       onClick={[Function]}
       onKeyDown={[Function]}
       role="button"
+      style={
+        Object {
+          "backgroundColor": "midnightblue",
+        }
+      }
       tabIndex={0}
     >
       More Info
@@ -42,12 +57,17 @@ exports[`APICard initializes correctly 1`] = `
 exports[`ApartmentCard initializes correctly 1`] = `
 <div
   className="card"
+  style={
+    Object {
+      "backgroundColor": "lavender",
+    }
+  }
 >
   <img
     className="card-img"
     style={
       Object {
-        "height": "50%",
+        "height": "45%",
         "objectFit": "cover",
         "width": "100%",
       }
@@ -66,7 +86,7 @@ exports[`ApartmentCard initializes correctly 1`] = `
       className="text-center card-subtitle h6"
     >
       undefined bedroom(s), 
-                     undefined bathroom(s)
+            undefined bathroom(s)
     </div>
     <p
       className="text-center card-text"
@@ -78,10 +98,16 @@ exports[`ApartmentCard initializes correctly 1`] = `
       className="text-center align-text-bottom card-text"
     >
       Build Year: 
+      undefined
     </p>
   </div>
   <div
     className="card-footer"
+    style={
+      Object {
+        "backgroundColor": "whitesmoke",
+      }
+    }
   >
     <a
       className="btn btn-primary stretched-link btn btn-dark"
@@ -90,6 +116,12 @@ exports[`ApartmentCard initializes correctly 1`] = `
       onClick={[Function]}
       onKeyDown={[Function]}
       role="button"
+      style={
+        Object {
+          "backgroundColor": "midnightblue",
+          "marginLeft": 10,
+        }
+      }
       tabIndex={0}
     >
       More Info
@@ -101,7 +133,12 @@ exports[`ApartmentCard initializes correctly 1`] = `
 exports[`App initializes correctly 1`] = `
 <div>
   <nav
-    className="navbar navbar-expand-lg navbar-dark bg-dark"
+    className="navbar navbar-expand-lg navbar-dark"
+    style={
+      Object {
+        "backgroundColor": "lightsalmon",
+      }
+    }
   >
     <div
       className="container"
@@ -138,7 +175,18 @@ exports[`App initializes correctly 1`] = `
             href="/"
             onClick={[Function]}
           >
-            Home
+            <span
+              style={
+                Object {
+                  "color": "black",
+                  "font": "Courier-Oblique",
+                  "fontSize": "15px",
+                  "fontWeight": 400,
+                }
+              }
+            >
+              Home
+            </span>
           </a>
           <a
             className="nav-link"
@@ -147,7 +195,18 @@ exports[`App initializes correctly 1`] = `
             href="/about"
             onClick={[Function]}
           >
-            About
+            <span
+              style={
+                Object {
+                  "color": "black",
+                  "font": "Courier-Oblique",
+                  "fontSize": "15px",
+                  "fontWeight": 400,
+                }
+              }
+            >
+              About
+            </span>
           </a>
           <a
             className="nav-link"
@@ -156,7 +215,18 @@ exports[`App initializes correctly 1`] = `
             href="/jobs"
             onClick={[Function]}
           >
-            Jobs
+            <span
+              style={
+                Object {
+                  "color": "black",
+                  "font": "Courier-Oblique",
+                  "fontSize": "15px",
+                  "fontWeight": 400,
+                }
+              }
+            >
+              Jobs
+            </span>
           </a>
           <a
             className="nav-link"
@@ -165,7 +235,18 @@ exports[`App initializes correctly 1`] = `
             href="/cities"
             onClick={[Function]}
           >
-            Cities
+            <span
+              style={
+                Object {
+                  "color": "black",
+                  "font": "Courier-Oblique",
+                  "fontSize": "15px",
+                  "fontWeight": 400,
+                }
+              }
+            >
+              Cities
+            </span>
           </a>
           <a
             className="nav-link"
@@ -174,8 +255,47 @@ exports[`App initializes correctly 1`] = `
             href="/apartments"
             onClick={[Function]}
           >
-            Apartments
+            <span
+              style={
+                Object {
+                  "color": "black",
+                  "font": "Courier-Oblique",
+                  "fontSize": "15px",
+                  "fontWeight": 400,
+                }
+              }
+            >
+              Apartments
+            </span>
           </a>
+        </div>
+        <div
+          className="d-flex justify-content-end container"
+        >
+          <form
+            className="d-flex"
+            onSubmit={[Function]}
+          >
+            <input
+              aria-label="Search"
+              className="me-2 form-control"
+              name="query"
+              placeholder="Search jobs, cities, and apartments"
+              style={
+                Object {
+                  "width": "20vw",
+                }
+              }
+              type="search"
+            />
+            <button
+              className="btn btn-outline-secondary"
+              disabled={false}
+              type="submit"
+            >
+              Search
+            </button>
+          </form>
         </div>
       </div>
     </div>
@@ -200,7 +320,7 @@ exports[`App initializes correctly 1`] = `
           Object {
             "alignItems": "center",
             "backgroundPositionY": "1500",
-            "color": "burlywood",
+            "color": "lightsalmon",
             "justifyContent": "center",
             "marginTop": "300px",
           }
@@ -225,6 +345,12 @@ exports[`App initializes correctly 1`] = `
         >
           <div
             className="card"
+            style={
+              Object {
+                "backgroundColor": "whitesmoke",
+                "marginRight": 30,
+              }
+            }
           >
             <img
               className="card-img-top"
@@ -244,10 +370,31 @@ exports[`App initializes correctly 1`] = `
                 Find your dream job!
               </p>
               <a
-                class="btn btn-primary stretched-link"
+                className="btn btn-primary stretched-link btn btn-primary"
+                disabled={false}
                 href="/jobs"
+                onClick={[Function]}
+                onKeyDown={[Function]}
+                role="button"
+                style={
+                  Object {
+                    "backgroundColor": "lightsalmon",
+                    "marginRight": 30,
+                  }
+                }
+                tabIndex={0}
               >
-                Link
+                <span
+                  style={
+                    Object {
+                      "color": "black",
+                      "font": "Courier-Oblique",
+                      "fontSize": "16px",
+                    }
+                  }
+                >
+                  More Info
+                </span>
               </a>
             </div>
           </div>
@@ -257,6 +404,12 @@ exports[`App initializes correctly 1`] = `
         >
           <div
             className="card"
+            style={
+              Object {
+                "backgroundColor": "whitesmoke",
+                "marginRight": 30,
+              }
+            }
           >
             <img
               className="card-img-top"
@@ -276,10 +429,31 @@ exports[`App initializes correctly 1`] = `
                 Find your dream city!
               </p>
               <a
-                class="btn btn-primary stretched-link"
+                className="btn btn-primary stretched-link btn btn-primary"
+                disabled={false}
                 href="/cities"
+                onClick={[Function]}
+                onKeyDown={[Function]}
+                role="button"
+                style={
+                  Object {
+                    "backgroundColor": "lightsalmon",
+                    "marginRight": 30,
+                  }
+                }
+                tabIndex={0}
               >
-                Link
+                <span
+                  style={
+                    Object {
+                      "color": "black",
+                      "font": "Courier-Oblique",
+                      "fontSize": "16px",
+                    }
+                  }
+                >
+                  More Info
+                </span>
               </a>
             </div>
           </div>
@@ -289,6 +463,12 @@ exports[`App initializes correctly 1`] = `
         >
           <div
             className="card"
+            style={
+              Object {
+                "backgroundColor": "whitesmoke",
+                "marginRight": 30,
+              }
+            }
           >
             <img
               className="card-img-top"
@@ -308,10 +488,31 @@ exports[`App initializes correctly 1`] = `
                 Find your dream apartment!
               </p>
               <a
-                class="btn btn-primary stretched-link"
+                className="btn btn-primary stretched-link btn btn-primary"
+                disabled={false}
                 href="/apartments"
+                onClick={[Function]}
+                onKeyDown={[Function]}
+                role="button"
+                style={
+                  Object {
+                    "backgroundColor": "lightsalmon",
+                    "marginRight": 30,
+                  }
+                }
+                tabIndex={0}
               >
-                Link
+                <span
+                  style={
+                    Object {
+                      "color": "black",
+                      "font": "Courier-Oblique",
+                      "fontSize": "16px",
+                    }
+                  }
+                >
+                  More Info
+                </span>
               </a>
             </div>
           </div>
@@ -325,6 +526,12 @@ exports[`App initializes correctly 1`] = `
 exports[`CityCard initializes correctly 1`] = `
 <div
   className="card"
+  style={
+    Object {
+      "height": "18rem",
+      "width": "100%",
+    }
+  }
 >
   <img
     className="card-img"
@@ -352,12 +559,16 @@ exports[`CityCard initializes correctly 1`] = `
       className="card-text"
     >
       Population: 
+      undefined
       <br />
       Rating: 
       N/A
       <br />
       Budget: 
       1000
+      <br />
+      Safety: 
+      N/A
     </p>
     <div
       className="mt-auto card-footer"
@@ -369,6 +580,11 @@ exports[`CityCard initializes correctly 1`] = `
         onClick={[Function]}
         onKeyDown={[Function]}
         role="button"
+        style={
+          Object {
+            "backgroundColor": "lightsalmon",
+          }
+        }
         tabIndex={0}
       >
         More Info
@@ -381,6 +597,11 @@ exports[`CityCard initializes correctly 1`] = `
 exports[`DeveloperCard initializes correctly 1`] = `
 <div
   className="card"
+  style={
+    Object {
+      "backgroundColor": "midnightblue",
+    }
+  }
 >
   <img
     className="card-img-top"
@@ -392,39 +613,114 @@ exports[`DeveloperCard initializes correctly 1`] = `
     <div
       className="card-title h5"
     >
-      Name
+      <span
+        style={
+          Object {
+            "color": "whitesmoke",
+            "font": "Courier-Oblique",
+            "fontSize": "17px",
+          }
+        }
+      >
+        Name
+      </span>
     </div>
     <div
       className="card-subtitle h6"
     >
-      @
-      GitLab User
+      <span
+        style={
+          Object {
+            "color": "whitesmoke",
+            "font": "Courier-Oblique",
+            "fontSize": "17px",
+          }
+        }
+      >
+        @
+        GitLab User
+      </span>
     </div>
     <p
       className="card-text"
     >
-      Role: 
-      Role
+      <span
+        style={
+          Object {
+            "color": "whitesmoke",
+            "font": "Courier-Oblique",
+            "fontSize": "17px",
+          }
+        }
+      >
+        Role: 
+        Role
+      </span>
     </p>
     <p
       className="card-text"
     >
-      Bio
+      <span
+        style={
+          Object {
+            "color": "whitesmoke",
+            "font": "Courier-Oblique",
+            "fontSize": "17px",
+          }
+        }
+      >
+        Bio
+      </span>
     </p>
   </div>
   <div
     className="text-muted card-footer"
+    style={
+      Object {
+        "backgroundColor": "lavender",
+      }
+    }
   >
-    Commits: 
-    0
-     
+    <span
+      style={
+        Object {
+          "color": "lightsalmon",
+          "font": "Courier-Oblique",
+          "fontSize": "17px",
+        }
+      }
+    >
+      Commits: 
+      0
+       
+    </span>
     <br />
-    Issues: 
-    0
-     
+    <span
+      style={
+        Object {
+          "color": "lightsalmon",
+          "font": "Courier-Oblique",
+          "fontSize": "17px",
+        }
+      }
+    >
+      Issues: 
+      0
+       
+    </span>
     <br />
-    Unit Tests: 
-    0
+    <span
+      style={
+        Object {
+          "color": "lightsalmon",
+          "font": "Courier-Oblique",
+          "fontSize": "17px",
+        }
+      }
+    >
+      Unit Tests: 
+      0
+    </span>
   </div>
 </div>
 `;
@@ -432,6 +728,11 @@ exports[`DeveloperCard initializes correctly 1`] = `
 exports[`JobCard Initial correctly 1`] = `
 <div
   className="card"
+  style={
+    Object {
+      "backgroundColor": "lavender",
+    }
+  }
 >
   <img
     className="card-img p-2"
@@ -459,11 +760,18 @@ exports[`JobCard Initial correctly 1`] = `
       className="card-text"
     >
       Salary: $
+      undefined
        - $
+      undefined
     </p>
   </div>
   <div
     className="card-footer"
+    style={
+      Object {
+        "backgroundColor": "midnightblue",
+      }
+    }
   >
     <a
       className="btn btn-primary stretched-link btn btn-dark"
@@ -472,9 +780,24 @@ exports[`JobCard Initial correctly 1`] = `
       onClick={[Function]}
       onKeyDown={[Function]}
       role="button"
+      style={
+        Object {
+          "backgroundColor": "lightsalmon",
+        }
+      }
       tabIndex={0}
     >
-      More Info
+      <span
+        style={
+          Object {
+            "color": "white",
+            "font": "Courier-Oblique",
+            "fontSize": "17px",
+          }
+        }
+      >
+        More Info
+      </span>
     </a>
   </div>
 </div>
@@ -482,7 +805,12 @@ exports[`JobCard Initial correctly 1`] = `
 
 exports[`Navbar initializes correctly 1`] = `
 <nav
-  className="navbar navbar-expand-lg navbar-dark bg-dark"
+  className="navbar navbar-expand-lg navbar-dark"
+  style={
+    Object {
+      "backgroundColor": "lightsalmon",
+    }
+  }
 >
   <div
     className="container"
@@ -519,7 +847,18 @@ exports[`Navbar initializes correctly 1`] = `
           href="/"
           onClick={[Function]}
         >
-          Home
+          <span
+            style={
+              Object {
+                "color": "black",
+                "font": "Courier-Oblique",
+                "fontSize": "15px",
+                "fontWeight": 400,
+              }
+            }
+          >
+            Home
+          </span>
         </a>
         <a
           className="nav-link"
@@ -528,7 +867,18 @@ exports[`Navbar initializes correctly 1`] = `
           href="/about"
           onClick={[Function]}
         >
-          About
+          <span
+            style={
+              Object {
+                "color": "black",
+                "font": "Courier-Oblique",
+                "fontSize": "15px",
+                "fontWeight": 400,
+              }
+            }
+          >
+            About
+          </span>
         </a>
         <a
           className="nav-link"
@@ -537,7 +887,18 @@ exports[`Navbar initializes correctly 1`] = `
           href="/jobs"
           onClick={[Function]}
         >
-          Jobs
+          <span
+            style={
+              Object {
+                "color": "black",
+                "font": "Courier-Oblique",
+                "fontSize": "15px",
+                "fontWeight": 400,
+              }
+            }
+          >
+            Jobs
+          </span>
         </a>
         <a
           className="nav-link"
@@ -546,7 +907,18 @@ exports[`Navbar initializes correctly 1`] = `
           href="/cities"
           onClick={[Function]}
         >
-          Cities
+          <span
+            style={
+              Object {
+                "color": "black",
+                "font": "Courier-Oblique",
+                "fontSize": "15px",
+                "fontWeight": 400,
+              }
+            }
+          >
+            Cities
+          </span>
         </a>
         <a
           className="nav-link"
@@ -555,8 +927,47 @@ exports[`Navbar initializes correctly 1`] = `
           href="/apartments"
           onClick={[Function]}
         >
-          Apartments
+          <span
+            style={
+              Object {
+                "color": "black",
+                "font": "Courier-Oblique",
+                "fontSize": "15px",
+                "fontWeight": 400,
+              }
+            }
+          >
+            Apartments
+          </span>
         </a>
+      </div>
+      <div
+        className="d-flex justify-content-end container"
+      >
+        <form
+          className="d-flex"
+          onSubmit={[Function]}
+        >
+          <input
+            aria-label="Search"
+            className="me-2 form-control"
+            name="query"
+            placeholder="Search jobs, cities, and apartments"
+            style={
+              Object {
+                "width": "20vw",
+              }
+            }
+            type="search"
+          />
+          <button
+            className="btn btn-outline-secondary"
+            disabled={false}
+            type="submit"
+          >
+            Search
+          </button>
+        </form>
       </div>
     </div>
   </div>
@@ -566,6 +977,12 @@ exports[`Navbar initializes correctly 1`] = `
 exports[`PageCard initializes correctly 1`] = `
 <div
   className="card"
+  style={
+    Object {
+      "backgroundColor": "whitesmoke",
+      "marginRight": 30,
+    }
+  }
 >
   <img
     className="card-img-top"
@@ -585,10 +1002,31 @@ exports[`PageCard initializes correctly 1`] = `
       Description
     </p>
     <a
-      class="btn btn-primary stretched-link"
+      className="btn btn-primary stretched-link btn btn-primary"
+      disabled={false}
       href="https://www.google.com"
+      onClick={[Function]}
+      onKeyDown={[Function]}
+      role="button"
+      style={
+        Object {
+          "backgroundColor": "lightsalmon",
+          "marginRight": 30,
+        }
+      }
+      tabIndex={0}
     >
-      Link
+      <span
+        style={
+          Object {
+            "color": "black",
+            "font": "Courier-Oblique",
+            "fontSize": "16px",
+          }
+        }
+      >
+        More Info
+      </span>
     </a>
   </div>
 </div>
@@ -615,7 +1053,7 @@ exports[`RouteSwitch initializes correctly 1`] = `
         Object {
           "alignItems": "center",
           "backgroundPositionY": "1500",
-          "color": "burlywood",
+          "color": "lightsalmon",
           "justifyContent": "center",
           "marginTop": "300px",
         }
@@ -640,6 +1078,12 @@ exports[`RouteSwitch initializes correctly 1`] = `
       >
         <div
           className="card"
+          style={
+            Object {
+              "backgroundColor": "whitesmoke",
+              "marginRight": 30,
+            }
+          }
         >
           <img
             className="card-img-top"
@@ -659,10 +1103,31 @@ exports[`RouteSwitch initializes correctly 1`] = `
               Find your dream job!
             </p>
             <a
-              class="btn btn-primary stretched-link"
+              className="btn btn-primary stretched-link btn btn-primary"
+              disabled={false}
               href="/jobs"
+              onClick={[Function]}
+              onKeyDown={[Function]}
+              role="button"
+              style={
+                Object {
+                  "backgroundColor": "lightsalmon",
+                  "marginRight": 30,
+                }
+              }
+              tabIndex={0}
             >
-              Link
+              <span
+                style={
+                  Object {
+                    "color": "black",
+                    "font": "Courier-Oblique",
+                    "fontSize": "16px",
+                  }
+                }
+              >
+                More Info
+              </span>
             </a>
           </div>
         </div>
@@ -672,6 +1137,12 @@ exports[`RouteSwitch initializes correctly 1`] = `
       >
         <div
           className="card"
+          style={
+            Object {
+              "backgroundColor": "whitesmoke",
+              "marginRight": 30,
+            }
+          }
         >
           <img
             className="card-img-top"
@@ -691,10 +1162,31 @@ exports[`RouteSwitch initializes correctly 1`] = `
               Find your dream city!
             </p>
             <a
-              class="btn btn-primary stretched-link"
+              className="btn btn-primary stretched-link btn btn-primary"
+              disabled={false}
               href="/cities"
+              onClick={[Function]}
+              onKeyDown={[Function]}
+              role="button"
+              style={
+                Object {
+                  "backgroundColor": "lightsalmon",
+                  "marginRight": 30,
+                }
+              }
+              tabIndex={0}
             >
-              Link
+              <span
+                style={
+                  Object {
+                    "color": "black",
+                    "font": "Courier-Oblique",
+                    "fontSize": "16px",
+                  }
+                }
+              >
+                More Info
+              </span>
             </a>
           </div>
         </div>
@@ -704,6 +1196,12 @@ exports[`RouteSwitch initializes correctly 1`] = `
       >
         <div
           className="card"
+          style={
+            Object {
+              "backgroundColor": "whitesmoke",
+              "marginRight": 30,
+            }
+          }
         >
           <img
             className="card-img-top"
@@ -723,10 +1221,31 @@ exports[`RouteSwitch initializes correctly 1`] = `
               Find your dream apartment!
             </p>
             <a
-              class="btn btn-primary stretched-link"
+              className="btn btn-primary stretched-link btn btn-primary"
+              disabled={false}
               href="/apartments"
+              onClick={[Function]}
+              onKeyDown={[Function]}
+              role="button"
+              style={
+                Object {
+                  "backgroundColor": "lightsalmon",
+                  "marginRight": 30,
+                }
+              }
+              tabIndex={0}
             >
-              Link
+              <span
+                style={
+                  Object {
+                    "color": "black",
+                    "font": "Courier-Oblique",
+                    "fontSize": "16px",
+                  }
+                }
+              >
+                More Info
+              </span>
             </a>
           </div>
         </div>
@@ -739,6 +1258,11 @@ exports[`RouteSwitch initializes correctly 1`] = `
 exports[`ToolCard initializes correctly 1`] = `
 <div
   className="card"
+  style={
+    Object {
+      "backgroundColor": "lavender",
+    }
+  }
 >
   <img
     className="card-img-top p-4"
@@ -758,6 +1282,11 @@ exports[`ToolCard initializes correctly 1`] = `
   </div>
   <div
     className="card-footer"
+    style={
+      Object {
+        "backgroundColor": "whitesmoke",
+      }
+    }
   >
     <a
       class="btn btn-primary stretched-link"
@@ -767,6 +1296,11 @@ exports[`ToolCard initializes correctly 1`] = `
       onClick={[Function]}
       onKeyDown={[Function]}
       role="button"
+      style={
+        Object {
+          "backgroundColor": "midnightblue",
+        }
+      }
       tabIndex={0}
     >
       More Info

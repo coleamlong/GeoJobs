@@ -7,8 +7,8 @@ import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import Spinner from "react-bootstrap/Spinner";
 import Button from "react-bootstrap/Button";
-import { Item } from 'semantic-ui-react'
-import { Divider} from 'semantic-ui-react'
+import { Item } from "semantic-ui-react";
+import { Divider } from "semantic-ui-react";
 
 const client = axios.create({
   baseURL: "https://api.geojobs.me/",
@@ -45,28 +45,31 @@ const Job = () => {
 
   function BoldText({ children }) {
     return (
-      <span style={{  fontSize: '18px', color: 'black', font: 'Courier-Oblique'  }}>{children}</span>
+      <span
+        style={{ fontSize: "18px", color: "black", font: "Courier-Oblique" }}
+      >
+        {children}
+      </span>
     );
   }
 
   return (
-    
     <Container>
       {loaded ? (
-      <Typography
-        gutterBottom
-        className="modelTitle"
-        variant="h2"
-        color= 'midnightblue'
-        fontSize= '45px'
-        sx={{ textAlign: "center" }}
-      >
-      {job.title}
-      </Typography>
+        <Typography
+          gutterBottom
+          className="modelTitle"
+          variant="h2"
+          color="midnightblue"
+          fontSize="45px"
+          sx={{ textAlign: "center" }}
+        >
+          {job.title}
+        </Typography>
       ) : (
         <Spinner animation="none" />
       )}
-      
+
       {loaded ? (
         <Paper
           sx={{
@@ -78,43 +81,52 @@ const Job = () => {
               theme.palette.mode === "dark" ? "#1A2027" : "#f5f5f5",
           }}
         >
-          
           <Grid container spacing={2}>
-            <Grid item>
-              
-            </Grid>
+            <Grid item></Grid>
             <Grid item xs={12} sm container>
               <Grid item xs container direction="column" spacing={2}>
                 <Grid item xs>
                   <Item.Group divided>
-                    <Divider horizontal
-                      style={{ background: "peachpuff" }}>
-                      <Item> <BoldText>Company:</BoldText> </Item>
+                    <Divider horizontal style={{ background: "peachpuff" }}>
+                      <Item>
+                        {" "}
+                        <BoldText>Company:</BoldText>{" "}
+                      </Item>
                     </Divider>
                     {job.company}
-                    <Divider horizontal
-                      style={{ background: "peachpuff" }}>
-                      <Item> <BoldText>Description:</BoldText> </Item>
+                    <Divider horizontal style={{ background: "peachpuff" }}>
+                      <Item>
+                        {" "}
+                        <BoldText>Description:</BoldText>{" "}
+                      </Item>
                     </Divider>
                     {job.description}
-                    <Divider horizontal
-                      style={{ background: "peachpuff" }}>
-                      <Item> <BoldText>Category:</BoldText> </Item>
+                    <Divider horizontal style={{ background: "peachpuff" }}>
+                      <Item>
+                        {" "}
+                        <BoldText>Category:</BoldText>{" "}
+                      </Item>
                     </Divider>
                     {job.category}
-                    <Divider horizontal
-                      style={{ background: "peachpuff" }}>
-                      <Item> <BoldText>Salary Minimum:</BoldText> </Item>
+                    <Divider horizontal style={{ background: "peachpuff" }}>
+                      <Item>
+                        {" "}
+                        <BoldText>Salary Minimum:</BoldText>{" "}
+                      </Item>
                     </Divider>
                     ${job.salary_min}
-                    <Divider horizontal
-                      style={{ background: "peachpuff" }}>
-                      <Item> <BoldText>Salary Maximum:</BoldText> </Item>
+                    <Divider horizontal style={{ background: "peachpuff" }}>
+                      <Item>
+                        {" "}
+                        <BoldText>Salary Maximum:</BoldText>{" "}
+                      </Item>
                     </Divider>
                     ${job.salary_max}
-                    <Divider horizontal
-                      style={{ background: "peachpuff" }}>
-                      <Item> <BoldText>Date Created:</BoldText> </Item>
+                    <Divider horizontal style={{ background: "peachpuff" }}>
+                      <Item>
+                        {" "}
+                        <BoldText>Date Created:</BoldText>{" "}
+                      </Item>
                     </Divider>
                     {job.created}
                   </Item.Group>
@@ -140,24 +152,33 @@ const Job = () => {
                     <Button
                       className="btn btn-primary"
                       variant="dark"
-                      style= {{marginRight:30, backgroundColor: 'midnightblue'}}
+                      style={{
+                        marginRight: 30,
+                        backgroundColor: "midnightblue",
+                      }}
                       href={job.url}
-                      >
-                    Job URL
+                    >
+                      Job URL
                     </Button>
                     <Button
-                      style= {{marginRight:30, backgroundColor: 'midnightblue'}}
+                      style={{
+                        marginRight: 30,
+                        backgroundColor: "midnightblue",
+                      }}
                       href={`/apartment/${job.apartment}`}
-                      >
-                      Find Apartment In City
-                    </Button >
+                    >
+                      Find Apartment In {city.name}
+                    </Button>
                     <Button
                       className="btn btn-primary"
                       variant="dark"
-                      style= {{marginRight:30, backgroundColor: 'midnightblue'}}
+                      style={{
+                        marginRight: 30,
+                        backgroundColor: "midnightblue",
+                      }}
                       href={`/cities/${job.city}`}
-                      >
-                    Find Out More About City
+                    >
+                      Find Out More About {city.name}
                     </Button>
                   </Typography>
                 </Grid>
