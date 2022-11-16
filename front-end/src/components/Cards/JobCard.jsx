@@ -2,6 +2,13 @@ import React from "react";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import job_placeholder from "../../assets/placeholder/job.png";
+import {Highlight} from "react-highlight-regex"
+
+function OText({ children }) {
+  return (
+    <span style={{  fontSize: '17px', color: 'white', font: 'Courier-Oblique'  }}>{children}</span>
+  );
+}
 
 const JobCard = (props) => {
   const {
@@ -16,8 +23,17 @@ const JobCard = (props) => {
     url,
     img_url,
   } = props.job;
+
+  function highlightText (input) {
+    if (props.regex != null) {
+      return <Highlight match={props.regex} text={input} />
+    }
+    return input
+  }
+  
   return (
-    <Card>
+    <Card
+    style= {{backgroundColor: 'lavender'}}>
       <Card.Img
         className="p-2"
         style={{
@@ -28,19 +44,22 @@ const JobCard = (props) => {
         src={img_url ? img_url : job_placeholder}
       ></Card.Img>
       <Card.Body>
-        <Card.Title>{company}</Card.Title>
-        <Card.Subtitle>{title}</Card.Subtitle>
+        <Card.Title>{highlightText(company)}</Card.Title>
+        <Card.Subtitle>{highlightText(title)}</Card.Subtitle>
         <Card.Text>
-          Salary: ${salary_min} - ${salary_max}
+          Salary: ${highlightText(String(salary_min))} - 
+            ${highlightText(String(salary_max))}
         </Card.Text>
       </Card.Body>
-      <Card.Footer>
+      <Card.Footer
+      style= {{backgroundColor: 'midnightblue'}}>
         <Button
+          style= {{backgroundColor: 'lightsalmon'}}
           className="btn btn-primary stretched-link"
           variant="dark"
           href={`/job/${id}`}
         >
-          More Info
+          <OText>More Info</OText>
         </Button>
       </Card.Footer>
     </Card>

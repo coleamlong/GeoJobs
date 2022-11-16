@@ -11,18 +11,18 @@
 | Thomas Langford  | @thomas_langford | thl532  |
 
 ### Git SHA
-
-| Phase | Git Sha                                  |
-| ----- | ---------------------------------------- |
-| 1     | 822cd9f6                                 |
-| 2     | c88db5e04a9de8829995e600b91c412b5f9b6a04 |
+| Phase | Git Sha  |
+| ----- | -------- |
+| 1     | 822cd9f6 |
+| 2     | c88db5e0 |
+| 3     | TBD      |
 
 ### Project Leader
-
-| Phase | Project Leader  |
-| ----- | --------------- |
-| 1     | Cole Amlong     |
-| 2     | Thomas Langford |
+| Phase | Project Leader   |
+| ----- | ---------------- |
+| 1     | Cole Amlong      |
+| 2     | Thomas Langford  |
+| 3     | Mikala Jaramillo |
 
 #### Responsibilities
 
@@ -49,14 +49,22 @@ https://www.geojobs.me/
 | Thomas Langford  | 10                         | 12                         |
 
 ### Phase 2
+| Name              | Est. Completion Time (hrs)   | Real Completion Time (hrs) |
+| ----------------- | ---------------------------- | -------------------------- |
+| Cole Amlong       | 12                           | 20                         |
+| Faiza Rahman      | 10                           | 10                         |
+| Mikala Jaramillo  | 9                            | 10                         |
+| Sarthak Sirotiya  | 15                           | 24                         |
+| Thomas Langford   | 20                           | 22                         |
 
-| Name             | Est. Completion Time (hrs) | Real Completion Time (hrs) |
-| ---------------- | -------------------------- | -------------------------- |
-| Cole Amlong      | 12                         | 20                         |
-| Faiza Rahman     | 10                         | 10                         |
-| Mikala Jaramillo | 9                          | 10                         |
-| Sarthak Sirotiya | 15                         | 24                         |
-| Thomas Langford  | 20                         | 22                         |
+### Phase 3
+| Name              | Est. Completion Time (hrs)   | Real Completion Time (hrs) |
+| ----------------- | ---------------------------- | -------------------------- |
+| Cole Amlong       | 12                           | 12                         |
+| Faiza Rahman      | 8                            | 8                          |
+| Mikala Jaramillo  | 8                            | 11                         |
+| Sarthak Sirotiya  | 9                            | 12                         |
+| Thomas Langford   | 10                           | 8                          |
 
 ### Comments
 

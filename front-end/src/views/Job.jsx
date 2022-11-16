@@ -2,14 +2,13 @@ import React, { useState, useEffect } from "react";
 import Container from "react-bootstrap/Container";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-import { Link } from "react-router-dom";
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
-import { ExternalLink } from "react-external-link";
 import Spinner from "react-bootstrap/Spinner";
-import Carousel from "react-bootstrap/Carousel";
-import Image from "react-bootstrap/Image";
+import Button from "react-bootstrap/Button";
+import { Item } from "semantic-ui-react";
+import { Divider } from "semantic-ui-react";
 
 const client = axios.create({
   baseURL: "https://api.geojobs.me/",
@@ -44,16 +43,33 @@ const Job = () => {
     fetchJob();
   }, [job, city]);
 
+  function BoldText({ children }) {
+    return (
+      <span
+        style={{ fontSize: "18px", color: "black", font: "Courier-Oblique" }}
+      >
+        {children}
+      </span>
+    );
+  }
+
   return (
     <Container>
-      <Typography
-        gutterBottom
-        className="modelTitle"
-        variant="h2"
-        sx={{ textAlign: "center" }}
-      >
-        Job Info
-      </Typography>
+      {loaded ? (
+        <Typography
+          gutterBottom
+          className="modelTitle"
+          variant="h2"
+          color="midnightblue"
+          fontSize="45px"
+          sx={{ textAlign: "center" }}
+        >
+          {job.title}
+        </Typography>
+      ) : (
+        <Spinner animation="none" />
+      )}
+
       {loaded ? (
         <Paper
           sx={{
@@ -62,7 +78,7 @@ const Job = () => {
             maxWidth: 1000,
             flexGrow: 4,
             backgroundColor: (theme) =>
-              theme.palette.mode === "dark" ? "#1A2027" : "#fff",
+              theme.palette.mode === "dark" ? "#1A2027" : "#f5f5f5",
           }}
         >
           <Grid container spacing={2}>
@@ -70,27 +86,50 @@ const Job = () => {
             <Grid item xs={12} sm container>
               <Grid item xs container direction="column" spacing={2}>
                 <Grid item xs>
-                  <Typography gutterBottom variant="subtitle1" component="div">
-                    {job.title}
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    Desciption: {job.description}
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    Category: {job.category}
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    Salary Minimum: {job.salary_min}
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    Salary Maximum: {job.salary_max}
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    Company:{job.company}
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    Created:{job.created}
-                  </Typography>
+                  <Item.Group divided>
+                    <Divider horizontal style={{ background: "peachpuff" }}>
+                      <Item>
+                        {" "}
+                        <BoldText>Company:</BoldText>{" "}
+                      </Item>
+                    </Divider>
+                    {job.company}
+                    <Divider horizontal style={{ background: "peachpuff" }}>
+                      <Item>
+                        {" "}
+                        <BoldText>Description:</BoldText>{" "}
+                      </Item>
+                    </Divider>
+                    {job.description}
+                    <Divider horizontal style={{ background: "peachpuff" }}>
+                      <Item>
+                        {" "}
+                        <BoldText>Category:</BoldText>{" "}
+                      </Item>
+                    </Divider>
+                    {job.category}
+                    <Divider horizontal style={{ background: "peachpuff" }}>
+                      <Item>
+                        {" "}
+                        <BoldText>Salary Minimum:</BoldText>{" "}
+                      </Item>
+                    </Divider>
+                    ${job.salary_min}
+                    <Divider horizontal style={{ background: "peachpuff" }}>
+                      <Item>
+                        {" "}
+                        <BoldText>Salary Maximum:</BoldText>{" "}
+                      </Item>
+                    </Divider>
+                    ${job.salary_max}
+                    <Divider horizontal style={{ background: "peachpuff" }}>
+                      <Item>
+                        {" "}
+                        <BoldText>Date Created:</BoldText>{" "}
+                      </Item>
+                    </Divider>
+                    {job.created}
+                  </Item.Group>
                   <Typography variant="body2" color="text.secondary">
                     <img
                       style={{ width: 400, height: 200 }}
@@ -110,29 +149,37 @@ const Job = () => {
                     </div>
                   </Typography>
                   <Typography variant="body">
-                    <li>
-                      <ExternalLink href={job.url}>
-                        <span>Job URL</span>
-                      </ExternalLink>
-                    </li>
-                  </Typography>
-                </Grid>
-                <Grid item>
-                  <Typography sx={{ cursor: "pointer" }} variant="body2">
-                    <li>
-                      <Link to={`/apartment/${city.apartment}`}>
-                        Find Apartment In City
-                      </Link>
-                    </li>
-                  </Typography>
-                </Grid>
-                <Grid item>
-                  <Typography sx={{ cursor: "pointer" }} variant="body2">
-                    <li>
-                      <Link to={`/cities/${job.city}`}>
-                        Find Out More About City
-                      </Link>
-                    </li>
+                    <Button
+                      className="btn btn-primary"
+                      variant="dark"
+                      style={{
+                        marginRight: 30,
+                        backgroundColor: "midnightblue",
+                      }}
+                      href={job.url}
+                    >
+                      Job URL
+                    </Button>
+                    <Button
+                      style={{
+                        marginRight: 30,
+                        backgroundColor: "midnightblue",
+                      }}
+                      href={`/apartment/${job.apartment}`}
+                    >
+                      Find Apartment In {city.name}
+                    </Button>
+                    <Button
+                      className="btn btn-primary"
+                      variant="dark"
+                      style={{
+                        marginRight: 30,
+                        backgroundColor: "midnightblue",
+                      }}
+                      href={`/cities/${job.city}`}
+                    >
+                      Find Out More About {city.name}
+                    </Button>
                   </Typography>
                 </Grid>
               </Grid>

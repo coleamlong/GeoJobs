@@ -15,7 +15,7 @@ import APICard from "../components/Cards/APICard";
 
 const client = axios.create({
   baseURL: "https://gitlab.com/api/v4/",
-  headers: { Authorization: "Bearer glpat-MweTEhPuWf9NugsqWnQy" },
+  headers: { Authorization: "Bearer glpat-jthhZ5tw3MX79B_bzf_y" },
 });
 
 const fetchGitLabData = async () => {
@@ -80,6 +80,13 @@ const fetchGitLabData = async () => {
   };
 };
 
+
+function BoldText({ children }) {
+  return (
+    <span style={{  fontSize: '37px', color: 'lightsalmon', font: 'Courier-Oblique'  }}>{children}</span>
+  );
+}
+
 const About = () => {
   const [teamList, setTeamList] = useState([]);
   const [totalCommits, setTotalCommits] = useState(0);
@@ -113,7 +120,8 @@ const About = () => {
           and start browsing!
         </p>
       </Container>
-      <Container className="p-4 bg-dark text-light">
+      <Container className="p-4"
+      style= {{backgroundColor: 'lightsalmon'}}>
         <h1 className="d-flex justify-content-center p-4 ">
           Putting The Pieces Together
         </h1>
@@ -150,7 +158,8 @@ const About = () => {
           </Row>
         )}
       </Container>
-      <Container className="p-4 bg-dark text-light">
+      <Container className="p-4"
+      style= {{backgroundColor: 'whitesmoke'}}>
         <h1 className="d-flex justify-content-center p-4">
           Total Repsitory Stats
         </h1>
@@ -169,7 +178,7 @@ const About = () => {
           <a
             href={"https://documenter.getpostman.com/view/23607622/2s83tFHBCK"}
           >
-            API Documentation
+            <BoldText>API Documentation</BoldText>
           </a>
         </h1>
       </Container>

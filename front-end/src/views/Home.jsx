@@ -22,7 +22,7 @@ const Home = () => {
         <h1
           className="bg-text"
           style={{
-            color: "burlywood",
+            color: "lightsalmon",
             justifyContent: "center",
             alignItems: "center",
             backgroundPositionY: "1500",

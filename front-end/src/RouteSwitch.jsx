@@ -8,6 +8,7 @@ import City from "./views/City";
 import Home from "./views/Home";
 import Job from "./views/Job";
 import Jobs from "./views/Jobs";
+import Search from "./views/Search"
 
 const RouteSwitch = () => {
   return (
@@ -21,6 +22,8 @@ const RouteSwitch = () => {
         <Route path="/apartment/:id" element={<Apartment />} />
         <Route path="/jobs" element={<Jobs />} />
         <Route path="/job/:id" element={<Job />} />
+        {/* site-wide search */}
+        <Route path="/search/:query" element={<Search />} /> 
       </Routes>
     </BrowserRouter>
   );
