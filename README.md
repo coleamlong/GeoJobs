@@ -1,13 +1,14 @@
 # Geo Job
 
 ## Team members
-| Name              | GitLabID          | EID               |
-| ----------------- | ----------------- | ----------------- |
-| Cole Amlong       | @coleamlong       | ca34894           |
-| Faiza Rahman      | @faiza2002        | fzr68             |
-| Mikala Jaramillo  | @Mikalajj         | mhj496            |
-| Sarthak Sirotiya  | @sarthaksirotiya  | ss94468           |
-| Thomas Langford   | @thomas_langford  | thl532            |
+
+| Name             | GitLabID         | EID     |
+| ---------------- | ---------------- | ------- |
+| Cole Amlong      | @coleamlong      | ca34894 |
+| Faiza Rahman     | @faiza2002       | fzr68   |
+| Mikala Jaramillo | @Mikalajj        | mhj496  |
+| Sarthak Sirotiya | @sarthaksirotiya | ss94468 |
+| Thomas Langford  | @thomas_langford | thl532  |
 
 ### Git SHA
 | Phase | Git Sha  |
@@ -24,23 +25,28 @@
 | 3     | Mikala Jaramillo |
 
 #### Responsibilities
+
 Organize and direct group meetings, make sure everyone is on track
 
 # GitLab Pipelines
+
 https://gitlab.com/sarthaksirotiya/cs373-idb/-/pipelines
 
 # Website Link
+
 https://www.geojobs.me/
 
 # Completion Times
+
 ### Phase 1
-| Name              | Est. Completion Time (hrs)   | Real Completion Time (hrs) |
-| ----------------- | ---------------------------- | -------------------------- |
-| Cole Amlong       | 10                           | 15                         |
-| Faiza Rahman      | 8                            | 10                         |
-| Mikala Jaramillo  | 7                            | 13                         |
-| Sarthak Sirotiya  | 15                           | 12                         |
-| Thomas Langford   | 10                           | 12                         |
+
+| Name             | Est. Completion Time (hrs) | Real Completion Time (hrs) |
+| ---------------- | -------------------------- | -------------------------- |
+| Cole Amlong      | 10                         | 15                         |
+| Faiza Rahman     | 8                          | 10                         |
+| Mikala Jaramillo | 7                          | 13                         |
+| Sarthak Sirotiya | 15                         | 12                         |
+| Thomas Langford  | 10                         | 12                         |
 
 ### Phase 2
 | Name              | Est. Completion Time (hrs)   | Real Completion Time (hrs) |
@@ -61,4 +67,5 @@ https://www.geojobs.me/
 | Thomas Langford   | 10                           | 8                          |
 
 ### Comments
+
 Thomas Langford is UTSHPE. He was on the wrong account when he first committed to the repo. For phase 1, he made 8 commits.
