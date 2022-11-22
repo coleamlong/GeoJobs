@@ -403,9 +403,9 @@ def get_city(r_id):
     city_tags = tag_schema.dump(city.tags, many=True)
     result.update({"tags": city_tags})
     # TODO add multiple apartments
-    apts = apartment_schema.dump(city.apartments, many=True)[0]["id"]
+    apts = apartment_schema.dump(city.apartments, many=True)
     # TODO add multiple jobs
-    jb = job_schema.dump(city.jobs, many=True)[0]["id"]
+    jb = job_schema.dump(city.jobs, many=True)
     result.update({"apartment": apts})
     result.update({"job": jb})
     return jsonify({
