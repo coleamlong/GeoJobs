@@ -429,22 +429,19 @@ def get_job(r_id):
 
 @app.route("/apartments/<string:r_id>")
 def get_apartment(r_id):
-    query = db.session.query(Apartment).filter_by(id=r_id)
-    try:
-        result = apartment_schema.dump(query, many=True)[0]
-    except IndexError:
+    apt = Apartment.query.filter_by(id=r_id).first()
+    if apt == None:
         return return_error(f"Invalid apartment ID: {r_id}")
-    apartment = query.first()
-    apartment_images = apt_img_schema.dump(apartment.images, many=True)
+    result = apartment_schema.dump(apt)
+    apartment_images = apt_img_schema.dump(apt.images, many=True)
     result.update({"images": apartment_images})
     result.update({"city": get_city_from_address(result["address"])})
 
-    apt = query.first()
-    city = apt.city_id
-    # TODO get jobs such that monthly pay >= monthly rent
-    job = job_schema.dump(db.session.query(City).filter_by(id=city).first().jobs, many=True)[0]["id"]
-    result.update({"city": city})
-    result.update({"job": job})
+    # get jobs such that monthly pay >= monthly rent
+    city = City.query.filter_by(id = apt.city_id).first()
+    jobs = [job for job in city.jobs if (job.salary_min/12) >= apt.price]
+    result.update({"city": apt.city_id})
+    result.update({"jobs": job_schema.dump(jobs, many=True)})
     return jsonify({
         "data": result
     })
