@@ -402,7 +402,9 @@ def get_city(r_id):
     city = query.first()
     city_tags = tag_schema.dump(city.tags, many=True)
     result.update({"tags": city_tags})
+    # TODO add multiple apartments
     apts = apartment_schema.dump(city.apartments, many=True)[0]["id"]
+    # TODO add multiple jobs
     jb = job_schema.dump(city.jobs, many=True)[0]["id"]
     result.update({"apartment": apts})
     result.update({"job": jb})
@@ -412,16 +414,15 @@ def get_city(r_id):
 
 @app.route("/jobs/<int:r_id>")
 def get_job(r_id):
-    query = db.session.query(Job).filter_by(id=r_id)
-    try:
-        result = job_schema.dump(query, many=True)[0]
-    except IndexError:
+    job = Job.query.filter_by(id=r_id).first()
+    if job == None:
         return return_error(f"Invalid job ID: {r_id}")
-    job = query.first()
-    city = job.city_id
-    apartment = apartment_schema.dump(db.session.query(City).filter_by(id=city).first().apartments, many=True)[0]["id"]
-    result.update({"city": city})
-    result.update({"apartment": apartment})
+    result = job_schema.dump(job)
+    city = City.query.filter_by(id = job.city_id).first()
+    # get apartments such that monthly rent <= monthly pay
+    apts = [apt for apt in city.apartments if apt.price <= (job.salary_min/12)]
+    result.update({"city": job.city_id})
+    result.update({"apartments": apartment_schema.dump(apts, many=True)})
     return jsonify({
         "data": result
     })
@@ -440,6 +441,7 @@ def get_apartment(r_id):
 
     apt = query.first()
     city = apt.city_id
+    # TODO get jobs such that monthly pay >= monthly rent
     job = job_schema.dump(db.session.query(City).filter_by(id=city).first().jobs, many=True)[0]["id"]
     result.update({"city": city})
     result.update({"job": job})
