@@ -33,7 +33,7 @@ const JobCard = (props) => {
   
   return (
     <Card
-    style= {{backgroundColor: 'lavender'}}>
+    style= {{backgroundColor: '#f8edeb'}}>
       <Card.Img
         className="p-2"
         style={{
@@ -52,9 +52,9 @@ const JobCard = (props) => {
         </Card.Text>
       </Card.Body>
       <Card.Footer
-      style= {{backgroundColor: 'midnightblue'}}>
+      style= {{backgroundColor: '#3d405b'}}>
         <Button
-          style= {{backgroundColor: 'lightsalmon'}}
+          style= {{backgroundColor: '#e07a5f'}}
           className="btn btn-primary stretched-link"
           variant="dark"
           href={`/job/${id}`}

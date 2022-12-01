@@ -9,7 +9,7 @@ const APICard = (props) => {
 
   return (
     <Card
-    style= {{backgroundColor: 'lavender'}}>
+    style= {{backgroundColor: '#f8edeb'}}>
       <Card.Img className="p-4" variant="top" src={image} />
       <Card.Body>
         <Card.Title>{title}</Card.Title>

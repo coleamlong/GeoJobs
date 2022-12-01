@@ -26,7 +26,7 @@ const ApartmentCard = (props) => {
 
   return (
     <Card
-    style= {{backgroundColor: 'lavender'}}>
+    style= {{backgroundColor: '#f8edeb'}}>
       <Card.Img
         style={{
           height: "45%",

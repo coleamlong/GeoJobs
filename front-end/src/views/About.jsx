@@ -121,7 +121,7 @@ const About = () => {
         </p>
       </Container>
       <Container className="p-4"
-      style= {{backgroundColor: '#81b29a'}}>
+      style= {{backgroundColor: '#f2cc8f'}}>
         <h1 className="d-flex justify-content-center p-4 ">
           Putting The Pieces Together
         </h1>

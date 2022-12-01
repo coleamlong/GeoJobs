@@ -7,7 +7,7 @@ const ToolCard = (props) => {
   const { title, image, description, link } = props.toolInfo;
   return (
     <Card
-    style= {{backgroundColor: 'lavender'}}>
+    style= {{backgroundColor: '#f4f1de'}}>
       <Card.Img className="p-4" variant="top" src={image} />
       <Card.Body>
         <Card.Title>{title}</Card.Title>
