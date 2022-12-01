@@ -5,7 +5,7 @@ import Nav from "react-bootstrap/Nav";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import Logo from "../../assets/logos/navbar_logo.PNG";
+import Logo from "../../assets/logos/navbar_logo.jpeg";
 
 
 function BoldText({ children }) {

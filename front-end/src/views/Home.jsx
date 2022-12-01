@@ -9,7 +9,7 @@ import Col from "react-bootstrap/Col";
 
 const Home = () => {
   return (
-    <div className="main-home">
+    <div className="main-home" >
       <div
         className="bg d-flex justify-content-center"
         style={{
