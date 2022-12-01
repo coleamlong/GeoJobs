@@ -27,7 +27,7 @@ const GlobalNavbar = () => {
     <Navbar variant="dark" expand="lg"
     style= {{backgroundColor: '#e07a5f'}}>
       <Container>
-        <Navbar.Brand href="/"><img src={require(Logo)} class="img-responsive"></img></Navbar.Brand>
+        <Navbar.Brand href="/"><img src={Logo} class="img-responsive"></img></Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse>
           <Nav className="mr-auto">
