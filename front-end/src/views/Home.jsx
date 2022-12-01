@@ -16,13 +16,13 @@ const Home = () => {
           backgroundImage: `url(${Background})`,
           backgroundSize: "cover",
           width: "100%",
-          height: "100vh",
+          height: "80vh",
         }}
       >
         <h1
           className="bg-text"
           style={{
-            color: "lightsalmon",
+            color: '#f4f1de',
             justifyContent: "center",
             alignItems: "center",
             backgroundPositionY: "1500",

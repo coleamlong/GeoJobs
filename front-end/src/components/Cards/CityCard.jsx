@@ -1,7 +1,7 @@
 import React from "react";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
-import {Highlight} from "react-highlight-regex"
+import {Highlight} from "react-highlight-regex";
 
 import city_placeholder from "../../assets/placeholder/city.png";
 

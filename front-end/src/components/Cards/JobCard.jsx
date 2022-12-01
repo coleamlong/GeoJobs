@@ -2,7 +2,7 @@ import React from "react";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import job_placeholder from "../../assets/placeholder/job.png";
-import {Highlight} from "react-highlight-regex"
+import {Highlight} from "react-highlight-regex";
 
 function OText({ children }) {
   return (

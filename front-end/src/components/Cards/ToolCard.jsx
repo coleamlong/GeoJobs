@@ -17,7 +17,7 @@ const ToolCard = (props) => {
       <Card.Footer
       style= {{backgroundColor: 'whitesmoke'}}>
         <Button href={link} class="btn btn-primary stretched-link"
-        style= {{backgroundColor: 'midnightblue'}}>
+        style= {{backgroundColor: '#3d405b'}}>
           More Info
         </Button>
       </Card.Footer>

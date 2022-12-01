@@ -2,7 +2,7 @@ import React from "react";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import apartment_placeholder from "../../assets/placeholder/apartment.png";
-import {Highlight} from "react-highlight-regex"
+import {Highlight} from "react-highlight-regex";
 
 const ApartmentCard = (props) => {
   const {

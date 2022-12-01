@@ -4,7 +4,7 @@ import Card from "react-bootstrap/Card";
 
 function BoldText({ children }) {
   return (
-    <span style={{  fontSize: '17px', color: 'lightsalmon', font: 'Courier-Oblique'  }}>{children}</span>
+    <span style={{  fontSize: '17px', color: '#264653', font: 'Courier-Oblique'  }}>{children}</span>
   );
 }
 
@@ -27,7 +27,7 @@ const DeveloperCard = (props) => {
   } = props.devInfo;
   return (
     <Card
-    style= {{backgroundColor: 'midnightblue'}}>
+    style= {{backgroundColor: '#3d405b'}}>
       <Card.Img variant="top" src={image} />
       <Card.Body>
         <Card.Title><OText>{name}</OText></Card.Title>

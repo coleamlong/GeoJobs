@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "react-highlight-regex": "^0.1.1",
+    "react-highlight-words": "^0.18.0"
+  }
+}

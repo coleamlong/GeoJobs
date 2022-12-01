@@ -5,10 +5,12 @@ import Nav from "react-bootstrap/Nav";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import Logo from "../../assets/logos/navbar_logo.PNG";
+
 
 function BoldText({ children }) {
   return (
-    <span style={{  fontSize: '15px', color: 'black', font: 'Courier-Oblique', fontWeight: 400  }}>{children}</span>
+    <span style={{  fontSize: '15px', color: '#f4f1de', font: 'Courier-Oblique', fontWeight: 400  }}>{children}</span>
   );
 }
 
@@ -23,9 +25,9 @@ const GlobalNavbar = () => {
 
   return (
     <Navbar variant="dark" expand="lg"
-    style= {{backgroundColor: 'lightsalmon'}}>
+    style= {{backgroundColor: '#e07a5f'}}>
       <Container>
-        <Navbar.Brand href="/">GeoJobs</Navbar.Brand>
+        <Navbar.Brand href="/"><img src={Logo} class="img-responsive"></img></Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse>
           <Nav className="mr-auto">
@@ -45,7 +47,7 @@ const GlobalNavbar = () => {
                 className="me-2"
                 aria-label="Search"
               />
-              <Button type="submit" variant="outline-secondary">Search</Button>
+              <Button type="submit" variant="outline-secondary" style={{color: '#3d405b'}}>Search</Button>
             </Form>
           </Container>
         </Navbar.Collapse>
