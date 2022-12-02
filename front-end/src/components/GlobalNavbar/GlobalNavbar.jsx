@@ -36,6 +36,7 @@ const GlobalNavbar = () => {
             <Nav.Link href="/jobs"><BoldText>Jobs</BoldText></Nav.Link>
             <Nav.Link href="/cities"><BoldText>Cities</BoldText></Nav.Link>
             <Nav.Link href="/apartments"><BoldText>Apartments</BoldText></Nav.Link>
+            <Nav.Link href="/visualizations"><BoldText>Visualizations</BoldText></Nav.Link>
           </Nav>
           <Container className="d-flex justify-content-end">
             <Form onSubmit={handleSubmit} className="d-flex">
