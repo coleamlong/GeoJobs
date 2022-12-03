@@ -1,7 +1,7 @@
 import Container from "react-bootstrap/Container";
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { PieChart, Pie, Legend, Tooltip, ResponsiveContainer } from 'recharts';
 
 const data = [
     {
@@ -117,24 +117,19 @@ const JobsPerCategory = () => {
                 <h3 className="p-5 text-center">Number of Jobs in Each Job Category</h3>
                 <Col>
                     <ResponsiveContainer width="100%" height="100%">
-                        <BarChart
-                            width={500}
-                            height={300}
-                            data={data}
-                            margin={{
-                                top: 5,
-                                right: 30,
-                                left: 20,
-                                bottom: 5,
-                            }}
-                        >
-                            <CartesianGrid strokeDasharray="3 3" />
-                            <XAxis dataKey="name" />
-                            <YAxis />
+                        <PieChart width={400} height={400}>
+                            <Pie
+                                dataKey="count"
+                                isAnimationActive={false}
+                                data={data}
+                                cx="50%"
+                                cy="50%"
+                                outerRadius={200}
+                                fill="#8884d8"
+                                label
+                            />
                             <Tooltip />
-                            <Legend />
-                            <Bar dataKey="count" fill="#8884d8" />
-                        </BarChart>
+                        </PieChart>
                     </ResponsiveContainer>
                 </Col>
             </Row>

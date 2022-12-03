@@ -1,8 +1,7 @@
 import Container from "react-bootstrap/Container";
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import JobsPerCategory from "../components/visualizations/JobsPerCategory";
+import AvgCityAparmentPrice from "../components/visualizations/AvgCityApartmentPrice"
+import AvgCategoryMinSalary from "../components/visualizations/AvgCategoryMinSalary"
 import Typography from "@mui/material/Typography";
 
 
@@ -18,6 +17,8 @@ const Visualizations = () => {
                 Visualizations
             </Typography>
             <JobsPerCategory></JobsPerCategory>
+            <AvgCityAparmentPrice></AvgCityAparmentPrice>
+            <AvgCategoryMinSalary />
         </Container>
     )
     
