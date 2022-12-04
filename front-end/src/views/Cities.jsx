@@ -71,7 +71,10 @@ const Cities = () => {
         var query = "cities";
         if (searchQuery.current.value != "") {
           query = `search/city/${searchQuery.current.value}`;
-          queryRE = new RegExp(`(?:${searchQuery.current.value.replaceAll(" ", "|")})`, "i");
+          queryRE = new RegExp(
+            `(?:${searchQuery.current.value.replaceAll(" ", "|")})`,
+            "i"
+          );
         } else {
           queryRE = null;
           var filterCount = 0;
@@ -137,7 +140,7 @@ const Cities = () => {
           event.preventDefault();
           setLoaded(false);
         }}
-        className="d-flex pb-5 justify-content-center"
+        className="d-flex pb-2 justify-content-center"
       >
         <Form.Control
           ref={searchQuery}
@@ -151,114 +154,163 @@ const Cities = () => {
           Search
         </Button>
       </Form>
-      <Form className="filter-form d-flex gap-4 justify-content-center">
-        <FilterDropdown
-          title="Sort"
-          items={["Sort", "Population", "Avg Rating", "Budget", "Safety"]}
-          onChange={handleSortFilter}
-        />
-        <FilterDropdown
-          title="Order"
-          items={["Ascending", "Descending"]}
-          onChange={handleOrderFilter}
-        />
-        <FilterDropdown
-          title="Tag"
-          items={[
-            "Tag",
-            "Charming",
-            "Foodie",
-            "Nightlife",
-            "Architecture",
-            "History",
-            "Museums",
-            "Performing Arts",
-            "Music",
-            "Hipster",
-            "Hippie",
-            "Posh",
-            "Family Friendly",
-            "LGBT Friendly",
-            "Diversity",
-            "Beach Town",
-            "College Town",
-            "Ski Town",
-            "Outdoorsy",
-            "Wineries",
-            "Shopping",
-          ]}
-          scroll
-          onChange={handleTagFilter}
-        />
-        <FilterDropdown
-          title="State"
-          items={[
-            "State",
-            "Alabama",
-            "Alaska",
-            "Arizona",
-            "Arkansas",
-            "California",
-            "Colorado",
-            "Connecticut",
-            "Delaware",
-            "Florida",
-            "Georgia",
-            "Hawaii",
-            "Idaho",
-            "Illinois",
-            "Indiana",
-            "Iowa",
-            "Kansas",
-            "Kentucky",
-            "Louisiana",
-            "Maine",
-            "Maryland",
-            "Massachusetts",
-            "Michigan",
-            "Minnesota",
-            "Mississippi",
-            "Missouri",
-            "Montana",
-            "Nebraska",
-            "Nevada",
-            "New Hampshire",
-            "New Jersey",
-            "New Mexico",
-            "New York",
-            "North Carolina",
-            "North Dakota",
-            "Ohio",
-            "Oklahoma",
-            "Oregon",
-            "Pennsylvania",
-            "Rhode Island",
-            "South Carolina",
-            "South Dakota",
-            "Tennessee",
-            "Texas",
-            "Utah",
-            "Vermont",
-            "Virginia",
-            "Washington",
-            "West Virginia",
-            "Wisconsin",
-            "Wyoming",
-          ]}
-          scroll
-          onChange={handleStateFilter}
-        />
-        <Form.Label>Population:</Form.Label>
-        <RangeSlider min={0} max={10000000} onChange={handlePopulationFilter} />
-        <Form.Label>Rating:</Form.Label>
-        <RangeSlider min={0} max={5} discrete onChange={handleRatingFilter} />
-        <Form.Label>Budget:</Form.Label>
-        <RangeSlider min={0} max={10} discrete onChange={handleBudgetFilter} />
-        <Form.Label>Safety:</Form.Label>
-        <RangeSlider min={0} max={5} discrete onChange={handleSafetyFilter} />
-        <Button variant="outline-secondary" onClick={() => setLoaded(false)}>
-          Submit
-        </Button>
+      <Form className="filter-form">
+        <Row className="mx-auto text-center w-50 my-4">
+          <Col>
+            <FilterDropdown
+              title="Sort"
+              items={["Sort", "Population", "Avg Rating", "Budget", "Safety"]}
+              onChange={handleSortFilter}
+            />
+          </Col>
+          <Col>
+            {" "}
+            <FilterDropdown
+              title="Order"
+              items={["Ascending", "Descending"]}
+              onChange={handleOrderFilter}
+            />
+          </Col>
+          <Col>
+            {" "}
+            <FilterDropdown
+              title="Tag"
+              items={[
+                "Tag",
+                "Charming",
+                "Foodie",
+                "Nightlife",
+                "Architecture",
+                "History",
+                "Museums",
+                "Performing Arts",
+                "Music",
+                "Hipster",
+                "Hippie",
+                "Posh",
+                "Family Friendly",
+                "LGBT Friendly",
+                "Diversity",
+                "Beach Town",
+                "College Town",
+                "Ski Town",
+                "Outdoorsy",
+                "Wineries",
+                "Shopping",
+              ]}
+              scroll
+              onChange={handleTagFilter}
+            />
+          </Col>
+          <Col>
+            {" "}
+            <FilterDropdown
+              title="State"
+              items={[
+                "State",
+                "Alabama",
+                "Alaska",
+                "Arizona",
+                "Arkansas",
+                "California",
+                "Colorado",
+                "Connecticut",
+                "Delaware",
+                "Florida",
+                "Georgia",
+                "Hawaii",
+                "Idaho",
+                "Illinois",
+                "Indiana",
+                "Iowa",
+                "Kansas",
+                "Kentucky",
+                "Louisiana",
+                "Maine",
+                "Maryland",
+                "Massachusetts",
+                "Michigan",
+                "Minnesota",
+                "Mississippi",
+                "Missouri",
+                "Montana",
+                "Nebraska",
+                "Nevada",
+                "New Hampshire",
+                "New Jersey",
+                "New Mexico",
+                "New York",
+                "North Carolina",
+                "North Dakota",
+                "Ohio",
+                "Oklahoma",
+                "Oregon",
+                "Pennsylvania",
+                "Rhode Island",
+                "South Carolina",
+                "South Dakota",
+                "Tennessee",
+                "Texas",
+                "Utah",
+                "Vermont",
+                "Virginia",
+                "Washington",
+                "West Virginia",
+                "Wisconsin",
+                "Wyoming",
+              ]}
+              scroll
+              onChange={handleStateFilter}
+            />
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <Form.Label>Population:</Form.Label>
+            <RangeSlider
+              min={0}
+              max={10000000}
+              onChange={handlePopulationFilter}
+            />
+          </Col>
+          <Col>
+            <Form.Label>Rating:</Form.Label>
+            <RangeSlider
+              min={0}
+              max={5}
+              discrete
+              onChange={handleRatingFilter}
+            />
+          </Col>
+          <Col>
+            <Form.Label>Budget:</Form.Label>
+            <RangeSlider
+              min={0}
+              max={10}
+              discrete
+              onChange={handleBudgetFilter}
+            />
+          </Col>
+          <Col>
+            <Form.Label>Safety:</Form.Label>
+            <RangeSlider
+              min={0}
+              max={5}
+              discrete
+              onChange={handleSafetyFilter}
+            />
+          </Col>
+        </Row>
+        <Row className="mx-auto text-center mt-4">
+          <Col>
+            <Button
+              variant="outline-secondary"
+              onClick={() => setLoaded(false)}
+            >
+              Submit
+            </Button>
+          </Col>
+        </Row>
       </Form>
       <Row
         xl={4}
