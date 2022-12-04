@@ -164,7 +164,6 @@ const Cities = () => {
             />
           </Col>
           <Col>
-            {" "}
             <FilterDropdown
               title="Order"
               items={["Ascending", "Descending"]}
@@ -172,7 +171,6 @@ const Cities = () => {
             />
           </Col>
           <Col>
-            {" "}
             <FilterDropdown
               title="Tag"
               items={[
@@ -203,7 +201,6 @@ const Cities = () => {
             />
           </Col>
           <Col>
-            {" "}
             <FilterDropdown
               title="State"
               items={[
