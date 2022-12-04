@@ -8,6 +8,7 @@ import Typography from "@mui/material/Typography";
 import Spinner from "react-bootstrap/Spinner";
 import Button from "react-bootstrap/Button";
 import { Item } from "semantic-ui-react";
+import ListGroup from "react-bootstrap/ListGroup";
 import { Divider } from "semantic-ui-react";
 
 const client = axios.create({
@@ -160,7 +161,7 @@ const Job = () => {
                     >
                       Job URL
                     </Button>
-                    <Button
+                    {/* <Button
                       style={{
                         marginRight: 30,
                         backgroundColor: "midnightblue",
@@ -168,7 +169,26 @@ const Job = () => {
                       href={`/apartment/${job.apartment}`}
                     >
                       Find Apartment In {city.name}
-                    </Button>
+                    </Button> */}
+                    <ListGroup
+                      style={{
+                        maxHeight: "300px",
+                        overflowY: "auto"
+                      }}
+                    >
+                      {loaded ? (
+                        job.apartments.map((apartment) => (
+                          <ListGroup.Item action href={`/apartment/${apartment.id}`}>
+                            <h5>{apartment.address}</h5>
+                            <h6>Rent: ${apartment.price}</h6>
+                          </ListGroup.Item>
+                        ))
+                      ) : (
+                        <ListGroup.Item>
+                          <Spinner animation="grow" />
+                        </ListGroup.Item>
+                      )}
+                    </ListGroup>
                     <Button
                       className="btn btn-primary"
                       variant="dark"
