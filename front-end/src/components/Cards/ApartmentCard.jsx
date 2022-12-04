@@ -14,7 +14,7 @@ const ApartmentCard = (props) => {
     price,
     property_type,
     sqft,
-    image,
+    images,
   } = props.apartment;
 
   function highlightText (input) {
@@ -26,14 +26,15 @@ const ApartmentCard = (props) => {
 
   return (
     <Card
-    style= {{backgroundColor: '#f8edeb'}}>
+    style= {{backgroundColor: '#ffffff'}}>
       <Card.Img
         style={{
           height: "45%",
           width: "100%",
           objectFit: "cover",
         }}
-        src={image !== null ? image : apartment_placeholder}
+        src = {images !== null ? (images[0]?.img_url ?? apartment_placeholder) : apartment_placeholder}
+        // src={images !== null ? images[0]?.img_url : apartment_placeholder}
       ></Card.Img>
       <Card.Text className="text-center">{highlightText(property_type)}</Card.Text>
       <Card.Title className="text-center text-uppercase ">{highlightText(address)}</Card.Title>

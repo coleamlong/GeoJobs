@@ -33,7 +33,7 @@ const JobCard = (props) => {
   
   return (
     <Card
-    style= {{backgroundColor: '#f8edeb'}}>
+    style= {{backgroundColor: '#ffffff'}}>
       <Card.Img
         className="p-2"
         style={{

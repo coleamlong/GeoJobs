@@ -8,6 +8,7 @@ import Carousel from "react-bootstrap/Carousel";
 import Container from "react-bootstrap/Container";
 import Image from "react-bootstrap/Image";
 import Spinner from "react-bootstrap/Spinner";
+import ListGroup from "react-bootstrap/ListGroup";
 import { useParams } from "react-router-dom";
 
 const client = axios.create({
@@ -150,6 +151,25 @@ const Apartment = () => {
                     />
                   </div>
                 </Grid>
+                <ListGroup
+                  style={{
+                    maxHeight: "300px",
+                    overflowY: "auto"
+                  }}
+                >
+                  {loaded ? (
+                    apartment.jobs.map((job) => (
+                      <ListGroup.Item action href={`/job/${job.id}`}>
+                        <h5>{job.title}</h5>
+                        <h6>Salary Range: ${job.salary_min}-${job.salary_max}</h6>
+                      </ListGroup.Item>
+                    ))
+                  ) : (
+                    <ListGroup.Item>
+                      <Spinner animation="grow" />
+                    </ListGroup.Item>
+                  )}
+                </ListGroup>
                 <Grid item>
                   <Typography sx={{ cursor: "pointer" }} variant="body2">
                     <Button
@@ -160,17 +180,6 @@ const Apartment = () => {
                       href={`/cities/${apartment.city}`}
                     >
                       Explore {city}
-                    </Button>
-                    <Button
-                      className="btn btn-primary"
-                      variant="dark"
-                      style={{
-                        marginRight: 30,
-                        backgroundColor: "midnightblue",
-                      }}
-                      href={`/job/${apartment.job}`}
-                    >
-                      Find Job in {city}
                     </Button>
                   </Typography>
                 </Grid>

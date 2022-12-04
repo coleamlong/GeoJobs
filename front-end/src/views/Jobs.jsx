@@ -68,7 +68,10 @@ const Jobs = () => {
         var query = `jobs?page=${activePage}&perPage=20`;
         if (searchQuery.current.value != "") {
           query = `search/job/${searchQuery.current.value}`;
-          queryRE = new RegExp(`(?:${searchQuery.current.value.replaceAll(" ", "|")})`, "i");
+          queryRE = new RegExp(
+            `(?:${searchQuery.current.value.replaceAll(" ", "|")})`,
+            "i"
+          );
         } else {
           queryRE = null;
           if (sort != "sort") {
@@ -218,17 +221,32 @@ const Jobs = () => {
         <FilterDropdown
           title="Job Category"
           items={[
-            "Job Category",
-            "Travel Jobs",
-            "Teaching Jobs",
-            "Healthcare and Nursing Jobs",
-            "Energy, Oil and Gas Jobs",
-            "Accounting and Finance Jobs",
-            "Logistics and Warehouse Jobs",
-            "IT Jobs",
-            "Customer Services Jobs",
+            "Accounting & Finance Jobs",
             "Admin Jobs",
+            "Consultancy Jobs",
+            "Creative & Design Jobs",
+            "Customer Services Jobs",
+            "Domestic help & Cleaning Jobs",
+            "Energy, Oil & Gas Jobs",
+            "Engineering Jobs",
+            "HR & Recruitment Jobs",
+            "Healthcare & Nursing Jobs",
+            "Hospitality & Catering Jobs",
+            "IT Jobs",
+            "Legal Jobs",
+            "Logistics & Warehouse Jobs",
+            "Maintenance Jobs",
+            "Manufacturing Jobs",
+            "Other/General Jobs",
+            "PR, Advertising & Marketing Jobs",
+            "Property Jobs",
+            "Retail Jobs",
             "Sales Jobs",
+            "Scientific & QA Jobs",
+            "Social work Jobs",
+            "Teaching Jobs",
+            "Trade & Construction Jobs",
+            "Travel Jobs",
           ]}
           onChange={HandleCategoryFilter}
         />

@@ -1,15 +1,14 @@
-import React, { useState, useEffect } from "react";
-import Container from "react-bootstrap/Container";
-import axios from "axios";
-import { useParams } from "react-router-dom";
-import { Link } from "react-router-dom";
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
-import { ExternalLink } from "react-external-link";
-import Spinner from "react-bootstrap/Spinner";
-import { TwitterTimelineEmbed } from "react-twitter-embed";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
+import Container from "react-bootstrap/Container";
+import Spinner from "react-bootstrap/Spinner";
+import { useParams } from "react-router-dom";
+import { TwitterTimelineEmbed } from "react-twitter-embed";
+import ListGroup from "react-bootstrap/ListGroup"
 
 const client = axios.create({
   baseURL: "https://api.geojobs.me/",
@@ -90,9 +89,6 @@ const City = () => {
                   <Typography variant="body2" color="text.secondary">
                     <BoldText>Population: {city.population}</BoldText>
                   </Typography>
-                </Grid>
-              </Grid>
-              <Grid item>
                   <Typography variant="body2" color="text.secondary">
                     <Button
                       style= {{marginBottom: 30, marginLeft:350, backgroundColor: 'midnightblue'}}
@@ -100,20 +96,82 @@ const City = () => {
                       >
                       Walk Score
                     </Button >
-                    <Button
-                      style= {{marginBottom: 30, marginLeft:30, backgroundColor: 'midnightblue'}}
-                      href={`/apartment/${city.apartment}`}
-                      >
-                      Find Apartment
-                    </Button >
-                    <Button
-                      style= {{marginBottom: 30, marginLeft:30, backgroundColor: 'midnightblue'}}
-                      href={`/job/${city.job}`}
-                      >
-                      Find Job
-                    </Button >
                   </Typography>
                 </Grid>
+              </Grid>
+              <Grid item>
+              </Grid>
+              <Grid item>
+                <Typography variant="h5">
+                  Apartments in {city.name}
+                </Typography>
+                <ListGroup
+                  style={{
+                    maxHeight: "300px",
+                    overflowY: "auto"
+                  }}
+                >
+                  {loaded ? (
+                    city.apartment.map((apartment) => (
+                      <ListGroup.Item action href={`/apartment/${apartment.id}`}>
+                        <h5>{apartment.address}</h5>
+                        <h6>Rent: ${apartment.price}</h6>
+                      </ListGroup.Item>
+                    ))
+                  ) : (
+                    <ListGroup.Item>
+                      <Spinner animation="grow" />
+                    </ListGroup.Item>
+                  )}
+                </ListGroup>
+              </Grid>
+              <Grid item>
+                <Typography variant="h5">
+                  Jobs in {city.name}
+                </Typography>
+                <ListGroup
+                  style={{
+                    maxHeight: "300px",
+                    overflowY: "auto"
+                  }}
+                >
+                  {loaded ? (
+                    city.job.map((job) => (
+                      <ListGroup.Item action href={`/job/${job.id}`}>
+                        <h5>{job.title}</h5>
+                        <h6>Salary Range: ${job.salary_min}-${job.salary_max}</h6>
+                      </ListGroup.Item>
+                    ))
+                  ) : (
+                    <ListGroup.Item>
+                      <Spinner animation="grow" />
+                    </ListGroup.Item>
+                  )}
+                </ListGroup>
+              </Grid>
+              <Grid item>
+                <Typography variant="h5">
+                  All Cities in {city.state}
+                </Typography>
+                <ListGroup
+                  style={{
+                    maxHeight: "300px",
+                    overflowY: "auto"
+                  }}
+                >
+                  {loaded ? (
+                    city.nearby_cities.map((city) => (
+                      <ListGroup.Item action href={`/cities/${city.id}`}>
+                        <h5>{city.name}</h5>
+                      </ListGroup.Item>
+                    ))
+                  ) : (
+                    <ListGroup.Item>
+                      <Spinner animation="grow" />
+                    </ListGroup.Item>
+                  )}
+                </ListGroup>
+              </Grid>
               <Grid item>  
                 <div>
                   <TwitterTimelineEmbed
