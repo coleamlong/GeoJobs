@@ -42,7 +42,11 @@ const Apartments = () => {
     setAscending(value == "Ascending");
   };
   const handleCityFilter = (value) => {
-    setCity(value.substring(0, value.indexOf(",")));
+    if (value == "Washington D.C.") {
+      setCity("Washington, D.C.");
+    } else {
+      setCity(value.substring(0, value.indexOf(",")));
+    }
   };
 
   const handlePTypeFilter = (value) => {
@@ -85,7 +89,10 @@ const Apartments = () => {
         var query = `apartments?page=${activePage}&perPage=20`;
         if (searchQuery.current.value != "") {
           query = `search/apartment/${searchQuery.current.value}`;
-          queryRE = new RegExp(`(?:${searchQuery.current.value.replaceAll(" ", "|")})`, "i");
+          queryRE = new RegExp(
+            `(?:${searchQuery.current.value.replaceAll(" ", "|")})`,
+            "i"
+          );
         } else {
           queryRE = null;
           if (sort != "sort") {

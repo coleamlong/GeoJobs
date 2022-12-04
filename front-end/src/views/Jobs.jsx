@@ -39,7 +39,11 @@ const Jobs = () => {
     setAscending(value == "Ascending");
   };
   const handleCityFilter = (value) => {
-    setCity(value.substring(0, value.indexOf(",")));
+    if (value == "Washington D.C.") {
+      setCity("Washington, D.C.");
+    } else {
+      setCity(value.substring(0, value.indexOf(",")));
+    }
   };
   const HandleCategoryFilter = (value) => {
     setCategory(value);
@@ -248,6 +252,7 @@ const Jobs = () => {
             "Trade & Construction Jobs",
             "Travel Jobs",
           ]}
+          scroll
           onChange={HandleCategoryFilter}
         />
         <Form.Label>Salary</Form.Label>
