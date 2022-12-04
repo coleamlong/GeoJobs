@@ -27,7 +27,7 @@ frontend_gui_test:
   image: python:3.6-stretch
   script:
   - cd front-end
-  - pip3 install selenium
+  - pip3 install -r ./flow_tests/requirements.txt
   # ripped straight from https://gitlab.com/10AMGroup11/bookrus/-/blob/main/.gitlab-ci.yml
   # Add chrome to container
   - wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
