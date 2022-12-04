@@ -382,18 +382,6 @@ def get_apartments():
         query = query.all()
     result = apartment_schema.dump(query, many=True)
 
-    # fetch the first image from images and at it to return
-    index = 0
-    for i in result:
-        try:
-            image = apt_img_schema.dump(query[index].images, many=True)[0]
-            i.update({"image": image["img_url"]})
-        except IndexError:
-            i.update({"image": None})
-        city = get_city_from_address(i["address"])
-        i.update({"city": city})
-        index += 1
-
     return jsonify({"data": result, "meta": {"count": count}})
 
 
@@ -439,7 +427,7 @@ def get_apartment(r_id):
         return return_error(f"Invalid apartment ID: {r_id}")
     result = apartment_schema.dump(apt)
     apartment_images = apt_img_schema.dump(apt.images, many=True)
-    result.update({"images": apartment_images})
+    # result.update({"images": apartment_images})
     result.update({"city": get_city_from_address(result["address"])})
 
     # get jobs such that monthly pay >= monthly rent
