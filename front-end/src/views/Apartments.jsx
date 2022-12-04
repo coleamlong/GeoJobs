@@ -171,114 +171,144 @@ const Apartments = () => {
           Search
         </Button>
       </Form>
-      <Form className="filter-form d-flex gap-4 justify-content-center pb-5">
-        <FilterDropdown
-          title="Sort"
-          items={[
-            "Sort",
-            "Bedrooms",
-            "Bathrooms",
-            "Price",
-            "Sqft",
-            "Build Year",
-          ]}
-          onChange={handleSortFilter}
-        />
-        <FilterDropdown
-          title="Order"
-          items={["Ascending", "Descending"]}
-          onChange={handleOrderFilter}
-        />
-        <FilterDropdown
-          title="City"
-          items={[
-            "City",
-            "New York, NY",
-            "Los Angeles, CA",
-            "Chicago, IL",
-            "Houston, TX",
-            "Phoenix, AZ",
-            "Philadelphia, PA",
-            "San Antonio, TX",
-            "San Diego, CA",
-            "Dallas, TX",
-            "San Jose, CA",
-            "Austin, TX",
-            "Jacksonville, FL",
-            "Fort Worth, TX",
-            "Columbus, OH",
-            "Indianapolis, IN",
-            "Charlotte, NC",
-            "San Francisco, CA",
-            "Seattle, WA",
-            "Denver, CO",
-            "Washington, D.C.",
-            "Nashville, TN",
-            "Oklahoma City, OK",
-            "El Paso, TX",
-            "Boston, MA",
-            "Portland, OR",
-            "Las Vegas, NV",
-            "Detroit, MI",
-            "Memphis, TN",
-            "Louisville, KY",
-            "Baltimore, MD",
-            "Milwaukee, WI",
-            "Albuquerque, NM",
-            "Tucson, AZ",
-            "Fresno, CA",
-            "Sacramento, CA",
-            "Kansas City, MO",
-            "Mesa, AZ",
-            "Atlanta, GA",
-            "Omaha, NE",
-            "Colorado Springs, CO",
-            "Raleigh, NC",
-            "Long Beach, CA",
-            "Virginia Beach, VA",
-            "Miami, FL",
-            "Oakland, CA",
-            "Minneapolis, MN",
-            "Tulsa, OK",
-            "Bakersfield, CA",
-            "Wichita, KS",
-            "Arlington, TX",
-          ]}
-          scroll
-          onChange={handleCityFilter}
-        />
-        <FilterDropdown
-          title="Property Type"
-          items={[
-            "Property Type",
-            "Apartment",
-            "Single Family",
-            "Condo",
-            "Townhouse",
-          ]}
-          onChange={handlePTypeFilter}
-        />
-        <Form.Label>Bedrooms</Form.Label>
-        <RangeSlider
-          min={0}
-          max={10}
-          onChange={handleBedroomsFilter}
-          discrete
-        />
-        <Form.Label>Bathrooms</Form.Label>
-        <RangeSlider
-          min={0}
-          max={10}
-          onChange={handleBathroomsFilter}
-          discrete
-        />
-        <Form.Label>Price</Form.Label>
-        <RangeSlider min={0} max={10000} onChange={handlePriceFilter} />
-        <Form.Label>Square Footage</Form.Label>
-        <RangeSlider min={0} max={20000} onChange={handleSqftFilter} />
-        <Button variant="outline-secondary" onClick={() => setLoaded(false)}>
-          Submit
-        </Button>
+      <Form className="filter-form">
+        <Row className="mx-auto text-center w-50 mb-4">
+          <Col>
+            {" "}
+            <FilterDropdown
+              title="Sort"
+              items={[
+                "Sort",
+                "Bedrooms",
+                "Bathrooms",
+                "Price",
+                "Sqft",
+                "Build Year",
+              ]}
+              onChange={handleSortFilter}
+            />
+          </Col>
+          <Col>
+            <FilterDropdown
+              title="Order"
+              items={["Ascending", "Descending"]}
+              onChange={handleOrderFilter}
+            />
+          </Col>
+          <Col>
+            {" "}
+            <FilterDropdown
+              title="City"
+              items={[
+                "City",
+                "New York, NY",
+                "Los Angeles, CA",
+                "Chicago, IL",
+                "Houston, TX",
+                "Phoenix, AZ",
+                "Philadelphia, PA",
+                "San Antonio, TX",
+                "San Diego, CA",
+                "Dallas, TX",
+                "San Jose, CA",
+                "Austin, TX",
+                "Jacksonville, FL",
+                "Fort Worth, TX",
+                "Columbus, OH",
+                "Indianapolis, IN",
+                "Charlotte, NC",
+                "San Francisco, CA",
+                "Seattle, WA",
+                "Denver, CO",
+                "Washington, D.C.",
+                "Nashville, TN",
+                "Oklahoma City, OK",
+                "El Paso, TX",
+                "Boston, MA",
+                "Portland, OR",
+                "Las Vegas, NV",
+                "Detroit, MI",
+                "Memphis, TN",
+                "Louisville, KY",
+                "Baltimore, MD",
+                "Milwaukee, WI",
+                "Albuquerque, NM",
+                "Tucson, AZ",
+                "Fresno, CA",
+                "Sacramento, CA",
+                "Kansas City, MO",
+                "Mesa, AZ",
+                "Atlanta, GA",
+                "Omaha, NE",
+                "Colorado Springs, CO",
+                "Raleigh, NC",
+                "Long Beach, CA",
+                "Virginia Beach, VA",
+                "Miami, FL",
+                "Oakland, CA",
+                "Minneapolis, MN",
+                "Tulsa, OK",
+                "Bakersfield, CA",
+                "Wichita, KS",
+                "Arlington, TX",
+              ]}
+              scroll
+              onChange={handleCityFilter}
+            />
+          </Col>
+          <Col>
+            {" "}
+            <FilterDropdown
+              title="Property Type"
+              items={[
+                "Property Type",
+                "Apartment",
+                "Single Family",
+                "Condo",
+                "Townhouse",
+              ]}
+              onChange={handlePTypeFilter}
+            />
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <Form.Label>Bedrooms</Form.Label>
+            <RangeSlider
+              min={0}
+              max={10}
+              onChange={handleBedroomsFilter}
+              discrete
+            />
+          </Col>
+          <Col>
+            <Form.Label>Bathrooms</Form.Label>
+            <RangeSlider
+              min={0}
+              max={10}
+              onChange={handleBathroomsFilter}
+              discrete
+            />
+          </Col>
+          <Col>
+            <Form.Label>Price</Form.Label>
+            <RangeSlider min={0} max={10000} onChange={handlePriceFilter} />
+          </Col>
+          <Col>
+            <Form.Label>Square Footage</Form.Label>
+            <RangeSlider min={0} max={20000} onChange={handleSqftFilter} />
+          </Col>
+        </Row>
+        <Row className="mx-auto text-center my-4">
+          <Col>
+            <Button
+              variant="outline-secondary"
+              onClick={() => setLoaded(false)}
+            >
+              Submit
+            </Button>
+          </Col>
+        </Row>
       </Form>
       <Pagination className="justify-content-center">
         {activePage > 3 && (
