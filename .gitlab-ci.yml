@@ -30,7 +30,6 @@ frontend_gui_test:
   - pip install --upgrade pip
   - pip install --no-cache-dir -r ./flow_tests/requirements.txt
   - apt-get update -q -y
-  - apt-get install nodejs npm -y
   - apt-get --yes install libnss3
   - apt-get --yes install libgconf-2-4
   - apt-get install libx11-xcb1
