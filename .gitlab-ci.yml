@@ -24,7 +24,7 @@ frontend_jest_tests:
 
 frontend_gui_test:
   stage: test
-  image: python:3.6-stretch
+  image: python:3.10
   script:
   - cd front-end
   - pip install --upgrade pip
