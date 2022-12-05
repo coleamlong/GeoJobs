@@ -133,9 +133,22 @@ const Job = () => {
                   </Item.Group>
                   <Typography variant="body2" color="text.secondary">
                     <img
-                      style={{ width: 400, height: 200 }}
+                      style={{ width: 400, height: 200, marginTop: 15 }}
                       src={job.img_url}
                     />
+                    </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    <Button
+                      className="btn btn-primary"
+                      variant="dark"
+                      style={{
+                        marginTop: 20,
+                        backgroundColor: "midnightblue",
+                      }}
+                      href={job.url}
+                    >
+                      Job URL
+                    </Button>
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
                     <div>
@@ -150,17 +163,12 @@ const Job = () => {
                     </div>
                   </Typography>
                   <Typography variant="body">
-                    <Button
-                      className="btn btn-primary"
-                      variant="dark"
-                      style={{
-                        marginRight: 30,
-                        backgroundColor: "midnightblue",
-                      }}
-                      href={job.url}
-                    >
-                      Job URL
-                    </Button>
+                    <Divider horizontal style={{ background: "peachpuff" }}>
+                      <Item>
+                        {" "}
+                        <BoldText>Apartment Listings in {city.name}:</BoldText>{" "}
+                      </Item>
+                    </Divider>
                     {/* <Button
                       style={{
                         marginRight: 30,
@@ -178,7 +186,10 @@ const Job = () => {
                     >
                       {loaded ? (
                         job.apartments.map((apartment) => (
-                          <ListGroup.Item action href={`/apartment/${apartment.id}`}>
+                          <ListGroup.Item action href={`/apartment/${apartment.id}`}
+                          style={{
+                            backgroundColor: "lavender"
+                          }}>
                             <h5>{apartment.address}</h5>
                             <h6>Rent: ${apartment.price}</h6>
                           </ListGroup.Item>
@@ -193,7 +204,7 @@ const Job = () => {
                       className="btn btn-primary"
                       variant="dark"
                       style={{
-                        marginRight: 30,
+                        marginTop: 30,
                         backgroundColor: "midnightblue",
                       }}
                       href={`/cities/${job.city}`}
