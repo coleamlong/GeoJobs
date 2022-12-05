@@ -10,6 +10,8 @@ import Image from "react-bootstrap/Image";
 import Spinner from "react-bootstrap/Spinner";
 import ListGroup from "react-bootstrap/ListGroup";
 import { useParams } from "react-router-dom";
+import { Item } from "semantic-ui-react";
+import { Divider } from "semantic-ui-react";
 
 const client = axios.create({
   baseURL: "https://api.geojobs.me/",
@@ -151,15 +153,23 @@ const Apartment = () => {
                     />
                   </div>
                 </Grid>
+                <Divider horizontal style={{ background: "peachpuff" }}>
+                      <Item>
+                        {" "}<BoldText>Job Listings in {city}:</BoldText>{" "}
+                      </Item>
+                    </Divider>
                 <ListGroup
                   style={{
                     maxHeight: "300px",
-                    overflowY: "auto"
+                    overflowY: "auto",
                   }}
                 >
                   {loaded ? (
                     apartment.jobs.map((job) => (
-                      <ListGroup.Item action href={`/job/${job.id}`}>
+                      <ListGroup.Item action href={`/job/${job.id}`}
+                      style={{
+                        backgroundColor: "lavender"
+                      }}>
                         <h5>{job.title}</h5>
                         <h6>Salary Range: ${job.salary_min}-${job.salary_max}</h6>
                       </ListGroup.Item>

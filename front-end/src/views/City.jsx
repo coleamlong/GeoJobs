@@ -91,7 +91,7 @@ const City = () => {
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
                     <Button
-                      style= {{marginBottom: 30, marginLeft:350, backgroundColor: 'midnightblue'}}
+                      style= {{marginBottom: 30, marginLeft:5, marginRight:350,marginTop: 20, backgroundColor: 'midnightblue'}}
                       href={city.walkscore_url}
                       >
                       Walk Score
@@ -177,13 +177,13 @@ const City = () => {
                   <TwitterTimelineEmbed
                     sourceType="profile"
                     screenName={city.police_twitter}
-                    options={{ height: 400 }}
+                    options={{ height: 400}}
                   />
                 </div>
                 <Typography variant="body">
                   <img
                     alt=""
-                    style={{ width: 800, height: 600 }}
+                    style={{ width: 800, height: 600, marginTop: 30 }}
                     src={city.img_url}
                   />
                 </Typography>
