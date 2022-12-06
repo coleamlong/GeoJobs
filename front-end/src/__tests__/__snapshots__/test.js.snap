@@ -5,7 +5,7 @@ exports[`APICard initializes correctly 1`] = `
   className="card"
   style={
     Object {
-      "backgroundColor": "lavender",
+      "backgroundColor": "#f8edeb",
     }
   }
 >
@@ -43,7 +43,7 @@ exports[`APICard initializes correctly 1`] = `
       role="button"
       style={
         Object {
-          "backgroundColor": "midnightblue",
+          "backgroundColor": "#3d405b",
         }
       }
       tabIndex={0}
@@ -59,12 +59,13 @@ exports[`ApartmentCard initializes correctly 1`] = `
   className="card"
   style={
     Object {
-      "backgroundColor": "lavender",
+      "backgroundColor": "#ffffff",
     }
   }
 >
   <img
     className="card-img"
+    src="apartment.png"
     style={
       Object {
         "height": "45%",
@@ -136,7 +137,7 @@ exports[`App initializes correctly 1`] = `
     className="navbar navbar-expand-lg navbar-dark"
     style={
       Object {
-        "backgroundColor": "lightsalmon",
+        "backgroundColor": "#e07a5f",
       }
     }
   >
@@ -147,7 +148,14 @@ exports[`App initializes correctly 1`] = `
         className="navbar-brand"
         href="/"
       >
-        GeoJobs
+        <div
+          class="logo-image"
+        >
+          <img
+            class="img-fluid"
+            src="navbar_logo.png"
+          />
+        </div>
       </a>
       <button
         aria-controls="basic-navbar-nav"
@@ -178,7 +186,7 @@ exports[`App initializes correctly 1`] = `
             <span
               style={
                 Object {
-                  "color": "black",
+                  "color": "#f4f1de",
                   "font": "Courier-Oblique",
                   "fontSize": "15px",
                   "fontWeight": 400,
@@ -198,7 +206,7 @@ exports[`App initializes correctly 1`] = `
             <span
               style={
                 Object {
-                  "color": "black",
+                  "color": "#f4f1de",
                   "font": "Courier-Oblique",
                   "fontSize": "15px",
                   "fontWeight": 400,
@@ -218,7 +226,7 @@ exports[`App initializes correctly 1`] = `
             <span
               style={
                 Object {
-                  "color": "black",
+                  "color": "#f4f1de",
                   "font": "Courier-Oblique",
                   "fontSize": "15px",
                   "fontWeight": 400,
@@ -238,7 +246,7 @@ exports[`App initializes correctly 1`] = `
             <span
               style={
                 Object {
-                  "color": "black",
+                  "color": "#f4f1de",
                   "font": "Courier-Oblique",
                   "fontSize": "15px",
                   "fontWeight": 400,
@@ -258,7 +266,7 @@ exports[`App initializes correctly 1`] = `
             <span
               style={
                 Object {
-                  "color": "black",
+                  "color": "#f4f1de",
                   "font": "Courier-Oblique",
                   "fontSize": "15px",
                   "fontWeight": 400,
@@ -266,6 +274,26 @@ exports[`App initializes correctly 1`] = `
               }
             >
               Apartments
+            </span>
+          </a>
+          <a
+            className="nav-link"
+            data-rr-ui-event-key="/visualizations"
+            disabled={false}
+            href="/visualizations"
+            onClick={[Function]}
+          >
+            <span
+              style={
+                Object {
+                  "color": "#f4f1de",
+                  "font": "Courier-Oblique",
+                  "fontSize": "15px",
+                  "fontWeight": 400,
+                }
+              }
+            >
+              Visualizations
             </span>
           </a>
         </div>
@@ -291,6 +319,11 @@ exports[`App initializes correctly 1`] = `
             <button
               className="btn btn-outline-secondary"
               disabled={false}
+              style={
+                Object {
+                  "color": "#3d405b",
+                }
+              }
               type="submit"
             >
               Search
@@ -309,8 +342,8 @@ exports[`App initializes correctly 1`] = `
         Object {
           "backgroundImage": "url(splash-background.png)",
           "backgroundSize": "cover",
-          "height": "100vh",
-          "width": "100vw",
+          "height": "80vh",
+          "width": "100%",
         }
       }
     >
@@ -320,7 +353,7 @@ exports[`App initializes correctly 1`] = `
           Object {
             "alignItems": "center",
             "backgroundPositionY": "1500",
-            "color": "lightsalmon",
+            "color": "#f4f1de",
             "justifyContent": "center",
             "marginTop": "300px",
           }
@@ -347,7 +380,7 @@ exports[`App initializes correctly 1`] = `
             className="card"
             style={
               Object {
-                "backgroundColor": "whitesmoke",
+                "backgroundColor": "#e07a5f",
                 "marginRight": 30,
               }
             }
@@ -378,7 +411,7 @@ exports[`App initializes correctly 1`] = `
                 role="button"
                 style={
                   Object {
-                    "backgroundColor": "lightsalmon",
+                    "backgroundColor": "#f2cc8f",
                     "marginRight": 30,
                   }
                 }
@@ -387,9 +420,9 @@ exports[`App initializes correctly 1`] = `
                 <span
                   style={
                     Object {
-                      "color": "black",
+                      "color": "#3d405b",
                       "font": "Courier-Oblique",
-                      "fontSize": "16px",
+                      "fontSize": "20px",
                     }
                   }
                 >
@@ -406,7 +439,7 @@ exports[`App initializes correctly 1`] = `
             className="card"
             style={
               Object {
-                "backgroundColor": "whitesmoke",
+                "backgroundColor": "#e07a5f",
                 "marginRight": 30,
               }
             }
@@ -437,7 +470,7 @@ exports[`App initializes correctly 1`] = `
                 role="button"
                 style={
                   Object {
-                    "backgroundColor": "lightsalmon",
+                    "backgroundColor": "#f2cc8f",
                     "marginRight": 30,
                   }
                 }
@@ -446,9 +479,9 @@ exports[`App initializes correctly 1`] = `
                 <span
                   style={
                     Object {
-                      "color": "black",
+                      "color": "#3d405b",
                       "font": "Courier-Oblique",
-                      "fontSize": "16px",
+                      "fontSize": "20px",
                     }
                   }
                 >
@@ -465,7 +498,7 @@ exports[`App initializes correctly 1`] = `
             className="card"
             style={
               Object {
-                "backgroundColor": "whitesmoke",
+                "backgroundColor": "#e07a5f",
                 "marginRight": 30,
               }
             }
@@ -496,7 +529,7 @@ exports[`App initializes correctly 1`] = `
                 role="button"
                 style={
                   Object {
-                    "backgroundColor": "lightsalmon",
+                    "backgroundColor": "#f2cc8f",
                     "marginRight": 30,
                   }
                 }
@@ -505,9 +538,9 @@ exports[`App initializes correctly 1`] = `
                 <span
                   style={
                     Object {
-                      "color": "black",
+                      "color": "#3d405b",
                       "font": "Courier-Oblique",
-                      "fontSize": "16px",
+                      "fontSize": "20px",
                     }
                   }
                 >
@@ -552,8 +585,7 @@ exports[`CityCard initializes correctly 1`] = `
       className="card-title h5"
     >
       Name
-      , 
-      State
+      , State
     </div>
     <p
       className="card-text"
@@ -561,14 +593,76 @@ exports[`CityCard initializes correctly 1`] = `
       Population: 
       undefined
       <br />
-      Rating: 
-      N/A
       <br />
-      Budget: 
-      1000
-      <br />
-      Safety: 
-      N/A
+      <div
+        className="d-flex gap-4"
+      >
+        <p>
+          Rating 
+        </p>
+        <div
+          className="w-100 m-1 progress"
+        >
+          <div
+            aria-valuemax={5}
+            aria-valuemin={0}
+            className="progress-bar bg-primary"
+            role="progressbar"
+            style={
+              Object {
+                "width": "NaN%",
+              }
+            }
+          />
+        </div>
+      </div>
+      <div
+        className="d-flex gap-3"
+      >
+        <p>
+          Budget
+        </p>
+        <div
+          className="w-100 m-1 progress"
+        >
+          <div
+            aria-valuemax={8}
+            aria-valuemin={1}
+            aria-valuenow={1000}
+            className="progress-bar bg-success"
+            role="progressbar"
+            style={
+              Object {
+                "width": "14271.429%",
+              }
+            }
+          >
+            1000
+          </div>
+        </div>
+      </div>
+      <div
+        className="d-flex gap-4"
+      >
+        <p>
+          Safety
+        </p>
+        <div
+          className="w-100 m-1 progress"
+        >
+          <div
+            aria-valuemax={5}
+            aria-valuemin={1}
+            className="progress-bar bg-info"
+            role="progressbar"
+            style={
+              Object {
+                "width": "NaN%",
+              }
+            }
+          />
+        </div>
+      </div>
     </p>
     <div
       className="mt-auto card-footer"
@@ -582,7 +676,7 @@ exports[`CityCard initializes correctly 1`] = `
         role="button"
         style={
           Object {
-            "backgroundColor": "lightsalmon",
+            "backgroundColor": "#e07a5f",
           }
         }
         tabIndex={0}
@@ -599,7 +693,7 @@ exports[`DeveloperCard initializes correctly 1`] = `
   className="card"
   style={
     Object {
-      "backgroundColor": "midnightblue",
+      "backgroundColor": "#3d405b",
     }
   }
 >
@@ -684,7 +778,7 @@ exports[`DeveloperCard initializes correctly 1`] = `
     <span
       style={
         Object {
-          "color": "lightsalmon",
+          "color": "#264653",
           "font": "Courier-Oblique",
           "fontSize": "17px",
         }
@@ -698,7 +792,7 @@ exports[`DeveloperCard initializes correctly 1`] = `
     <span
       style={
         Object {
-          "color": "lightsalmon",
+          "color": "#264653",
           "font": "Courier-Oblique",
           "fontSize": "17px",
         }
@@ -712,7 +806,7 @@ exports[`DeveloperCard initializes correctly 1`] = `
     <span
       style={
         Object {
-          "color": "lightsalmon",
+          "color": "#264653",
           "font": "Courier-Oblique",
           "fontSize": "17px",
         }
@@ -730,7 +824,7 @@ exports[`JobCard Initial correctly 1`] = `
   className="card"
   style={
     Object {
-      "backgroundColor": "lavender",
+      "backgroundColor": "#ffffff",
     }
   }
 >
@@ -769,7 +863,7 @@ exports[`JobCard Initial correctly 1`] = `
     className="card-footer"
     style={
       Object {
-        "backgroundColor": "midnightblue",
+        "backgroundColor": "#3d405b",
       }
     }
   >
@@ -782,7 +876,7 @@ exports[`JobCard Initial correctly 1`] = `
       role="button"
       style={
         Object {
-          "backgroundColor": "lightsalmon",
+          "backgroundColor": "#e07a5f",
         }
       }
       tabIndex={0}
@@ -808,7 +902,7 @@ exports[`Navbar initializes correctly 1`] = `
   className="navbar navbar-expand-lg navbar-dark"
   style={
     Object {
-      "backgroundColor": "lightsalmon",
+      "backgroundColor": "#e07a5f",
     }
   }
 >
@@ -819,7 +913,14 @@ exports[`Navbar initializes correctly 1`] = `
       className="navbar-brand"
       href="/"
     >
-      GeoJobs
+      <div
+        class="logo-image"
+      >
+        <img
+          class="img-fluid"
+          src="navbar_logo.png"
+        />
+      </div>
     </a>
     <button
       aria-controls="basic-navbar-nav"
@@ -850,7 +951,7 @@ exports[`Navbar initializes correctly 1`] = `
           <span
             style={
               Object {
-                "color": "black",
+                "color": "#f4f1de",
                 "font": "Courier-Oblique",
                 "fontSize": "15px",
                 "fontWeight": 400,
@@ -870,7 +971,7 @@ exports[`Navbar initializes correctly 1`] = `
           <span
             style={
               Object {
-                "color": "black",
+                "color": "#f4f1de",
                 "font": "Courier-Oblique",
                 "fontSize": "15px",
                 "fontWeight": 400,
@@ -890,7 +991,7 @@ exports[`Navbar initializes correctly 1`] = `
           <span
             style={
               Object {
-                "color": "black",
+                "color": "#f4f1de",
                 "font": "Courier-Oblique",
                 "fontSize": "15px",
                 "fontWeight": 400,
@@ -910,7 +1011,7 @@ exports[`Navbar initializes correctly 1`] = `
           <span
             style={
               Object {
-                "color": "black",
+                "color": "#f4f1de",
                 "font": "Courier-Oblique",
                 "fontSize": "15px",
                 "fontWeight": 400,
@@ -930,7 +1031,7 @@ exports[`Navbar initializes correctly 1`] = `
           <span
             style={
               Object {
-                "color": "black",
+                "color": "#f4f1de",
                 "font": "Courier-Oblique",
                 "fontSize": "15px",
                 "fontWeight": 400,
@@ -938,6 +1039,26 @@ exports[`Navbar initializes correctly 1`] = `
             }
           >
             Apartments
+          </span>
+        </a>
+        <a
+          className="nav-link"
+          data-rr-ui-event-key="/visualizations"
+          disabled={false}
+          href="/visualizations"
+          onClick={[Function]}
+        >
+          <span
+            style={
+              Object {
+                "color": "#f4f1de",
+                "font": "Courier-Oblique",
+                "fontSize": "15px",
+                "fontWeight": 400,
+              }
+            }
+          >
+            Visualizations
           </span>
         </a>
       </div>
@@ -963,6 +1084,11 @@ exports[`Navbar initializes correctly 1`] = `
           <button
             className="btn btn-outline-secondary"
             disabled={false}
+            style={
+              Object {
+                "color": "#3d405b",
+              }
+            }
             type="submit"
           >
             Search
@@ -979,7 +1105,7 @@ exports[`PageCard initializes correctly 1`] = `
   className="card"
   style={
     Object {
-      "backgroundColor": "whitesmoke",
+      "backgroundColor": "#e07a5f",
       "marginRight": 30,
     }
   }
@@ -1010,7 +1136,7 @@ exports[`PageCard initializes correctly 1`] = `
       role="button"
       style={
         Object {
-          "backgroundColor": "lightsalmon",
+          "backgroundColor": "#f2cc8f",
           "marginRight": 30,
         }
       }
@@ -1019,9 +1145,9 @@ exports[`PageCard initializes correctly 1`] = `
       <span
         style={
           Object {
-            "color": "black",
+            "color": "#3d405b",
             "font": "Courier-Oblique",
-            "fontSize": "16px",
+            "fontSize": "20px",
           }
         }
       >
@@ -1042,8 +1168,8 @@ exports[`RouteSwitch initializes correctly 1`] = `
       Object {
         "backgroundImage": "url(splash-background.png)",
         "backgroundSize": "cover",
-        "height": "100vh",
-        "width": "100vw",
+        "height": "80vh",
+        "width": "100%",
       }
     }
   >
@@ -1053,7 +1179,7 @@ exports[`RouteSwitch initializes correctly 1`] = `
         Object {
           "alignItems": "center",
           "backgroundPositionY": "1500",
-          "color": "lightsalmon",
+          "color": "#f4f1de",
           "justifyContent": "center",
           "marginTop": "300px",
         }
@@ -1080,7 +1206,7 @@ exports[`RouteSwitch initializes correctly 1`] = `
           className="card"
           style={
             Object {
-              "backgroundColor": "whitesmoke",
+              "backgroundColor": "#e07a5f",
               "marginRight": 30,
             }
           }
@@ -1111,7 +1237,7 @@ exports[`RouteSwitch initializes correctly 1`] = `
               role="button"
               style={
                 Object {
-                  "backgroundColor": "lightsalmon",
+                  "backgroundColor": "#f2cc8f",
                   "marginRight": 30,
                 }
               }
@@ -1120,9 +1246,9 @@ exports[`RouteSwitch initializes correctly 1`] = `
               <span
                 style={
                   Object {
-                    "color": "black",
+                    "color": "#3d405b",
                     "font": "Courier-Oblique",
-                    "fontSize": "16px",
+                    "fontSize": "20px",
                   }
                 }
               >
@@ -1139,7 +1265,7 @@ exports[`RouteSwitch initializes correctly 1`] = `
           className="card"
           style={
             Object {
-              "backgroundColor": "whitesmoke",
+              "backgroundColor": "#e07a5f",
               "marginRight": 30,
             }
           }
@@ -1170,7 +1296,7 @@ exports[`RouteSwitch initializes correctly 1`] = `
               role="button"
               style={
                 Object {
-                  "backgroundColor": "lightsalmon",
+                  "backgroundColor": "#f2cc8f",
                   "marginRight": 30,
                 }
               }
@@ -1179,9 +1305,9 @@ exports[`RouteSwitch initializes correctly 1`] = `
               <span
                 style={
                   Object {
-                    "color": "black",
+                    "color": "#3d405b",
                     "font": "Courier-Oblique",
-                    "fontSize": "16px",
+                    "fontSize": "20px",
                   }
                 }
               >
@@ -1198,7 +1324,7 @@ exports[`RouteSwitch initializes correctly 1`] = `
           className="card"
           style={
             Object {
-              "backgroundColor": "whitesmoke",
+              "backgroundColor": "#e07a5f",
               "marginRight": 30,
             }
           }
@@ -1229,7 +1355,7 @@ exports[`RouteSwitch initializes correctly 1`] = `
               role="button"
               style={
                 Object {
-                  "backgroundColor": "lightsalmon",
+                  "backgroundColor": "#f2cc8f",
                   "marginRight": 30,
                 }
               }
@@ -1238,9 +1364,9 @@ exports[`RouteSwitch initializes correctly 1`] = `
               <span
                 style={
                   Object {
-                    "color": "black",
+                    "color": "#3d405b",
                     "font": "Courier-Oblique",
-                    "fontSize": "16px",
+                    "fontSize": "20px",
                   }
                 }
               >
@@ -1260,7 +1386,7 @@ exports[`ToolCard initializes correctly 1`] = `
   className="card"
   style={
     Object {
-      "backgroundColor": "lavender",
+      "backgroundColor": "#f4f1de",
     }
   }
 >
@@ -1298,7 +1424,7 @@ exports[`ToolCard initializes correctly 1`] = `
       role="button"
       style={
         Object {
-          "backgroundColor": "midnightblue",
+          "backgroundColor": "#3d405b",
         }
       }
       tabIndex={0}

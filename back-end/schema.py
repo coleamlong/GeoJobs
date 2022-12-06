@@ -1,16 +1,12 @@
 from flask_marshmallow import Marshmallow
 from models import Job, Apartment, City, Tag, ApartmentImage
-from marshmallow_sqlalchemy import SQLAlchemyAutoSchema
+from marshmallow_sqlalchemy import SQLAlchemyAutoSchema, fields
 
 ma = Marshmallow()
 
 class JobSchema(SQLAlchemyAutoSchema):
     class Meta:
         model = Job
-
-class ApartmentSchema(SQLAlchemyAutoSchema):
-    class Meta:
-        model = Apartment
 
 class CitySchema(SQLAlchemyAutoSchema):
     class Meta:
@@ -23,6 +19,11 @@ class TagSchema(SQLAlchemyAutoSchema):
 class AptImageSchema(SQLAlchemyAutoSchema):
     class Meta:
         model = ApartmentImage
+
+class ApartmentSchema(SQLAlchemyAutoSchema):
+    class Meta:
+        model = Apartment
+    images = fields.RelatedList(fields.Nested(AptImageSchema))
 
 job_schema = JobSchema()
 apartment_schema = ApartmentSchema()

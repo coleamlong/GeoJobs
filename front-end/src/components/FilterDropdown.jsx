@@ -15,7 +15,7 @@ const FilterDropdown = (props) => {
 
   return (
     <DropdownButton title={choice}>
-      <Container style={scroll ? { height: "20rem", overflowY: "scroll" } : {}}>
+      <Container style={scroll ? { height: "20rem", overflowY: "scroll"} : {}}>
         {items.map((item) => {
           return (
             <Dropdown.Item onClick={() => handleClick(item)}>

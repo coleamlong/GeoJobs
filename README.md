@@ -11,12 +11,12 @@
 | Thomas Langford  | @thomas_langford | thl532  |
 
 ### Git SHA
-
-| Phase | Git Sha                                  |
-| ----- | ---------------------------------------- |
-| 1     | 822cd9f6                                 |
-| 2     | c88db5e0                                 |
-| 3     | e4f59cc4dd920ab83d123e1ee7c70e6ffb001f90 |
+| Phase | Git Sha  |
+| ----- | -------- |
+| 1     | 822cd9f6 |
+| 2     | c88db5e0 |
+| 3     | e4f59cc4 |
+| 4     | TBD      |
 
 ### Project Leader
 
@@ -25,6 +25,7 @@
 | 1     | Cole Amlong      |
 | 2     | Thomas Langford  |
 | 3     | Mikala Jaramillo |
+| 4     | Sarthak Sirotiya |
 
 #### Responsibilities
 
@@ -69,6 +70,15 @@ https://www.geojobs.me/
 | Mikala Jaramillo | 8                          | 11                         |
 | Sarthak Sirotiya | 9                          | 12                         |
 | Thomas Langford  | 10                         | 8                          |
+
+### Phase 4
+| Name              | Est. Completion Time (hrs)   | Real Completion Time (hrs) |
+| ----------------- | ---------------------------- | -------------------------- |
+| Cole Amlong       | 5                            | 4                          |
+| Faiza Rahman      | 5                            | 4                          |
+| Mikala Jaramillo  | 4                            | 2                          |
+| Sarthak Sirotiya  | 4                            | 5                          |
+| Thomas Langford   | 3                            | 7                          |
 
 ### Comments
 

@@ -9,20 +9,20 @@ import Col from "react-bootstrap/Col";
 
 const Home = () => {
   return (
-    <div className="main-home">
+    <div className="main-home" >
       <div
         className="bg d-flex justify-content-center"
         style={{
           backgroundImage: `url(${Background})`,
           backgroundSize: "cover",
-          width: "100vw",
-          height: "100vh",
+          width: "100%",
+          height: "80vh",
         }}
       >
         <h1
           className="bg-text"
           style={{
-            color: "lightsalmon",
+            color: '#f4f1de',
             justifyContent: "center",
             alignItems: "center",
             backgroundPositionY: "1500",

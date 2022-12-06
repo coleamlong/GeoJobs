@@ -39,7 +39,11 @@ const Jobs = () => {
     setAscending(value == "Ascending");
   };
   const handleCityFilter = (value) => {
-    setCity(value.substring(0, value.indexOf(",")));
+    if (value == "Washington D.C.") {
+      setCity("Washington, D.C.");
+    } else {
+      setCity(value.substring(0, value.indexOf(",")));
+    }
   };
   const HandleCategoryFilter = (value) => {
     setCategory(value);
@@ -68,7 +72,10 @@ const Jobs = () => {
         var query = `jobs?page=${activePage}&perPage=20`;
         if (searchQuery.current.value != "") {
           query = `search/job/${searchQuery.current.value}`;
-          queryRE = new RegExp(`(?:${searchQuery.current.value.replaceAll(" ", "|")})`, "i");
+          queryRE = new RegExp(
+            `(?:${searchQuery.current.value.replaceAll(" ", "|")})`,
+            "i"
+          );
         } else {
           queryRE = null;
           if (sort != "sort") {
@@ -139,104 +146,141 @@ const Jobs = () => {
           Search
         </Button>
       </Form>
-      <Form className="filter-form d-flex gap-4 justify-content-center pb-5">
-        <FilterDropdown
-          title="Sort"
-          items={[
-            "Sort",
-            "Salary Min",
-            "Company",
-            "Title",
-            "Category",
-            "Created",
-          ]}
-          onChange={handleSortFilter}
-        />
-        <FilterDropdown
-          title="Order"
-          items={["Ascending", "Descending"]}
-          onChange={handleOrderFilter}
-        />
-        <FilterDropdown
-          title="City"
-          items={[
-            "City",
-            "New York, NY",
-            "Los Angeles, CA",
-            "Chicago, IL",
-            "Houston, TX",
-            "Phoenix, AZ",
-            "Philadelphia, PA",
-            "San Antonio, TX",
-            "San Diego, CA",
-            "Dallas, TX",
-            "San Jose, CA",
-            "Austin, TX",
-            "Jacksonville, FL",
-            "Fort Worth, TX",
-            "Columbus, OH",
-            "Indianapolis, IN",
-            "Charlotte, NC",
-            "San Francisco, CA",
-            "Seattle, WA",
-            "Denver, CO",
-            "Washington D.C.",
-            "Nashville, TN",
-            "Oklahoma City, OK",
-            "El Paso, TX",
-            "Boston, MA",
-            "Portland, OR",
-            "Las Vegas, NV",
-            "Detroit, MI",
-            "Memphis, TN",
-            "Louisville, KY",
-            "Baltimore, MD",
-            "Milwaukee, WI",
-            "Albuquerque, NM",
-            "Tucson, AZ",
-            "Fresno, CA",
-            "Sacramento, CA",
-            "Kansas City, MO",
-            "Mesa, AZ",
-            "Atlanta, GA",
-            "Omaha, NE",
-            "Colorado Springs, CO",
-            "Raleigh, NC",
-            "Long Beach, CA",
-            "Virginia Beach, VA",
-            "Miami, FL",
-            "Oakland, CA",
-            "Minneapolis, MN",
-            "Tulsa, OK",
-            "Bakersfield, CA",
-            "Wichita, KS",
-            "Arlington, TX",
-          ]}
-          scroll
-          onChange={handleCityFilter}
-        />
-        <FilterDropdown
-          title="Job Category"
-          items={[
-            "Job Category",
-            "Travel Jobs",
-            "Teaching Jobs",
-            "Healthcare and Nursing Jobs",
-            "Energy, Oil and Gas Jobs",
-            "Accounting and Finance Jobs",
-            "Logistics and Warehouse Jobs",
-            "IT Jobs",
-            "Customer Services Jobs",
-            "Admin Jobs",
-            "Sales Jobs",
-          ]}
-          onChange={HandleCategoryFilter}
-        />
-        <Form.Label>Salary</Form.Label>
-        <RangeSlider min={0} max={300000} onChange={handleSalaryFilter} />
-        <Button variant="outline-secondary" onClick={() => setLoaded(false)}>
-          Submit
-        </Button>
+      <Form className="filter-form">
+        <Row className="mx-auto text-center w-50 mb-4">
+          <Col>
+            <FilterDropdown
+              title="Sort"
+              items={[
+                "Sort",
+                "Salary Min",
+                "Company",
+                "Title",
+                "Category",
+                "Created",
+              ]}
+              onChange={handleSortFilter}
+            />
+          </Col>
+          <Col>
+            <FilterDropdown
+              title="Order"
+              items={["Ascending", "Descending"]}
+              onChange={handleOrderFilter}
+            />
+          </Col>
+          <Col>
+            <FilterDropdown
+              title="City"
+              items={[
+                "City",
+                "New York, NY",
+                "Los Angeles, CA",
+                "Chicago, IL",
+                "Houston, TX",
+                "Phoenix, AZ",
+                "Philadelphia, PA",
+                "San Antonio, TX",
+                "San Diego, CA",
+                "Dallas, TX",
+                "San Jose, CA",
+                "Austin, TX",
+                "Jacksonville, FL",
+                "Fort Worth, TX",
+                "Columbus, OH",
+                "Indianapolis, IN",
+                "Charlotte, NC",
+                "San Francisco, CA",
+                "Seattle, WA",
+                "Denver, CO",
+                "Washington D.C.",
+                "Nashville, TN",
+                "Oklahoma City, OK",
+                "El Paso, TX",
+                "Boston, MA",
+                "Portland, OR",
+                "Las Vegas, NV",
+                "Detroit, MI",
+                "Memphis, TN",
+                "Louisville, KY",
+                "Baltimore, MD",
+                "Milwaukee, WI",
+                "Albuquerque, NM",
+                "Tucson, AZ",
+                "Fresno, CA",
+                "Sacramento, CA",
+                "Kansas City, MO",
+                "Mesa, AZ",
+                "Atlanta, GA",
+                "Omaha, NE",
+                "Colorado Springs, CO",
+                "Raleigh, NC",
+                "Long Beach, CA",
+                "Virginia Beach, VA",
+                "Miami, FL",
+                "Oakland, CA",
+                "Minneapolis, MN",
+                "Tulsa, OK",
+                "Bakersfield, CA",
+                "Wichita, KS",
+                "Arlington, TX",
+              ]}
+              scroll
+              onChange={handleCityFilter}
+            />
+          </Col>
+          <Col>
+            <FilterDropdown
+              title="Job Category"
+              items={[
+                "Accounting & Finance Jobs",
+                "Admin Jobs",
+                "Consultancy Jobs",
+                "Creative & Design Jobs",
+                "Customer Services Jobs",
+                "Domestic help & Cleaning Jobs",
+                "Energy, Oil & Gas Jobs",
+                "Engineering Jobs",
+                "HR & Recruitment Jobs",
+                "Healthcare & Nursing Jobs",
+                "Hospitality & Catering Jobs",
+                "IT Jobs",
+                "Legal Jobs",
+                "Logistics & Warehouse Jobs",
+                "Maintenance Jobs",
+                "Manufacturing Jobs",
+                "Other/General Jobs",
+                "PR, Advertising & Marketing Jobs",
+                "Property Jobs",
+                "Retail Jobs",
+                "Sales Jobs",
+                "Scientific & QA Jobs",
+                "Social work Jobs",
+                "Teaching Jobs",
+                "Trade & Construction Jobs",
+                "Travel Jobs",
+              ]}
+              scroll
+              onChange={HandleCategoryFilter}
+            />
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <Form.Label>Salary</Form.Label>
+            <RangeSlider min={0} max={300000} onChange={handleSalaryFilter} />
+          </Col>
+        </Row>
+        <Row className="mx-auto text-center my-4">
+          <Col>
+            <Button
+              variant="outline-secondary"
+              onClick={() => setLoaded(false)}
+            >
+              Submit
+            </Button>
+          </Col>
+        </Row>
       </Form>
 
       <Pagination className="justify-content-center">
