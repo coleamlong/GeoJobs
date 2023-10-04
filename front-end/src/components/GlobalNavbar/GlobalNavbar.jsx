@@ -40,30 +40,56 @@ const GlobalNavbar = () => {
         >
             <Container>
                 <Navbar.Brand href="/">
-                    <div class="logo-image">
-                        <img src={Logo} class="img-fluid"></img>
-                    </div>
+                    <Link to="/">
+                        <div class="logo-image">
+                            <img src={Logo} class="img-fluid"></img>
+                        </div>
+                    </Link>
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse>
                     <Nav className="mr-auto">
-                        <Nav.Link href="/">
-                            <BoldText>Home</BoldText>
+                        <Nav.Link>
+                            <Link style={{ textDecoration: "none" }} to="/">
+                                <BoldText>Home</BoldText>
+                            </Link>
                         </Nav.Link>
-                        <Link to="/about">
-                            <BoldText>About</BoldText>
-                        </Link>
-                        <Nav.Link href="/jobs">
-                            <BoldText>Jobs</BoldText>
+                        <Nav.Link>
+                            <Link
+                                style={{ textDecoration: "none" }}
+                                to="/about"
+                            >
+                                <BoldText>About</BoldText>
+                            </Link>
                         </Nav.Link>
-                        <Nav.Link href="/cities">
-                            <BoldText>Cities</BoldText>
+                        <Nav.Link>
+                            <Link style={{ textDecoration: "none" }} to="/jobs">
+                                <BoldText>Jobs</BoldText>
+                            </Link>
                         </Nav.Link>
-                        <Nav.Link href="/apartments">
-                            <BoldText>Apartments</BoldText>
+                        <Nav.Link>
+                            <Link
+                                style={{ textDecoration: "none" }}
+                                to="/cities"
+                            >
+                                <BoldText>Cities</BoldText>
+                            </Link>
                         </Nav.Link>
-                        <Nav.Link href="/visualizations">
-                            <BoldText>Visualizations</BoldText>
+                        <Nav.Link>
+                            <Link
+                                style={{ textDecoration: "none" }}
+                                to="/apartments"
+                            >
+                                <BoldText>Apartments</BoldText>
+                            </Link>
+                        </Nav.Link>
+                        <Nav.Link>
+                            <Link
+                                style={{ textDecoration: "none" }}
+                                to="/visualizations"
+                            >
+                                <BoldText>Visualizations</BoldText>
+                            </Link>
                         </Nav.Link>
                     </Nav>
                     <Container className="d-flex justify-content-end">
