@@ -1,0 +1,38 @@
+{
+  "files": {
+    "main.css": "/static/css/main.ef0ff25b.css",
+    "main.js": "/static/js/main.0a83fdc6.js",
+    "static/js/787.22edae46.chunk.js": "/static/js/787.22edae46.chunk.js",
+    "static/media/splash-background.png": "/static/media/splash-background.fcdd4d2718f508e67147.png",
+    "static/media/home.png": "/static/media/home.eca5ff63eab2cd9ef16c.png",
+    "static/media/city.png": "/static/media/city.dff98beb630a7f3e9289.png",
+    "static/media/mikala.png": "/static/media/mikala.76545437f8e135030f8c.png",
+    "static/media/cole.png": "/static/media/cole.5b52939445d5ba5540fa.png",
+    "static/media/thomas.png": "/static/media/thomas.f32229801fed69945cb7.png",
+    "static/media/job.png": "/static/media/job.c6a03b2b9ee3c6966d56.png",
+    "static/media/navbar_logo.png": "/static/media/navbar_logo.2f6e48b91961fbe1e124.png",
+    "static/media/sarthak.png": "/static/media/sarthak.6ba291f3b91752b86f02.png",
+    "static/media/namecheap-logo.png": "/static/media/namecheap-logo.5e55a7905e05c93deaad.png",
+    "static/media/react-logo.png": "/static/media/react-logo.2e63b803543e6cea5f47.png",
+    "static/media/googlemaps-logo.png": "/static/media/googlemaps-logo.ac7ac5e51c0066a754b8.png",
+    "static/media/vsc-logo.png": "/static/media/vsc-logo.19edc3fbac1c451f289d.png",
+    "static/media/faiza.png": "/static/media/faiza.b67eb0ed207e9ec6f023.png",
+    "static/media/roadgoat-logo.png": "/static/media/roadgoat-logo.be47690a2f04878433be.png",
+    "static/media/twitter-logo.png": "/static/media/twitter-logo.0ec1c256bda896789af0.png",
+    "static/media/discord-logo.png": "/static/media/discord-logo.9eb1a349c8141509474f.png",
+    "static/media/adzuna-logo.png": "/static/media/adzuna-logo.b81fa24bbe64dd851f7e.png",
+    "static/media/amplify-logo.png": "/static/media/amplify-logo.341ca4a252cbe836726f.png",
+    "static/media/realitymole-logo.png": "/static/media/realitymole-logo.d29683fad6dfb701ad38.png",
+    "static/media/postman-logo.png": "/static/media/postman-logo.de9fea0e7802c2410591.png",
+    "static/media/zoom-logo.png": "/static/media/zoom-logo.3108d7670f35f5a8ed16.png",
+    "static/media/react-bootstrap-logo.png": "/static/media/react-bootstrap-logo.d1e658304c34d61b5b91.png",
+    "index.html": "/index.html",
+    "main.ef0ff25b.css.map": "/static/css/main.ef0ff25b.css.map",
+    "main.0a83fdc6.js.map": "/static/js/main.0a83fdc6.js.map",
+    "787.22edae46.chunk.js.map": "/static/js/787.22edae46.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ef0ff25b.css",
+    "static/js/main.0a83fdc6.js"
+  ]
+}
