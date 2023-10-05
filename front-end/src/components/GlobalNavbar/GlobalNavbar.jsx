@@ -102,13 +102,18 @@ const GlobalNavbar = () => {
                                 className="me-2"
                                 aria-label="Search"
                             />
-                            <Button
-                                type="submit"
-                                variant="outline-secondary"
-                                style={{ color: "#3d405b" }}
+                            <Link
+                                to="/search/example"
+                                style={{ textDecoration: "none" }}
                             >
-                                Search
-                            </Button>
+                                <Button
+                                    type="submit"
+                                    variant="outline-secondary"
+                                    style={{ color: "#3d405b" }}
+                                >
+                                    Search
+                                </Button>
+                            </Link>
                         </Form>
                     </Container>
                 </Navbar.Collapse>
